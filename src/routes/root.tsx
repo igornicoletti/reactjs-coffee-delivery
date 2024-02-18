@@ -5,8 +5,8 @@ import arabe from '/images/coffee-arabe.png'
 import gelado from '/images/coffee-gelado.png'
 import quente from '/images/coffee-quente.png'
 import cubano from '/images/coffee-cubano.png'
-import coffee from '/images/coffee-delivery.png'
 import cremoso from '/images/coffee-cremoso.png'
+import delivery from '/images/coffee-delivery.png'
 import havaiano from '/images/coffee-havaiano.png'
 import irlandes from '/images/coffee-irlandes.png'
 import americano from '/images/coffee-americano.png'
@@ -14,7 +14,12 @@ import capuccino from '/images/coffee-capuccino.png'
 import macchiato from '/images/coffee-macchiato.png'
 import mocaccino from '/images/coffee-mocaccino.png'
 import tradicional from '/images/coffee-tradicional.png'
+import { variantsBanner, variantsCoffee, variantsHeader } from '../styles/variants'
 import { FireIcon, MinusIcon, PlusIcon, ShoppingBagIcon, ShoppingCartIcon, TruckIcon } from '@heroicons/react/24/outline'
+
+const { base, container, header, title, checkout, shopping } = variantsHeader()
+const { banner, layout, info, day, time, list, item, circle, icon, web, mobile } = variantsBanner()
+const { coffee, ours, wrapper, card, cup, map, rank, description, expresso, subtitle, box, price, amount, controller, btn, cart, shopp } = variantsCoffee()
 
 const coffees = [
   {
@@ -157,78 +162,77 @@ const coffees = [
 
 export function Root() {
   return (
-    <div className='relative w-full h-full min-h-screen grid content-start overflow-x-hidden'>
-      <div className='w-full max-w-screen-2xl mx-auto px-4'>
-        <div className='w-full flex items-center justify-between py-8'>
-          <h1 className='text-2xl font-bold'>Coffee Delivery</h1>
-          <Link to='/checkout'>
-            <div className='p-2 rounded-lg bg-purple-500 text-white'>
-              <ShoppingCartIcon className='h-6 w-6' />
-            </div>
+    <div className={base()}>
+      <div className={container()}>
+        <div className={header()}>
+          <h1 className={title()}>Coffee Delivery</h1>
+          <Link to='/checkout' className={checkout()}>
+            <ShoppingCartIcon className={shopping()} />
           </Link>
         </div>
-        <div className='w-full flex items-center justify-between py-16 gap-16'>
-          <div className='flex flex-col items-start gap-16 max-w-2xl'>
-            <div className='flex flex-col gap-8'>
-              <h2 className='text-5xl font-bold'>Encontre o café perfeito para qualquer hora do dia</h2>
-              <p className='text-2xl'>Com o Coffee Delivery você recebe seu café onde estiver, a qualquer hora</p>
+        <div className={banner()}>
+          <div className={layout()}>
+            <div className={info()}>
+              <h2 className={day()}>Encontre o café perfeito para qualquer hora do dia</h2>
+              <p className={time()}>Com o Coffee Delivery você recebe seu café onde estiver, a qualquer hora</p>
             </div>
-            <div className='grid grid-cols-2 gap-6'>
-              <div className='flex items-center gap-4'>
-                <div className='p-2 rounded-full bg-purple-500 text-white'>
-                  <ShoppingCartIcon className='h-4 w-4' />
+            <img src={delivery} alt={delivery} className={mobile()} />
+            <ul className={list()}>
+              <li className={item()}>
+                <div className={circle()}>
+                  <ShoppingCartIcon className={icon()} />
                 </div>
                 <p>Compra simples e segura</p>
-              </div>
-              <div className='flex items-center gap-4'>
-                <div className='p-2 rounded-full bg-purple-500 text-white'>
-                  <ShoppingBagIcon className='h-4 w-4' />
+              </li>
+              <li className={item()}>
+                <div className={circle()}>
+                  <ShoppingBagIcon className={icon()} />
                 </div>
                 <p>Embalagem mantém o café intacto</p>
-              </div>
-              <div className='flex items-center gap-4'>
-                <div className='p-2 rounded-full bg-purple-500 text-white'>
-                  <TruckIcon className='h-4 w-4' />
+              </li>
+              <li className={item()}>
+                <div className={circle()}>
+                  <TruckIcon className={icon()} />
                 </div>
                 <p>Entrega rápida e rastreada</p>
-              </div>
-              <div className='flex items-center gap-4'>
-                <div className='p-2 rounded-full bg-purple-500 text-white'>
-                  <FireIcon className='h-4 w-4' />
+              </li>
+              <li className={item()}>
+                <div className={circle()}>
+                  <FireIcon className={icon()} />
                 </div>
                 <p>O café chega fresquinho até você</p>
-              </div>
-            </div>
+              </li>
+            </ul>
           </div>
-          <img src={coffee} alt={coffee} className='w-full max-w-xl' />
+          <img src={delivery} alt={delivery} className={web()} />
         </div>
-        <div className='w-full flex flex-col py-16 gap-16'>
-          <h3 className='text-3xl font-bold'>Nossos Cafés</h3>
-          <div className='grid grid-cols-4 gap-x-8 gap-y-10'>
+        <div className={coffee()}>
+          <h3 className={ours()}>Nossos Cafés</h3>
+          <div className={wrapper()}>
             {coffees.map(coffee => (
-              <div className='flex flex-col rounded-tr-3xl rounded-bl-3xl p-6 bg-slate-100' key={coffee.title}>
-                <img src={coffee.image} alt={coffee.image} className='w-32 h-32 mx-auto -mt-10' />
-                <ul className='flex flex-wrap items-center justify-center gap-1 pt-4'>
+              <div className={card()} key={coffee.title}>
+                <img src={coffee.image} alt={coffee.image} className={cup()} />
+                <ul className={map()}>
                   {coffee.categories.map((category, index) => (
                     <li key={index}>
-                      <p className='text-xs font-medium uppercase px-3 py-1 rounded-full bg-amber-100 text-amber-500'>{category.title}</p>
+                      <p className={rank()}>{category.title}</p>
                     </li>
                   ))}
                 </ul>
-                <div className='flex flex-col text-center gap-2 pt-6'>
-                  <p className='text-xl font-bold'>{coffee.title}</p>
-                  <p className='font-light'>{coffee.description}</p>
+                <div className={description()}>
+                  <p className={expresso()}>{coffee.title}</p>
+                  <p className={subtitle()}>{coffee.description}</p>
                 </div>
-                <div className='flex items-center justify-between gap-2 pt-10'>
-                  <p>R$ <span className='text-2xl font-bold'>{coffee.price}</span></p>
-                  <div className='flex items-center gap-2'>
-                    <div className='flex items-center rounded-lg p-2 gap-4 bg-slate-200'>
-                      <button><MinusIcon className='h-6 w-6 text-purple-500' /></button>
+                <div className={box()}>
+                  <p>R$ <span className={price()}>{coffee.price}</span></p>
+                  <div className={amount()}>
+                    <div className={controller()}>
+                      <button><MinusIcon className={btn()} /></button>
                       <p>1</p>
-                      <button><PlusIcon className='h-6 w-6 text-purple-500' /></button>
+                      <button><PlusIcon className={btn()} /></button>
                     </div>
-                    <div className='p-2 rounded-lg bg-purple-500 text-white'>
-                      <ShoppingCartIcon className='h-6 w-6' />
+                    <div className={cart()}>
+                      <ShoppingCartIcon className={shopp()} />
                     </div>
                   </div>
                 </div>
