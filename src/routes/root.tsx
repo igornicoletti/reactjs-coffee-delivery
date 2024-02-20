@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import leite from '/images/coffee-leite.png'
 import latte from '/images/coffee-latte.png'
 import arabe from '/images/coffee-arabe.png'
@@ -14,12 +13,13 @@ import capuccino from '/images/coffee-capuccino.png'
 import macchiato from '/images/coffee-macchiato.png'
 import mocaccino from '/images/coffee-mocaccino.png'
 import tradicional from '/images/coffee-tradicional.png'
-import { variantsBanner, variantsCoffee, variantsHeader } from '../styles/variants'
-import { FireIcon, MinusIcon, PlusIcon, ShoppingBagIcon, ShoppingCartIcon, TruckIcon } from '@heroicons/react/24/outline'
+import { variantsBase, variantsCoffee, variantsIntro } from '../styles/variants'
+import { FireIcon, MinusCircleIcon, PlusCircleIcon, ShoppingBagIcon, ShoppingCartIcon, TruckIcon } from '@heroicons/react/24/outline'
+import { Navbar } from '../components/navbar'
 
-const { base, container, header, title, checkout, shopping } = variantsHeader()
-const { banner, layout, info, day, time, list, item, circle, icon, web, mobile } = variantsBanner()
-const { coffee, ours, wrapper, card, cup, map, rank, description, expresso, subtitle, box, price, amount, controller, btn, cart, shopp } = variantsCoffee()
+const { base, container } = variantsBase()
+const { intro, layout, info, day, time, list, item, circle, icon, web, mobile } = variantsIntro()
+const { coffee, ours, wrapper, card, cup, map, rank, description, expresso, subtitle, box, price, amount, controller, btn, minusplus, cart, shopping } = variantsCoffee()
 
 const coffees = [
   {
@@ -28,7 +28,7 @@ const coffees = [
       { title: 'Tradicional' },
     ],
     title: 'Expresso Tradicional',
-    description: 'O tradicional café feito com água quente e grãos moidos',
+    description: 'O tradicional café feito com água quente e grãos moidos.',
     price: '9.90',
   },
   {
@@ -37,7 +37,7 @@ const coffees = [
       { title: 'Tradicional' },
     ],
     title: 'Expresso Americano',
-    description: 'Expresso diluído, menos intenso que o tradicional',
+    description: 'Expresso diluído, menos intenso que o tradicional.',
     price: '9.90',
   },
   {
@@ -46,7 +46,7 @@ const coffees = [
       { title: 'Tradicional' },
     ],
     title: 'Expresso Cremoso',
-    description: 'Café expresso tradicional com espuma cremosa',
+    description: 'Café expresso tradicional com espuma cremosa.',
     price: '9.90',
   },
   {
@@ -56,7 +56,7 @@ const coffees = [
       { title: 'Gelado' },
     ],
     title: 'Expresso Gelado',
-    description: 'Bebida preparada com café expresso e cubos de gelo',
+    description: 'Bebida preparada com café expresso e cubos de gelo.',
     price: '9.90',
   },
   {
@@ -66,7 +66,7 @@ const coffees = [
       { title: 'com leite' },
     ],
     title: 'Café com Leite',
-    description: 'Meio a meio de expresso tradicional com leite vaporizado',
+    description: 'Meio a meio de expresso tradicional com leite vaporizado.',
     price: '9.90',
   },
   {
@@ -76,7 +76,7 @@ const coffees = [
       { title: 'com leite' },
     ],
     title: 'Latte',
-    description: 'Uma dose de café expresso com o dobro de leite e espuma cremosa',
+    description: 'Uma dose de café expresso com o dobro de leite e espuma cremosa.',
     price: '9.90',
   },
   {
@@ -86,7 +86,7 @@ const coffees = [
       { title: 'com leite' },
     ],
     title: 'Capuccino',
-    description: 'Bebida com canela feita de doses iguais de café, leite e espuma',
+    description: 'Bebida com canela feita de doses iguais de café, leite e espuma.',
     price: '9.90',
   },
   {
@@ -96,7 +96,7 @@ const coffees = [
       { title: 'com leite' },
     ],
     title: 'Macchiato',
-    description: 'Café expresso misturado com um pouco de leite quente e espuma',
+    description: 'Café expresso misturado com um pouco de leite quente e espuma.',
     price: '9.90',
   },
   {
@@ -106,7 +106,7 @@ const coffees = [
       { title: 'com leite' },
     ],
     title: 'Mocaccino',
-    description: 'Café expresso com calda de chocolate, pouco leite e espuma',
+    description: 'Café expresso com calda de chocolate, pouco leite e espuma.',
     price: '9.90',
   },
   {
@@ -116,7 +116,7 @@ const coffees = [
       { title: 'com leite' },
     ],
     title: 'Chocolate Quente',
-    description: 'Bebida feita com chocolate dissolvido no leite quente e café',
+    description: 'Bebida feita com chocolate dissolvido no leite quente e café.',
     price: '9.90',
   },
   {
@@ -127,7 +127,7 @@ const coffees = [
       { title: 'Gelado' },
     ],
     title: 'Cubano',
-    description: 'Drink gelado de café expresso com rum, creme de leite e hortelã',
+    description: 'Drink gelado de café expresso com rum, creme de leite e hortelã.',
     price: '9.90',
   },
   {
@@ -136,7 +136,7 @@ const coffees = [
       { title: 'Especial' },
     ],
     title: 'Havaiano',
-    description: 'Bebida adocicada preparada com café e leite de coco',
+    description: 'Bebida adocicada preparada com café e leite de coco.',
     price: '9.90',
   },
   {
@@ -145,7 +145,7 @@ const coffees = [
       { title: 'Especial' },
     ],
     title: 'Árabe',
-    description: 'Bebida preparada com grãos de café árabe e especiarias',
+    description: 'Bebida preparada com grãos de café árabe e especiarias.',
     price: '9.90',
   },
   {
@@ -155,7 +155,7 @@ const coffees = [
       { title: 'Alcoólico' },
     ],
     title: 'Irlandês',
-    description: 'Bebida a base de café, uísque irlandês, açúcar e chantilly',
+    description: 'Bebida a base de café, uísque irlandês, açúcar e chantilly.',
     price: '9.90',
   },
 ]
@@ -164,17 +164,12 @@ export function Root() {
   return (
     <div className={base()}>
       <div className={container()}>
-        <div className={header()}>
-          <h1 className={title()}>Coffee Delivery</h1>
-          <Link to='/checkout' className={checkout()}>
-            <ShoppingCartIcon className={shopping()} />
-          </Link>
-        </div>
-        <div className={banner()}>
+        <Navbar />
+        <div className={intro()}>
           <div className={layout()}>
             <div className={info()}>
-              <h2 className={day()}>Encontre o café perfeito para qualquer hora do dia</h2>
-              <p className={time()}>Com o Coffee Delivery você recebe seu café onde estiver, a qualquer hora</p>
+              <h2 className={day()}>Encontre o café perfeito para qualquer hora do dia.</h2>
+              <p className={time()}>Com o Coffee Delivery você recebe seu café onde estiver, a qualquer hora.</p>
             </div>
             <img src={delivery} alt={delivery} className={mobile()} />
             <ul className={list()}>
@@ -227,13 +222,17 @@ export function Root() {
                   <p>R$ <span className={price()}>{coffee.price}</span></p>
                   <div className={amount()}>
                     <div className={controller()}>
-                      <button><MinusIcon className={btn()} /></button>
+                      <button className={btn()}>
+                        <MinusCircleIcon className={minusplus()} />
+                      </button>
                       <p>1</p>
-                      <button><PlusIcon className={btn()} /></button>
+                      <button className={btn()}>
+                        <PlusCircleIcon className={minusplus()} />
+                      </button>
                     </div>
-                    <div className={cart()}>
-                      <ShoppingCartIcon className={shopp()} />
-                    </div>
+                    <button className={cart()}>
+                      <ShoppingCartIcon className={shopping()} />
+                    </button>
                   </div>
                 </div>
               </div>

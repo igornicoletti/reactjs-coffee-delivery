@@ -14,57 +14,55 @@ export const variantsError = tv({
 
 export const variantsBase = tv({
   slots: {
-    base: 'relative h-full min-h-screen w-full grid content-start overflow-x-hidden',
-    container: 'w-full max-w-screen-xl mx-auto px-4',
-    content: 'flex flex-col items-start',
-  }
-})
-
-export const variantsHeader = tv({
-  slots: {
     base: 'relative w-full h-full min-h-screen grid content-start overflow-x-hidden',
-    container: 'w-full max-w-screen-2xl mx-auto px-4',
-    header: 'w-full flex items-center justify-between py-8',
-    title: 'text-2xl md:text-3xl font-bold',
-    checkout: 'p-2 rounded-lg bg-purple-500 text-white',
-    shopping: 'h-6 w-6',
+    container: 'w-full max-w-screen-2xl mx-auto px-6',
   }
 })
 
-export const variantsBanner = tv({
+export const variantsNavbar = tv({
   slots: {
-    banner: 'w-full flex flex-col xl:flex-row items-center justify-between py-16 gap-16',
-    layout: 'flex flex-col items-start gap-16 max-w-2xl',
-    info: 'flex flex-col gap-8 text-center xl:text-left',
-    day: 'text-3xl md:text-4xl lg:text-5xl font-bold',
+    navbar: 'w-full flex items-center justify-between py-8',
+    logo: 'text-3xl font-semibold uppercase',
+    action: 'p-2 rounded-lg bg-dracula-cyan text-dark hover:scale-110 transition ease-in-out duration-200',
+    cart: 'size-6',
+  }
+})
+
+export const variantsIntro = tv({
+  slots: {
+    intro: 'w-full flex flex-col xl:flex-row items-center justify-between py-16 gap-16 xl:gap-32',
+    layout: 'flex flex-col items-start gap-16',
+    info: 'flex flex-col gap-8 text-center xl:text-left md:px-24 xl:px-0',
+    day: 'text-3xl md:text-4xl lg:text-5xl font-semibold',
     time: 'text-xl md:text-2xl',
-    list: 'grid md:grid-cols-2 gap-6 md:mx-auto',
-    item: 'flex items-center gap-4',
-    circle: 'p-2 rounded-full bg-purple-500 text-white',
-    icon: 'h-4 w-4',
+    list: 'grid md:grid-cols-2 gap-8 md:mx-auto xl:mx-0',
+    item: 'flex items-center gap-4 text-lg',
+    circle: 'text-dracula-cyan',
+    icon: 'size-6',
     web: 'w-full max-w-xl hidden md:block',
-    mobile: 'w-full max-w-xl mx-auto md:hidden'
+    mobile: 'w-full max-w-xl mx-auto md:hidden',
   }
 })
 
 export const variantsCoffee = tv({
   slots: {
     coffee: 'w-full flex flex-col py-16 gap-16',
-    ours: 'text-2xl md:text-3xl font-bold',
-    wrapper: 'grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-10',
-    card: 'flex flex-col rounded-tr-3xl rounded-bl-3xl p-6 bg-slate-100',
+    ours: 'text-3xl uppercase',
+    wrapper: 'grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8',
+    card: 'flex flex-col rounded-tr-3xl rounded-bl-3xl gap-6 p-6 border border-dracula-line hover:border-dracula-cyan bg-dracula-line/10 hover:bg-dracula-line/25 transition ease-in-out duration-200',
     cup: 'w-32 h-32 mx-auto -mt-10',
-    map: 'flex flex-wrap items-center justify-center gap-1 pt-4',
-    rank: 'text-xs font-medium uppercase px-3 py-1 rounded-full bg-amber-100 text-amber-500',
-    description: 'flex flex-col text-center gap-2 pt-6',
-    expresso: 'text-xl font-bold',
-    subtitle: 'font-light',
-    box: 'flex items-center justify-between gap-2 pt-10',
-    price: 'text-2xl font-bold',
+    map: 'flex flex-wrap items-center justify-center gap-2',
+    rank: 'text-xs uppercase px-3 py-1 rounded-full bg-dracula-cyan/10 text-dracula-cyan',
+    description: 'flex flex-col text-center gap-2',
+    expresso: 'text-xl font-semibold uppercase',
+    subtitle: '',
+    box: 'flex items-center justify-between gap-2 pt-4 mt-auto',
+    price: 'text-3xl',
     amount: 'flex items-center gap-2',
-    controller: 'flex items-center rounded-lg p-2 gap-4 bg-slate-200',
-    btn: 'h-6 w-6 text-purple-500',
-    cart: 'p-2 rounded-lg bg-purple-500 text-white',
-    shopp: 'h-6 w-6'
+    controller: 'flex items-center rounded-lg gap-2 border border-dracula-line',
+    btn: 'p-2 rounded-lg hover:bg-dracula-cyan hover:text-dark transition ease-in-out duration-200',
+    minusplus: 'size-6',
+    cart: 'p-2 rounded-lg text-dracula-cyan bg-dracula-line hover:bg-dracula-cyan hover:text-dark transition ease-in-out duration-200',
+    shopping: 'size-6',
   }
 })
