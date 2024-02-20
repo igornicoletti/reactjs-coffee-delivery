@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        'dark': '#282A36',
+        'dracula-dark': '#282A36',
         'dracula-red': '#FF5555',
         'dracula-cyan': '#8BE9FD',
         'dracula-line': '#44475A',
