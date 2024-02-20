@@ -23,8 +23,9 @@ export const variantsNavbar = tv({
   slots: {
     navbar: 'w-full flex items-center justify-between py-8',
     logo: 'text-3xl font-semibold uppercase',
-    action: 'p-2 rounded-lg bg-dracula-cyan text-dark hover:scale-110 transition ease-in-out duration-200',
-    cart: 'size-6',
+    action: 'relative p-2 rounded-lg bg-dracula-cyan hover:scale-110 transition ease-in-out duration-200',
+    cart: 'size-6 text-dark',
+    badge: 'absolute flex items-center justify-center text-sm font-semibold rounded-full min-w-6 h-6 px-2 -top-3 -right-3 bg-dark border border-dracula-cyan',
   }
 })
 
