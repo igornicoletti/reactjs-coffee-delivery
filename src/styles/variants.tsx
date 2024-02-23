@@ -1,19 +1,5 @@
 import { tv } from 'tailwind-variants'
 
-export const variantsError = tv({
-  slots: {
-    base: 'relative h-full min-h-screen w-full grid content-center',
-    container: 'w-full max-w-screen-xl mx-auto px-6',
-    content: 'flex flex-col items-center text-center gap-16 py-16',
-    wrapper: 'flex flex-col gap-4',
-    status: 'text-xl',
-    title: 'text-3xl font-semibold',
-    message: 'text-sm',
-    back: 'flex items-center text-sm gap-2',
-    icon: 'size-4',
-  }
-})
-
 export const variantsBase = tv({
   slots: {
     base: 'relative w-full h-full min-h-screen grid content-start overflow-x-hidden',
@@ -38,10 +24,10 @@ export const variantsHero = tv({
     heroHeading: 'flex flex-col gap-8 text-center xl:text-left md:px-24 xl:px-0',
     heroTitle: 'text-3xl md:text-4xl lg:text-5xl font-medium',
     heroSubtitle: 'text-xl md:text-2xl font-medium',
-    heroMinor: 'w-full max-w-xl mx-auto md:hidden',
     heroSpecs: 'grid md:grid-cols-2 gap-8 md:mx-auto xl:mx-0',
     heroSpec: 'flex items-center gap-4 text-lg',
     heroIcon: 'size-6 text-dracula-cyan',
+    heroMinor: 'w-full max-w-xl mx-auto md:hidden',
     heroBigger: 'w-full max-w-xl hidden md:block',
   }
 })

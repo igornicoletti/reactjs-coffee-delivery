@@ -1,6 +1,7 @@
+import { Link } from 'react-router-dom'
 import { Navbar } from '../components/navbar'
 import { variantsBase, variantsCheckout } from '../styles/variants'
-import { BanknotesIcon, BuildingLibraryIcon, CreditCardIcon, MapPinIcon, MinusIcon, PlusIcon, TrashIcon } from '@heroicons/react/24/outline'
+import { BanknotesIcon, MapPinIcon, MinusIcon, PlusIcon, TrashIcon } from '@heroicons/react/24/outline'
 
 const { base, container } = variantsBase()
 const { checkout, checkAmount, checkCard, checkComplete, checkConfirm, checkController, checkDelete, checkDescription, checkGrid, checkHidden, checkIcon, checkImage, checkInfo, checkInput, checkInputs, checkItem, checkItems, checkLayout, checkMain, checkMoney, checkName, checkOrder, checkOrders, checkSelected, checkShrink, checkTitle, checkWrapper } = variantsCheckout()
@@ -10,7 +11,6 @@ export function Checkout() {
     <div className={base()}>
       <div className={container()}>
         <Navbar />
-
         <div className={checkout()}>
           <div className={checkComplete()}>
             <h2 className={checkTitle()}>Complete seu pedido</h2>
@@ -35,7 +35,7 @@ export function Checkout() {
               </div>
               <div className={checkCard()}>
                 <div className={checkWrapper()}>
-                  <BuildingLibraryIcon className={checkShrink()} aria-hidden='true' />
+                  <BanknotesIcon className={checkShrink()} aria-hidden='true' />
                   <div className={checkMain()}>
                     <p className={checkName()}>Forma de pagamento</p>
                     <span className={checkDescription()}>O pagamento é feito na entrega. Escolha a forma que deseja pagar.</span>
@@ -43,15 +43,12 @@ export function Checkout() {
                 </div>
                 <div className={checkGrid()}>
                   <button className={checkMoney()}>
-                    <BanknotesIcon className={checkIcon()} aria-hidden='true' />
                     <span>Dinheiro</span>
                   </button>
                   <button className={checkMoney()}>
-                    <CreditCardIcon className={checkIcon()} aria-hidden='true' />
                     <span>Cartão de crédito</span>
                   </button>
                   <button className={checkMoney()}>
-                    <CreditCardIcon className={checkIcon()} aria-hidden='true' />
                     <span>Cartão de dédito</span>
                   </button>
                 </div>
@@ -101,13 +98,13 @@ export function Checkout() {
                   <p className={checkInfo()}>R$ 25.00</p>
                 </li>
               </ul>
-              <button className={checkConfirm()}>
+              <Link className={checkConfirm()} to='/checkout/success'>
                 Confirmar pedido
-              </button>
+              </Link>
             </div>
           </div>
         </div>
       </div>
-    </div >
+    </div>
   )
 }

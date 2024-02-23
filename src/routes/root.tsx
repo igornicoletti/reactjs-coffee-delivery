@@ -9,12 +9,10 @@ const { hero, heroBigger, heroHeading, heroIcon, heroLayout, heroMinor, heroSpec
 const { coffee, cofAction, cofAmount, cofBtn, cofCard, cofCards, cofCart, cofController, cofCup, cofDescription, cofFilter, cofFilters, cofIcon, cofInfo, cofLayout, cofMain, cofName, cofPrice, cofRank, cofRanks, cofTitle } = variantsCoffee()
 
 export function Root() {
-
   return (
     <div className={base()}>
       <div className={container()}>
         <Navbar />
-
         <div className={hero()}>
           <div className={heroLayout()}>
             <div className={heroHeading()}>
@@ -33,7 +31,6 @@ export function Root() {
           </div>
           <img src='/images/coffee-delivery.png' alt='Coffee Delivery' className={heroBigger()} />
         </div>
-
         <div className={coffee()}>
           <div className={cofLayout()}>
             <h3 className={cofTitle()}>Nossos Cafés</h3>
