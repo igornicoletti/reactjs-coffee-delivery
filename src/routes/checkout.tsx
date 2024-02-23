@@ -69,47 +69,47 @@ export function Checkout() {
             <div className='w-full flex flex-col gap-8 p-4 md:p-6 rounded border border-dracula-line bg-dracula-line/10'>
               <ul className='flex flex-col divide-y divide-dracula-line'>
                 <li className='flex items-center gap-4 py-4'>
-                  <img src='/images/coffee-tradicional.png' alt='Coffee Delivery' className='w-16 hidden md:block' />
+                  <img src='/images/coffee-cremoso.png' alt='Coffee Delivery' className='w-16 hidden md:block' />
                   <div className='w-full flex flex-col gap-1'>
                     <div className='flex justify-between gap-6 font-medium text-lg'>
-                      <p>Expresso Tradicional</p>
+                      <p>Expresso Cremoso</p>
                       <p>R$ 9.90</p>
                     </div>
                     <div className='flex items-center justify-between gap-6'>
-                      <div className='flex items-center rounded gap-2 border border-dracula-line'>
-                        <button className='p-2 rounded hover:bg-dracula-cyan hover:text-dracula-dark transition ease-in-out duration-300'>
-                          <MinusCircleIcon className='size-4' aria-hidden='true' />
+                      <div className='flex items-center gap-6'>
+                        <button className='hover:text-dracula-cyan transition ease-in duration-300'>
+                          <MinusCircleIcon className='size-6' aria-hidden='true' />
                         </button>
-                        <p>1</p>
-                        <button className='p-2 rounded hover:bg-dracula-cyan hover:text-dracula-dark transition ease-in-out duration-300'>
-                          <PlusCircleIcon className='size-4' aria-hidden='true' />
+                        <p className='text-lg font-medium'>1</p>
+                        <button className='hover:text-dracula-cyan transition ease-in duration-300'>
+                          <PlusCircleIcon className='size-6' aria-hidden='true' />
                         </button>
                       </div>
                       <button className='hover:text-dracula-red transition ease-in duration-300'>
-                        <TrashIcon className='size-4' aria-hidden='true' />
+                        <TrashIcon className='size-5' aria-hidden='true' />
                       </button>
                     </div>
                   </div>
                 </li>
                 <li className='flex items-center gap-4 py-4'>
-                  <img src='/images/coffee-tradicional.png' alt='Coffee Delivery' className='w-16 hidden md:block' />
+                  <img src='/images/coffee-mocaccino.png' alt='Coffee Delivery' className='w-16 hidden md:block' />
                   <div className='w-full flex flex-col gap-1'>
                     <div className='flex justify-between gap-6 font-medium text-lg'>
-                      <p>Expresso Tradicional</p>
+                      <p>Mocaccino</p>
                       <p>R$ 9.90</p>
                     </div>
                     <div className='flex items-center justify-between gap-6'>
-                      <div className='flex items-center rounded gap-2 border border-dracula-line'>
-                        <button className='p-2 rounded hover:bg-dracula-cyan hover:text-dracula-dark transition ease-in-out duration-300'>
-                          <MinusCircleIcon className='size-4' aria-hidden='true' />
+                      <div className='flex items-center gap-6'>
+                        <button className='hover:text-dracula-cyan transition ease-in duration-300'>
+                          <MinusCircleIcon className='size-6' aria-hidden='true' />
                         </button>
-                        <p>1</p>
-                        <button className='p-2 rounded hover:bg-dracula-cyan hover:text-dracula-dark transition ease-in-out duration-300'>
-                          <PlusCircleIcon className='size-4' aria-hidden='true' />
+                        <p className='text-lg font-medium'>1</p>
+                        <button className='hover:text-dracula-cyan transition ease-in duration-300'>
+                          <PlusCircleIcon className='size-6' aria-hidden='true' />
                         </button>
                       </div>
                       <button className='hover:text-dracula-red transition ease-in duration-300'>
-                        <TrashIcon className='size-4' aria-hidden='true' />
+                        <TrashIcon className='size-5' aria-hidden='true' />
                       </button>
                     </div>
                   </div>

@@ -37,7 +37,7 @@ export const variantsHero = tv({
     heroLayout: 'flex flex-col items-start gap-16',
     heroHeading: 'flex flex-col gap-8 text-center xl:text-left md:px-24 xl:px-0',
     heroTitle: 'text-3xl md:text-4xl lg:text-5xl font-medium',
-    heroSubtitle: 'text-xl md:text-2xl',
+    heroSubtitle: 'text-xl md:text-2xl font-medium',
     heroMinor: 'w-full max-w-xl mx-auto md:hidden',
     heroSpecs: 'grid md:grid-cols-2 gap-8 md:mx-auto xl:mx-0',
     heroSpec: 'flex items-center gap-4 text-lg',
@@ -49,7 +49,7 @@ export const variantsHero = tv({
 export const variantsCoffee = tv({
   slots: {
     coffee: 'w-full flex flex-col py-16 gap-16',
-    cofLayout: 'flex flex-col lg:flex-row lg:items-center justify-between gap-8',
+    cofLayout: 'flex flex-col lg:flex-row lg:items-center justify-between gap-6',
     cofTitle: 'text-3xl font-medium uppercase',
     cofFilters: 'flex flex-wrap gap-2',
     cofFilter: 'text-sm font-medium uppercase px-4 py-2 rounded-full border border-dracula-cyan hover:bg-dracula-cyan hover:text-dracula-dark transition ease-in-out duration-300',
