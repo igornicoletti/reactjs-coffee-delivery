@@ -1,8 +1,9 @@
 import { Navbar } from '../components/navbar'
-import { variantsBase } from '../styles/variants'
-import { BanknotesIcon, BuildingLibraryIcon, CreditCardIcon, MapPinIcon, MinusCircleIcon, PlusCircleIcon, TrashIcon } from '@heroicons/react/24/outline'
+import { variantsBase, variantsCheckout } from '../styles/variants'
+import { BanknotesIcon, BuildingLibraryIcon, CreditCardIcon, MapPinIcon, MinusIcon, PlusIcon, TrashIcon } from '@heroicons/react/24/outline'
 
 const { base, container } = variantsBase()
+const { checkout, checkAmount, checkCard, checkComplete, checkConfirm, checkController, checkDelete, checkDescription, checkGrid, checkHidden, checkIcon, checkImage, checkInfo, checkInput, checkInputs, checkItem, checkItems, checkLayout, checkMain, checkMoney, checkName, checkOrder, checkOrders, checkSelected, checkShrink, checkTitle, checkWrapper } = variantsCheckout()
 
 export function Checkout() {
   return (
@@ -10,53 +11,47 @@ export function Checkout() {
       <div className={container()}>
         <Navbar />
 
-        <div className='w-full flex flex-col xl:flex-row py-16 gap-16 xl:gap-8'>
-          <div className='w-full flex flex-col gap-6'>
-            <h2 className='text-xl font-medium uppercase'>Complete seu pedido</h2>
-            <div className='flex flex-col gap-8'>
-              <div className='w-full flex flex-col gap-8 p-4 md:p-6 rounded border border-dracula-line bg-dracula-line/10'>
-                <div className='flex flex-col md:flex-row items-center md:items-start gap-4'>
-                  <MapPinIcon className='size-6 shrink-0 text-dracula-cyan' aria-hidden='true' />
-                  <div className='flex flex-col text-center md:text-left'>
-                    <p className='text-xl font-medium'>Endereço de entrega</p>
-                    <span>Informe o endereço onde deseja receber o seu pedido.</span>
+        <div className={checkout()}>
+          <div className={checkComplete()}>
+            <h2 className={checkTitle()}>Complete seu pedido</h2>
+            <div className={checkLayout()}>
+              <div className={checkCard()}>
+                <div className={checkWrapper()}>
+                  <MapPinIcon className={checkShrink()} aria-hidden='true' />
+                  <div className={checkMain()}>
+                    <p className={checkName()}>Endereço de entrega</p>
+                    <span className={checkDescription()}>Informe o endereço onde deseja receber o seu pedido.</span>
                   </div>
                 </div>
-                <div className='grid md:grid-cols-3 gap-4'>
-                  <input type="number" name="CEP" id="" placeholder='CEP'
-                    className='h-12 px-4 py-2 bg-inherit rounded border border-dracula-line hover:border-dracula-foreground focus:border-dracula-foreground focus:outline-none' />
-                  <span className='hidden md:block md:col-span-2'></span>
-                  <input type="text" name="Endereço" id="" placeholder='Endereço'
-                    className='md:col-span-2 h-12 px-4 py-2 bg-inherit rounded border border-dracula-line hover:border-dracula-foreground focus:border-dracula-foreground focus:outline-none' />
-                  <input type="number" name="Número" id="" placeholder='Número'
-                    className='h-12 px-4 py-2 bg-inherit rounded border border-dracula-line hover:border-dracula-foreground focus:border-dracula-foreground focus:outline-none' />
-                  <input type="text" name="Bairro" id="" placeholder='Bairro'
-                    className='h-12 px-4 py-2 bg-inherit rounded border border-dracula-line hover:border-dracula-foreground focus:border-dracula-foreground focus:outline-none' />
-                  <input type="text" name="Cidade" id="" placeholder='Cidade'
-                    className='h-12 px-4 py-2 bg-inherit rounded border border-dracula-line hover:border-dracula-foreground focus:border-dracula-foreground focus:outline-none' />
-                  <input type="text" name="Estado" id="" placeholder='Estado'
-                    className='h-12 px-4 py-2 bg-inherit rounded border border-dracula-line hover:border-dracula-foreground focus:border-dracula-foreground focus:outline-none' />
+                <div className={checkGrid()}>
+                  <input className={checkInputs()} type='number' name='' id='' placeholder='CEP' />
+                  <span className={checkHidden()}></span>
+                  <input className={checkInput()} type='text' name='' id='' placeholder='Endereço' />
+                  <input className={checkInputs()} type='number' name='' id='' placeholder='Número' />
+                  <input className={checkInputs()} type='text' name='' id='' placeholder='Bairro' />
+                  <input className={checkInputs()} type='text' name='' id='' placeholder='Cidade' />
+                  <input className={checkInputs()} type='text' name='' id='' placeholder='Estado' />
                 </div>
               </div>
-              <div className='w-full flex flex-col gap-8 p-4 md:p-6 rounded border border-dracula-line bg-dracula-line/10'>
-                <div className='flex flex-col md:flex-row items-center md:items-start gap-4'>
-                  <BuildingLibraryIcon className='size-6 shrink-0 text-dracula-cyan' aria-hidden='true' />
-                  <div className='flex flex-col text-center md:text-left'>
-                    <p className='text-xl font-medium'>Forma de pagamento</p>
-                    <span>O pagamento é feito na entrega. Escolha a forma que deseja pagar.</span>
+              <div className={checkCard()}>
+                <div className={checkWrapper()}>
+                  <BuildingLibraryIcon className={checkShrink()} aria-hidden='true' />
+                  <div className={checkMain()}>
+                    <p className={checkName()}>Forma de pagamento</p>
+                    <span className={checkDescription()}>O pagamento é feito na entrega. Escolha a forma que deseja pagar.</span>
                   </div>
                 </div>
-                <div className='grid md:grid-cols-3 gap-4'>
-                  <button className='flex items-center justify-center gap-2 px-6 h-12 font-medium rounded bg-dracula-line/25 hover:bg-dracula-cyan hover:text-dracula-dark border border-dracula-line active:scale-90 transition ease-in-out duration-300'>
-                    <BanknotesIcon className='size-4' aria-hidden='true' />
+                <div className={checkGrid()}>
+                  <button className={checkMoney()}>
+                    <BanknotesIcon className={checkIcon()} aria-hidden='true' />
                     <span>Dinheiro</span>
                   </button>
-                  <button className='flex items-center justify-center gap-2 px-6 h-12 font-medium rounded bg-dracula-line/25 hover:bg-dracula-cyan hover:text-dracula-dark border border-dracula-line active:scale-90 transition ease-in-out duration-300'>
-                    <CreditCardIcon className='size-4' aria-hidden='true' />
+                  <button className={checkMoney()}>
+                    <CreditCardIcon className={checkIcon()} aria-hidden='true' />
                     <span>Cartão de crédito</span>
                   </button>
-                  <button className='flex items-center justify-center gap-2 px-6 h-12 font-medium rounded bg-dracula-line/25 hover:bg-dracula-cyan hover:text-dracula-dark border border-dracula-line active:scale-90 transition ease-in-out duration-300'>
-                    <CreditCardIcon className='size-4' aria-hidden='true' />
+                  <button className={checkMoney()}>
+                    <CreditCardIcon className={checkIcon()} aria-hidden='true' />
                     <span>Cartão de dédito</span>
                   </button>
                 </div>
@@ -64,72 +59,49 @@ export function Checkout() {
             </div>
           </div>
 
-          <div className='w-full xl:max-w-lg flex flex-col gap-6'>
-            <h2 className='text-xl font-medium uppercase'>Cafés selecionados</h2>
-            <div className='w-full flex flex-col gap-8 p-4 md:p-6 rounded border border-dracula-line bg-dracula-line/10'>
-              <ul className='flex flex-col divide-y divide-dracula-line'>
-                <li className='flex items-center gap-4 py-4'>
-                  <img src='/images/coffee-cremoso.png' alt='Coffee Delivery' className='w-16 hidden md:block' />
-                  <div className='w-full flex flex-col gap-1'>
-                    <div className='flex justify-between gap-6 font-medium text-lg'>
-                      <p>Expresso Cremoso</p>
-                      <p>R$ 9.90</p>
-                    </div>
-                    <div className='flex items-center justify-between gap-6'>
-                      <div className='flex items-center gap-6'>
-                        <button className='hover:text-dracula-cyan transition ease-in duration-300'>
-                          <MinusCircleIcon className='size-6' aria-hidden='true' />
+          <div className={checkSelected()}>
+            <h2 className={checkTitle()}>Cafés selecionados</h2>
+            <div className={checkCard()}>
+              <ul className={checkOrders()}>
+                <li className={checkOrder()}>
+                  <img className={checkImage()} src='/images/coffee-cremoso.png' alt='Coffee Delivery' />
+                  <ul className={checkItems()}>
+                    <li className={checkItem()}>
+                      <p className={checkInfo()}>Expresso Cremoso</p>
+                      <p className={checkInfo()}>R$ 9.90</p>
+                    </li>
+                    <li className={checkItem()}>
+                      <div className={checkController()}>
+                        <button className={checkAmount()}>
+                          <MinusIcon className={checkIcon()} aria-hidden='true' />
                         </button>
-                        <p className='text-lg font-medium'>1</p>
-                        <button className='hover:text-dracula-cyan transition ease-in duration-300'>
-                          <PlusCircleIcon className='size-6' aria-hidden='true' />
-                        </button>
-                      </div>
-                      <button className='hover:text-dracula-red transition ease-in duration-300'>
-                        <TrashIcon className='size-5' aria-hidden='true' />
-                      </button>
-                    </div>
-                  </div>
-                </li>
-                <li className='flex items-center gap-4 py-4'>
-                  <img src='/images/coffee-mocaccino.png' alt='Coffee Delivery' className='w-16 hidden md:block' />
-                  <div className='w-full flex flex-col gap-1'>
-                    <div className='flex justify-between gap-6 font-medium text-lg'>
-                      <p>Mocaccino</p>
-                      <p>R$ 9.90</p>
-                    </div>
-                    <div className='flex items-center justify-between gap-6'>
-                      <div className='flex items-center gap-6'>
-                        <button className='hover:text-dracula-cyan transition ease-in duration-300'>
-                          <MinusCircleIcon className='size-6' aria-hidden='true' />
-                        </button>
-                        <p className='text-lg font-medium'>1</p>
-                        <button className='hover:text-dracula-cyan transition ease-in duration-300'>
-                          <PlusCircleIcon className='size-6' aria-hidden='true' />
+                        <p className={checkInfo()}>1</p>
+                        <button className={checkAmount()}>
+                          <PlusIcon className={checkIcon()} aria-hidden='true' />
                         </button>
                       </div>
-                      <button className='hover:text-dracula-red transition ease-in duration-300'>
-                        <TrashIcon className='size-5' aria-hidden='true' />
+                      <button className={checkDelete()}>
+                        <TrashIcon className={checkIcon()} aria-hidden='true' />
                       </button>
-                    </div>
-                  </div>
+                    </li>
+                  </ul>
                 </li>
               </ul>
-              <ul className='flex flex-col gap-1'>
-                <li className='flex justify-between gap-4'>
+              <ul className={checkItems()}>
+                <li className={checkItem()}>
                   <p>Total dos itens</p>
                   <p>R$ 19.80</p>
                 </li>
-                <li className='flex justify-between gap-4'>
+                <li className={checkItem()}>
                   <p>Entrega</p>
                   <p>R$ 5.20</p>
                 </li>
-                <li className='flex justify-between gap-4 font-medium text-lg uppercase'>
-                  <p>Valor total</p>
-                  <p>R$ 25.00</p>
+                <li className={checkItem()}>
+                  <p className={checkInfo()}>Valor total</p>
+                  <p className={checkInfo()}>R$ 25.00</p>
                 </li>
               </ul>
-              <button className='w-full flex items-center justify-center px-6 h-12 font-medium rounded uppercase text-dracula-dark bg-dracula-cyan active:scale-90 transition ease-in-out duration-300'>
+              <button className={checkConfirm()}>
                 Confirmar pedido
               </button>
             </div>

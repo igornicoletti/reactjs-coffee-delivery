@@ -2,11 +2,11 @@
 import { Navbar } from '../components/navbar'
 import { filters, products, specifications } from '../data/json'
 import { variantsBase, variantsCoffee, variantsHero } from '../styles/variants'
-import { MinusCircleIcon, PlusCircleIcon, ShoppingCartIcon } from '@heroicons/react/24/outline'
+import { MinusIcon, PlusIcon, ShoppingCartIcon } from '@heroicons/react/24/outline'
 
 const { base, container } = variantsBase()
 const { hero, heroBigger, heroHeading, heroIcon, heroLayout, heroMinor, heroSpec, heroSpecs, heroSubtitle, heroTitle } = variantsHero()
-const { coffee, cofAction, cofBtn, cofCard, cofCards, cofCart, cofController, cofCup, cofDescription, cofFilter, cofFilters, cofIcon, cofInfo, cofLayout, cofMain, cofName, cofPrice, cofRank, cofRanks, cofTitle } = variantsCoffee()
+const { coffee, cofAction, cofAmount, cofBtn, cofCard, cofCards, cofCart, cofController, cofCup, cofDescription, cofFilter, cofFilters, cofIcon, cofInfo, cofLayout, cofMain, cofName, cofPrice, cofRank, cofRanks, cofTitle } = variantsCoffee()
 
 export function Root() {
 
@@ -67,11 +67,11 @@ export function Root() {
                   <div className={cofAction()}>
                     <div className={cofController()}>
                       <button className={cofBtn()}>
-                        <MinusCircleIcon className={cofIcon()} aria-hidden='true' />
+                        <MinusIcon className={cofIcon()} aria-hidden='true' />
                       </button>
-                      <p>{product.amount}</p>
+                      <p className={cofAmount()}>{product.amount}</p>
                       <button className={cofBtn()}>
-                        <PlusCircleIcon className={cofIcon()} aria-hidden='true' />
+                        <PlusIcon className={cofIcon()} aria-hidden='true' />
                       </button>
                     </div>
                     <button className={cofCart()}>
