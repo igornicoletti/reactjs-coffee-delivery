@@ -1,10 +1,9 @@
-import { Link } from 'react-router-dom'
 import { Navbar } from '../components/navbar'
 import { variantsBase, variantsCheckout } from '../styles/variants'
 import { BanknotesIcon, MapPinIcon, MinusIcon, PlusIcon, TrashIcon } from '@heroicons/react/24/outline'
 
 const { base, container } = variantsBase()
-const { checkout, checkAmount, checkCard, checkComplete, checkConfirm, checkController, checkDelete, checkDescription, checkGrid, checkHidden, checkIcon, checkImage, checkInfo, checkInput, checkInputs, checkItem, checkItems, checkLayout, checkMain, checkMoney, checkName, checkOrder, checkOrders, checkSelected, checkShrink, checkTitle, checkWrapper } = variantsCheckout()
+const { checkout, checkAmount, checkCard, checkComplete, checkConfirm, checkController, checkDelete, checkDescription, checkForm, checkHidden, checkIcon, checkImage, checkInfo, checkInput, checkItem, checkItems, checkLabel, checkLayout, checkMain, checkMoney, checkName, checkOrder, checkOrders, checkPlaceholder, checkSelected, checkStreet, checkTitle, checkWrapper } = variantsCheckout()
 
 export function Checkout() {
   return (
@@ -17,31 +16,49 @@ export function Checkout() {
             <div className={checkLayout()}>
               <div className={checkCard()}>
                 <div className={checkWrapper()}>
-                  <MapPinIcon className={checkShrink()} aria-hidden='true' />
+                  <MapPinIcon className={checkIcon()} aria-hidden='true' />
                   <div className={checkMain()}>
                     <p className={checkName()}>Endereço de entrega</p>
                     <span className={checkDescription()}>Informe o endereço onde deseja receber o seu pedido.</span>
                   </div>
                 </div>
-                <div className={checkGrid()}>
-                  <input className={checkInputs()} type='number' name='' id='' placeholder='CEP' />
+                <div className={checkForm()}>
+                  <label className={checkLabel()} htmlFor=''>
+                    <input className={checkInput()} type='number' name='' id='' />
+                    <span className={checkPlaceholder()}>CEP</span>
+                  </label>
                   <span className={checkHidden()}></span>
-                  <input className={checkInput()} type='text' name='' id='' placeholder='Endereço' />
-                  <input className={checkInputs()} type='number' name='' id='' placeholder='Número' />
-                  <input className={checkInputs()} type='text' name='' id='' placeholder='Bairro' />
-                  <input className={checkInputs()} type='text' name='' id='' placeholder='Cidade' />
-                  <input className={checkInputs()} type='text' name='' id='' placeholder='Estado' />
+                  <label className={checkStreet()} htmlFor=''>
+                    <input className={checkInput()} type='text' name='' id='' />
+                    <span className={checkPlaceholder()}>Endereço</span>
+                  </label>
+                  <label className={checkLabel()} htmlFor=''>
+                    <input className={checkInput()} type='number' name='' id='' />
+                    <span className={checkPlaceholder()}>Número</span>
+                  </label>
+                  <label className={checkLabel()} htmlFor=''>
+                    <input className={checkInput()} type='text' name='' id='' />
+                    <span className={checkPlaceholder()}>Bairro</span>
+                  </label>
+                  <label className={checkLabel()} htmlFor=''>
+                    <input className={checkInput()} type='text' name='' id='' />
+                    <span className={checkPlaceholder()}>Cidade</span>
+                  </label>
+                  <label className={checkLabel()} htmlFor=''>
+                    <input className={checkInput()} type='text' name='' id='' />
+                    <span className={checkPlaceholder()}>UF</span>
+                  </label>
                 </div>
               </div>
               <div className={checkCard()}>
                 <div className={checkWrapper()}>
-                  <BanknotesIcon className={checkShrink()} aria-hidden='true' />
+                  <BanknotesIcon className={checkIcon()} aria-hidden='true' />
                   <div className={checkMain()}>
                     <p className={checkName()}>Forma de pagamento</p>
                     <span className={checkDescription()}>O pagamento é feito na entrega. Escolha a forma que deseja pagar.</span>
                   </div>
                 </div>
-                <div className={checkGrid()}>
+                <div className={checkForm()}>
                   <button className={checkMoney()}>
                     <span>Dinheiro</span>
                   </button>
@@ -83,6 +100,29 @@ export function Checkout() {
                     </li>
                   </ul>
                 </li>
+                <li className={checkOrder()}>
+                  <img className={checkImage()} src='/images/coffee-gelado.png' alt='Coffee Delivery' />
+                  <ul className={checkItems()}>
+                    <li className={checkItem()}>
+                      <p className={checkInfo()}>Expresso Gelado</p>
+                      <p className={checkInfo()}>R$ 9.90</p>
+                    </li>
+                    <li className={checkItem()}>
+                      <div className={checkController()}>
+                        <button className={checkAmount()}>
+                          <MinusIcon className={checkIcon()} aria-hidden='true' />
+                        </button>
+                        <p className={checkInfo()}>1</p>
+                        <button className={checkAmount()}>
+                          <PlusIcon className={checkIcon()} aria-hidden='true' />
+                        </button>
+                      </div>
+                      <button className={checkDelete()}>
+                        <TrashIcon className={checkIcon()} aria-hidden='true' />
+                      </button>
+                    </li>
+                  </ul>
+                </li>
               </ul>
               <ul className={checkItems()}>
                 <li className={checkItem()}>
@@ -98,9 +138,9 @@ export function Checkout() {
                   <p className={checkInfo()}>R$ 25.00</p>
                 </li>
               </ul>
-              <Link className={checkConfirm()} to='/checkout/success'>
+              <button className={checkConfirm()}>
                 Confirmar pedido
-              </Link>
+              </button>
             </div>
           </div>
         </div>

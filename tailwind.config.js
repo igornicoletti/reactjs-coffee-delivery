@@ -17,6 +17,7 @@ export default {
         'dracula-orange': '#FFB86C',
         'dracula-purple': '#BD93F9',
         'dracula-yellow': '#F1FA8C',
+        'dracula-wrapper': '#2B2D39',
         'dracula-foreground': '#F8F8F2',
       },
     },
