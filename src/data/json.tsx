@@ -19,9 +19,9 @@ export const products = [
   {
     id: 1,
     filtersId: ['traditional'],
-    src: '/images/coffee-tradicional.png',
-    alt: 'Café tradicional',
-    ranks: [{ id: 1, title: 'Tradicional' }],
+    source: '/images/coffee-tradicional.png',
+    alternate: 'Café tradicional',
+    specs: [{ id: 1, title: 'Tradicional' }],
     title: 'Expresso Tradicional',
     description: 'O tradicional café feito com água quente e grãos moidos.',
     price: '9.90',
@@ -30,9 +30,9 @@ export const products = [
   {
     id: 2,
     filtersId: ['traditional'],
-    src: '/images/coffee-americano.png',
-    alt: 'Café americano',
-    ranks: [{ id: 1, title: 'Tradicional' }],
+    source: '/images/coffee-americano.png',
+    alternate: 'Café americano',
+    specs: [{ id: 1, title: 'Tradicional' }],
     title: 'Expresso Americano',
     description: 'Expresso diluído, menos intenso que o tradicional.',
     price: '9.90',
@@ -41,9 +41,9 @@ export const products = [
   {
     id: 3,
     filtersId: ['traditional'],
-    src: '/images/coffee-cremoso.png',
-    alt: 'Café cremoso',
-    ranks: [{ id: 1, title: 'Tradicional' }],
+    source: '/images/coffee-cremoso.png',
+    alternate: 'Café cremoso',
+    specs: [{ id: 1, title: 'Tradicional' }],
     title: 'Expresso Cremoso',
     description: 'Café expresso tradicional com espuma cremosa.',
     price: '9.90',
@@ -52,9 +52,9 @@ export const products = [
   {
     id: 4,
     filtersId: ['traditional', 'ice'],
-    src: '/images/coffee-gelado.png',
-    alt: 'Café gelado',
-    ranks: [
+    source: '/images/coffee-gelado.png',
+    alternate: 'Café gelado',
+    specs: [
       { id: 1, title: 'Tradicional' },
       { id: 2, title: 'Gelado' }
     ],
@@ -66,9 +66,9 @@ export const products = [
   {
     id: 5,
     filtersId: ['traditional', 'milk'],
-    src: '/images/coffee-leite.png',
-    alt: 'Café leite',
-    ranks: [
+    source: '/images/coffee-leite.png',
+    alternate: 'Café leite',
+    specs: [
       { id: 1, title: 'Tradicional' },
       { id: 2, title: 'Com leite' }
     ],
@@ -80,9 +80,9 @@ export const products = [
   {
     id: 6,
     filtersId: ['traditional', 'milk'],
-    src: '/images/coffee-latte.png',
-    alt: 'Café latte',
-    ranks: [
+    source: '/images/coffee-latte.png',
+    alternate: 'Café latte',
+    specs: [
       { id: 1, title: 'Tradicional' },
       { id: 2, title: 'Com leite' }
     ],
@@ -94,9 +94,9 @@ export const products = [
   {
     id: 7,
     filtersId: ['traditional', 'milk'],
-    src: '/images/coffee-capuccino.png',
-    alt: 'Café capuccino',
-    ranks: [
+    source: '/images/coffee-capuccino.png',
+    alternate: 'Café capuccino',
+    specs: [
       { id: 1, title: 'Tradicional' },
       { id: 2, title: 'Com leite' }
     ],
@@ -108,9 +108,9 @@ export const products = [
   {
     id: 8,
     filtersId: ['traditional', 'milk'],
-    src: '/images/coffee-macchiato.png',
-    alt: 'Café macchiato',
-    ranks: [
+    source: '/images/coffee-macchiato.png',
+    alternate: 'Café macchiato',
+    specs: [
       { id: 1, title: 'Tradicional' },
       { id: 2, title: 'Com leite' }
     ],
@@ -122,9 +122,9 @@ export const products = [
   {
     id: 9,
     filtersId: ['traditional', 'milk'],
-    src: '/images/coffee-mocaccino.png',
-    alt: 'Café mocaccino',
-    ranks: [
+    source: '/images/coffee-mocaccino.png',
+    alternate: 'Café mocaccino',
+    specs: [
       { id: 1, title: 'Tradicional' },
       { id: 2, title: 'Com leite' }
     ],
@@ -136,9 +136,9 @@ export const products = [
   {
     id: 10,
     filtersId: ['special', 'milk'],
-    src: '/images/coffee-quente.png',
-    alt: 'Café quente',
-    ranks: [
+    source: '/images/coffee-quente.png',
+    alternate: 'Café quente',
+    specs: [
       { id: 1, title: 'Especial' },
       { id: 2, title: 'Com leite' }
     ],
@@ -150,9 +150,9 @@ export const products = [
   {
     id: 11,
     filtersId: ['special', 'alcoholic', 'ice'],
-    src: '/images/coffee-cubano.png',
-    alt: 'Café cubano',
-    ranks: [
+    source: '/images/coffee-cubano.png',
+    alternate: 'Café cubano',
+    specs: [
       { id: 1, title: 'Especial' },
       { id: 2, title: 'Alcoólico' },
       { id: 3, title: 'Gelado' }
@@ -165,9 +165,9 @@ export const products = [
   {
     id: 12,
     filtersId: ['special'],
-    src: '/images/coffee-havaiano.png',
-    alt: 'Café havaiano',
-    ranks: [{ id: 1, title: 'Especial' }],
+    source: '/images/coffee-havaiano.png',
+    alternate: 'Café havaiano',
+    specs: [{ id: 1, title: 'Especial' }],
     title: 'Havaiano',
     description: 'Bebida adocicada preparada com café e leite de coco.',
     price: '9.90',
@@ -176,9 +176,9 @@ export const products = [
   {
     id: 13,
     filtersId: ['special'],
-    src: '/images/coffee-arabe.png',
-    alt: 'Café tradicional',
-    ranks: [{ id: 1, title: 'Especial' }],
+    source: '/images/coffee-arabe.png',
+    alternate: 'Café tradicional',
+    specs: [{ id: 1, title: 'Especial' }],
     title: 'Árabe',
     description: 'Bebida preparada com grãos de café árabe e especiarias.',
     price: '9.90',
@@ -187,9 +187,9 @@ export const products = [
   {
     id: 14,
     filtersId: ['special', 'alcoholic'],
-    src: '/images/coffee-irlandes.png',
-    alt: 'Café tradicional',
-    ranks: [
+    source: '/images/coffee-irlandes.png',
+    alternate: 'Café tradicional',
+    specs: [
       { id: 1, title: 'Especial' },
       { id: 2, title: 'Alcoólico' }
     ],

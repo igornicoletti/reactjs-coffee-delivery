@@ -11,12 +11,12 @@ const variantsError = tv({
     status: 'text-3xl',
     title: 'text-5xl font-semibold',
     message: 'font-medium',
-    back: 'flex items-center gap-2 font-medium',
+    action: 'flex items-center gap-2 font-medium',
     icon: 'size-4',
   }
 })
 
-const { base, container, content, wrapper, status, title, message, back, icon } = variantsError()
+const { base, container, content, wrapper, status, title, message, action, icon } = variantsError()
 
 export function ErrorPage() {
   const error = useRouteError()
@@ -31,7 +31,7 @@ export function ErrorPage() {
               <h1 className={title()}>Page {error.statusText}!</h1>
               <p className={message()}>Sorry, we couldn’t find the page you’re looking for.</p>
             </div>
-            <Link className={back()} to='/'>
+            <Link className={action()} to='/'>
               <ArrowLeftIcon className={icon()} />
               <span>Back to home</span>
             </Link>
@@ -45,14 +45,10 @@ export function ErrorPage() {
         <div className={container()}>
           <div className={content()}>
             <div className={wrapper()}>
-              <h1 className={title()}>Oops!</h1>
-              <p className={message()}>{error.message}</p>
-              <p className={message()}>Sorry, we couldn’t find the page you’re looking for.</p>
+              <p className={title()}>Oops!</p>
+              <h2 className={message()}>{error.message}</h2>
+              <p className={message()}>Sorry, an unexpected error has occurred.</p>
             </div>
-            <Link className={back()} to='/'>
-              <ArrowLeftIcon className={icon()} />
-              <span>Back to home</span>
-            </Link>
           </div>
         </div>
       </div>

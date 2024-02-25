@@ -5,8 +5,8 @@ import { variantsBase, variantsCoffee, variantsHero } from '../styles/variants'
 import { MinusIcon, PlusIcon, ShoppingCartIcon } from '@heroicons/react/24/outline'
 
 const { base, container } = variantsBase()
-const { hero, heroBigger, heroHeading, heroIcon, heroLayout, heroMinor, heroSpec, heroSpecs, heroSubtitle, heroTitle } = variantsHero()
-const { coffee, cofAction, cofAmount, cofBtn, cofCard, cofCards, cofCart, cofController, cofCup, cofDescription, cofFilter, cofFilters, cofIcon, cofInfo, cofLayout, cofMain, cofName, cofPrice, cofRank, cofRanks, cofTitle } = variantsCoffee()
+const { hero, heroHead, heroTitle, heroSubtitle, heroSpec, heroSpecItem, heroIcon, heroText, heroImg } = variantsHero()
+const { coffee, cofHead, cofTitle, cofFilter, cofFilterItem, cofCard, cofCardItem, cofImg, cofSpec, cofSpecItem, cofCtt, cofLegend, cofDescript, cofGuide, cofPrice, cofResources, cofBox, cofAction, cofAmount, cofCart, cofIcon } = variantsCoffee()
 
 export function Root() {
   return (
@@ -14,60 +14,57 @@ export function Root() {
       <div className={container()}>
         <Navbar />
         <div className={hero()}>
-          <div className={heroLayout()}>
-            <div className={heroHeading()}>
-              <h2 className={heroTitle()}>Encontre o café perfeito para qualquer hora do dia</h2>
-              <p className={heroSubtitle()}>Com o Coffee Delivery você recebe seu café onde estiver, a qualquer hora</p>
-            </div>
-            <img src='/images/coffee-delivery.png' alt='Coffee Delivery' className={heroMinor()} />
-            <ul className={heroSpecs()}>
+          <div className={heroHead()}>
+            <h2 className={heroTitle()}>Encontre o café perfeito para qualquer hora do dia</h2>
+            <p className={heroSubtitle()}>Com o Coffee Delivery você recebe seu café onde estiver, a qualquer hora</p>
+            <ul className={heroSpec()}>
               {specifications.map(specification => (
-                <li className={heroSpec()} key={specification.id}>
+                <li className={heroSpecItem()} key={specification.id}>
                   <specification.icon className={heroIcon()} aria-hidden='true' />
-                  <p>{specification.text}</p>
+                  <p className={heroText()}>{specification.text}</p>
                 </li>
               ))}
             </ul>
           </div>
-          <img src='/images/coffee-delivery.png' alt='Coffee Delivery' className={heroBigger()} />
+          <img className={heroImg()} src='/images/coffee-delivery.png' alt='Coffee Delivery' />
         </div>
         <div className={coffee()}>
-          <div className={cofLayout()}>
+          <div className={cofHead()}>
             <h3 className={cofTitle()}>Nossos Cafés</h3>
-            <ul className={cofFilters()}>
+            <ul className={cofFilter()}>
               {filters.map(filter => (
                 <li key={filter.id}>
-                  <button className={cofFilter()}>
+                  <button className={cofFilterItem()}>
                     <span>{filter.text}</span>
                   </button>
                 </li>
               ))}
             </ul>
           </div>
-          <div className={cofCards()}>
+          <ul className={cofCard()}>
             {products.map(product => (
-              <div className={cofCard()} key={product.id}>
-                <img src={product.src} alt={product.alt} className={cofCup()} />
-                <ul className={cofRanks()}>
-                  {product.ranks.map((rank) => (
-                    <li key={rank.id}>
-                      <span className={cofRank()}>{rank.title}</span>
+              <li className={cofCardItem()} key={product.id}>
+                <img className={cofImg()} src={product.source} alt={product.alternate} />
+                <ul className={cofSpec()}>
+                  {product.specs.map((spec) => (
+                    <li key={spec.id}>
+                      <span className={cofSpecItem()}>{spec.title}</span>
                     </li>
                   ))}
                 </ul>
-                <div className={cofMain()}>
-                  <p className={cofName()}>{product.title}</p>
-                  <p className={cofDescription()}>{product.description}</p>
+                <div className={cofCtt()}>
+                  <h4 className={cofLegend()}>{product.title}</h4>
+                  <p className={cofDescript()}>{product.description}</p>
                 </div>
-                <div className={cofInfo()}>
+                <div className={cofGuide()}>
                   <p>R$ <span className={cofPrice()}>{product.price}</span></p>
-                  <div className={cofAction()}>
-                    <div className={cofController()}>
-                      <button className={cofBtn()}>
+                  <div className={cofResources()}>
+                    <div className={cofBox()}>
+                      <button className={cofAction()}>
                         <MinusIcon className={cofIcon()} aria-hidden='true' />
                       </button>
                       <p className={cofAmount()}>{product.amount}</p>
-                      <button className={cofBtn()}>
+                      <button className={cofAction()}>
                         <PlusIcon className={cofIcon()} aria-hidden='true' />
                       </button>
                     </div>
@@ -76,9 +73,9 @@ export function Root() {
                     </button>
                   </div>
                 </div>
-              </div>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </div>
     </div>
