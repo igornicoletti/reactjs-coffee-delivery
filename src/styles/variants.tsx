@@ -1,59 +1,68 @@
 import { tv } from 'tailwind-variants'
 
-export const variantsBase = tv({
+export const variantsRoot = tv({
   slots: {
-    base: 'relative w-full h-full min-h-screen grid content-start overflow-x-hidden',
+    layout: 'relative w-full h-full min-h-screen grid content-start overflow-x-hidden',
     container: 'w-full max-w-screen-2xl mx-auto px-6',
   }
 })
 
-export const variantsNavbar = tv({
+export const variantsHeader = tv({
   slots: {
-    navbar: 'w-full flex items-center justify-between py-8',
-    navTtitle: 'text-3xl font-semibold uppercase hover:text-dracula-cyan transition ease-in-out duration-300',
-    navCart: 'relative p-2 rounded-md border border-dracula-cyan bg-dracula-cyan active:scale-90 transition ease-in-out duration-300',
-    navIcon: 'size-6 shrink-0 text-dracula-line',
-    navBadge: 'absolute flex items-center justify-center text-sm font-medium rounded-full min-w-6 h-6 px-2 -top-3 -right-3 bg-dracula-dark border border-dracula-cyan',
+    header: 'w-full flex items-center justify-between py-8',
+    headerTitle: 'text-3xl font-semibold uppercase hover:text-dracula-cyan transition ease-in-out duration-300',
+    headerCart: 'relative p-2 rounded-md border border-dracula-cyan bg-dracula-cyan active:scale-90 transition ease-in-out duration-300',
+    headerIcon: 'size-6 shrink-0 text-dracula-line',
+    headerBadge: 'absolute flex items-center justify-center text-sm font-medium rounded-full min-w-6 h-6 px-2 -top-3 -right-3 bg-dracula-dark border border-dracula-cyan',
   }
 })
 
 export const variantsHero = tv({
   slots: {
-    hero: 'w-full flex flex-col xl:flex-row items-center justify-between py-16 gap-16 xl:gap-32',
-    heroHead: 'flex flex-col items-start gap-8',
-    heroTitle: 'text-3xl md:text-4xl lg:text-5xl font-medium text-center xl:text-left md:px-24 xl:px-0',
-    heroSubtitle: 'text-xl md:text-2xl font-medium text-center xl:text-left md:px-24 xl:px-0',
-    heroSpec: 'grid md:grid-cols-2 gap-8 md:mx-auto xl:mx-0 pt-8',
-    heroSpecItem: 'flex items-center gap-4 text-lg',
+    hero: 'w-full flex flex-col xl:flex-row items-center justify-between gap-16 py-16',
+    heroHead: 'w-full max-w-2xl flex flex-col gap-8',
+    heroTitle: 'text-3xl md:text-5xl font-medium text-center xl:text-left',
+    heroSubtitle: 'text-xl md:text-2xl font-medium text-center xl:text-left',
+    heroDescription: 'grid md:grid-cols-2 gap-8 md:mx-auto xl:mx-0 pt-8',
+    heroDescriptionItem: 'flex items-center gap-4 text-lg font-medium',
     heroIcon: 'size-6 shrink-0 text-dracula-cyan',
-    heroText: 'font-medium',
-    heroImg: 'w-full max-w-xl',
+    heroImage: 'w-full max-w-xl',
   }
 })
 
 export const variantsCoffee = tv({
   slots: {
-    coffee: 'w-full flex flex-col py-16 gap-16',
-    cofHead: 'flex flex-col lg:flex-row lg:items-center justify-between gap-4',
-    cofTitle: 'text-3xl font-medium uppercase',
-    cofFilter: 'flex flex-wrap gap-x-4',
-    cofFilterItem: 'font-medium uppercase p-2 hover:text-dracula-cyan transition ease-in-out duration-300',
-    cofCard: 'grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8',
-    cofCardItem: 'flex flex-col rounded-md rounded-tr-3xl rounded-bl-3xl gap-6 p-4 border border-dracula-line hover:border-dracula-cyan bg-dracula-wrapper transition ease-in-out duration-300',
-    cofImg: 'w-32 mx-auto -mt-10',
-    cofSpec: 'flex items-center justify-center gap-2',
-    cofSpecItem: 'text-xs uppercase px-3 py-1 rounded-full bg-dracula-cyan/5 text-dracula-cyan',
-    cofCtt: 'flex flex-col text-center gap-2',
-    cofLegend: 'text-xl font-medium uppercase',
-    cofDescript: 'font-medium',
-    cofGuide: 'flex items-end justify-between gap-2 pt-4 mt-auto',
-    cofPrice: 'text-3xl',
-    cofResources: 'flex items-center gap-2',
-    cofBox: 'h-10 flex items-center justify-center gap-2 rounded-md border border-dracula-line',
-    cofAction: 'p-2 rounded-md hover:text-dracula-cyan transition ease-in-out duration-300',
-    cofAmount: 'text-lg font-medium',
-    cofCart: 'h-10 w-10 flex items-center justify-center rounded-md bg-dracula-line hover:bg-dracula-cyan text-dracula-cyan hover:text-dracula-line transition ease-in-out duration-300',
-    cofIcon: 'size-5 shrink-0',
+    coffee: 'w-full flex flex-col gap-16 py-16',
+    coffeeHead: 'w-full flex flex-col lg:flex-row lg:items-center justify-between gap-4',
+    coffeeTitle: 'text-3xl font-medium uppercase',
+    coffeeFilter: 'flex flex-wrap gap-x-4',
+    coffeeCard: 'grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8',
+  }
+})
+
+export const variantsFilter = tv({
+  slots: {
+    filter: 'font-medium uppercase p-2 hover:text-dracula-cyan transition ease-in-out duration-300',
+  }
+})
+
+export const variantsCard = tv({
+  slots: {
+    card: 'flex flex-col rounded-md rounded-tr-3xl rounded-bl-3xl gap-6 p-4 border border-dracula-line hover:border-dracula-cyan bg-dracula-wrapper transition ease-in-out duration-300',
+    cardImage: 'w-32 mx-auto -mt-10',
+    cardHead: 'flex items-center justify-center gap-2',
+    cardChip: 'text-xs uppercase px-3 py-1 rounded-full bg-dracula-cyan/5 text-dracula-cyan',
+    cardBody: 'flex flex-col text-center gap-2',
+    cardTitle: 'text-xl font-medium uppercase',
+    cardSubtitle: 'font-medium',
+    cardFooter: 'flex items-end justify-between gap-2 pt-4 mt-auto',
+    cardPrice: 'text-3xl',
+    cardAction: 'flex items-center gap-2',
+    cardGroup: 'h-10 flex items-center justify-center gap-2 rounded-md border border-dracula-line',
+    cardButton: 'p-2 rounded-md hover:text-dracula-cyan transition ease-in-out duration-300',
+    cardAmount: 'text-lg font-medium',
+    cardCart: 'h-10 w-10 flex items-center justify-center rounded-md bg-dracula-line hover:bg-dracula-cyan text-dracula-cyan hover:text-dracula-line transition ease-in-out duration-300',
+    cardIcon: 'size-5 shrink-0',
   }
 })
 

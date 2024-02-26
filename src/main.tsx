@@ -5,18 +5,24 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import './index.css'
 import { ErrorPage } from './error'
 import { Root } from './routes/root'
+import { Home } from './routes/home'
 import { Checkout } from './routes/checkout'
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Root />,
-    errorElement: <ErrorPage />
-  },
-  {
-    path: '/checkout',
-    element: <Checkout />,
-    errorElement: <ErrorPage />
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: '/',
+        element: <Home />
+      },
+      {
+        path: '/checkout',
+        element: <Checkout />
+      }
+    ]
   }
 ])
 
