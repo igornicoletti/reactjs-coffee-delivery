@@ -11,9 +11,12 @@ export const variantsHeader = tv({
   slots: {
     header: 'w-full flex items-center justify-between py-8',
     headerTitle: 'text-3xl font-semibold uppercase hover:text-dracula-cyan transition ease-in-out duration-300',
-    headerCart: 'relative p-2 rounded-md border border-dracula-cyan bg-dracula-cyan active:scale-90 transition ease-in-out duration-300',
-    headerIcon: 'size-6 shrink-0 text-dracula-line',
-    headerBadge: 'absolute flex items-center justify-center text-sm font-medium rounded-full min-w-6 h-6 px-2 -top-3 -right-3 bg-dracula-dark border border-dracula-cyan',
+    headerCart: 'relative',
+    headerButton: 'flex items-center justify-center p-2 rounded-md border border-dracula-cyan text-dracula-line bg-dracula-cyan',
+    headerIcon: 'size-7 shrink-0',
+    headerBadge: 'absolute min-w-6 h-6 -top-3 -right-3',
+    headerPing: 'animate-ping absolute w-full h-full rounded-full bg-dracula-cyan/50',
+    headerQuantity: 'relative flex items-center justify-center text-sm font-semibold rounded-full min-w-6 h-6 px-1 border-2 border-dracula-cyan bg-dracula-line',
   }
 })
 
@@ -36,7 +39,7 @@ export const variantsCoffee = tv({
     coffeeHead: 'w-full flex flex-col lg:flex-row lg:items-center justify-between gap-4',
     coffeeTitle: 'text-3xl font-medium uppercase',
     coffeeFilter: 'flex flex-wrap gap-x-4',
-    coffeeCard: 'grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8',
+    coffeeCard: 'grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6',
   }
 })
 
@@ -48,21 +51,29 @@ export const variantsFilter = tv({
 
 export const variantsCard = tv({
   slots: {
-    card: 'flex flex-col rounded-md rounded-tr-3xl rounded-bl-3xl gap-6 p-4 border border-dracula-line hover:border-dracula-cyan bg-dracula-wrapper transition ease-in-out duration-300',
-    cardImage: 'w-32 mx-auto -mt-10',
-    cardHead: 'flex items-center justify-center gap-2',
-    cardChip: 'text-xs uppercase px-3 py-1 rounded-full bg-dracula-cyan/5 text-dracula-cyan',
+    card: 'flex flex-col rounded-md odd:rounded-tr-3xl even:rounded-tl-3xl odd:rounded-bl-3xl even:rounded-br-3xl gap-6 p-6 pt-0 border border-dracula-line bg-dracula-wrapper shadow-md hover:shadow-xl transition ease-in-out duration-300',
+    cardImage: 'hover:animate-spin w-32 mx-auto -mt-4',
+    cardCategory: 'flex items-center justify-center gap-2',
+    cardCategoryItem: 'text-xs uppercase px-3 py-1 rounded-full bg-dracula-cyan/5 text-dracula-cyan',
     cardBody: 'flex flex-col text-center gap-2',
     cardTitle: 'text-xl font-medium uppercase',
-    cardSubtitle: 'font-medium',
-    cardFooter: 'flex items-end justify-between gap-2 pt-4 mt-auto',
+    cardSubtitle: '',
+    cardFooter: 'flex items-end justify-between gap-2 pt-2 mt-auto',
     cardPrice: 'text-3xl',
     cardAction: 'flex items-center gap-2',
-    cardGroup: 'h-10 flex items-center justify-center gap-2 rounded-md border border-dracula-line',
+    cardGroup: 'h-10 w-full max-w-28 flex items-center justify-center gap-2 rounded-md border border-dracula-line hover:border-dracula-cyan transition ease-in-out duration-300',
     cardButton: 'p-2 rounded-md hover:text-dracula-cyan transition ease-in-out duration-300',
-    cardAmount: 'text-lg font-medium',
+    cardQuantity: 'w-full text-center text-lg font-medium bg-transparent focus:outline-none',
     cardCart: 'h-10 w-10 flex items-center justify-center rounded-md bg-dracula-line hover:bg-dracula-cyan text-dracula-cyan hover:text-dracula-line transition ease-in-out duration-300',
-    cardIcon: 'size-5 shrink-0',
+    cardIcon: 'size-6 shrink-0',
+  }
+})
+
+export const variantsCheckoutNew = tv({
+  slots: {
+    checkout: 'w-full flex flex-col xl:flex-row gap-16 py-16',
+    checkRecord: 'w-full flex flex-col gap-8',
+    checkSummary: 'w-full max-w-xl flex flex-col gap-6',
   }
 })
 
@@ -73,28 +84,28 @@ export const variantsCheckout = tv({
     checkOrder: 'w-full xl:max-w-lg flex flex-col gap-6',
     checkTitle: 'text-2xl font-medium uppercase',
     checkWrapper: 'flex flex-col gap-8',
-    checkPanel: 'w-full flex flex-col gap-12 p-4 md:p-6 rounded-md border border-dracula-line bg-dracula-wrapper',
+    checkPanel: 'w-full flex flex-col gap-12 p-6 rounded-md border border-dracula-line bg-dracula-wrapper',
     checkHead: 'flex flex-col gap-1 text-center md:text-left -mt-0.5',
-    checkLegend: 'text-lg font-medium uppercase',
-    checkDescript: 'font-medium',
+    checkLegend: 'text-dracula-cyan text-lg font-medium uppercase',
+    checkDescript: '',
     checkForm: 'grid md:grid-cols-3 gap-6',
-    checkLabel: 'relative col-span-1',
-    checkLabels: 'relative col-span-1 md:col-span-2',
-    checkLabeled: 'absolute -top-2 left-2 px-2 text-sm uppercase font-medium text-dracula-foreground peer-focus:text-dracula-cyan bg-dracula-wrapper transition ease-in-out duration-300',
-    checkInput: 'w-full h-12 px-6 rounded-md peer border border-dracula-line focus:border-dracula-cyan bg-transparent focus:outline-none transition ease-in-out duration-300',
+    checkLabel: 'h-12 relative col-span-1',
+    checkLabels: 'h-12 relative col-span-1 md:col-span-2',
+    checkLabeled: 'absolute top-3 left-px px-4 font-medium bg-dracula-wrapper text-dracula-cyan peer-focus:text-dracula-cyan peer-placeholder-shown:text-dracula-line scale-75 peer-focus:scale-75 peer-placeholder-shown:scale-100 transform -translate-y-5 peer-focus:-translate-y-5 peer-placeholder-shown:translate-y-0 transition ease-in-out duration-300',
+    checkInput: 'w-full h-full px-4 rounded-md peer border border-dracula-line hover:border-dracula-white focus:border-dracula-cyan bg-transparent focus:outline-none transition ease-in-out duration-300',
     checkHidden: 'hidden md:block md:col-span-2',
-    checkBtn: 'w-full flex items-center justify-center px-4 h-12 font-medium uppercase rounded-md border border-dracula-line bg-dracula-line hover:bg-dracula-cyan hover:text-dracula-line active:scale-90 transition ease-in-out duration-300',
+    checkBtn: 'w-full flex items-center justify-center px-4 h-12 font-medium uppercase rounded-md bg-dracula-line focus:bg-dracula-cyan text-dracula-white focus:text-dracula-line hover:scale-105 active:scale-100 transition ease-in-out duration-300',
     checkSpec: 'flex flex-col divide-y divide-dracula-line -mt-4',
     checkSpecItem: 'flex items-center gap-4 py-4',
     checkImg: 'w-16 hidden md:block',
     checkGuide: 'w-full flex flex-col gap-1',
     checkCtt: 'flex justify-between gap-4',
     checkInfo: 'text-lg font-medium uppercase',
-    checkBox: 'flex items-center gap-6',
-    checkAction: 'hover:text-dracula-cyan transition ease-in duration-300',
+    checkBox: 'w-full max-w-28 flex items-center',
+    checkAction: 'px-2 hover:text-dracula-cyan transition ease-in duration-300',
     checkTrash: 'hover:text-dracula-red transition ease-in duration-300',
-    checkAmount: 'text-lg font-medium',
-    checkConfirm: 'w-full flex items-center justify-center px-4 h-12 font-medium uppercase rounded-md bg-dracula-cyan text-dracula-line active:scale-90 transition ease-in-out duration-300',
+    checkQuantity: 'w-full text-center text-lg font-medium bg-transparent focus:outline-none',
+    checkConfirm: 'w-full flex items-center justify-center px-4 h-12 font-medium uppercase rounded-md bg-dracula-cyan text-dracula-line hover:scale-105 active:scale-95 transition ease-in-out duration-300',
     checkIcon: 'size-5 shrink-0',
   }
 })

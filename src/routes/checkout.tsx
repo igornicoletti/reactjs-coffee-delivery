@@ -1,7 +1,7 @@
 import { variantsCheckout } from '../styles/variants'
 import { MinusIcon, PlusIcon, TrashIcon } from '@heroicons/react/24/outline'
 
-const { checkout, checkFill, checkOrder, checkTitle, checkWrapper, checkPanel, checkHead, checkLegend, checkDescript, checkForm, checkLabel, checkLabels, checkLabeled, checkInput, checkHidden, checkBtn, checkSpec, checkSpecItem, checkImg, checkGuide, checkCtt, checkInfo, checkBox, checkAction, checkTrash, checkAmount, checkConfirm, checkIcon } = variantsCheckout()
+const { checkout, checkFill, checkOrder, checkTitle, checkWrapper, checkPanel, checkHead, checkLegend, checkDescript, checkForm, checkLabel, checkLabels, checkLabeled, checkInput, checkHidden, checkBtn, checkSpec, checkSpecItem, checkImg, checkGuide, checkCtt, checkInfo, checkBox, checkAction, checkTrash, checkQuantity, checkConfirm, checkIcon } = variantsCheckout()
 
 export function Checkout() {
   return (
@@ -15,31 +15,31 @@ export function Checkout() {
               <span className={checkDescript()}>Informe o endereço onde deseja receber o seu pedido.</span>
             </div>
             <div className={checkForm()}>
-              <label className={checkLabel()} htmlFor=''>
-                <input className={checkInput()} type='number' name='' id='' />
-                <span className={checkLabeled()}>CEP</span>
-              </label>
+              <div className={checkLabel()}>
+                <input className={checkInput()} type='number' name='cep' id='cep' placeholder='' required />
+                <label className={checkLabeled()} htmlFor=''>CEP</label>
+              </div>
               <span className={checkHidden()}></span>
-              <label className={checkLabels()} htmlFor=''>
-                <input className={checkInput()} type='text' name='' id='' />
-                <span className={checkLabeled()}>Endereço</span>
-              </label>
-              <label className={checkLabel()} htmlFor=''>
-                <input className={checkInput()} type='number' name='' id='' />
-                <span className={checkLabeled()}>Número</span>
-              </label>
-              <label className={checkLabel()} htmlFor=''>
-                <input className={checkInput()} type='text' name='' id='' />
-                <span className={checkLabeled()}>Bairro</span>
-              </label>
-              <label className={checkLabel()} htmlFor=''>
-                <input className={checkInput()} type='text' name='' id='' />
-                <span className={checkLabeled()}>Cidade</span>
-              </label>
-              <label className={checkLabel()} htmlFor=''>
-                <input className={checkInput()} type='text' name='' id='' />
-                <span className={checkLabeled()}>UF</span>
-              </label>
+              <div className={checkLabels()}>
+                <input className={checkInput()} type='text' name='' id='' placeholder='' />
+                <label className={checkLabeled()} htmlFor=''>Endereço</label>
+              </div>
+              <div className={checkLabel()}>
+                <input className={checkInput()} type='number' name='' id='' placeholder='' />
+                <label className={checkLabeled()} htmlFor=''>Número</label>
+              </div>
+              <div className={checkLabel()}>
+                <input className={checkInput()} type='text' name='' id='' placeholder='' />
+                <label className={checkLabeled()} htmlFor=''>Bairro</label>
+              </div>
+              <div className={checkLabel()}>
+                <input className={checkInput()} type='text' name='' id='' placeholder='' />
+                <label className={checkLabeled()} htmlFor=''>Cidade</label>
+              </div>
+              <div className={checkLabel()}>
+                <input className={checkInput()} type='text' name='' id='' placeholder='' />
+                <label className={checkLabeled()} htmlFor=''>UF</label>
+              </div>
             </div>
           </div>
           <div className={checkPanel()}>
@@ -77,7 +77,7 @@ export function Checkout() {
                     <button className={checkAction()}>
                       <MinusIcon className={checkIcon()} aria-hidden='true' />
                     </button>
-                    <p className={checkAmount()}>1</p>
+                    <input className={checkQuantity()} type='number' value={0} name='' id='' />
                     <button className={checkAction()}>
                       <PlusIcon className={checkIcon()} aria-hidden='true' />
                     </button>
@@ -99,8 +99,8 @@ export function Checkout() {
               <p>R$ 5.20</p>
             </li>
             <li className={checkCtt()}>
-              <p className={checkInfo()}>Valor total</p>
-              <p className={checkInfo()}>R$ 25.00</p>
+              <p className={checkLegend()}>Valor total</p>
+              <p className={checkLegend()}>R$ 25.00</p>
             </li>
           </ul>
           <button className={checkConfirm()}>

@@ -8,6 +8,7 @@ export default {
     extend: {
       colors: {
         'dracula-dark': '#282A36',
+        'dracula-white': '#F8F8F2',
         'dracula-red': '#FF5555',
         'dracula-cyan': '#8BE9FD',
         'dracula-line': '#44475A',
@@ -18,7 +19,6 @@ export default {
         'dracula-purple': '#BD93F9',
         'dracula-yellow': '#F1FA8C',
         'dracula-wrapper': '#2B2D39',
-        'dracula-foreground': '#F8F8F2',
       },
     },
   },

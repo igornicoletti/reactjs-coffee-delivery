@@ -1,15 +1,14 @@
-type SpecType = {
+type CategoryType = {
   id: number,
   title: string
 }
 
 export type CardType = {
   id: number
-  source: string,
-  alternate: string,
-  specs: SpecType[]
   title: string,
-  description: string,
+  subtitle: string,
+  source: string,
+  category: CategoryType[]
   price: string,
   amount: number,
 }
