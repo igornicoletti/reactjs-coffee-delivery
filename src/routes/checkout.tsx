@@ -88,6 +88,29 @@ export function Checkout() {
                 </div>
               </div>
             </li>
+            <li className={checkSpecItem()}>
+              <img className={checkImg()} src='/images/coffee-gelado.png' alt='Coffee Delivery' />
+              <div className={checkGuide()}>
+                <div className={checkCtt()}>
+                  <p className={checkInfo()}>Expresso Gelado</p>
+                  <p className={checkInfo()}>R$ 9.90</p>
+                </div>
+                <div className={checkCtt()}>
+                  <div className={checkBox()}>
+                    <button className={checkAction()}>
+                      <MinusIcon className={checkIcon()} aria-hidden='true' />
+                    </button>
+                    <input className={checkQuantity()} type='number' value={0} name='' id='' />
+                    <button className={checkAction()}>
+                      <PlusIcon className={checkIcon()} aria-hidden='true' />
+                    </button>
+                  </div>
+                  <button className={checkTrash()}>
+                    <TrashIcon className={checkIcon()} aria-hidden='true' />
+                  </button>
+                </div>
+              </div>
+            </li>
           </ul>
           <ul className={checkGuide()}>
             <li className={checkCtt()}>
