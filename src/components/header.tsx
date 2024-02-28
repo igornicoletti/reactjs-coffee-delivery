@@ -16,10 +16,8 @@ export const Header = () => {
         </Link>
         <div className={headerBadge()}>
           <span className={headerPing()}></span>
-          <span className={headerQuantity()}>1</span>
-
+          <span className={headerQuantity()}>2</span>
         </div>
-
       </div>
     </div>
   )

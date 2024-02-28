@@ -16,29 +16,29 @@ export function Checkout() {
             </div>
             <div className={checkForm()}>
               <div className={checkLabel()}>
-                <input className={checkInput()} type='number' name='cep' id='cep' placeholder='' required />
-                <label className={checkLabeled()} htmlFor=''>CEP</label>
+                <input className={checkInput()} type='number' name='cep' id='cep' placeholder=' ' required />
+                <label className={checkLabeled()} htmlFor='cep'>CEP</label>
               </div>
               <span className={checkHidden()}></span>
               <div className={checkLabels()}>
-                <input className={checkInput()} type='text' name='' id='' placeholder='' />
-                <label className={checkLabeled()} htmlFor=''>Endereço</label>
+                <input className={checkInput()} type='text' name='address' id='address' placeholder=' ' required />
+                <label className={checkLabeled()} htmlFor='address'>Endereço</label>
               </div>
               <div className={checkLabel()}>
-                <input className={checkInput()} type='number' name='' id='' placeholder='' />
-                <label className={checkLabeled()} htmlFor=''>Número</label>
+                <input className={checkInput()} type='number' name='num' id='num' placeholder=' ' required />
+                <label className={checkLabeled()} htmlFor='num'>Número</label>
               </div>
               <div className={checkLabel()}>
-                <input className={checkInput()} type='text' name='' id='' placeholder='' />
-                <label className={checkLabeled()} htmlFor=''>Bairro</label>
+                <input className={checkInput()} type='text' name='Bairro' id='Bairro' placeholder=' ' required />
+                <label className={checkLabeled()} htmlFor='Bairro'>Bairro</label>
               </div>
               <div className={checkLabel()}>
-                <input className={checkInput()} type='text' name='' id='' placeholder='' />
-                <label className={checkLabeled()} htmlFor=''>Cidade</label>
+                <input className={checkInput()} type='text' name='city' id='city' placeholder=' ' required />
+                <label className={checkLabeled()} htmlFor='city'>Cidade</label>
               </div>
               <div className={checkLabel()}>
-                <input className={checkInput()} type='text' name='' id='' placeholder='' />
-                <label className={checkLabeled()} htmlFor=''>UF</label>
+                <input className={checkInput()} type='text' name='state' id='state' placeholder=' ' required />
+                <label className={checkLabeled()} htmlFor='state'>UF</label>
               </div>
             </div>
           </div>
