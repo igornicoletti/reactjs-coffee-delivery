@@ -97,5 +97,6 @@ export const variantsCheckout = tv({
     checkTrash: 'hover:text-dracula-red transition ease-in duration-300',
     checkQuantity: 'w-full text-center text-lg font-medium bg-transparent focus:outline-none',
     checkIcon: 'size-5 shrink-0',
+    checkConfirm: 'w-full flex items-center justify-center px-4 h-12 font-medium uppercase rounded-md bg-dracula-cyan text-dracula-line hover:scale-95 active:scale-105 transition ease-in-out duration-300',
   }
 })

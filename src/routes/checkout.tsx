@@ -1,9 +1,16 @@
+import { useState } from 'react'
+import { Modal } from '../components/modal'
 import { variantsCheckout } from '../styles/variants'
 import { MinusIcon, PlusIcon, TrashIcon } from '@heroicons/react/24/outline'
 
-const { checkout, checkRecord, checkSummary, checkTitle, checkContent, checkWrapper, checkHead, checkSubtitle, checkForm, checkFormHidden, checkFormItem, checkFormItens, checkInput, checkLabel, checkPay, checkOrder, checkOrderItem, checkImage, checkInfo, checkBetween, checkDescription, checkAction, checkButton, checkTrash, checkQuantity, checkIcon } = variantsCheckout()
+const { checkout, checkRecord, checkSummary, checkTitle, checkContent, checkWrapper, checkHead, checkSubtitle, checkForm, checkFormHidden, checkFormItem, checkFormItens, checkInput, checkLabel, checkPay, checkOrder, checkOrderItem, checkImage, checkInfo, checkBetween, checkDescription, checkAction, checkButton, checkTrash, checkQuantity, checkIcon, checkConfirm } = variantsCheckout()
 
 export function Checkout() {
+  const [modal, setModal] = useState(false)
+
+  const handleModalOpen = () => setModal(true)
+  const handleModalClose = () => setModal(false)
+
   return (
     <div className={checkout()}>
       <div className={checkRecord()}>
@@ -103,6 +110,10 @@ export function Checkout() {
               <p className={checkDescription()}>R$ 25.00</p>
             </li>
           </ul>
+          <button className={checkConfirm()} onClick={handleModalOpen}>
+            Confirmar pedido
+          </button>
+          <Modal modal={modal} handleModalClose={handleModalClose} />
         </div>
       </div>
     </div>
