@@ -1,107 +1,84 @@
 import { variantsCheckout } from '../styles/variants'
 import { MinusIcon, PlusIcon, TrashIcon } from '@heroicons/react/24/outline'
 
-const { checkout, checkFill, checkOrder, checkTitle, checkWrapper, checkPanel, checkHead, checkLegend, checkDescript, checkForm, checkLabel, checkLabels, checkLabeled, checkInput, checkHidden, checkBtn, checkSpec, checkSpecItem, checkImg, checkGuide, checkCtt, checkInfo, checkBox, checkAction, checkTrash, checkQuantity, checkConfirm, checkIcon } = variantsCheckout()
+const { checkout, checkRecord, checkSummary, checkTitle, checkContent, checkWrapper, checkHead, checkSubtitle, checkForm, checkFormHidden, checkFormItem, checkFormItens, checkInput, checkLabel, checkPay, checkOrder, checkOrderItem, checkImage, checkInfo, checkBetween, checkDescription, checkAction, checkButton, checkTrash, checkQuantity, checkIcon } = variantsCheckout()
 
 export function Checkout() {
   return (
     <div className={checkout()}>
-      <div className={checkFill()}>
+      <div className={checkRecord()}>
         <h3 className={checkTitle()}>Complete seu pedido</h3>
-        <div className={checkWrapper()}>
-          <div className={checkPanel()}>
+        <div className={checkContent()}>
+          <div className={checkWrapper()}>
             <div className={checkHead()}>
-              <p className={checkLegend()}>Endereço de entrega</p>
-              <span className={checkDescript()}>Informe o endereço onde deseja receber o seu pedido.</span>
+              <p className={checkSubtitle()}>Endereço de entrega</p>
+              <span>Informe o endereço onde deseja receber o seu pedido.</span>
             </div>
             <div className={checkForm()}>
-              <div className={checkLabel()}>
+              <div className={checkFormItem()}>
                 <input className={checkInput()} type='number' name='cep' id='cep' placeholder=' ' required />
-                <label className={checkLabeled()} htmlFor='cep'>CEP</label>
+                <label className={checkLabel()} htmlFor='cep'>CEP</label>
               </div>
-              <span className={checkHidden()}></span>
-              <div className={checkLabels()}>
+              <span className={checkFormHidden()}></span>
+              <div className={checkFormItens()}>
                 <input className={checkInput()} type='text' name='address' id='address' placeholder=' ' required />
-                <label className={checkLabeled()} htmlFor='address'>Endereço</label>
+                <label className={checkLabel()} htmlFor='address'>Endereço</label>
               </div>
-              <div className={checkLabel()}>
+              <div className={checkFormItem()}>
                 <input className={checkInput()} type='number' name='num' id='num' placeholder=' ' required />
-                <label className={checkLabeled()} htmlFor='num'>Número</label>
+                <label className={checkLabel()} htmlFor='num'>Número</label>
               </div>
-              <div className={checkLabel()}>
+              <div className={checkFormItem()}>
                 <input className={checkInput()} type='text' name='Bairro' id='Bairro' placeholder=' ' required />
-                <label className={checkLabeled()} htmlFor='Bairro'>Bairro</label>
+                <label className={checkLabel()} htmlFor='Bairro'>Bairro</label>
               </div>
-              <div className={checkLabel()}>
+              <div className={checkFormItem()}>
                 <input className={checkInput()} type='text' name='city' id='city' placeholder=' ' required />
-                <label className={checkLabeled()} htmlFor='city'>Cidade</label>
+                <label className={checkLabel()} htmlFor='city'>Cidade</label>
               </div>
-              <div className={checkLabel()}>
+              <div className={checkFormItem()}>
                 <input className={checkInput()} type='text' name='state' id='state' placeholder=' ' required />
-                <label className={checkLabeled()} htmlFor='state'>UF</label>
+                <label className={checkLabel()} htmlFor='state'>UF</label>
               </div>
             </div>
           </div>
-          <div className={checkPanel()}>
+          <div className={checkWrapper()}>
             <div className={checkHead()}>
-              <p className={checkLegend()}>Forma de pagamento</p>
-              <span className={checkDescript()}>O pagamento é feito na entrega. Escolha a forma que deseja pagar.</span>
+              <p className={checkSubtitle()}>Forma de pagamento</p>
+              <span>O pagamento é feito na entrega. Escolha a forma que deseja pagar.</span>
             </div>
             <div className={checkForm()}>
-              <button className={checkBtn()}>
+              <button className={checkPay()}>
                 <span>Dinheiro</span>
               </button>
-              <button className={checkBtn()}>
+              <button className={checkPay()}>
                 <span>Cartão de crédito</span>
               </button>
-              <button className={checkBtn()}>
+              <button className={checkPay()}>
                 <span>Cartão de dédito</span>
               </button>
             </div>
           </div>
         </div>
       </div>
-      <div className={checkOrder()}>
+      <div className={checkSummary()}>
         <h3 className={checkTitle()}>Cafés selecionados</h3>
-        <div className={checkPanel()}>
-          <ul className={checkSpec()}>
-            <li className={checkSpecItem()}>
-              <img className={checkImg()} src='/images/coffee-gelado.png' alt='Coffee Delivery' />
-              <div className={checkGuide()}>
-                <div className={checkCtt()}>
-                  <p className={checkInfo()}>Expresso Gelado</p>
-                  <p className={checkInfo()}>R$ 9.90</p>
+        <div className={checkWrapper()}>
+          <ul className={checkOrder()}>
+            <li className={checkOrderItem()}>
+              <img className={checkImage()} src='/images/coffee-gelado.png' alt='Coffee Delivery' />
+              <div className={checkInfo()}>
+                <div className={checkBetween()}>
+                  <p className={checkDescription()}>Expresso Gelado</p>
+                  <p className={checkDescription()}>R$ 9.90</p>
                 </div>
-                <div className={checkCtt()}>
-                  <div className={checkBox()}>
-                    <button className={checkAction()}>
+                <div className={checkBetween()}>
+                  <div className={checkAction()}>
+                    <button className={checkButton()}>
                       <MinusIcon className={checkIcon()} aria-hidden='true' />
                     </button>
                     <input className={checkQuantity()} type='number' value={0} name='' id='' />
-                    <button className={checkAction()}>
-                      <PlusIcon className={checkIcon()} aria-hidden='true' />
-                    </button>
-                  </div>
-                  <button className={checkTrash()}>
-                    <TrashIcon className={checkIcon()} aria-hidden='true' />
-                  </button>
-                </div>
-              </div>
-            </li>
-            <li className={checkSpecItem()}>
-              <img className={checkImg()} src='/images/coffee-gelado.png' alt='Coffee Delivery' />
-              <div className={checkGuide()}>
-                <div className={checkCtt()}>
-                  <p className={checkInfo()}>Expresso Gelado</p>
-                  <p className={checkInfo()}>R$ 9.90</p>
-                </div>
-                <div className={checkCtt()}>
-                  <div className={checkBox()}>
-                    <button className={checkAction()}>
-                      <MinusIcon className={checkIcon()} aria-hidden='true' />
-                    </button>
-                    <input className={checkQuantity()} type='number' value={0} name='' id='' />
-                    <button className={checkAction()}>
+                    <button className={checkButton()}>
                       <PlusIcon className={checkIcon()} aria-hidden='true' />
                     </button>
                   </div>
@@ -112,23 +89,20 @@ export function Checkout() {
               </div>
             </li>
           </ul>
-          <ul className={checkGuide()}>
-            <li className={checkCtt()}>
+          <ul className={checkInfo()}>
+            <li className={checkBetween()}>
               <p>Total dos itens</p>
               <p>R$ 19.80</p>
             </li>
-            <li className={checkCtt()}>
+            <li className={checkBetween()}>
               <p>Entrega</p>
               <p>R$ 5.20</p>
             </li>
-            <li className={checkCtt()}>
-              <p className={checkLegend()}>Valor total</p>
-              <p className={checkLegend()}>R$ 25.00</p>
+            <li className={checkBetween()}>
+              <p className={checkDescription()}>Valor total</p>
+              <p className={checkDescription()}>R$ 25.00</p>
             </li>
           </ul>
-          <button className={checkConfirm()}>
-            Confirmar pedido
-          </button>
         </div>
       </div>
     </div>
