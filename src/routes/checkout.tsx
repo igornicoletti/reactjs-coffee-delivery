@@ -14,7 +14,7 @@ export function Checkout() {
               <p className={checkSubtitle()}>Endereço de entrega</p>
               <span>Informe o endereço onde deseja receber o seu pedido.</span>
             </div>
-            <div className={checkForm()}>
+            <form className={checkForm()}>
               <div className={checkFormItem()}>
                 <input className={checkInput()} type='number' name='cep' id='cep' placeholder=' ' required />
                 <label className={checkLabel()} htmlFor='cep'>CEP</label>
@@ -40,7 +40,7 @@ export function Checkout() {
                 <input className={checkInput()} type='text' name='state' id='state' placeholder=' ' required />
                 <label className={checkLabel()} htmlFor='state'>UF</label>
               </div>
-            </div>
+            </form>
           </div>
           <div className={checkWrapper()}>
             <div className={checkHead()}>
@@ -77,7 +77,7 @@ export function Checkout() {
                     <button className={checkButton()}>
                       <MinusIcon className={checkIcon()} aria-hidden='true' />
                     </button>
-                    <input className={checkQuantity()} type='number' value={0} name='' id='' />
+                    <input className={checkQuantity()} type='number' defaultValue={0} name='' id='' />
                     <button className={checkButton()}>
                       <PlusIcon className={checkIcon()} aria-hidden='true' />
                     </button>

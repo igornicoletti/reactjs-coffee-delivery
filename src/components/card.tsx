@@ -30,7 +30,7 @@ export const Card = ({ data }: CardProps) => {
             <button className={cardButton()}>
               <MinusIcon className={cardIcon()} aria-hidden='true' />
             </button>
-            <input className={cardQuantity()} type='number' value='0' name='' id='' />
+            <input className={cardQuantity()} type='number' defaultValue={0} name='' id='' />
             <button className={cardButton()}>
               <PlusIcon className={cardIcon()} aria-hidden='true' />
             </button>

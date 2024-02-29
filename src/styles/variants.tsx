@@ -39,7 +39,7 @@ export const variantsCoffee = tv({
     coffeeHead: 'w-full flex flex-col lg:flex-row lg:items-center justify-between gap-4',
     coffeeTitle: 'text-3xl font-medium uppercase',
     coffeeFilter: 'flex flex-wrap gap-x-4',
-    coffeeCard: 'grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6',
+    coffeeCard: 'grid md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6',
   }
 })
 
@@ -51,7 +51,7 @@ export const variantsFilter = tv({
 
 export const variantsCard = tv({
   slots: {
-    card: 'group flex flex-col rounded-md odd:rounded-tr-3xl even:rounded-tl-3xl odd:rounded-bl-3xl even:rounded-br-3xl gap-6 p-6 pt-0 border border-dracula-line bg-dracula-wrapper shadow-md hover:shadow-xl transition ease-in-out duration-300',
+    card: 'group flex flex-col rounded-md odd:rounded-tr-3xl even:rounded-tl-3xl odd:rounded-bl-3xl even:rounded-br-3xl gap-6 p-4 pt-0 border border-dracula-line bg-dracula-wrapper shadow-md hover:shadow-xl transition ease-in-out duration-300',
     cardImage: 'group-hover:animate-spin w-32 mx-auto -mt-4',
     cardCategory: 'flex items-center justify-center gap-2',
     cardCategoryItem: 'text-xs uppercase px-3 py-1 rounded-full bg-dracula-cyan/5 text-dracula-cyan',
@@ -61,7 +61,7 @@ export const variantsCard = tv({
     cardFooter: 'flex items-end justify-between gap-2 pt-2 mt-auto',
     cardPrice: 'text-3xl',
     cardAction: 'flex items-center gap-2',
-    cardGroup: 'h-10 w-full max-w-28 flex items-center justify-center gap-2 rounded-md border border-dracula-line hover:border-dracula-white transition ease-in-out duration-300',
+    cardGroup: 'h-10 w-full max-w-32 flex items-center justify-center rounded-md border border-dracula-line hover:border-dracula-white transition ease-in-out duration-300',
     cardButton: 'p-2 rounded-md hover:text-dracula-cyan transition ease-in-out duration-300',
     cardQuantity: 'w-full text-center text-lg font-medium bg-transparent focus:outline-none',
     cardCart: 'h-10 w-10 flex items-center justify-center rounded-md bg-dracula-line hover:bg-dracula-cyan text-dracula-cyan hover:text-dracula-line transition ease-in-out duration-300',
