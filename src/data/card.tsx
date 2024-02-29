@@ -9,7 +9,7 @@ export const cardData = [
       }
     ],
     title: 'Expresso Tradicional',
-    subtitle: 'O tradicional café feito com água quente e grãos moidos.',
+    subtitle: 'Tradicional café feito com água quente e grãos moidos.',
     price: '9.90',
     amount: 1,
   },
