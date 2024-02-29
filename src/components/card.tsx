@@ -1,5 +1,5 @@
-import { useState } from 'react'
 import { CardType } from '../type/card'
+import { MouseEvent, useState } from 'react'
 import { Notification } from './notification'
 import { variantsCard } from '../styles/variants'
 import { MinusIcon, PlusIcon, ShoppingCartIcon } from '@heroicons/react/24/outline'
@@ -13,9 +13,10 @@ type CardProps = {
 export const Card = ({ data }: CardProps) => {
   const [notification, setNotification] = useState<boolean>(false)
 
-  const handleNotificationOpen = () => {
+  const handleNotificationOpen = (e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>) => {
+    e.preventDefault()
     setNotification(true)
-    setTimeout(() => setNotification(false), 3000)
+    setTimeout(() => setNotification(false), 2000)
   }
 
   return (
@@ -34,21 +35,21 @@ export const Card = ({ data }: CardProps) => {
       </div>
       <div className={cardFooter()}>
         <p>R$ <span className={cardPrice()}>{data.price}</span></p>
-        <div className={cardAction()}>
+        <form className={cardAction()}>
           <div className={cardGroup()}>
             <button className={cardButton()}>
               <MinusIcon className={cardIcon()} aria-hidden='true' />
             </button>
-            <input className={cardQuantity()} type='number' defaultValue={0} name='' id='' />
+            <input className={cardQuantity()} type='number' defaultValue={data.amount} name='' id='' />
             <button className={cardButton()}>
               <PlusIcon className={cardIcon()} aria-hidden='true' />
             </button>
           </div>
-          <button className={cardCart()} onClick={handleNotificationOpen}>
+          <button className={cardCart()} onClick={(e) => handleNotificationOpen(e)}>
             <ShoppingCartIcon className={cardIcon()} aria-hidden='true' />
           </button>
           <Notification notification={notification} />
-        </div>
+        </form>
       </div>
     </li>
   )
