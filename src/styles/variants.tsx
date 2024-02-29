@@ -22,30 +22,31 @@ export const variantsHeader = tv({
 
 export const variantsHero = tv({
   slots: {
-    hero: 'w-full flex flex-col xl:flex-row items-center justify-between gap-8 md:gap-16 py-16',
+    hero: 'w-full flex flex-col xl:flex-row items-center justify-between gap-8 py-16',
     heroHead: 'w-full max-w-2xl flex flex-col gap-12',
     heroTitle: 'text-3xl md:text-5xl px-2 xl:px-0 font-medium text-center xl:text-left',
     heroSubtitle: 'max-w-lg text-xl md:text-3xl text-center xl:text-left mx-auto xl:mx-0',
-    heroDescription: 'grid md:grid-cols-2 gap-8 md:mx-auto xl:mx-0 pt-8',
+    heroDescription: 'grid md:grid-cols-2 gap-8 md:mx-auto xl:mx-0 xl:pt-8',
     heroDescriptionItem: 'flex items-center gap-4 md:text-lg',
+    heroImageMobile: 'w-full max-w-lg lg:max-w-xl md:hidden',
+    heroImageDesk: 'w-full max-w-lg lg:max-w-xl hidden md:block',
     heroIcon: 'size-6 shrink-0 text-dracula-cyan',
-    heroImage: 'w-full max-w-xl',
   }
 })
 
 export const variantsCoffee = tv({
   slots: {
     coffee: 'w-full flex flex-col gap-8 py-16',
-    coffeeHead: 'w-full flex flex-col lg:flex-row lg:items-center justify-between gap-4',
+    coffeeHead: 'w-full flex flex-col lg:flex-row justify-between gap-4',
     coffeeTitle: 'text-3xl font-medium uppercase',
-    coffeeFilter: 'flex flex-wrap gap-x-4',
+    coffeeFilter: 'flex flex-wrap gap-x-6',
     coffeeCard: 'grid md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6',
   }
 })
 
 export const variantsFilter = tv({
   slots: {
-    filter: 'font-medium uppercase p-2 hover:text-dracula-cyan transition ease-in-out duration-300',
+    filter: 'text-sm font-medium uppercase p-2 hover:text-dracula-cyan transition ease-in-out duration-300',
   }
 })
 
@@ -57,7 +58,7 @@ export const variantsCard = tv({
     cardCategoryItem: 'text-xs uppercase px-3 py-1 rounded-full bg-dracula-cyan/5 text-dracula-cyan',
     cardBody: 'flex flex-col text-center gap-2',
     cardTitle: 'text-xl font-medium uppercase',
-    cardSubtitle: '',
+    cardSubtitle: 'px-4',
     cardFooter: 'flex items-end justify-between gap-2 pt-2 mt-auto',
     cardPrice: 'text-3xl',
     cardAction: 'flex items-center gap-2',
@@ -74,10 +75,10 @@ export const variantsCheckout = tv({
     checkout: 'w-full flex flex-col xl:flex-row gap-16 xl:gap-8 py-16',
     checkRecord: 'w-full flex flex-col gap-8',
     checkSummary: 'w-full xl:max-w-lg flex flex-col gap-8',
-    checkTitle: 'text-2xl font-medium uppercase',
+    checkTitle: 'text-xl md:text-2xl font-medium uppercase',
     checkContent: 'flex flex-col gap-6',
     checkWrapper: 'w-full flex flex-col gap-12 p-4 md:p-6 rounded-md border border-dracula-line bg-dracula-wrapper',
-    checkHead: 'flex flex-col gap-1',
+    checkHead: 'flex flex-col gap-2',
     checkSubtitle: 'text-xl font-medium',
     checkForm: 'grid md:grid-cols-3 gap-4',
     checkFormHidden: 'hidden md:block md:col-span-2',

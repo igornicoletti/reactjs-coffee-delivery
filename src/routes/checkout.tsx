@@ -5,8 +5,8 @@ import { MinusIcon, PlusIcon, TrashIcon } from '@heroicons/react/24/outline'
 
 const { checkout, checkRecord, checkSummary, checkTitle, checkContent, checkWrapper, checkHead, checkSubtitle, checkForm, checkFormHidden, checkFormItem, checkFormItens, checkInput, checkLabel, checkPay, checkOrder, checkOrderItem, checkImage, checkInfo, checkBetween, checkDescription, checkAction, checkButton, checkTrash, checkQuantity, checkIcon, checkConfirm } = variantsCheckout()
 
-export function Checkout() {
-  const [modal, setModal] = useState(false)
+export const Checkout = () => {
+  const [modal, setModal] = useState<boolean>(false)
 
   const handleModalOpen = () => setModal(true)
   const handleModalClose = () => setModal(false)
@@ -72,6 +72,29 @@ export function Checkout() {
         <h3 className={checkTitle()}>Cafés selecionados</h3>
         <div className={checkWrapper()}>
           <ul className={checkOrder()}>
+            <li className={checkOrderItem()}>
+              <img className={checkImage()} src='/images/coffee-gelado.png' alt='Coffee Delivery' />
+              <div className={checkInfo()}>
+                <div className={checkBetween()}>
+                  <p className={checkDescription()}>Expresso Gelado</p>
+                  <p className={checkDescription()}>R$ 9.90</p>
+                </div>
+                <div className={checkBetween()}>
+                  <div className={checkAction()}>
+                    <button className={checkButton()}>
+                      <MinusIcon className={checkIcon()} aria-hidden='true' />
+                    </button>
+                    <input className={checkQuantity()} type='number' defaultValue={0} name='' id='' />
+                    <button className={checkButton()}>
+                      <PlusIcon className={checkIcon()} aria-hidden='true' />
+                    </button>
+                  </div>
+                  <button className={checkTrash()}>
+                    <TrashIcon className={checkIcon()} aria-hidden='true' />
+                  </button>
+                </div>
+              </div>
+            </li>
             <li className={checkOrderItem()}>
               <img className={checkImage()} src='/images/coffee-gelado.png' alt='Coffee Delivery' />
               <div className={checkInfo()}>

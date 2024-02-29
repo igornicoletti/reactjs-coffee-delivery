@@ -1,6 +1,8 @@
 import { CardType } from '../type/card'
 import { variantsCard } from '../styles/variants'
 import { MinusIcon, PlusIcon, ShoppingCartIcon } from '@heroicons/react/24/outline'
+import { Notification } from './notification'
+import { useState } from 'react'
 
 const { card, cardImage, cardCategory, cardCategoryItem, cardBody, cardTitle, cardSubtitle, cardFooter, cardPrice, cardAction, cardGroup, cardButton, cardQuantity, cardCart, cardIcon } = variantsCard()
 
@@ -9,6 +11,13 @@ type CardProps = {
 }
 
 export const Card = ({ data }: CardProps) => {
+  const [notification, setNotification] = useState<boolean>(false)
+
+  const handleNotificationOpen = () => {
+    setNotification(true)
+    setTimeout(() => setNotification(false), 3000)
+  }
+
   return (
     <li className={card()}>
       <img className={cardImage()} src={data.source} alt={data.title} />
@@ -35,9 +44,10 @@ export const Card = ({ data }: CardProps) => {
               <PlusIcon className={cardIcon()} aria-hidden='true' />
             </button>
           </div>
-          <button className={cardCart()}>
+          <button className={cardCart()} onClick={handleNotificationOpen}>
             <ShoppingCartIcon className={cardIcon()} aria-hidden='true' />
           </button>
+          <Notification notification={notification} />
         </div>
       </div>
     </li>

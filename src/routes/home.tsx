@@ -6,15 +6,16 @@ import { Filter } from '../components/filter'
 import { variantsCoffee, variantsHero } from '../styles/variants'
 
 const { coffee, coffeeHead, coffeeTitle, coffeeFilter, coffeeCard } = variantsCoffee()
-const { hero, heroHead, heroTitle, heroSubtitle, heroDescription, heroDescriptionItem, heroIcon, heroImage } = variantsHero()
+const { hero, heroHead, heroTitle, heroSubtitle, heroDescription, heroDescriptionItem, heroIcon, heroImageMobile, heroImageDesk } = variantsHero()
 
-export function Home() {
+export const Home = () => {
   return (
     <>
       <div className={hero()}>
         <div className={heroHead()}>
           <h2 className={heroTitle()}>Encontre o café perfeito para qualquer hora do dia</h2>
           <p className={heroSubtitle()}>Com o Coffee Delivery você recebe seu café onde estiver, a qualquer hora</p>
+          <img className={heroImageMobile()} src='/images/coffee-delivery.png' alt='Coffee Delivery' />
           <ul className={heroDescription()}>
             {heroData.map(data => (
               <li className={heroDescriptionItem()} key={data.id}>
@@ -24,7 +25,7 @@ export function Home() {
             ))}
           </ul>
         </div>
-        <img className={heroImage()} src='/images/coffee-delivery.png' alt='Coffee Delivery' />
+        <img className={heroImageDesk()} src='/images/coffee-delivery.png' alt='Coffee Delivery' />
       </div>
       <div className={coffee()}>
         <div className={coffeeHead()}>

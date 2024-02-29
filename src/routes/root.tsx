@@ -5,7 +5,7 @@ import { variantsRoot } from '../styles/variants'
 
 const { layout, container } = variantsRoot()
 
-export function Root() {
+export const Root = () => {
   return (
     <div className={layout()}>
       <div className={container()}>
