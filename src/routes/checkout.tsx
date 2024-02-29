@@ -6,10 +6,10 @@ import { MinusIcon, PlusIcon, TrashIcon } from '@heroicons/react/24/outline'
 const { checkout, checkRecord, checkSummary, checkTitle, checkContent, checkWrapper, checkHead, checkSubtitle, checkForm, checkFormHidden, checkFormItem, checkFormItens, checkInput, checkLabel, checkPay, checkOrder, checkOrderItem, checkImage, checkInfo, checkBetween, checkDescription, checkAction, checkButton, checkTrash, checkQuantity, checkIcon, checkConfirm } = variantsCheckout()
 
 export const Checkout = () => {
-  const [modal, setModal] = useState<boolean>(false)
+  const [dialog, setDialog] = useState<boolean>(false)
 
-  const handleModalOpen = () => setModal(true)
-  const handleModalClose = () => setModal(false)
+  const handleDialogOpen = () => setDialog(true)
+  const handleDialogClose = () => setDialog(false)
 
   return (
     <div className={checkout()}>
@@ -133,10 +133,10 @@ export const Checkout = () => {
               <p className={checkDescription()}>R$ 25.00</p>
             </li>
           </ul>
-          <button className={checkConfirm()} onClick={handleModalOpen}>
+          <button className={checkConfirm()} onClick={handleDialogOpen}>
             Confirmar pedido
           </button>
-          <Modal modal={modal} handleModalClose={handleModalClose} />
+          <Modal dialog={dialog} handleDialogClose={handleDialogClose} />
         </div>
       </div>
     </div>

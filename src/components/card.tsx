@@ -1,8 +1,8 @@
+import { useState } from 'react'
 import { CardType } from '../type/card'
+import { Notification } from './notification'
 import { variantsCard } from '../styles/variants'
 import { MinusIcon, PlusIcon, ShoppingCartIcon } from '@heroicons/react/24/outline'
-import { Notification } from './notification'
-import { useState } from 'react'
 
 const { card, cardImage, cardCategory, cardCategoryItem, cardBody, cardTitle, cardSubtitle, cardFooter, cardPrice, cardAction, cardGroup, cardButton, cardQuantity, cardCart, cardIcon } = variantsCard()
 

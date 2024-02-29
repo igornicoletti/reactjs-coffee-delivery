@@ -101,3 +101,45 @@ export const variantsCheckout = tv({
     checkConfirm: 'w-full flex items-center justify-center px-4 h-12 font-medium uppercase rounded-md bg-dracula-cyan text-dracula-line hover:scale-95 active:scale-105 transition ease-in-out duration-300',
   }
 })
+
+export const variantsNotify = tv({
+  slots: {
+    notify: 'fixed inset-0 flex items-end sm:items-start px-4 py-6 md:p-6 z-10 pointer-events-none',
+    notifyContent: 'w-full flex flex-col items-center sm:items-end',
+    notifyHead: 'w-full max-w-md flex items-center gap-2 p-4 rounded-md shadow-md bg-white',
+    notifyTitle: 'text-sm md:text-base font-medium text-dracula-dark',
+    notifyIcon: 'size-6 text-dracula-green',
+    notifyEnter: 'transform ease-out duration-300 transition',
+    notifyFrom: 'translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2',
+    notifyEnterTo: 'translate-y-0 opacity-100 sm:translate-x-0',
+    notifyLeave: 'transition ease-in duration-100',
+    notifyLeaveFrom: 'opacity-100',
+    notifyLeaveTo: 'opacity-0',
+  }
+})
+
+export const variantsModal = tv({
+  slots: {
+    modal: 'relative z-10',
+    modalBackdrop: 'fixed inset-0 bg-black/25',
+    modalContent: 'fixed inset-0 overflow-y-auto',
+    modalInfo: 'flex min-h-full items-center justify-center text-center p-4',
+    modalPanel: 'w-full max-w-xl flex flex-col items-center transform overflow-hidden rounded-md shadow-md bg-white p-6 align-middle transition-all',
+    modalIcon: 'animate-bounce size-16 text-dracula-cyan',
+    modalTitle: 'text-xl font-medium leading-6 text-dracula-dark mt-2',
+    modalDescription: 'text-dracula-dark mt-4',
+    modalAction: 'mt-10 w-full flex items-center justify-center px-4 h-12 font-medium uppercase rounded-md bg-dracula-cyan/75 hover:bg-dracula-cyan text-dracula-line transition ease-in-out duration-300',
+    modalEnter: 'ease-out duration-300',
+    modalFrom: 'opacity-0',
+    modalEnterTo: 'opacity-100',
+    modalLeave: 'ease-in duration-200',
+    modalLeaveFrom: 'opacity-100',
+    modalLeaveTo: 'opacity-0',
+    modalChildEnter: 'ease-out duration-300',
+    modalChildFrom: 'opacity-0 scale-95',
+    modalChildEnterTo: 'opacity-100 scale-100',
+    modalChildLeave: 'ease-in duration-200',
+    modalChildLeaveFrom: 'opacity-100 scale-100',
+    modalChildLeaveTo: 'opacity-0 scale-95',
+  }
+})
