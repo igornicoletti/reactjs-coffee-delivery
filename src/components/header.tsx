@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { variantsHeader } from '../styles/variants'
 import { ShoppingCartIcon } from '@heroicons/react/24/outline'
 
@@ -11,9 +11,9 @@ export const Header = () => {
         <h1>Coffee Delivery</h1>
       </Link>
       <div className={headerCart()}>
-        <Link className={headerButton()} to='/checkout'>
+        <NavLink className={({ isActive }) => isActive ? headerButton({ active: true }) : headerButton()} to='/checkout'>
           <ShoppingCartIcon className={headerIcon()} aria-hidden='true' />
-        </Link>
+        </NavLink>
         <div className={headerBadge()}>
           <span className={headerPing()}></span>
           <span className={headerQuantity()}>2</span>

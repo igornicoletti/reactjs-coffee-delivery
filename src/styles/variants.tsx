@@ -17,6 +17,13 @@ export const variantsHeader = tv({
     headerBadge: 'absolute min-w-4 h-4 -top-2 -right-2',
     headerPing: 'animate-ping absolute w-full h-full rounded-full bg-dracula-cyan/50',
     headerQuantity: 'relative flex items-center justify-center text-xs font-semibold rounded-full min-w-4 h-4 border-2 border-dracula-cyan text-dracula-line bg-dracula-cyan',
+  },
+  variants: {
+    active: {
+      true: {
+        headerButton: 'bg-dracula-cyan text-dracula-line',
+      }
+    }
   }
 })
 
@@ -36,24 +43,24 @@ export const variantsHero = tv({
 
 export const variantsCoffee = tv({
   slots: {
-    coffee: 'w-full flex flex-col gap-8 py-16',
+    coffee: 'w-full flex flex-col gap-12 py-16',
     coffeeHead: 'w-full flex flex-col lg:flex-row justify-between gap-4',
     coffeeTitle: 'text-3xl font-medium uppercase',
-    coffeeFilter: 'flex flex-wrap gap-x-6',
+    coffeeFilter: 'flex flex-wrap -ml-4 lg:ml-0 lg:-mr-4',
     coffeeCard: 'grid md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6',
   }
 })
 
 export const variantsFilter = tv({
   slots: {
-    filter: 'hover:animate-bounce text-sm font-medium uppercase p-2 hover:text-dracula-cyan transition ease-in-out duration-300',
+    filter: 'hover:animate-bounce font-medium uppercase py-2 px-4 hover:text-dracula-cyan transition ease-in-out duration-300',
   }
 })
 
 export const variantsCard = tv({
   slots: {
-    card: 'group flex flex-col rounded-md odd:rounded-tr-3xl even:rounded-tl-3xl odd:rounded-bl-3xl even:rounded-br-3xl gap-6 p-4 pt-0 border border-dracula-line bg-dracula-wrapper shadow-md hover:shadow-xl transition ease-in-out duration-300',
-    cardImage: 'group-hover:animate-spin w-32 mx-auto -mt-4',
+    card: 'flex flex-col rounded-md odd:rounded-tr-3xl even:rounded-tl-3xl odd:rounded-bl-3xl even:rounded-br-3xl gap-6 p-4 pt-0 border border-dracula-line bg-dracula-wrapper shadow-md hover:shadow-xl transition ease-in-out duration-300',
+    cardImage: 'hover:animate-spin w-32 mx-auto -mt-4',
     cardCategory: 'flex items-center justify-center gap-2',
     cardCategoryItem: 'text-xs uppercase px-3 py-1 rounded-full bg-dracula-cyan/5 text-dracula-cyan',
     cardBody: 'flex flex-col text-center gap-2',
