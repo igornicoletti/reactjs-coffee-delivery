@@ -1,15 +1,16 @@
-import { FilterType } from '../type/filter'
+import { FilterListProps } from '../type/filter'
 import { variantsFilter } from '../styles/variants'
 
 const { filter } = variantsFilter()
 
 type FilterProps = {
-  data: FilterType
+  data: FilterListProps
+  handleSelectedFilter: (idCategory: string) => void
 }
 
-export const Filter = ({ data }: FilterProps) => {
+export const Filter = ({ data, handleSelectedFilter }: FilterProps) => {
   return (
-    <button className={filter()}>
+    <button className={filter()} onClick={() => handleSelectedFilter(data.idCategory)}>
       <span>{data.title}</span>
     </button>
   )

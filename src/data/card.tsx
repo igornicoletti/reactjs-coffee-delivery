@@ -1,6 +1,7 @@
-export const cardData = [
+export const cardListData = [
   {
     id: 1,
+    idFilter: ['traditional'],
     source: '/images/coffee-tradicional.png',
     category: [
       {
@@ -11,10 +12,11 @@ export const cardData = [
     title: 'Expresso Tradicional',
     subtitle: 'Tradicional café feito com água quente e grãos moidos.',
     price: '9.90',
-    amount: 1,
+    quantity: 1,
   },
   {
     id: 2,
+    idFilter: ['traditional'],
     source: '/images/coffee-americano.png',
     category: [
       {
@@ -25,10 +27,11 @@ export const cardData = [
     title: 'Expresso Americano',
     subtitle: 'Expresso diluído, menos intenso que o tradicional.',
     price: '9.90',
-    amount: 1
+    quantity: 1
   },
   {
     id: 3,
+    idFilter: ['traditional'],
     source: '/images/coffee-cremoso.png',
     category: [
       {
@@ -39,10 +42,11 @@ export const cardData = [
     title: 'Expresso Cremoso',
     subtitle: 'Café expresso tradicional com espuma cremosa.',
     price: '9.90',
-    amount: 1
+    quantity: 1
   },
   {
     id: 4,
+    idFilter: ['traditional', 'ice'],
     source: '/images/coffee-gelado.png',
     category: [
       {
@@ -57,10 +61,11 @@ export const cardData = [
     title: 'Expresso Gelado',
     subtitle: 'Bebida preparada com café expresso e cubos de gelo.',
     price: '9.90',
-    amount: 1
+    quantity: 1
   },
   {
     id: 5,
+    idFilter: ['traditional', 'milk'],
     source: '/images/coffee-leite.png',
     category: [
       {
@@ -75,10 +80,11 @@ export const cardData = [
     title: 'Café com Leite',
     subtitle: 'Meio a meio de expresso tradicional com leite vaporizado.',
     price: '9.90',
-    amount: 1
+    quantity: 1
   },
   {
     id: 6,
+    idFilter: ['traditional', 'milk'],
     source: '/images/coffee-latte.png',
     category: [
       {
@@ -93,10 +99,11 @@ export const cardData = [
     title: 'Latte',
     subtitle: 'Uma dose de café expresso com o dobro de leite e espuma cremosa.',
     price: '9.90',
-    amount: 1
+    quantity: 1
   },
   {
     id: 7,
+    idFilter: ['traditional', 'milk'],
     source: '/images/coffee-capuccino.png',
     category: [
       {
@@ -111,10 +118,11 @@ export const cardData = [
     title: 'Capuccino',
     subtitle: 'Bebida com canela feita de doses iguais de café, leite e espuma.',
     price: '9.90',
-    amount: 1
+    quantity: 1
   },
   {
     id: 8,
+    idFilter: ['traditional', 'milk'],
     source: '/images/coffee-macchiato.png',
     category: [
       {
@@ -129,10 +137,11 @@ export const cardData = [
     title: 'Macchiato',
     subtitle: 'Café expresso misturado com um pouco de leite quente e espuma.',
     price: '9.90',
-    amount: 1
+    quantity: 1
   },
   {
     id: 9,
+    idFilter: ['traditional', 'milk'],
     source: '/images/coffee-mocaccino.png',
     category: [
       {
@@ -147,10 +156,11 @@ export const cardData = [
     title: 'Mocaccino',
     subtitle: 'Café expresso com calda de chocolate, pouco leite e espuma.',
     price: '9.90',
-    amount: 1
+    quantity: 1
   },
   {
     id: 10,
+    idFilter: ['special', 'milk'],
     source: '/images/coffee-quente.png',
     category: [
       {
@@ -165,10 +175,11 @@ export const cardData = [
     title: 'Chocolate Quente',
     subtitle: 'Bebida feita com chocolate dissolvido no leite quente e café.',
     price: '9.90',
-    amount: 1
+    quantity: 1
   },
   {
     id: 11,
+    idFilter: ['special', 'alcoholic', 'ice'],
     source: '/images/coffee-cubano.png',
     category: [
       {
@@ -187,10 +198,11 @@ export const cardData = [
     title: 'Cubano',
     subtitle: 'Drink gelado de café expresso com rum, creme de leite e hortelã.',
     price: '9.90',
-    amount: 1
+    quantity: 1
   },
   {
     id: 12,
+    idFilter: ['special'],
     source: '/images/coffee-havaiano.png',
     category: [
       {
@@ -201,10 +213,11 @@ export const cardData = [
     title: 'Havaiano',
     subtitle: 'Bebida adocicada preparada com café e leite de coco.',
     price: '9.90',
-    amount: 1
+    quantity: 1
   },
   {
     id: 13,
+    idFilter: ['special'],
     source: '/images/coffee-arabe.png',
     category: [
       {
@@ -215,10 +228,11 @@ export const cardData = [
     title: 'Árabe',
     subtitle: 'Bebida preparada com grãos de café árabe e especiarias.',
     price: '9.90',
-    amount: 1
+    quantity: 1
   },
   {
     id: 14,
+    idFilter: ['special', 'alcoholic'],
     source: '/images/coffee-irlandes.png',
     category: [
       {
@@ -233,6 +247,6 @@ export const cardData = [
     title: 'Irlandês',
     subtitle: 'Bebida a base de café, uísque irlandês, açúcar e chantilly.',
     price: '9.90',
-    amount: 1
+    quantity: 1
   }
 ]

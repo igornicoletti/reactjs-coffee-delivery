@@ -1,14 +1,15 @@
-type CategoryType = {
+type CategoryListProps = {
   id: number,
   title: string
 }
 
-export type CardType = {
+export type CardListProps = {
   id: number
+  idFilter: Array<string>,
   title: string,
   subtitle: string,
   source: string,
-  category: CategoryType[]
+  category: CategoryListProps[]
   price: string,
-  amount: number,
+  quantity: number,
 }

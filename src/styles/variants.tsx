@@ -10,7 +10,7 @@ export const variantsRoot = tv({
 export const variantsHeader = tv({
   slots: {
     header: 'w-full flex items-center justify-between py-8',
-    headerTitle: 'text-2xl md:text-3xl font-semibold uppercase hover:text-dracula-cyan transition ease-in-out duration-300',
+    headerTitle: 'text-2xl md:text-3xl font-semibold uppercase text-dracula-cyan hover:text-dracula-white transition ease-in-out duration-300',
     headerCart: 'relative',
     headerButton: 'flex items-center justify-center p-2 rounded-md bg-dracula-line hover:bg-dracula-cyan text-dracula-cyan hover:text-dracula-line transition ease-in-out duration-300',
     headerIcon: 'size-6 shrink-0',
@@ -22,7 +22,7 @@ export const variantsHeader = tv({
     active: {
       true: {
         headerButton: 'bg-dracula-cyan text-dracula-line',
-        headerTitle: 'text-dracula-cyan',
+        headerTitle: 'hover:text-dracula-cyan',
       }
     }
   }

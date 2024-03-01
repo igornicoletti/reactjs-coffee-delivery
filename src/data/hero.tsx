@@ -1,6 +1,6 @@
 import { FireIcon, ShoppingBagIcon, ShoppingCartIcon, TruckIcon } from '@heroicons/react/24/outline'
 
-export const heroData = [
+export const heroListData = [
   {
     id: 1,
     icon: ShoppingCartIcon,

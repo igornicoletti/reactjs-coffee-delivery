@@ -1,5 +1,6 @@
-export type FilterType = {
+export type FilterListProps = {
   id: number
+  idCategory: string
   title: string
   selected: boolean
 }

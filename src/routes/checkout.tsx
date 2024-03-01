@@ -8,8 +8,7 @@ const { checkout, checkRecord, checkSummary, checkTitle, checkContent, checkWrap
 export const Checkout = () => {
   const [dialog, setDialog] = useState<boolean>(false)
 
-  const handleDialogOpen = () => setDialog(true)
-  const handleDialogClose = () => setDialog(false)
+  const handleDialog = () => setDialog(false)
 
   return (
     <div className={checkout()}>
@@ -133,10 +132,10 @@ export const Checkout = () => {
               <p className={checkDescription()}>R$ 25.00</p>
             </li>
           </ul>
-          <button className={checkConfirm()} onClick={handleDialogOpen}>
+          <button className={checkConfirm()} onClick={() => setDialog(true)}>
             Confirmar pedido
           </button>
-          <Modal dialog={dialog} handleDialogClose={handleDialogClose} />
+          <Modal dialog={dialog} handleDialog={handleDialog} />
         </div>
       </div>
     </div>

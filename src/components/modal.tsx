@@ -8,13 +8,13 @@ const { modal, modalBackdrop, modalContent, modalInfo, modalPanel, modalIcon, mo
 
 type ModalProps = {
   dialog: boolean
-  handleDialogClose: () => void
+  handleDialog: () => void
 }
 
-export const Modal = ({ dialog, handleDialogClose }: ModalProps) => {
+export const Modal = ({ dialog, handleDialog }: ModalProps) => {
   return (
     <Transition appear show={dialog} as={Fragment}>
-      <Dialog className={modal()} onClose={handleDialogClose}>
+      <Dialog className={modal()} onClose={handleDialog}>
         <Transition.Child as={Fragment} enter={modalEnter()} enterFrom={modalFrom()} enterTo={modalEnterTo()} leave={modalLeave()} leaveFrom={modalLeaveFrom()} leaveTo={modalLeaveTo()}>
           <div className={modalBackdrop()} />
         </Transition.Child>
@@ -25,7 +25,7 @@ export const Modal = ({ dialog, handleDialogClose }: ModalProps) => {
                 <FaceSmileIcon className={modalIcon()} />
                 <Dialog.Title className={modalTitle()}>Uhuu... Pedido confirmado!</Dialog.Title>
                 <Dialog.Description className={modalDescription()}>Seu pagamento foi enviado com sucesso.<br />Agora é só aguardar que logo o café chegará até você.</Dialog.Description>
-                <Link className={modalAction()} to='/' onClick={handleDialogClose}>Voltar à página inicial</Link>
+                <Link className={modalAction()} to='/' onClick={handleDialog}>Voltar à página inicial</Link>
               </Dialog.Panel>
             </Transition.Child>
           </div>
