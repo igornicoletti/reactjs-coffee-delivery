@@ -5,12 +5,13 @@ const { filter } = variantsFilter()
 
 type FilterProps = {
   data: FilterListProps
-  handleSelectedFilter: (idCategory: string) => void
+  handleSelectedFilter: (filterId: string) => void
 }
 
 export const Filter = ({ data, handleSelectedFilter }: FilterProps) => {
   return (
-    <button className={filter()} onClick={() => handleSelectedFilter(data.idCategory)}>
+    <button className={data.selected ? filter({ active: true }) : filter({ active: false })}
+      onClick={() => handleSelectedFilter(data.filterId)}>
       <span>{data.title}</span>
     </button>
   )

@@ -1,30 +1,30 @@
 export const filterListData = [{
   id: 1,
-  idCategory: 'alcoholic',
+  filterId: 'alcoholic',
   title: 'Alcoólico',
   selected: false
 },
 {
   id: 2,
-  idCategory: 'milk',
+  filterId: 'milk',
   title: 'Com leite',
   selected: false
 },
 {
   id: 3,
-  idCategory: 'special',
+  filterId: 'special',
   title: 'Especial',
   selected: false
 },
 {
   id: 4,
-  idCategory: 'ice',
+  filterId: 'ice',
   title: 'Gelado',
   selected: false
 },
 {
   id: 5,
-  idCategory: 'traditional',
+  filterId: 'traditional',
   title: 'Tradicional',
   selected: false
 }]

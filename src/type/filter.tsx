@@ -1,6 +1,6 @@
 export type FilterListProps = {
   id: number
-  idCategory: string
+  filterId: string
   title: string
   selected: boolean
 }

@@ -15,9 +15,9 @@ export const Home = () => {
   const [cards, setCards] = useState<CardListProps[]>([])
   const [filters, setFilters] = useState<FilterListProps[]>([])
 
-  const handleSelectedFilter = (idCategory: string) => {
-    console.log(idCategory)
-    /* setCards(selectedFilter) */
+  const handleSelectedFilter = (filterId: string) => {
+    const selectedFilter: CardListProps[] = cardListData.filter(data => data.cardId.find(data => data === filterId))
+    setCards(selectedFilter)
   }
 
   useEffect(() => {

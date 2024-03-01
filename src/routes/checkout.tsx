@@ -94,29 +94,6 @@ export const Checkout = () => {
                 </div>
               </div>
             </li>
-            <li className={checkOrderItem()}>
-              <img className={checkImage()} src='/images/coffee-gelado.png' alt='Coffee Delivery' />
-              <div className={checkInfo()}>
-                <div className={checkBetween()}>
-                  <p className={checkDescription()}>Expresso Gelado</p>
-                  <p className={checkDescription()}>R$ 9.90</p>
-                </div>
-                <div className={checkBetween()}>
-                  <div className={checkAction()}>
-                    <button className={checkButton()}>
-                      <MinusIcon className={checkIcon()} aria-hidden='true' />
-                    </button>
-                    <input className={checkQuantity()} type='number' defaultValue={0} name='' id='' />
-                    <button className={checkButton()}>
-                      <PlusIcon className={checkIcon()} aria-hidden='true' />
-                    </button>
-                  </div>
-                  <button className={checkTrash()}>
-                    <TrashIcon className={checkIcon()} aria-hidden='true' />
-                  </button>
-                </div>
-              </div>
-            </li>
           </ul>
           <ul className={checkInfo()}>
             <li className={checkBetween()}>

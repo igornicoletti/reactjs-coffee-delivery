@@ -1,7 +1,7 @@
 export const cardListData = [
   {
     id: 1,
-    idFilter: ['traditional'],
+    cardId: ['traditional'],
     source: '/images/coffee-tradicional.png',
     category: [
       {
@@ -16,7 +16,7 @@ export const cardListData = [
   },
   {
     id: 2,
-    idFilter: ['traditional'],
+    cardId: ['traditional'],
     source: '/images/coffee-americano.png',
     category: [
       {
@@ -31,7 +31,7 @@ export const cardListData = [
   },
   {
     id: 3,
-    idFilter: ['traditional'],
+    cardId: ['traditional'],
     source: '/images/coffee-cremoso.png',
     category: [
       {
@@ -46,7 +46,7 @@ export const cardListData = [
   },
   {
     id: 4,
-    idFilter: ['traditional', 'ice'],
+    cardId: ['traditional', 'ice'],
     source: '/images/coffee-gelado.png',
     category: [
       {
@@ -65,7 +65,7 @@ export const cardListData = [
   },
   {
     id: 5,
-    idFilter: ['traditional', 'milk'],
+    cardId: ['traditional', 'milk'],
     source: '/images/coffee-leite.png',
     category: [
       {
@@ -84,7 +84,7 @@ export const cardListData = [
   },
   {
     id: 6,
-    idFilter: ['traditional', 'milk'],
+    cardId: ['traditional', 'milk'],
     source: '/images/coffee-latte.png',
     category: [
       {
@@ -103,7 +103,7 @@ export const cardListData = [
   },
   {
     id: 7,
-    idFilter: ['traditional', 'milk'],
+    cardId: ['traditional', 'milk'],
     source: '/images/coffee-capuccino.png',
     category: [
       {
@@ -122,7 +122,7 @@ export const cardListData = [
   },
   {
     id: 8,
-    idFilter: ['traditional', 'milk'],
+    cardId: ['traditional', 'milk'],
     source: '/images/coffee-macchiato.png',
     category: [
       {
@@ -141,7 +141,7 @@ export const cardListData = [
   },
   {
     id: 9,
-    idFilter: ['traditional', 'milk'],
+    cardId: ['traditional', 'milk'],
     source: '/images/coffee-mocaccino.png',
     category: [
       {
@@ -160,7 +160,7 @@ export const cardListData = [
   },
   {
     id: 10,
-    idFilter: ['special', 'milk'],
+    cardId: ['special', 'milk'],
     source: '/images/coffee-quente.png',
     category: [
       {
@@ -179,7 +179,7 @@ export const cardListData = [
   },
   {
     id: 11,
-    idFilter: ['special', 'alcoholic', 'ice'],
+    cardId: ['special', 'alcoholic', 'ice'],
     source: '/images/coffee-cubano.png',
     category: [
       {
@@ -202,7 +202,7 @@ export const cardListData = [
   },
   {
     id: 12,
-    idFilter: ['special'],
+    cardId: ['special'],
     source: '/images/coffee-havaiano.png',
     category: [
       {
@@ -217,7 +217,7 @@ export const cardListData = [
   },
   {
     id: 13,
-    idFilter: ['special'],
+    cardId: ['special'],
     source: '/images/coffee-arabe.png',
     category: [
       {
@@ -232,7 +232,7 @@ export const cardListData = [
   },
   {
     id: 14,
-    idFilter: ['special', 'alcoholic'],
+    cardId: ['special', 'alcoholic'],
     source: '/images/coffee-irlandes.png',
     category: [
       {

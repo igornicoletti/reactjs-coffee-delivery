@@ -5,7 +5,7 @@ type CategoryListProps = {
 
 export type CardListProps = {
   id: number
-  idFilter: Array<string>,
+  cardId: Array<string>,
   title: string,
   subtitle: string,
   source: string,
