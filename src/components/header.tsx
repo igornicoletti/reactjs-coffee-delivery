@@ -1,4 +1,4 @@
-import { Link, NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { variantsHeader } from '../styles/variants'
 import { ShoppingCartIcon } from '@heroicons/react/24/outline'
 
@@ -7,9 +7,9 @@ const { header, headerTitle, headerCart, headerButton, headerIcon, headerBadge, 
 export const Header = () => {
   return (
     <div className={header()}>
-      <Link className={headerTitle()} to='/'>
+      <NavLink className={({ isActive }) => isActive ? headerTitle({ active: true }) : headerTitle()} to='/'>
         <h1>Coffee Delivery</h1>
-      </Link>
+      </NavLink>
       <div className={headerCart()}>
         <NavLink className={({ isActive }) => isActive ? headerButton({ active: true }) : headerButton()} to='/checkout'>
           <ShoppingCartIcon className={headerIcon()} aria-hidden='true' />

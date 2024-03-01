@@ -22,6 +22,7 @@ export const variantsHeader = tv({
     active: {
       true: {
         headerButton: 'bg-dracula-cyan text-dracula-line',
+        headerTitle: 'text-dracula-cyan',
       }
     }
   }
