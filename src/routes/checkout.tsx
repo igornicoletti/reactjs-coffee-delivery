@@ -3,7 +3,7 @@ import { Modal } from '../components/modal'
 import { variantsCheckout } from '../styles/variants'
 import { MinusIcon, PlusIcon, TrashIcon } from '@heroicons/react/24/outline'
 
-const { checkout, checkRecord, checkSummary, checkTitle, checkContent, checkWrapper, checkHead, checkSubtitle, checkForm, checkFormHidden, checkFormItem, checkFormItens, checkInput, checkLabel, checkPay, checkOrder, checkOrderItem, checkImage, checkInfo, checkBetween, checkDescription, checkAction, checkButton, checkTrash, checkQuantity, checkIcon, checkConfirm } = variantsCheckout()
+const { checkout, checkRecord, checkSummary, checkTitle, checkContent, checkWrapper, checkHead, checkSubtitle, checkForm, checkFormHidden, checkFormItem, checkFormItens, checkInput, checkLabel, checkPay, checkOrder, checkOrderItem, checkImage, checkInfo, checkBetween, checkDescription, checkAction, checkGroup, checkButton, checkTrash, checkQuantity, checkIcon, checkConfirm } = variantsCheckout()
 
 export const Checkout = () => {
   const [dialog, setDialog] = useState<boolean>(false)
@@ -78,12 +78,12 @@ export const Checkout = () => {
                   <p className={checkDescription()}>Expresso Gelado</p>
                   <p className={checkDescription()}>R$ 9.90</p>
                 </div>
-                <div className={checkBetween()}>
-                  <div className={checkAction()}>
+                <div className={checkAction()}>
+                  <div className={checkGroup()}>
                     <button className={checkButton()}>
                       <MinusIcon className={checkIcon()} aria-hidden='true' />
                     </button>
-                    <input className={checkQuantity()} type='number' defaultValue={0} name='' id='' />
+                    <input className={checkQuantity()} defaultValue={0} type='number' name='' id='' />
                     <button className={checkButton()}>
                       <PlusIcon className={checkIcon()} aria-hidden='true' />
                     </button>

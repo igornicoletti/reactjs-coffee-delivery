@@ -1,15 +1,15 @@
-type CategoryListProps = {
+type CategoryProps = {
   id: number,
   title: string
 }
 
-export type CardListProps = {
+export interface CardProps {
   id: number
   cardId: Array<string>,
   title: string,
   subtitle: string,
   source: string,
-  category: CategoryListProps[]
+  category: CategoryProps[]
   price: string,
-  quantity: number,
+  quantity: number
 }

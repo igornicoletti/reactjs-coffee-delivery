@@ -1,23 +1,60 @@
-import { Card } from '../components/card'
 import { useEffect, useState } from 'react'
-import { heroListData } from '../data/hero'
+import { CardProps } from '../type/card'
+import { Card } from '../components/card'
 import { cardListData } from '../data/card'
-import { CardListProps } from '../type/card'
+import { FilterProps } from '../type/filter'
 import { Filter } from '../components/filter'
 import { filterListData } from '../data/filter'
-import { FilterListProps } from '../type/filter'
 import { variantsCoffee, variantsHero } from '../styles/variants'
+import { FireIcon, ShoppingBagIcon, ShoppingCartIcon, TruckIcon } from '@heroicons/react/24/outline'
 
 const { coffee, coffeeHead, coffeeTitle, coffeeFilter, coffeeCard } = variantsCoffee()
 const { hero, heroHead, heroTitle, heroSubtitle, heroDescription, heroDescriptionItem, heroIcon, heroImageMobile, heroImageDesk } = variantsHero()
 
+const heroes = [
+  {
+    id: 1,
+    icon: ShoppingCartIcon,
+    title: 'Compra simples e segura'
+  },
+  {
+    id: 2,
+    icon: ShoppingBagIcon,
+    title: 'Embalagem mantém o café intacto'
+  },
+  {
+    id: 3,
+    icon: TruckIcon,
+    title: 'Entrega rápida e rastreada'
+  },
+  {
+    id: 4,
+    icon: FireIcon,
+    title: 'O café chega fresquinho até você'
+  }
+]
+
 export const Home = () => {
-  const [cards, setCards] = useState<CardListProps[]>([])
-  const [filters, setFilters] = useState<FilterListProps[]>([])
+  const [cards, setCards] = useState<CardProps[]>([])
+  const [filters, setFilters] = useState<FilterProps[]>([])
 
   const handleSelectedFilter = (filterId: string) => {
-    const selectedFilter: CardListProps[] = cardListData.filter(data => data.cardId.find(data => data === filterId))
-    setCards(selectedFilter)
+    const selectedCards: CardProps[] = cardListData.filter(data => data.cardId.find(data => data === filterId))
+
+    filterListData.filter(data => {
+      if (data.filterId === filterId) {
+        if (data.selected) {
+          data.selected = false
+          setCards(cardListData)
+        } else {
+          data.selected = true
+          setCards(selectedCards)
+        }
+      } else {
+        data.selected = false
+      }
+    })
+
   }
 
   useEffect(() => {
@@ -33,10 +70,10 @@ export const Home = () => {
           <p className={heroSubtitle()}>Com o Coffee Delivery você recebe seu café onde estiver, a qualquer hora</p>
           <img className={heroImageMobile()} src='/images/coffee-delivery.png' alt='Coffee Delivery' />
           <ul className={heroDescription()}>
-            {heroListData.map(data => (
+            {heroes.map(data => (
               <li className={heroDescriptionItem()} key={data.id}>
                 <data.icon className={heroIcon()} aria-hidden='true' />
-                <span>{data.text}</span>
+                <span>{data.title}</span>
               </li>
             ))}
           </ul>

@@ -1,16 +1,16 @@
-import { FilterListProps } from '../type/filter'
+import { FilterProps } from '../type/filter'
 import { variantsFilter } from '../styles/variants'
 
 const { filter } = variantsFilter()
 
-type FilterProps = {
-  data: FilterListProps
+type FilterType = {
+  data: FilterProps
   handleSelectedFilter: (filterId: string) => void
 }
 
-export const Filter = ({ data, handleSelectedFilter }: FilterProps) => {
+export const Filter = ({ data, handleSelectedFilter }: FilterType) => {
   return (
-    <button className={data.selected ? filter({ active: true }) : filter({ active: false })}
+    <button className={data.selected ? filter({ active: true }) : filter()}
       onClick={() => handleSelectedFilter(data.filterId)}>
       <span>{data.title}</span>
     </button>
