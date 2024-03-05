@@ -5,10 +5,10 @@ import { cardListData } from '../data/card'
 import { FilterProps } from '../type/filter'
 import { Filter } from '../components/filter'
 import { filterListData } from '../data/filter'
-import { variantsCoffee, variantsHero } from '../styles/variants'
+import { variantsHero, variantsProduct } from '../styles/variants'
 import { FireIcon, ShoppingBagIcon, ShoppingCartIcon, TruckIcon } from '@heroicons/react/24/outline'
 
-const { coffee, coffeeHead, coffeeTitle, coffeeFilter, coffeeCard } = variantsCoffee()
+const { product, productHead, productTitle, productFilter, productCard } = variantsProduct()
 const { hero, heroHead, heroTitle, heroSubtitle, heroDescription, heroDescriptionItem, heroIcon, heroImageMobile, heroImageDesk } = variantsHero()
 
 const heroes = [
@@ -39,21 +39,14 @@ export const Home = () => {
   const [filters, setFilters] = useState<FilterProps[]>([])
 
   const handleSelectedFilter = (filterId: string) => {
-    const selectedCards: CardProps[] = cardListData.filter(data => data.cardId.find(data => data === filterId))
+    const selectedCards: CardProps[] = cardListData.filter(data => data.category.find(data => data.categoryId === filterId))
 
-    filterListData.filter(data => data.filterId === filterId
+    filterListData.find(data => data.filterId === filterId
       ? data.selected
         ? (data.selected = false, setCards(cardListData))
         : (data.selected = true, setCards(selectedCards))
       : data.selected = false
     )
-  }
-
-  const handleSelectedCard = (id: number) => {
-    const selectedCards: CardProps[] = cardListData.filter(data => data.id === id)
-    console.log(selectedCards)
-
-
   }
 
   useEffect(() => {
@@ -79,18 +72,18 @@ export const Home = () => {
         </div>
         <img className={heroImageDesk()} src='/images/coffee-delivery.png' alt='Coffee Delivery' />
       </div>
-      <div className={coffee()}>
-        <div className={coffeeHead()}>
-          <h3 className={coffeeTitle()}>Nossos Cafés</h3>
-          <div className={coffeeFilter()}>
+      <div className={product()}>
+        <div className={productHead()}>
+          <h3 className={productTitle()}>Nossos Cafés</h3>
+          <div className={productFilter()}>
             {filters.map(data => (
               <Filter key={data.id} data={data} handleSelectedFilter={handleSelectedFilter} />
             ))}
           </div>
         </div>
-        <ul className={coffeeCard()}>
+        <ul className={productCard()}>
           {cards.map(data => (
-            <Card key={data.id} data={data} handleSelectedCard={handleSelectedCard} />
+            <Card key={data.id} data={data} />
           ))}
         </ul>
       </div>

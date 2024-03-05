@@ -1,11 +1,11 @@
 type CategoryProps = {
   id: number,
   title: string
+  categoryId: string
 }
 
 export interface CardProps {
   id: number
-  cardId: Array<string>,
   title: string,
   subtitle: string,
   source: string,

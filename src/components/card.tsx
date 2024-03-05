@@ -1,5 +1,5 @@
-import { CardProps } from '../type/card'
 import { useState } from 'react'
+import { CardProps } from '../type/card'
 import { Notification } from './notification'
 import { variantsCard } from '../styles/variants'
 import { MinusIcon, PlusIcon, ShoppingCartIcon } from '@heroicons/react/24/outline'
@@ -8,10 +8,9 @@ const { card, cardImage, cardCategory, cardCategoryItem, cardBody, cardTitle, ca
 
 type CardType = {
   data: CardProps
-  handleSelectedCard: (id: number) => void
 }
 
-export const Card = ({ data, handleSelectedCard }: CardType) => {
+export const Card = ({ data }: CardType) => {
   const [notification, setNotification] = useState<boolean>(false)
   const [notificationTitle, setNotificationTitle] = useState<string | null>(null)
 
@@ -39,10 +38,10 @@ export const Card = ({ data, handleSelectedCard }: CardType) => {
         <p>R$ <span className={cardPrice()}>{data.price}</span></p>
         <div className={cardAction()}>
           <div className={cardGroup()}>
-            <button className={cardButton()} onClick={() => handleSelectedCard(data.id)}>
+            <button className={cardButton()}>
               <MinusIcon className={cardIcon()} aria-hidden='true' />
             </button>
-            <input className={cardQuantity()} defaultValue={data.quantity} type='number' name='' id='' />
+            <input className={cardQuantity()} defaultValue={data.quantity} type='number' />
             <button className={cardButton()}>
               <PlusIcon className={cardIcon()} aria-hidden='true' />
             </button>

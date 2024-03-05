@@ -42,19 +42,19 @@ export const variantsHero = tv({
   }
 })
 
-export const variantsCoffee = tv({
+export const variantsProduct = tv({
   slots: {
-    coffee: 'w-full flex flex-col gap-12 py-16',
-    coffeeHead: 'w-full flex flex-col lg:flex-row justify-between gap-4',
-    coffeeTitle: 'text-3xl font-medium uppercase',
-    coffeeFilter: 'flex flex-wrap -ml-4 lg:ml-0 lg:-mr-4',
-    coffeeCard: 'grid md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6',
+    product: 'w-full flex flex-col gap-12 py-16',
+    productHead: 'w-full flex flex-col lg:flex-row justify-between gap-4',
+    productTitle: 'text-3xl font-medium uppercase',
+    productFilter: 'flex flex-wrap -ml-4 lg:ml-0 lg:-mr-4',
+    productCard: 'grid md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6',
   }
 })
 
 export const variantsFilter = tv({
   slots: {
-    filter: 'font-medium uppercase py-2 px-4 hover:text-dracula-cyan transition ease-in-out duration-300',
+    filter: 'font-medium uppercase py-2 px-4 md:hover:text-dracula-cyan transition ease-in-out duration-300',
   },
   variants: {
     active: {

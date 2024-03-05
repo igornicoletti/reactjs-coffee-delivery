@@ -1,12 +1,12 @@
 export const cardListData = [
   {
     id: 1,
-    cardId: ['traditional'],
     source: '/images/coffee-tradicional.png',
     category: [
       {
         id: 1,
-        title: 'Tradicional'
+        title: 'Tradicional',
+        categoryId: 'traditional'
       }
     ],
     title: 'Expresso Tradicional',
@@ -16,12 +16,12 @@ export const cardListData = [
   },
   {
     id: 2,
-    cardId: ['traditional'],
     source: '/images/coffee-americano.png',
     category: [
       {
         id: 1,
-        title: 'Tradicional'
+        title: 'Tradicional',
+        categoryId: 'traditional'
       }
     ],
     title: 'Expresso Americano',
@@ -31,12 +31,12 @@ export const cardListData = [
   },
   {
     id: 3,
-    cardId: ['traditional'],
     source: '/images/coffee-cremoso.png',
     category: [
       {
         id: 1,
-        title: 'Tradicional'
+        title: 'Tradicional',
+        categoryId: 'traditional'
       }
     ],
     title: 'Expresso Cremoso',
@@ -46,16 +46,17 @@ export const cardListData = [
   },
   {
     id: 4,
-    cardId: ['traditional', 'ice'],
     source: '/images/coffee-gelado.png',
     category: [
       {
         id: 1,
-        title: 'Tradicional'
+        title: 'Tradicional',
+        categoryId: 'traditional'
       },
       {
         id: 2,
-        title: 'Gelado'
+        title: 'Gelado',
+        categoryId: 'ice'
       }
     ],
     title: 'Expresso Gelado',
@@ -65,16 +66,17 @@ export const cardListData = [
   },
   {
     id: 5,
-    cardId: ['traditional', 'milk'],
     source: '/images/coffee-leite.png',
     category: [
       {
         id: 1,
-        title: 'Tradicional'
+        title: 'Tradicional',
+        categoryId: 'traditional'
       },
       {
         id: 2,
-        title: 'Com leite'
+        title: 'Com leite',
+        categoryId: 'milk'
       }
     ],
     title: 'Café com Leite',
@@ -84,16 +86,17 @@ export const cardListData = [
   },
   {
     id: 6,
-    cardId: ['traditional', 'milk'],
     source: '/images/coffee-latte.png',
     category: [
       {
         id: 1,
-        title: 'Tradicional'
+        title: 'Tradicional',
+        categoryId: 'traditional'
       },
       {
         id: 2,
-        title: 'Com leite'
+        title: 'Com leite',
+        categoryId: 'milk'
       }
     ],
     title: 'Latte',
@@ -103,16 +106,17 @@ export const cardListData = [
   },
   {
     id: 7,
-    cardId: ['traditional', 'milk'],
     source: '/images/coffee-capuccino.png',
     category: [
       {
         id: 1,
-        title: 'Tradicional'
+        title: 'Tradicional',
+        categoryId: 'traditional'
       },
       {
         id: 2,
-        title: 'Com leite'
+        title: 'Com leite',
+        categoryId: 'milk'
       }
     ],
     title: 'Capuccino',
@@ -122,16 +126,17 @@ export const cardListData = [
   },
   {
     id: 8,
-    cardId: ['traditional', 'milk'],
     source: '/images/coffee-macchiato.png',
     category: [
       {
         id: 1,
-        title: 'Tradicional'
+        title: 'Tradicional',
+        categoryId: 'traditional'
       },
       {
         id: 2,
-        title: 'Com leite'
+        title: 'Com leite',
+        categoryId: 'milk'
       }
     ],
     title: 'Macchiato',
@@ -141,16 +146,17 @@ export const cardListData = [
   },
   {
     id: 9,
-    cardId: ['traditional', 'milk'],
     source: '/images/coffee-mocaccino.png',
     category: [
       {
         id: 1,
-        title: 'Tradicional'
+        title: 'Tradicional',
+        categoryId: 'traditional'
       },
       {
         id: 2,
-        title: 'Com leite'
+        title: 'Com leite',
+        categoryId: 'milk'
       }
     ],
     title: 'Mocaccino',
@@ -160,16 +166,17 @@ export const cardListData = [
   },
   {
     id: 10,
-    cardId: ['special', 'milk'],
     source: '/images/coffee-quente.png',
     category: [
       {
         id: 1,
-        title: 'Especial'
+        title: 'Especial',
+        categoryId: 'special'
       },
       {
         id: 2,
-        title: 'Com leite'
+        title: 'Com leite',
+        categoryId: 'milk'
       }
     ],
     title: 'Chocolate Quente',
@@ -179,20 +186,22 @@ export const cardListData = [
   },
   {
     id: 11,
-    cardId: ['special', 'alcoholic', 'ice'],
     source: '/images/coffee-cubano.png',
     category: [
       {
         id: 1,
-        title: 'Especial'
+        title: 'Especial',
+        categoryId: 'special'
       },
       {
         id: 2,
-        title: 'Alcoólico'
+        title: 'Alcoólico',
+        categoryId: 'alcoholic'
       },
       {
         id: 3,
-        title: 'Gelado'
+        title: 'Gelado',
+        categoryId: 'ice'
       }
     ],
     title: 'Cubano',
@@ -202,12 +211,12 @@ export const cardListData = [
   },
   {
     id: 12,
-    cardId: ['special'],
     source: '/images/coffee-havaiano.png',
     category: [
       {
         id: 1,
-        title: 'Especial'
+        title: 'Especial',
+        categoryId: 'special'
       }
     ],
     title: 'Havaiano',
@@ -217,12 +226,12 @@ export const cardListData = [
   },
   {
     id: 13,
-    cardId: ['special'],
     source: '/images/coffee-arabe.png',
     category: [
       {
         id: 1,
-        title: 'Especial'
+        title: 'Especial',
+        categoryId: 'special'
       }
     ],
     title: 'Árabe',
@@ -232,16 +241,17 @@ export const cardListData = [
   },
   {
     id: 14,
-    cardId: ['special', 'alcoholic'],
     source: '/images/coffee-irlandes.png',
     category: [
       {
         id: 1,
-        title: 'Especial'
+        title: 'Especial',
+        categoryId: 'special'
       },
       {
         id: 2,
-        title: 'Alcoólico'
+        title: 'Alcoólico',
+        categoryId: 'alcoholic'
       }
     ],
     title: 'Irlandês',
