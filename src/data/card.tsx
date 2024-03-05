@@ -12,7 +12,7 @@ export const cardListData = [
     title: 'Expresso Tradicional',
     subtitle: 'Tradicional café feito com água quente e grãos moidos.',
     price: '9.90',
-    quantity: 1,
+    quantity: 1
   },
   {
     id: 2,

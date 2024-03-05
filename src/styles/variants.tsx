@@ -54,12 +54,12 @@ export const variantsCoffee = tv({
 
 export const variantsFilter = tv({
   slots: {
-    filter: 'hover:animate-bounce font-medium uppercase py-2 px-4 hover:text-dracula-cyan transition ease-in-out duration-300',
+    filter: 'font-medium uppercase py-2 px-4 hover:text-dracula-cyan transition ease-in-out duration-300',
   },
   variants: {
     active: {
       true: {
-        filter: 'text-dracula-cyan',
+        filter: 'text-dracula-cyan animate-bounce',
       }
     }
   }

@@ -41,19 +41,18 @@ export const Home = () => {
   const handleSelectedFilter = (filterId: string) => {
     const selectedCards: CardProps[] = cardListData.filter(data => data.cardId.find(data => data === filterId))
 
-    filterListData.filter(data => {
-      if (data.filterId === filterId) {
-        if (data.selected) {
-          data.selected = false
-          setCards(cardListData)
-        } else {
-          data.selected = true
-          setCards(selectedCards)
-        }
-      } else {
-        data.selected = false
-      }
-    })
+    filterListData.filter(data => data.filterId === filterId
+      ? data.selected
+        ? (data.selected = false, setCards(cardListData))
+        : (data.selected = true, setCards(selectedCards))
+      : data.selected = false
+    )
+  }
+
+  const handleSelectedCard = (id: number) => {
+    const selectedCards: CardProps[] = cardListData.filter(data => data.id === id)
+    console.log(selectedCards)
+
 
   }
 
@@ -91,7 +90,7 @@ export const Home = () => {
         </div>
         <ul className={coffeeCard()}>
           {cards.map(data => (
-            <Card key={data.id} data={data} />
+            <Card key={data.id} data={data} handleSelectedCard={handleSelectedCard} />
           ))}
         </ul>
       </div>

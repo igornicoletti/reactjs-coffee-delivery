@@ -8,9 +8,10 @@ const { card, cardImage, cardCategory, cardCategoryItem, cardBody, cardTitle, ca
 
 type CardType = {
   data: CardProps
+  handleSelectedCard: (id: number) => void
 }
 
-export const Card = ({ data }: CardType) => {
+export const Card = ({ data, handleSelectedCard }: CardType) => {
   const [notification, setNotification] = useState<boolean>(false)
   const [notificationTitle, setNotificationTitle] = useState<string | null>(null)
 
@@ -38,7 +39,7 @@ export const Card = ({ data }: CardType) => {
         <p>R$ <span className={cardPrice()}>{data.price}</span></p>
         <div className={cardAction()}>
           <div className={cardGroup()}>
-            <button className={cardButton()}>
+            <button className={cardButton()} onClick={() => handleSelectedCard(data.id)}>
               <MinusIcon className={cardIcon()} aria-hidden='true' />
             </button>
             <input className={cardQuantity()} defaultValue={data.quantity} type='number' name='' id='' />
