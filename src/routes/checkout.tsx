@@ -22,28 +22,28 @@ export const Checkout = () => {
             </div>
             <form className={checkForm()}>
               <div className={checkFormItem()}>
-                <input className={checkInput()} type='number' name='cep' id='cep' placeholder=' ' required />
+                <input className={checkInput()} type='number' name='cep' id='cep' placeholder=' ' />
                 <label className={checkLabel()} htmlFor='cep'>CEP</label>
               </div>
               <span className={checkFormHidden()}></span>
               <div className={checkFormItens()}>
-                <input className={checkInput()} type='text' name='address' id='address' placeholder=' ' required />
+                <input className={checkInput()} type='text' name='address' id='address' placeholder=' ' />
                 <label className={checkLabel()} htmlFor='address'>Endereço</label>
               </div>
               <div className={checkFormItem()}>
-                <input className={checkInput()} type='number' name='num' id='num' placeholder=' ' required />
+                <input className={checkInput()} type='number' name='num' id='num' placeholder=' ' />
                 <label className={checkLabel()} htmlFor='num'>Número</label>
               </div>
               <div className={checkFormItem()}>
-                <input className={checkInput()} type='text' name='Bairro' id='Bairro' placeholder=' ' required />
-                <label className={checkLabel()} htmlFor='Bairro'>Bairro</label>
+                <input className={checkInput()} type='text' name='neighbor' id='neighbor' placeholder=' ' />
+                <label className={checkLabel()} htmlFor='neighbor'>Bairro</label>
               </div>
               <div className={checkFormItem()}>
-                <input className={checkInput()} type='text' name='city' id='city' placeholder=' ' required />
+                <input className={checkInput()} type='text' name='city' id='city' placeholder=' ' />
                 <label className={checkLabel()} htmlFor='city'>Cidade</label>
               </div>
               <div className={checkFormItem()}>
-                <input className={checkInput()} type='text' name='state' id='state' placeholder=' ' required />
+                <input className={checkInput()} type='text' name='state' id='state' placeholder=' ' />
                 <label className={checkLabel()} htmlFor='state'>UF</label>
               </div>
             </form>
@@ -83,7 +83,7 @@ export const Checkout = () => {
                     <button className={checkButton()}>
                       <MinusIcon className={checkIcon()} aria-hidden='true' />
                     </button>
-                    <input className={checkQuantity()} defaultValue={0} type='number' name='' id='' />
+                    <input className={checkQuantity()} defaultValue={0} type='number' name='amount' />
                     <button className={checkButton()}>
                       <PlusIcon className={checkIcon()} aria-hidden='true' />
                     </button>

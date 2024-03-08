@@ -8,15 +8,17 @@ const { card, cardImage, cardCategory, cardCategoryItem, cardBody, cardTitle, ca
 
 type CardType = {
   data: CardProps
+  handleSelectedCard: (data: CardProps) => void
 }
 
-export const Card = ({ data }: CardType) => {
+export const Card = ({ data, handleSelectedCard }: CardType) => {
   const [notification, setNotification] = useState<boolean>(false)
   const [notificationTitle, setNotificationTitle] = useState<string | null>(null)
 
-  const handleNotification = (data: string) => {
+  const handleSelectedCardToCart = (data: CardProps) => {
+    handleSelectedCard(data)
     setNotification(true)
-    setNotificationTitle(data)
+    setNotificationTitle(data.title)
     setTimeout(() => setNotification(false), 2000)
   }
 
@@ -41,12 +43,12 @@ export const Card = ({ data }: CardType) => {
             <button className={cardButton()}>
               <MinusIcon className={cardIcon()} aria-hidden='true' />
             </button>
-            <input className={cardQuantity()} defaultValue={data.quantity} type='number' />
+            <input className={cardQuantity()} defaultValue={data.quantity} type='number' name='amount' />
             <button className={cardButton()}>
               <PlusIcon className={cardIcon()} aria-hidden='true' />
             </button>
           </div>
-          <button className={cardCart()} onClick={() => handleNotification(data.title)}>
+          <button className={cardCart()} onClick={() => handleSelectedCardToCart(data)}>
             <ShoppingCartIcon className={cardIcon()} aria-hidden='true' />
           </button>
         </div>

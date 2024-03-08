@@ -11,3 +11,24 @@ input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
 }
+
+/* 
+'in-red': '#f87171',
+'in-orange': '#fb923c',
+'in-amber': '#fbbf24',
+'in-yellow': '#fde047',
+'in-lime': '#bef264',
+'in-green': '#4ade80',
+'in-emerald': '#34d399',
+'in-teal': '#5eead4',
+'in-cyan': '#67e8f9',
+'in-sky': '#7dd3fc',
+'in-blue': '#60a5fa',
+'in-indigo': '#818cf8',
+'in-violet': '#a78bfa',
+'in-purple': '#c084fc',
+'in-fuchsia': '#e879f9',
+'in-pink': '#f472b6',
+'in-rose': '#fb7185',
+'in-zinc': '#a1a1aa',
+*/

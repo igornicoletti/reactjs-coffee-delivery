@@ -34,10 +34,10 @@ export const variantsHero = tv({
     heroHead: 'w-full max-w-2xl flex flex-col gap-12',
     heroTitle: 'text-3xl md:text-5xl px-2 xl:px-0 font-medium text-center xl:text-left',
     heroSubtitle: 'max-w-lg text-xl md:text-3xl text-center xl:text-left mx-auto xl:mx-0',
-    heroDescription: 'grid md:grid-cols-2 gap-8 md:mx-auto xl:mx-0 xl:pt-8',
+    heroDescription: 'grid md:grid-cols-2 xl:grid-cols-1 2xl:grid-cols-2 gap-8 pb-8 xl:pb-0 md:mx-auto xl:mx-0 xl:pt-8',
     heroDescriptionItem: 'flex items-center gap-4 md:text-lg',
     heroImageMobile: 'w-full max-w-lg md:hidden',
-    heroImageDesk: 'w-full max-w-lg lg:max-w-xl hidden md:block',
+    heroImageDesk: 'w-full max-w-xl lg:max-w-xl xl:max-w-2xl hidden md:block',
     heroIcon: 'size-6 shrink-0 text-dracula-cyan',
   }
 })

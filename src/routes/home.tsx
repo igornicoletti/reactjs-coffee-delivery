@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react'
-import { CardProps } from '../type/card'
 import { Card } from '../components/card'
+import { CardProps } from '../type/card'
 import { cardListData } from '../data/card'
 import { FilterProps } from '../type/filter'
 import { Filter } from '../components/filter'
 import { filterListData } from '../data/filter'
 import { variantsHero, variantsProduct } from '../styles/variants'
 import { FireIcon, ShoppingBagIcon, ShoppingCartIcon, TruckIcon } from '@heroicons/react/24/outline'
+import { CartProps } from '../type/cart'
 
 const { product, productHead, productTitle, productFilter, productCard } = variantsProduct()
 const { hero, heroHead, heroTitle, heroSubtitle, heroDescription, heroDescriptionItem, heroIcon, heroImageMobile, heroImageDesk } = variantsHero()
@@ -35,17 +36,27 @@ const heroes = [
 ]
 
 export const Home = () => {
+  const [carts, setCarts] = useState<CartProps[]>([])
   const [cards, setCards] = useState<CardProps[]>([])
   const [filters, setFilters] = useState<FilterProps[]>([])
 
   const handleSelectedFilter = (filterId: string) => {
-    const selectedCards: CardProps[] = cardListData.filter(data => data.category.find(data => data.categoryId === filterId))
+    const selectedCard: CardProps[] = cardListData.filter(data => data.category.find(data => data.categoryId === filterId))
 
-    filterListData.find(data => data.filterId === filterId
+    filterListData.find((data: FilterProps) => data.filterId === filterId
       ? data.selected
         ? (data.selected = false, setCards(cardListData))
-        : (data.selected = true, setCards(selectedCards))
+        : (data.selected = true, setCards(selectedCard))
       : data.selected = false
+    )
+  }
+
+  const handleSelectedCard = ({ id, title, source, price }: CardProps) => {
+    setCarts((data: CartProps[]) => data.some(data => data.id === id)
+      ? data.map(data => data.id === id
+        ? { ...data, quantity: data.quantity + 1 }
+        : data
+      ) : [...data, { id, title, source, price, quantity: 1 }]
     )
   }
 
@@ -72,6 +83,11 @@ export const Home = () => {
         </div>
         <img className={heroImageDesk()} src='/images/coffee-delivery.png' alt='Coffee Delivery' />
       </div>
+      {carts.map(data => (
+        <div key={data.id}>
+          <p>{data.title} - {data.price} - {data.quantity}</p>
+        </div>
+      ))}
       <div className={product()}>
         <div className={productHead()}>
           <h3 className={productTitle()}>Nossos Cafés</h3>
@@ -83,7 +99,7 @@ export const Home = () => {
         </div>
         <ul className={productCard()}>
           {cards.map(data => (
-            <Card key={data.id} data={data} />
+            <Card key={data.id} data={data} handleSelectedCard={handleSelectedCard} />
           ))}
         </ul>
       </div>
