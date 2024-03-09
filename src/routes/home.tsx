@@ -49,8 +49,6 @@ export const Home = () => {
         : (data.selected = true, setCards(selectedCard))
       : data.selected = false
     )
-    localStorage.clear()
-
   }
 
   const handleSelectedCard = ({ id, title, source, price }: CardProps) => {
