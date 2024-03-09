@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react'
-import { Card } from '../components/card'
+import { CartProps } from '../type/cart'
+import { CardData } from '../data/card'
 import { CardProps } from '../type/card'
-import { cardListData } from '../data/card'
+import { Card } from '../components/card'
+import { FilterData } from '../data/filter'
 import { FilterProps } from '../type/filter'
 import { Filter } from '../components/filter'
-import { filterListData } from '../data/filter'
 import { variantsHero, variantsProduct } from '../styles/variants'
 import { FireIcon, ShoppingBagIcon, ShoppingCartIcon, TruckIcon } from '@heroicons/react/24/outline'
-import { CartProps } from '../type/cart'
 
 const { product, productHead, productTitle, productFilter, productCard } = variantsProduct()
 const { hero, heroHead, heroTitle, heroSubtitle, heroDescription, heroDescriptionItem, heroIcon, heroImageMobile, heroImageDesk } = variantsHero()
@@ -41,28 +41,30 @@ export const Home = () => {
   const [filters, setFilters] = useState<FilterProps[]>([])
 
   const handleSelectedFilter = (filterId: string) => {
-    const selectedCard: CardProps[] = cardListData.filter(data => data.category.find(data => data.categoryId === filterId))
+    const selectedCard: CardProps[] = CardData
+      .filter(data => data.category
+        .find(data => data.categoryId === filterId))
 
-    filterListData.find((data: FilterProps) => data.filterId === filterId
+    FilterData.find((data: FilterProps) => data.filterId === filterId
       ? data.selected
-        ? (data.selected = false, setCards(cardListData))
+        ? (data.selected = false, setCards(CardData))
         : (data.selected = true, setCards(selectedCard))
       : data.selected = false
     )
   }
 
-  const handleSelectedCard = ({ id, title, source, price }: CardProps) => {
+  const handleSelectedCard = ({ id, title, source, price, quantity }: CardProps) => {
     setCarts((data: CartProps[]) => data.some(data => data.id === id)
       ? data.map(data => data.id === id
-        ? { ...data, quantity: data.quantity + 1 }
-        : data
-      ) : [...data, { id, title, source, price, quantity: 1 }]
+        ? { ...data, price: data.price + price, quantity: data.quantity + 1 }
+        : data)
+      : [...data, { id, title, source, price, quantity }]
     )
   }
 
   useEffect(() => {
-    setCards(cardListData)
-    setFilters(filterListData)
+    setCards(CardData)
+    setFilters(FilterData)
   }, [])
 
   return (
@@ -85,7 +87,7 @@ export const Home = () => {
       </div>
       {carts.map(data => (
         <div key={data.id}>
-          <p>{data.title} - {data.price} - {data.quantity}</p>
+          <span>{data.title}</span> - <span>{data.quantity} unid.</span> - <span>{data.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</span>
         </div>
       ))}
       <div className={product()}>

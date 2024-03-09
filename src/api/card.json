@@ -2,14 +2,12 @@
   "cards": [
     {
       "id": 1,
-      "cardId": [
-        "traditional"
-      ],
       "source": "/images/coffee-tradicional.png",
       "category": [
         {
           "id": 1,
-          "itle": "Tradicional"
+          "title": "Tradicional",
+          "categoryId": "traditional"
         }
       ],
       "title": "Expresso Tradicional",
@@ -19,14 +17,12 @@
     },
     {
       "id": 2,
-      "cardId": [
-        "traditional"
-      ],
       "source": "/images/coffee-americano.png",
       "category": [
         {
           "id": 1,
-          "title": "Tradicional"
+          "title": "Tradicional",
+          "categoryId": "traditional"
         }
       ],
       "title": "Expresso Americano",
@@ -36,14 +32,12 @@
     },
     {
       "id": 3,
-      "cardId": [
-        "traditional"
-      ],
       "source": "/images/coffee-cremoso.png",
       "category": [
         {
           "id": 1,
-          "title": "Tradicional"
+          "title": "Tradicional",
+          "categoryId": "traditional"
         }
       ],
       "title": "Expresso Cremoso",
@@ -53,19 +47,17 @@
     },
     {
       "id": 4,
-      "cardId": [
-        "traditional",
-        "ice"
-      ],
       "source": "/images/coffee-gelado.png",
       "category": [
         {
           "id": 1,
-          "title": "Tradicional"
+          "title": "Tradicional",
+          "categoryId": "traditional"
         },
         {
           "id": 2,
-          "title": "Gelado"
+          "title": "Gelado",
+          "categoryId": "ice"
         }
       ],
       "title": "Expresso Gelado",
@@ -75,19 +67,17 @@
     },
     {
       "id": 5,
-      "cardId": [
-        "traditional",
-        "milk"
-      ],
       "source": "/images/coffee-leite.png",
       "category": [
         {
           "id": 1,
-          "title": "Tradicional"
+          "title": "Tradicional",
+          "categoryId": "traditional"
         },
         {
           "id": 2,
-          "title": "Com leite"
+          "title": "Com leite",
+          "categoryId": "milk"
         }
       ],
       "title": "Café com Leite",
@@ -97,19 +87,17 @@
     },
     {
       "id": 6,
-      "cardId": [
-        "traditional",
-        "milk"
-      ],
       "source": "/images/coffee-latte.png",
       "category": [
         {
           "id": 1,
-          "title": "Tradicional"
+          "title": "Tradicional",
+          "categoryId": "traditional"
         },
         {
           "id": 2,
-          "title": "Com leite"
+          "title": "Com leite",
+          "categoryId": "milk"
         }
       ],
       "title": "Latte",
@@ -119,19 +107,17 @@
     },
     {
       "id": 7,
-      "cardId": [
-        "traditional",
-        "milk"
-      ],
       "source": "/images/coffee-capuccino.png",
       "category": [
         {
           "id": 1,
-          "title": "Tradicional"
+          "title": "Tradicional",
+          "categoryId": "traditional"
         },
         {
           "id": 2,
-          "title": "Com leite"
+          "title": "Com leite",
+          "categoryId": "milk"
         }
       ],
       "title": "Capuccino",
@@ -141,19 +127,17 @@
     },
     {
       "id": 8,
-      "cardId": [
-        "traditional",
-        "milk"
-      ],
       "source": "/images/coffee-macchiato.png",
       "category": [
         {
           "id": 1,
-          "title": "Tradicional"
+          "title": "Tradicional",
+          "categoryId": "traditional"
         },
         {
           "id": 2,
-          "title": "Com leite"
+          "title": "Com leite",
+          "categoryId": "milk"
         }
       ],
       "title": "Macchiato",
@@ -163,19 +147,17 @@
     },
     {
       "id": 9,
-      "cardId": [
-        "traditional",
-        "milk"
-      ],
       "source": "/images/coffee-mocaccino.png",
       "category": [
         {
           "id": 1,
-          "title": "Tradicional"
+          "title": "Tradicional",
+          "categoryId": "traditional"
         },
         {
           "id": 2,
-          "title": "Com leite"
+          "title": "Com leite",
+          "categoryId": "milk"
         }
       ],
       "title": "Mocaccino",
@@ -185,19 +167,17 @@
     },
     {
       "id": 10,
-      "cardId": [
-        "special",
-        "milk"
-      ],
       "source": "/images/coffee-quente.png",
       "category": [
         {
           "id": 1,
-          "title": "Especial"
+          "title": "Especial",
+          "categoryId": "special"
         },
         {
           "id": 2,
-          "title": "Com leite"
+          "title": "Com leite",
+          "categoryId": "milk"
         }
       ],
       "title": "Chocolate Quente",
@@ -207,24 +187,22 @@
     },
     {
       "id": 11,
-      "cardId": [
-        "special",
-        "alcoholic",
-        "ice"
-      ],
       "source": "/images/coffee-cubano.png",
       "category": [
         {
           "id": 1,
-          "title": "Especial"
+          "title": "Especial",
+          "categoryId": "special"
         },
         {
           "id": 2,
-          "title": "Alcoólico"
+          "title": "Alcoólico",
+          "categoryId": "alcoholic"
         },
         {
           "id": 3,
-          "title": "Gelado"
+          "title": "Gelado",
+          "categoryId": "ice"
         }
       ],
       "title": "Cubano",
@@ -234,14 +212,12 @@
     },
     {
       "id": 12,
-      "cardId": [
-        "special"
-      ],
       "source": "/images/coffee-havaiano.png",
       "category": [
         {
           "id": 1,
-          "title": "Especial"
+          "title": "Especial",
+          "categoryId": "special"
         }
       ],
       "title": "Havaiano",
@@ -251,14 +227,12 @@
     },
     {
       "id": 13,
-      "cardId": [
-        "special"
-      ],
       "source": "/images/coffee-arabe.png",
       "category": [
         {
           "id": 1,
-          "title": "Especial"
+          "title": "Especial",
+          "categoryId": "special"
         }
       ],
       "title": "Árabe",
@@ -268,19 +242,17 @@
     },
     {
       "id": 14,
-      "cardId": [
-        "special",
-        "alcoholic"
-      ],
       "source": "/images/coffee-irlandes.png",
       "category": [
         {
           "id": 1,
-          "title": "Especial"
+          "title": "Especial",
+          "categoryId": "special"
         },
         {
           "id": 2,
-          "title": "Alcoólico"
+          "title": "Alcoólico",
+          "categoryId": "alcoholic"
         }
       ],
       "title": "Irlandês",

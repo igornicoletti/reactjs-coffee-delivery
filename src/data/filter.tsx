@@ -1,4 +1,4 @@
-export const filterListData = [
+export const FilterData = [
   {
     id: 1,
     filterId: 'alcoholic',

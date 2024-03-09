@@ -10,6 +10,6 @@ export interface CardProps {
   subtitle: string,
   source: string,
   category: CategoryProps[]
-  price: string,
+  price: number,
   quantity: number
 }

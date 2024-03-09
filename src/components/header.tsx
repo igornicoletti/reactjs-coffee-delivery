@@ -5,7 +5,6 @@ import { ShoppingCartIcon } from '@heroicons/react/24/outline'
 const { header, headerTitle, headerCart, headerButton, headerIcon, headerBadge, headerPing, headerQuantity } = variantsHeader()
 
 export const Header = () => {
-
   return (
     <div className={header()}>
       <NavLink className={({ isActive }) => isActive ? headerTitle({ active: true }) : headerTitle()} to='/'>

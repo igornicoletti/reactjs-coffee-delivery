@@ -37,7 +37,9 @@ export const Card = ({ data, handleSelectedCard }: CardType) => {
         <p className={cardSubtitle()}>{data.subtitle}</p>
       </div>
       <div className={cardFooter()}>
-        <p>R$ <span className={cardPrice()}>{data.price}</span></p>
+        <p>R$ <span className={cardPrice()}>
+          {data.price.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+        </span></p>
         <div className={cardAction()}>
           <div className={cardGroup()}>
             <button className={cardButton()}>
