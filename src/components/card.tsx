@@ -20,7 +20,6 @@ export const Card = ({ data, handleSelectedCard }: CardType) => {
     setNotification(true)
     setNotificationTitle(data.title)
     setTimeout(() => setNotification(false), 2000)
-    localStorage.clear()
   }
 
   return (
