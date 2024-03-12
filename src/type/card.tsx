@@ -3,7 +3,6 @@ type CategoryProps = {
   title: string
   categoryId: string
 }
-
 export interface CardProps {
   id: number
   title: string,

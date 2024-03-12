@@ -3,30 +3,30 @@ export const FilterData = [
     id: 1,
     filterId: 'alcoholic',
     title: 'Alcoólico',
-    selected: false
+    isActive: false
   },
   {
     id: 2,
     filterId: 'milk',
     title: 'Com leite',
-    selected: false
+    isActive: false
   },
   {
     id: 3,
     filterId: 'special',
     title: 'Especial',
-    selected: false
+    isActive: false
   },
   {
     id: 4,
     filterId: 'ice',
     title: 'Gelado',
-    selected: false
+    isActive: false
   },
   {
     id: 5,
     filterId: 'traditional',
     title: 'Tradicional',
-    selected: false
+    isActive: false
   }
 ]

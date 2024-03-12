@@ -10,7 +10,7 @@ type FilterType = {
 
 export const Filter = ({ data, handleSelectedFilter }: FilterType) => {
   return (
-    <button className={data.selected ? filter({ active: true }) : filter()}
+    <button className={data.isActive ? filter({ active: true }) : filter()}
       onClick={() => handleSelectedFilter(data.filterId)}>
       <span>{data.title}</span>
     </button>

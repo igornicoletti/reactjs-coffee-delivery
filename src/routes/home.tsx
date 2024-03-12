@@ -46,19 +46,19 @@ export const Home = () => {
         .find(data => data.categoryId === filterId))
 
     FilterData.find((data: FilterProps) => data.filterId === filterId
-      ? data.selected
-        ? (data.selected = false, setCards(CardData))
-        : (data.selected = true, setCards(selectedCard))
-      : data.selected = false
+      ? data.isActive
+        ? (data.isActive = false, setCards(CardData))
+        : (data.isActive = true, setCards(selectedCard))
+      : data.isActive = false
     )
   }
 
-  const handleSelectedCard = ({ id, title, source, price, quantity }: CardProps) => {
+  const handleSelectedCard = ({ id, title, source, price }: CardProps, quantity: number) => {
     setCarts((data: CartProps[]) => data.some(data => data.id === id)
       ? data.map(data => data.id === id
-        ? { ...data, price: data.price + price, quantity: data.quantity + 1 }
+        ? { ...data, quantity: (data.quantity + quantity), price: price * (data.quantity + quantity) }
         : data)
-      : [...data, { id, title, source, price, quantity }]
+      : [...data, { id, title, source, quantity, price: (price * quantity) }]
     )
   }
 

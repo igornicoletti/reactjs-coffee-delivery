@@ -21,8 +21,8 @@ export const variantsHeader = tv({
   variants: {
     active: {
       true: {
-        headerButton: 'bg-dracula-cyan text-dracula-line',
         headerTitle: 'hover:text-dracula-cyan',
+        headerButton: 'bg-dracula-cyan text-dracula-line',
       }
     }
   }
@@ -71,16 +71,16 @@ export const variantsCard = tv({
     cardImage: 'hover:animate-spin w-32 mx-auto -mt-4',
     cardCategory: 'flex items-center justify-center gap-2',
     cardCategoryItem: 'text-xs uppercase px-3 py-1 rounded-full bg-dracula-cyan/5 text-dracula-cyan',
-    cardBody: 'flex flex-col text-center gap-2',
+    cardDescription: 'flex flex-col text-center gap-2',
     cardTitle: 'text-xl font-medium uppercase',
     cardSubtitle: 'px-4',
-    cardFooter: 'flex items-end justify-between gap-2 pt-2 mt-auto',
+    cardInfo: 'flex items-end justify-between gap-2 pt-2 mt-auto',
     cardPrice: 'text-3xl',
     cardAction: 'flex items-center justify-between gap-2',
-    cardGroup: 'h-10 w-full max-w-32 flex items-center justify-center rounded-md border border-dracula-line hover:border-dracula-white transition ease-in-out duration-300',
-    cardButton: 'px-2 hover:text-dracula-cyan transition ease-in-out duration-300',
-    cardQuantity: 'w-full text-center text-lg font-medium bg-transparent focus:outline-none',
-    cardCart: 'h-10 w-10 flex items-center justify-center rounded-md bg-dracula-line hover:bg-dracula-cyan text-dracula-cyan hover:text-dracula-line transition ease-in-out duration-300',
+    cardGroup: 'h-10 w-full max-w-32 flex items-center justify-center gap-2 rounded-md border border-dracula-line hover:border-dracula-white transition ease-in-out duration-300',
+    cardButton: 'px-2 hover:text-dracula-cyan disabled:hover:text-dracula-white disabled:cursor-not-allowed transition ease-in-out duration-300',
+    cardQuantity: 'w-full min-w-6 text-center text-lg font-medium bg-transparent focus:outline-none',
+    cardCart: 'h-10 w-10 px-2 flex items-center justify-center rounded-md bg-dracula-line hover:bg-dracula-cyan disabled:hover:bg-dracula-line text-dracula-cyan hover:text-dracula-line disabled:hover:text-dracula-cyan disabled:cursor-not-allowed transition ease-in-out duration-300',
     cardIcon: 'size-6 shrink-0',
   }
 })
