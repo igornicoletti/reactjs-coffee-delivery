@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { ChangeEvent, useState } from 'react'
+import { CartProps } from '../type/cart'
 import { CardProps } from '../type/card'
 import { Notification } from './notification'
 import { variantsCard } from '../styles/variants'
@@ -8,20 +9,13 @@ const { card, cardImage, cardCategory, cardCategoryItem, cardDescription, cardTi
 
 type CardType = {
   data: CardProps
-  handleSelectedCard: (data: CardProps, quantity: number) => void
 }
 
-export const Card = ({ data, handleSelectedCard }: CardType) => {
+export const Card = ({ data }: CardType) => {
+  const [cart, setCart] = useState<CartProps[]>([])
   const [quantity, setQuantity] = useState<number>(1)
   const [notification, setNotification] = useState<boolean>(false)
   const [notificationTitle, setNotificationTitle] = useState<string | null>(null)
-
-  const handleSelectedCardToCart = (data: CardProps, quantity: number) => {
-    handleSelectedCard(data, quantity)
-    setNotification(true)
-    setNotificationTitle(data.title)
-    setTimeout(() => { setQuantity(1), setNotification(false) }, 2000)
-  }
 
   const handleIncrementQuantity = () => {
     setQuantity(data => data + 1)
@@ -29,6 +23,28 @@ export const Card = ({ data, handleSelectedCard }: CardType) => {
 
   const handleDecrementQuantity = () => {
     quantity > 1 ? setQuantity(data => data - 1) : setQuantity(1)
+  }
+
+  const handleValidatedQuantity = (e: ChangeEvent<HTMLInputElement>) => {
+    const validatedQuantity = Math.max(1, Math.min(99, Number(e.target.value)))
+    setQuantity(validatedQuantity)
+  }
+
+  const handleSelectedCardToCart = ({ id, title, source, price }: CardProps) => {
+    setNotification(true)
+    setNotificationTitle(title)
+    setCart((data: CartProps[]) => data.some(data => data.id === id)
+      ? data.map(data => data.id === id
+        ? {
+          ...data,
+          quantity: (data.quantity + quantity),
+          price: price * (data.quantity + quantity)
+        }
+        : data)
+      : [...data, { id, title, source, quantity, price: (price * quantity) }]
+    )
+    setTimeout(() => { setQuantity(1), setNotification(false) }, 2000)
+    console.log(cart)
   }
 
   return (
@@ -54,12 +70,12 @@ export const Card = ({ data, handleSelectedCard }: CardType) => {
             <button className={cardButton()} disabled={notification || quantity === 1} onClick={handleDecrementQuantity}>
               <MinusIcon className={cardIcon()} aria-hidden='true' />
             </button>
-            <span className={cardQuantity()}>{quantity}</span>
+            <input className={cardQuantity()} onChange={handleValidatedQuantity} value={quantity} min='1' max='99' type='number' />
             <button className={cardButton()} disabled={notification || quantity === 99} onClick={handleIncrementQuantity}>
               <PlusIcon className={cardIcon()} aria-hidden='true' />
             </button>
           </div>
-          <button className={cardCart()} disabled={notification} onClick={() => handleSelectedCardToCart(data, quantity)}>
+          <button className={cardCart()} disabled={notification} onClick={() => handleSelectedCardToCart(data)}>
             <ShoppingCartIcon className={cardIcon()} aria-hidden='true' />
           </button>
         </div>

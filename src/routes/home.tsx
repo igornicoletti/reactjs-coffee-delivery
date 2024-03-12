@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import { CartProps } from '../type/cart'
 import { CardData } from '../data/card'
 import { CardProps } from '../type/card'
 import { Card } from '../components/card'
@@ -36,7 +35,6 @@ const heroes = [
 ]
 
 export const Home = () => {
-  const [carts, setCarts] = useState<CartProps[]>([])
   const [cards, setCards] = useState<CardProps[]>([])
   const [filters, setFilters] = useState<FilterProps[]>([])
 
@@ -50,15 +48,6 @@ export const Home = () => {
         ? (data.isActive = false, setCards(CardData))
         : (data.isActive = true, setCards(selectedCard))
       : data.isActive = false
-    )
-  }
-
-  const handleSelectedCard = ({ id, title, source, price }: CardProps, quantity: number) => {
-    setCarts((data: CartProps[]) => data.some(data => data.id === id)
-      ? data.map(data => data.id === id
-        ? { ...data, quantity: (data.quantity + quantity), price: price * (data.quantity + quantity) }
-        : data)
-      : [...data, { id, title, source, quantity, price: (price * quantity) }]
     )
   }
 
@@ -85,11 +74,6 @@ export const Home = () => {
         </div>
         <img className={heroImageDesk()} src='/images/coffee-delivery.png' alt='Coffee Delivery' />
       </div>
-      {carts.map(data => (
-        <div key={data.id}>
-          <span>{data.title}</span> - <span>{data.quantity} unid.</span> - <span>{data.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</span>
-        </div>
-      ))}
       <div className={product()}>
         <div className={productHead()}>
           <h3 className={productTitle()}>Nossos Cafés</h3>
@@ -101,7 +85,7 @@ export const Home = () => {
         </div>
         <ul className={productCard()}>
           {cards.map(data => (
-            <Card key={data.id} data={data} handleSelectedCard={handleSelectedCard} />
+            <Card key={data.id} data={data} />
           ))}
         </ul>
       </div>
