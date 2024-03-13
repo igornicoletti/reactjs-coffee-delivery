@@ -1,10 +1,10 @@
 import { Fragment } from 'react'
 import { Link } from 'react-router-dom'
-import { variantsModal } from '../styles/variants'
+import { ModalVariants } from '../styles/variants'
 import { Dialog, Transition } from '@headlessui/react'
 import { FaceSmileIcon } from '@heroicons/react/24/outline'
 
-const { modal, modalBackdrop, modalContent, modalInfo, modalPanel, modalIcon, modalTitle, modalDescription, modalAction, modalEnter, modalEnterTo, modalFrom, modalLeave, modalLeaveFrom, modalLeaveTo, modalChildEnter, modalChildEnterTo, modalChildFrom, modalChildLeave, modalChildLeaveFrom, modalChildLeaveTo } = variantsModal()
+const { modalContent, modalBackdrop, modalDialog, modalInfo, modalPanel, modalIcon, modalTitle, modalDescription, modalAction, modalEnter, modalEnterTo, modalFrom, modalLeave, modalLeaveFrom, modalLeaveTo, modalChildEnter, modalChildEnterTo, modalChildFrom, modalChildLeave, modalChildLeaveFrom, modalChildLeaveTo } = ModalVariants()
 
 type ModalProps = {
   dialog: boolean
@@ -14,11 +14,11 @@ type ModalProps = {
 export const Modal = ({ dialog, handleDialog }: ModalProps) => {
   return (
     <Transition appear show={dialog} as={Fragment}>
-      <Dialog className={modal()} onClose={handleDialog}>
+      <Dialog className={modalContent()} onClose={handleDialog}>
         <Transition.Child as={Fragment} enter={modalEnter()} enterFrom={modalFrom()} enterTo={modalEnterTo()} leave={modalLeave()} leaveFrom={modalLeaveFrom()} leaveTo={modalLeaveTo()}>
           <div className={modalBackdrop()} />
         </Transition.Child>
-        <div className={modalContent()}>
+        <div className={modalDialog()}>
           <div className={modalInfo()}>
             <Transition.Child as={Fragment} enter={modalChildEnter()} enterFrom={modalChildFrom()} enterTo={modalChildEnterTo()} leave={modalChildLeave()} leaveFrom={modalChildLeaveFrom()} leaveTo={modalChildLeaveTo()}>
               <Dialog.Panel className={modalPanel()}>

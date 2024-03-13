@@ -1,15 +1,15 @@
 import { tv } from 'tailwind-variants'
 
-export const variantsRoot = tv({
+export const RootVariants = tv({
   slots: {
-    layout: 'relative w-full h-full min-h-screen grid content-start overflow-x-hidden',
-    container: 'w-full max-w-screen-2xl mx-auto px-6',
+    rootLayout: 'relative w-full h-full min-h-screen grid content-start overflow-x-hidden',
+    rootContainer: 'w-full max-w-screen-2xl mx-auto px-6',
   }
 })
 
-export const variantsHeader = tv({
+export const HeaderVariants = tv({
   slots: {
-    header: 'w-full flex items-center justify-between py-8',
+    headerContent: 'w-full flex items-center justify-between py-8',
     headerTitle: 'text-2xl md:text-3xl font-semibold uppercase text-dracula-cyan hover:text-dracula-white transition ease-in-out duration-300',
     headerCart: 'relative',
     headerButton: 'flex items-center justify-center p-2 rounded-md bg-dracula-line hover:bg-dracula-cyan text-dracula-cyan hover:text-dracula-line transition ease-in-out duration-300',
@@ -28,9 +28,9 @@ export const variantsHeader = tv({
   }
 })
 
-export const variantsHero = tv({
+export const HeroVariants = tv({
   slots: {
-    hero: 'w-full flex flex-col xl:flex-row items-center justify-between gap-8 py-16',
+    heroContent: 'w-full flex flex-col xl:flex-row items-center justify-between gap-8 py-16',
     heroHead: 'w-full max-w-2xl flex flex-col gap-12',
     heroTitle: 'text-3xl md:text-5xl px-2 xl:px-0 font-medium text-center xl:text-left',
     heroSubtitle: 'max-w-lg text-xl md:text-3xl text-center xl:text-left mx-auto xl:mx-0',
@@ -42,9 +42,9 @@ export const variantsHero = tv({
   }
 })
 
-export const variantsProduct = tv({
+export const ProductVariants = tv({
   slots: {
-    product: 'w-full flex flex-col gap-12 py-16',
+    productContent: 'w-full flex flex-col gap-12 py-16',
     productHead: 'w-full flex flex-col lg:flex-row justify-between gap-4',
     productTitle: 'text-3xl font-medium uppercase',
     productFilter: 'flex flex-wrap -ml-4 lg:ml-0 lg:-mr-4',
@@ -52,22 +52,22 @@ export const variantsProduct = tv({
   }
 })
 
-export const variantsFilter = tv({
+export const FilterVariants = tv({
   slots: {
-    filter: 'font-medium uppercase py-2 px-4 md:hover:text-dracula-cyan transition ease-in-out duration-300',
+    filterContent: 'font-medium uppercase py-2 px-4 md:hover:text-dracula-cyan transition ease-in-out duration-300',
   },
   variants: {
     active: {
       true: {
-        filter: 'text-dracula-cyan animate-bounce',
+        filterContent: 'text-dracula-cyan animate-bounce',
       }
     }
   }
 })
 
-export const variantsCard = tv({
+export const CardVariants = tv({
   slots: {
-    card: 'flex flex-col rounded-md odd:rounded-tr-3xl even:rounded-tl-3xl odd:rounded-bl-3xl even:rounded-br-3xl gap-6 p-4 pt-0 border border-dracula-line bg-dracula-wrapper shadow-md hover:shadow-xl transition ease-in-out duration-300',
+    cardContent: 'flex flex-col rounded-md odd:rounded-tr-3xl even:rounded-tl-3xl odd:rounded-bl-3xl even:rounded-br-3xl gap-6 p-4 pt-0 border border-dracula-line bg-dracula-wrapper shadow-md hover:shadow-xl transition ease-in-out duration-300',
     cardImage: 'hover:animate-spin w-32 mx-auto -mt-4',
     cardCategory: 'flex items-center justify-center gap-2',
     cardCategoryItem: 'text-xs uppercase px-3 py-1 rounded-full bg-dracula-cyan/5 text-dracula-cyan',
@@ -85,13 +85,13 @@ export const variantsCard = tv({
   }
 })
 
-export const variantsCheckout = tv({
+export const CheckoutVariants = tv({
   slots: {
-    checkout: 'w-full flex flex-col xl:flex-row gap-16 xl:gap-8 py-16',
+    checkContent: 'w-full flex flex-col xl:flex-row gap-16 xl:gap-8 py-16',
     checkRecord: 'w-full flex flex-col gap-8',
     checkSummary: 'w-full xl:max-w-lg flex flex-col gap-8',
     checkTitle: 'text-xl md:text-2xl font-medium uppercase',
-    checkContent: 'flex flex-col gap-6',
+    checkPanel: 'flex flex-col gap-6',
     checkWrapper: 'w-full flex flex-col gap-12 p-4 md:p-6 rounded-md border border-dracula-line bg-dracula-wrapper',
     checkHead: 'flex flex-col gap-2',
     checkSubtitle: 'text-xl font-medium',
@@ -118,10 +118,10 @@ export const variantsCheckout = tv({
   }
 })
 
-export const variantsNotify = tv({
+export const NotifyVariants = tv({
   slots: {
-    notify: 'fixed inset-0 flex items-end sm:items-start px-4 py-6 md:p-6 z-10 pointer-events-none',
-    notifyContent: 'w-full flex flex-col items-center sm:items-end',
+    notifyContent: 'fixed inset-0 flex items-end sm:items-start px-4 py-6 md:p-6 z-10 pointer-events-none',
+    notifyPanel: 'w-full flex flex-col items-center sm:items-end',
     notifyHead: 'w-full max-w-md flex items-center gap-2 p-4 rounded-md shadow-md bg-white',
     notifyTitle: 'text-sm md:text-base font-medium text-dracula-dark',
     notifyIcon: 'size-6 text-dracula-green',
@@ -134,11 +134,11 @@ export const variantsNotify = tv({
   }
 })
 
-export const variantsModal = tv({
+export const ModalVariants = tv({
   slots: {
-    modal: 'relative z-10',
+    modalContent: 'relative z-10',
     modalBackdrop: 'fixed inset-0 bg-black/25',
-    modalContent: 'fixed inset-0 overflow-y-auto',
+    modalDialog: 'fixed inset-0 overflow-y-auto',
     modalInfo: 'flex min-h-full items-center justify-center text-center p-4',
     modalPanel: 'w-full max-w-xl flex flex-col items-center transform overflow-hidden rounded-md shadow-md bg-white p-6 align-middle transition-all',
     modalIcon: 'animate-bounce size-16 text-dracula-cyan',

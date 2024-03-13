@@ -1,9 +1,9 @@
 import { Fragment } from 'react'
 import { Transition } from '@headlessui/react'
-import { variantsNotify } from '../styles/variants'
+import { NotifyVariants } from '../styles/variants'
 import { CheckCircleIcon } from '@heroicons/react/24/outline'
 
-const { notify, notifyContent, notifyHead, notifyIcon, notifyTitle, notifyEnter, notifyEnterTo, notifyFrom, notifyLeave, notifyLeaveFrom, notifyLeaveTo } = variantsNotify()
+const { notifyContent, notifyPanel, notifyHead, notifyIcon, notifyTitle, notifyEnter, notifyEnterTo, notifyFrom, notifyLeave, notifyLeaveFrom, notifyLeaveTo } = NotifyVariants()
 
 type NotificationProps = {
   notification: boolean
@@ -12,8 +12,8 @@ type NotificationProps = {
 
 export const Notification = ({ notification, notificationTitle }: NotificationProps) => {
   return (
-    <div className={notify()}>
-      <div className={notifyContent()}>
+    <div className={notifyContent()}>
+      <div className={notifyPanel()}>
         <Transition show={notification} as={Fragment} enter={notifyEnter()} enterFrom={notifyFrom()} enterTo={notifyEnterTo()} leave={notifyLeave()} leaveFrom={notifyLeaveFrom()} leaveTo={notifyLeaveTo()}>
           <div className={notifyHead()}>
             <CheckCircleIcon className={notifyIcon()} aria-hidden='true' />

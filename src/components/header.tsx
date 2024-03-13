@@ -1,12 +1,12 @@
 import { NavLink } from 'react-router-dom'
-import { variantsHeader } from '../styles/variants'
+import { HeaderVariants } from '../styles/variants'
 import { ShoppingCartIcon } from '@heroicons/react/24/outline'
 
-const { header, headerTitle, headerCart, headerButton, headerIcon, headerBadge, headerPing, headerQuantity } = variantsHeader()
+const { headerContent, headerTitle, headerCart, headerButton, headerIcon, headerBadge, headerPing, headerQuantity } = HeaderVariants()
 
 export const Header = () => {
   return (
-    <div className={header()}>
+    <div className={headerContent()}>
       <NavLink className={({ isActive }) => isActive ? headerTitle({ active: true }) : headerTitle()} to='/'>
         <h1>Coffee Delivery</h1>
       </NavLink>

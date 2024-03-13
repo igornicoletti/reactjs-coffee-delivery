@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { Modal } from '../components/modal'
-import { variantsCheckout } from '../styles/variants'
+import { CheckoutVariants } from '../styles/variants'
 import { MinusIcon, PlusIcon, TrashIcon } from '@heroicons/react/24/outline'
 
-const { checkout, checkRecord, checkSummary, checkTitle, checkContent, checkWrapper, checkHead, checkSubtitle, checkForm, checkFormHidden, checkFormItem, checkFormItens, checkInput, checkLabel, checkPay, checkOrder, checkOrderItem, checkImage, checkInfo, checkBetween, checkDescription, checkAction, checkGroup, checkButton, checkTrash, checkQuantity, checkIcon, checkConfirm } = variantsCheckout()
+const { checkContent, checkRecord, checkSummary, checkTitle, checkPanel, checkWrapper, checkHead, checkSubtitle, checkForm, checkFormHidden, checkFormItem, checkFormItens, checkInput, checkLabel, checkPay, checkOrder, checkOrderItem, checkImage, checkInfo, checkBetween, checkDescription, checkAction, checkGroup, checkButton, checkTrash, checkQuantity, checkIcon, checkConfirm } = CheckoutVariants()
 
 export const Checkout = () => {
   const [dialog, setDialog] = useState<boolean>(false)
@@ -11,10 +11,10 @@ export const Checkout = () => {
   const handleDialog = () => setDialog(false)
 
   return (
-    <div className={checkout()}>
+    <div className={checkContent()}>
       <div className={checkRecord()}>
         <h3 className={checkTitle()}>Complete seu pedido</h3>
-        <div className={checkContent()}>
+        <div className={checkPanel()}>
           <div className={checkWrapper()}>
             <div className={checkHead()}>
               <p className={checkSubtitle()}>Endereço de entrega</p>

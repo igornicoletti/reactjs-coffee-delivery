@@ -1,16 +1,19 @@
 
 import { Outlet } from 'react-router-dom'
 import { Header } from '../components/header'
-import { variantsRoot } from '../styles/variants'
+import { RootVariants } from '../styles/variants'
+import { CartProvider } from '../contexts/cart-provider'
 
-const { layout, container } = variantsRoot()
+const { rootLayout, rootContainer } = RootVariants()
 
 export const Root = () => {
   return (
-    <div className={layout()}>
-      <div className={container()}>
-        <Header />
-        <Outlet />
+    <div className={rootLayout()}>
+      <div className={rootContainer()}>
+        <CartProvider>
+          <Header />
+          <Outlet />
+        </CartProvider>
       </div>
     </div>
   )

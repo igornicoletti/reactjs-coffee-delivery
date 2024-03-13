@@ -1,7 +1,7 @@
 import { FilterProps } from '../type/filter'
-import { variantsFilter } from '../styles/variants'
+import { FilterVariants } from '../styles/variants'
 
-const { filter } = variantsFilter()
+const { filterContent } = FilterVariants()
 
 type FilterType = {
   data: FilterProps
@@ -10,7 +10,7 @@ type FilterType = {
 
 export const Filter = ({ data, handleSelectedFilter }: FilterType) => {
   return (
-    <button className={data.isActive ? filter({ active: true }) : filter()}
+    <button className={data.isActive ? filterContent({ active: true }) : filterContent()}
       onClick={() => handleSelectedFilter(data.filterId)}>
       <span>{data.title}</span>
     </button>
