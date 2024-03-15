@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react'
-import { CartProps } from '../type/cart'
-import { CardData } from '../data/card'
+import { CardList } from '../data/card'
 import { CardProps } from '../type/card'
 import { Card } from '../components/card'
-import { FilterData } from '../data/filter'
+import { FilterList } from '../data/filter'
 import { FilterProps } from '../type/filter'
 import { Filter } from '../components/filter'
 import { HeroVariants, ProductVariants } from '../styles/variants'
@@ -36,36 +35,24 @@ const heroData = [
 ]
 
 export const Home = () => {
-  const [carts, setCarts] = useState<CartProps[]>([])
-  const [cards, setCards] = useState<CardProps[]>([])
-  const [filters, setFilters] = useState<FilterProps[]>([])
+  const [cardData, setCardData] = useState<CardProps[]>([])
+  const [filterData, setFilterData] = useState<FilterProps[]>([])
 
-  const handleSelectedFilter = (filterId: string) => {
-    const selectedCard: CardProps[] = CardData
-      .filter(data => data.category
-        .find(data => data.categoryId === filterId))
+  const handleFilter = (title: string) => {
+    const currentCard: CardProps[] = CardList
+      .filter((data) => data.category
+        .find((item) => item === title))
 
-    FilterData.find((data: FilterProps) => data.filterId === filterId
-      ? data.isActive
-        ? (data.isActive = false, setCards(CardData))
-        : (data.isActive = true, setCards(selectedCard))
-      : data.isActive = false
-    )
-  }
-
-  const handleSelectedCard = ({ id, title, source, price }: CardProps, quantity: number) => {
-    setCarts((state: CartProps[]) => state.some(item => item.id === id)
-      ? state.map(item => item.id === id
-        ? { ...item, quantity: (item.quantity + quantity), price: price * (item.quantity + quantity) }
-        : item)
-      : [...state, { id, title, source, quantity, price: (price * quantity) }]
-    )
-    console.log(carts)
+    FilterList.find((item) => item.title === title
+      ? item.isActive
+        ? (item.isActive = false, setCardData(CardList))
+        : (item.isActive = true, setCardData(currentCard))
+      : item.isActive = false)
   }
 
   useEffect(() => {
-    setCards(CardData)
-    setFilters(FilterData)
+    setCardData(CardList)
+    setFilterData(FilterList)
   }, [])
 
   return (
@@ -90,14 +77,14 @@ export const Home = () => {
         <div className={productHead()}>
           <h3 className={productTitle()}>Nossos Cafés</h3>
           <div className={productFilter()}>
-            {filters.map(data => (
-              <Filter key={data.id} data={data} handleSelectedFilter={handleSelectedFilter} />
+            {filterData.map(data => (
+              <Filter key={data.id} data={data} handleFilter={handleFilter} />
             ))}
           </div>
         </div>
         <ul className={productCard()}>
-          {cards.map(data => (
-            <Card key={data.id} data={data} handleSelectedCard={handleSelectedCard} />
+          {cardData.map(data => (
+            <Card key={data.id} data={data} />
           ))}
         </ul>
       </div>

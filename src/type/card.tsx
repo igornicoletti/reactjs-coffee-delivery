@@ -1,14 +1,8 @@
-type CategoryProps = {
-  id: number
-  title: string
-  categoryId: string
-}
 export interface CardProps {
   id: number
   title: string
   subtitle: string
   source: string
-  category: CategoryProps[]
+  category: string[]
   price: number
-  quantity: number
 }

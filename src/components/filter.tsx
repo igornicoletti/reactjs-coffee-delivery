@@ -5,13 +5,13 @@ const { filterContent } = FilterVariants()
 
 type FilterType = {
   data: FilterProps
-  handleSelectedFilter: (filterId: string) => void
+  handleFilter: (title: string) => void
 }
 
-export const Filter = ({ data, handleSelectedFilter }: FilterType) => {
+export const Filter = ({ data, handleFilter }: FilterType) => {
   return (
     <button className={data.isActive ? filterContent({ active: true }) : filterContent()}
-      onClick={() => handleSelectedFilter(data.filterId)}>
+      onClick={() => handleFilter(data.title)}>
       <span>{data.title}</span>
     </button>
   )

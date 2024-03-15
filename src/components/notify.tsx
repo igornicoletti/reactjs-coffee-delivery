@@ -5,19 +5,18 @@ import { CheckCircleIcon } from '@heroicons/react/24/outline'
 
 const { notifyContent, notifyPanel, notifyHead, notifyIcon, notifyTitle, notifyEnter, notifyEnterTo, notifyFrom, notifyLeave, notifyLeaveFrom, notifyLeaveTo } = NotifyVariants()
 
-type NotificationProps = {
-  notification: boolean
-  notificationTitle: string | null
+interface NotifyType {
+  currentNotify: boolean
 }
 
-export const Notification = ({ notification, notificationTitle }: NotificationProps) => {
+export const Notify = ({ currentNotify }: NotifyType) => {
   return (
     <div className={notifyContent()}>
       <div className={notifyPanel()}>
-        <Transition show={notification} as={Fragment} enter={notifyEnter()} enterFrom={notifyFrom()} enterTo={notifyEnterTo()} leave={notifyLeave()} leaveFrom={notifyLeaveFrom()} leaveTo={notifyLeaveTo()}>
+        <Transition show={currentNotify} as={Fragment} enter={notifyEnter()} enterFrom={notifyFrom()} enterTo={notifyEnterTo()} leave={notifyLeave()} leaveFrom={notifyLeaveFrom()} leaveTo={notifyLeaveTo()}>
           <div className={notifyHead()}>
             <CheckCircleIcon className={notifyIcon()} aria-hidden='true' />
-            <p className={notifyTitle()}>{notificationTitle} adicionado ao carrinho!</p>
+            <p className={notifyTitle()}>Produto adicionado ao carrinho!</p>
           </div>
         </Transition>
       </div>

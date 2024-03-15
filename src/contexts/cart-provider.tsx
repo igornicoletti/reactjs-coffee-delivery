@@ -1,30 +1,32 @@
 import { ReactNode, createContext, useEffect, useState } from 'react'
 
-interface CartItem {
-  id: string
+interface CartProps {
+  id: number
   quantity: number
 }
 
 interface CartContextType {
-  cart: CartItem[]
-  handleAddItem: (cartItem: CartItem) => void
-  handleRemoveItem: (cartId: CartItem['id']) => void
-  handleAddQuantity: (cartId: CartItem['id']) => void
-  handleRemoveQuantity: (cartId: CartItem['id']) => void
-  handleValidateQuantity: (cartId: CartItem['id']) => void
+  cart: CartProps[]
+  handleAddItem: (id: CartProps['id'], currentQuantity: number) => void
+  handleRemoveItem: (id: CartProps['id']) => void
 }
 
 export const CartContext = createContext({} as CartContextType)
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
-  const [currentCart, setCurrentCart] = useState<CartItem[]>([])
+  const [currentCart, setCurrentCart] = useState<CartProps[]>([])
 
-  const handleAddItem = () => { }
-  const handleRemoveItem = () => { }
-  const handleAddQuantity = () => { }
-  const handleRemoveQuantity = () => { }
-  const handleValidateQuantity = () => { }
-  console.log(setCurrentCart)
+  const handleAddItem = (id: number, currentQuantity: number) => {
+    const currentItem = currentCart.find((item) => item.id === id)
+    currentItem
+      ? currentItem.quantity += currentQuantity
+      : setCurrentCart((state) => [...state, { id, quantity: currentQuantity }])
+  }
+
+  const handleRemoveItem = (id: number) => {
+    const currentItem = currentCart.findIndex((item) => item.id === id)
+    currentCart.splice(currentItem, 1)
+  }
 
   useEffect(() => {
     currentCart && localStorage.setItem('reactjs-coffee-delivery:cart', JSON.stringify(currentCart))
@@ -32,12 +34,9 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <CartContext.Provider value={{
-      cart: currentCart,
       handleAddItem,
       handleRemoveItem,
-      handleAddQuantity,
-      handleRemoveQuantity,
-      handleValidateQuantity
+      cart: currentCart,
     }}>
       {children}
     </CartContext.Provider>

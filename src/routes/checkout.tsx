@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { Modal } from '../components/modal'
 import { CheckoutVariants } from '../styles/variants'
 import { MinusIcon, PlusIcon, TrashIcon } from '@heroicons/react/24/outline'
@@ -6,10 +5,6 @@ import { MinusIcon, PlusIcon, TrashIcon } from '@heroicons/react/24/outline'
 const { checkContent, checkRecord, checkSummary, checkTitle, checkPanel, checkWrapper, checkHead, checkSubtitle, checkForm, checkFormHidden, checkFormItem, checkFormItens, checkInput, checkLabel, checkPay, checkOrder, checkOrderItem, checkImage, checkInfo, checkBetween, checkDescription, checkAction, checkGroup, checkButton, checkTrash, checkQuantity, checkIcon, checkConfirm } = CheckoutVariants()
 
 export const Checkout = () => {
-  const [dialog, setDialog] = useState<boolean>(false)
-
-  const handleDialog = () => setDialog(false)
-
   return (
     <div className={checkContent()}>
       <div className={checkRecord()}>
@@ -83,7 +78,7 @@ export const Checkout = () => {
                     <button className={checkButton()}>
                       <MinusIcon className={checkIcon()} aria-hidden='true' />
                     </button>
-                    <input className={checkQuantity()} defaultValue={0} type='number' name='amount' />
+                    <input className={checkQuantity()} min={1} max={99} type='number' />
                     <button className={checkButton()}>
                       <PlusIcon className={checkIcon()} aria-hidden='true' />
                     </button>
@@ -109,10 +104,10 @@ export const Checkout = () => {
               <p className={checkDescription()}>R$ 25.00</p>
             </li>
           </ul>
-          <button className={checkConfirm()} onClick={() => setDialog(true)}>
+          <button className={checkConfirm()}>
             Confirmar pedido
           </button>
-          <Modal dialog={dialog} handleDialog={handleDialog} />
+          <Modal />
         </div>
       </div>
     </div>

@@ -15,8 +15,8 @@ export const HeaderVariants = tv({
     headerButton: 'flex items-center justify-center p-2 rounded-md bg-dracula-line hover:bg-dracula-cyan text-dracula-cyan hover:text-dracula-line transition ease-in-out duration-300',
     headerIcon: 'size-6 shrink-0',
     headerBadge: 'absolute min-w-4 h-4 -top-2 -right-2',
-    headerPing: 'animate-ping absolute w-full h-full rounded-full bg-dracula-cyan/50',
-    headerQuantity: 'relative flex items-center justify-center text-xs font-semibold rounded-full min-w-4 h-4 border-2 border-dracula-cyan text-dracula-line bg-dracula-cyan',
+    headerPing: 'animate-ping absolute w-full h-full rounded-full bg-dracula-cyan/25',
+    headerQuantity: 'relative flex items-center justify-center text-xs font-bold rounded-full min-w-5 h-5 border-2 border-dracula-dark text-dracula-line bg-dracula-cyan',
   },
   variants: {
     active: {
@@ -123,7 +123,7 @@ export const NotifyVariants = tv({
     notifyContent: 'fixed inset-0 flex items-end sm:items-start px-4 py-6 md:p-6 z-10 pointer-events-none',
     notifyPanel: 'w-full flex flex-col items-center sm:items-end',
     notifyHead: 'w-full max-w-md flex items-center gap-2 p-4 rounded-md shadow-md bg-white',
-    notifyTitle: 'text-sm md:text-base font-medium text-dracula-dark',
+    notifyTitle: 'text-dracula-dark',
     notifyIcon: 'size-6 text-dracula-green',
     notifyEnter: 'transform ease-out duration-300 transition',
     notifyFrom: 'translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2',

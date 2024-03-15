@@ -1,39 +1,39 @@
 import { ChangeEvent, useState } from 'react'
+import { Notify } from './notify'
 import { CardProps } from '../type/card'
-import { Notification } from './notification'
 import { CardVariants } from '../styles/variants'
+import { useCartContext } from '../contexts/cart'
 import { MinusIcon, PlusIcon, ShoppingCartIcon } from '@heroicons/react/24/outline'
 
 const { cardContent, cardImage, cardCategory, cardCategoryItem, cardDescription, cardTitle, cardSubtitle, cardInfo, cardPrice, cardAction, cardGroup, cardButton, cardQuantity, cardCart, cardIcon } = CardVariants()
 
 type CardType = {
   data: CardProps
-  handleSelectedCard: (data: CardProps, quantity: number) => void
 }
 
-export const Card = ({ data, handleSelectedCard }: CardType) => {
-  const [quantity, setQuantity] = useState<number>(1)
-  const [notification, setNotification] = useState<boolean>(false)
-  const [notificationTitle, setNotificationTitle] = useState<string | null>(null)
+export const Card = ({ data }: CardType) => {
+  const { handleAddItem } = useCartContext()
+  const [currentQuantity, setCurrentQuantity] = useState<number>(1)
+  const [currentNotify, setCurrentNotify] = useState<boolean>(false)
 
-  const handleIncrementQuantity = () => {
-    setQuantity(data => data + 1)
+  const handleAddQuantity = () =>
+    currentQuantity < 99 && setCurrentQuantity((state) => state + 1)
+
+  const handleRemoveQuantity = () =>
+    currentQuantity > 1 && setCurrentQuantity((state) => state - 1)
+
+  const handleValidateQuantity = (event: ChangeEvent<HTMLInputElement>) => {
+    const currentItem = Math.max(1, Math.min(99, Number(event.target.value)))
+    setCurrentQuantity(currentItem)
   }
 
-  const handleDecrementQuantity = () => {
-    quantity > 1 ? setQuantity(data => data - 1) : setQuantity(1)
-  }
-
-  const handleValidatedQuantity = (e: ChangeEvent<HTMLInputElement>) => {
-    const validatedQuantity = Math.max(1, Math.min(99, Number(e.target.value)))
-    setQuantity(validatedQuantity)
-  }
-
-  const handleSelectedCardToCart = (data: CardProps, quantity: number) => {
-    handleSelectedCard(data, quantity)
-    setNotification(true)
-    setNotificationTitle(data.title)
-    setTimeout(() => { setQuantity(1), setNotification(false) }, 2000)
+  const handleCurrentCard = () => {
+    handleAddItem(data.id, currentQuantity)
+    setCurrentNotify(true)
+    setTimeout(() => {
+      setCurrentQuantity(1)
+      setCurrentNotify(false)
+    }, 2000)
   }
 
   return (
@@ -41,8 +41,8 @@ export const Card = ({ data, handleSelectedCard }: CardType) => {
       <img className={cardImage()} src={data.source} alt={data.title} />
       <ul className={cardCategory()}>
         {data.category.map(data => (
-          <li className={cardCategoryItem()} key={data.id}>
-            <span>{data.title}</span>
+          <li className={cardCategoryItem()} key={data}>
+            <span>{data}</span>
           </li>
         ))}
       </ul>
@@ -56,20 +56,20 @@ export const Card = ({ data, handleSelectedCard }: CardType) => {
         </span></p>
         <div className={cardAction()}>
           <div className={cardGroup()}>
-            <button className={cardButton()} disabled={notification || quantity === 1} onClick={handleDecrementQuantity}>
+            <button className={cardButton()} onClick={handleRemoveQuantity} disabled={currentNotify || currentQuantity === 1}>
               <MinusIcon className={cardIcon()} aria-hidden='true' />
             </button>
-            <input className={cardQuantity()} onChange={handleValidatedQuantity} value={quantity} min={1} max={99} type='number' />
-            <button className={cardButton()} disabled={notification || quantity === 99} onClick={handleIncrementQuantity}>
+            <input className={cardQuantity()} onChange={handleValidateQuantity} value={currentQuantity} min={1} max={99} type='number' />
+            <button className={cardButton()} onClick={handleAddQuantity} disabled={currentNotify || currentQuantity === 99}>
               <PlusIcon className={cardIcon()} aria-hidden='true' />
             </button>
           </div>
-          <button className={cardCart()} disabled={notification} onClick={() => handleSelectedCardToCart(data, quantity)}>
+          <button className={cardCart()} onClick={handleCurrentCard} disabled={currentNotify}>
             <ShoppingCartIcon className={cardIcon()} aria-hidden='true' />
           </button>
         </div>
       </div>
-      <Notification notification={notification} notificationTitle={notificationTitle} />
+      <Notify currentNotify={currentNotify} />
     </li>
   )
 }
