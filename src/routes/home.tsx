@@ -9,6 +9,8 @@ import { FireIcon, ShoppingBagIcon, ShoppingCartIcon, TruckIcon } from '@heroico
 const { productContent, productHead, productTitle, productFilter, productCard, productCategory } = ProductVariants()
 const { heroContent, heroHead, heroTitle, heroSubtitle, heroDescription, heroDescriptionItem, heroIcon, heroImageMobile, heroImageDesk } = HeroVariants()
 
+const filterData = ['Alcoólico', 'Com leite', 'Especial', 'Gelado', 'Tradicional']
+
 const heroData = [
   { id: 1, icon: ShoppingCartIcon, title: 'Compra simples e segura' },
   { id: 2, icon: ShoppingBagIcon, title: 'Embalagem mantém o café intacto' },
@@ -16,15 +18,11 @@ const heroData = [
   { id: 4, icon: FireIcon, title: 'O café chega fresquinho até você' }
 ]
 
-const filterData = ['Alcoólico', 'Com leite', 'Especial', 'Gelado', 'Tradicional']
-
 export const Home = () => {
   const [cardData, setCardData] = useState<CardProps[]>([])
   const [currentFilter, setCurrentFilter] = useState<string[]>([])
 
-  useEffect(() => {
-    setCardData(CardList)
-  }, [])
+  useEffect(() => setCardData(CardList), [])
 
   return (
     <>
@@ -34,7 +32,7 @@ export const Home = () => {
           <p className={heroSubtitle()}>Com o Coffee Delivery você recebe seu café onde estiver, a qualquer hora</p>
           <img className={heroImageMobile()} src='/images/coffee-delivery.png' alt='Coffee Delivery' />
           <ul className={heroDescription()}>
-            {heroData.map(data => (
+            {heroData.map((data) => (
               <li className={heroDescriptionItem()} key={data.id}>
                 <data.icon className={heroIcon()} aria-hidden='true' />
                 <span>{data.title}</span>

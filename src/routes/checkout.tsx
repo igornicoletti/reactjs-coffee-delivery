@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react'
 import { Modal } from '../components/modal'
+import { useEffect, useState } from 'react'
 import { RadioGroup } from '@headlessui/react'
 import { CheckoutVariants } from '../styles/variants'
 import { MinusIcon, PlusIcon, TrashIcon } from '@heroicons/react/24/outline'

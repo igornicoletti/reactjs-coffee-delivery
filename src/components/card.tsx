@@ -40,9 +40,9 @@ export const Card = ({ data }: CardType) => {
     <li className={cardContent()}>
       <img className={cardImage()} src={data.source} alt={data.title} />
       <ul className={cardCategory()}>
-        {data.category.map(data => (
-          <li className={cardCategoryItem()} key={data}>
-            <span>{data}</span>
+        {data.category.map((iem) => (
+          <li className={cardCategoryItem()} key={iem}>
+            <span>{iem}</span>
           </li>
         ))}
       </ul>
