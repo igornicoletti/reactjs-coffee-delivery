@@ -1,58 +1,29 @@
-import { useEffect, useState } from 'react'
 import { CardList } from '../data/card'
 import { CardProps } from '../type/card'
 import { Card } from '../components/card'
-import { FilterList } from '../data/filter'
-import { FilterProps } from '../type/filter'
-import { Filter } from '../components/filter'
+import { useEffect, useState } from 'react'
+import { RadioGroup } from '@headlessui/react'
 import { HeroVariants, ProductVariants } from '../styles/variants'
 import { FireIcon, ShoppingBagIcon, ShoppingCartIcon, TruckIcon } from '@heroicons/react/24/outline'
 
-const { productContent, productHead, productTitle, productFilter, productCard } = ProductVariants()
+const { productContent, productHead, productTitle, productFilter, productCard, productCategory } = ProductVariants()
 const { heroContent, heroHead, heroTitle, heroSubtitle, heroDescription, heroDescriptionItem, heroIcon, heroImageMobile, heroImageDesk } = HeroVariants()
 
 const heroData = [
-  {
-    id: 1,
-    icon: ShoppingCartIcon,
-    title: 'Compra simples e segura'
-  },
-  {
-    id: 2,
-    icon: ShoppingBagIcon,
-    title: 'Embalagem mantém o café intacto'
-  },
-  {
-    id: 3,
-    icon: TruckIcon,
-    title: 'Entrega rápida e rastreada'
-  },
-  {
-    id: 4,
-    icon: FireIcon,
-    title: 'O café chega fresquinho até você'
-  }
+  { id: 1, icon: ShoppingCartIcon, title: 'Compra simples e segura' },
+  { id: 2, icon: ShoppingBagIcon, title: 'Embalagem mantém o café intacto' },
+  { id: 3, icon: TruckIcon, title: 'Entrega rápida e rastreada' },
+  { id: 4, icon: FireIcon, title: 'O café chega fresquinho até você' }
 ]
+
+const filterData = ['Alcoólico', 'Com leite', 'Especial', 'Gelado', 'Tradicional']
 
 export const Home = () => {
   const [cardData, setCardData] = useState<CardProps[]>([])
-  const [filterData, setFilterData] = useState<FilterProps[]>([])
-
-  const handleFilter = (title: string) => {
-    const currentCard: CardProps[] = CardList
-      .filter((data) => data.category
-        .find((item) => item === title))
-
-    FilterList.find((item) => item.title === title
-      ? item.isActive
-        ? (item.isActive = false, setCardData(CardList))
-        : (item.isActive = true, setCardData(currentCard))
-      : item.isActive = false)
-  }
+  const [currentFilter, setCurrentFilter] = useState<string[]>([])
 
   useEffect(() => {
     setCardData(CardList)
-    setFilterData(FilterList)
   }, [])
 
   return (
@@ -76,14 +47,16 @@ export const Home = () => {
       <div className={productContent()}>
         <div className={productHead()}>
           <h3 className={productTitle()}>Nossos Cafés</h3>
-          <div className={productFilter()}>
-            {filterData.map(data => (
-              <Filter key={data.id} data={data} handleFilter={handleFilter} />
+          <RadioGroup className={productFilter()} onChange={setCurrentFilter} value={currentFilter}>
+            {filterData.map((data) => (
+              <RadioGroup.Option key={data} value={data}>
+                <li className={productCategory()}>{data}</li>
+              </RadioGroup.Option>
             ))}
-          </div>
+          </RadioGroup>
         </div>
         <ul className={productCard()}>
-          {cardData.map(data => (
+          {cardData.map((data) => (
             <Card key={data.id} data={data} />
           ))}
         </ul>

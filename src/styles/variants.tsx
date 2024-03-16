@@ -47,21 +47,9 @@ export const ProductVariants = tv({
     productContent: 'w-full flex flex-col gap-12 py-16',
     productHead: 'w-full flex flex-col lg:flex-row justify-between gap-4',
     productTitle: 'text-3xl font-medium uppercase',
-    productFilter: 'flex flex-wrap -ml-4 lg:ml-0 lg:-mr-4',
     productCard: 'grid md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6',
-  }
-})
-
-export const FilterVariants = tv({
-  slots: {
-    filterContent: 'font-medium uppercase py-2 px-4 md:hover:text-dracula-cyan transition ease-in-out duration-300',
-  },
-  variants: {
-    active: {
-      true: {
-        filterContent: 'text-dracula-cyan animate-bounce',
-      }
-    }
+    productFilter: 'flex flex-wrap -ml-4 lg:ml-0 lg:-mr-4',
+    productCategory: 'flex items-center justify-center px-4 py-2 font-medium uppercase cursor-pointer ui-checked:animate-bounce ui-checked:text-dracula-cyan md:hover:text-dracula-cyan transition ease-in-out duration-300',
   }
 })
 
@@ -101,7 +89,7 @@ export const CheckoutVariants = tv({
     checkFormItens: 'h-12 relative col-span-1 md:col-span-2',
     checkInput: 'w-full h-full px-4 rounded-md peer border border-dracula-line hover:border-dracula-white focus:border-dracula-cyan bg-transparent focus:outline-none transition ease-in-out duration-300',
     checkLabel: 'absolute top-3 left-px px-4 font-medium bg-dracula-wrapper text-dracula-cyan peer-focus:text-dracula-cyan peer-placeholder-shown:text-dracula-line scale-75 peer-focus:scale-75 peer-placeholder-shown:scale-100 transform -translate-y-5 peer-focus:-translate-y-5 peer-placeholder-shown:translate-y-0 transition ease-in-out duration-300',
-    checkPay: 'w-full flex items-center justify-center px-4 h-12 font-medium uppercase rounded-md border border-dracula-cyan bg-transparent hover:bg-dracula-cyan text-dracula-white hover:text-dracula-line transition ease-in-out duration-300',
+    checkPay: 'w-full flex items-center justify-center px-4 h-12 font-medium uppercase cursor-pointer rounded-md border border-dracula-cyan bg-transparent ui-checked:bg-dracula-cyan hover:bg-dracula-cyan ui-checked:text-dracula-dark hover:text-dracula-dark transition ease-in-out duration-300',
     checkOrder: 'flex flex-col divide-y divide-dracula-line -mt-4',
     checkOrderItem: 'flex items-center gap-4 py-4',
     checkImage: 'w-16 hidden md:block',
@@ -114,7 +102,7 @@ export const CheckoutVariants = tv({
     checkQuantity: 'w-full text-center text-lg font-medium bg-transparent focus:outline-none',
     checkTrash: 'hover:text-dracula-red transition ease-in duration-300',
     checkIcon: 'size-5 shrink-0',
-    checkConfirm: 'w-full flex items-center justify-center px-4 h-12 font-medium uppercase rounded-md bg-dracula-cyan text-dracula-line hover:scale-95 active:scale-105 transition ease-in-out duration-300',
+    checkConfirm: 'w-full flex items-center justify-center px-4 h-12 font-medium uppercase rounded-md bg-dracula-cyan text-dracula-dark hover:scale-95 active:scale-105 transition ease-in-out duration-300',
   }
 })
 

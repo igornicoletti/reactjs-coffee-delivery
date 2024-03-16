@@ -1,10 +1,18 @@
+import { useEffect, useState } from 'react'
 import { Modal } from '../components/modal'
+import { RadioGroup } from '@headlessui/react'
 import { CheckoutVariants } from '../styles/variants'
 import { MinusIcon, PlusIcon, TrashIcon } from '@heroicons/react/24/outline'
 
 const { checkContent, checkRecord, checkSummary, checkTitle, checkPanel, checkWrapper, checkHead, checkSubtitle, checkForm, checkFormHidden, checkFormItem, checkFormItens, checkInput, checkLabel, checkPay, checkOrder, checkOrderItem, checkImage, checkInfo, checkBetween, checkDescription, checkAction, checkGroup, checkButton, checkTrash, checkQuantity, checkIcon, checkConfirm } = CheckoutVariants()
 
+const payData = ['Dinheiro', 'Cartão de crédito', 'Cartão de dédito']
+
 export const Checkout = () => {
+  const [currentPay, setCurrentPay] = useState<string[]>([])
+
+  useEffect(() => setCurrentPay(payData), [])
+
   return (
     <div className={checkContent()}>
       <div className={checkRecord()}>
@@ -48,17 +56,13 @@ export const Checkout = () => {
               <p className={checkSubtitle()}>Forma de pagamento</p>
               <span>O pagamento é feito na entrega. Escolha a forma que deseja pagar.</span>
             </div>
-            <div className={checkForm()}>
-              <button className={checkPay()}>
-                <span>Dinheiro</span>
-              </button>
-              <button className={checkPay()}>
-                <span>Cartão de crédito</span>
-              </button>
-              <button className={checkPay()}>
-                <span>Cartão de dédito</span>
-              </button>
-            </div>
+            <RadioGroup className={checkForm()} onChange={setCurrentPay} value={currentPay}>
+              {payData.map((data) => (
+                <RadioGroup.Option className={checkPay()} key={data} value={data}>
+                  <span>{data}</span>
+                </RadioGroup.Option>
+              ))}
+            </RadioGroup>
           </div>
         </div>
       </div>
@@ -105,7 +109,7 @@ export const Checkout = () => {
             </li>
           </ul>
           <button className={checkConfirm()}>
-            Confirmar pedido
+            <span>Confirmar pedido</span>
           </button>
           <Modal />
         </div>
