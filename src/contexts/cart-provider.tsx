@@ -21,8 +21,6 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
   const handleAddItem = (data: CartProps) => {
     const currentItem = currentCart.find((item) => item.id === data.id)
-    console.log(currentItem);
-
     currentItem
       ? currentItem.quantity += data.quantity
       : setCurrentCart((state) => [...state, data])
