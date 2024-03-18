@@ -72,11 +72,17 @@ export const CardVariants = tv({
     cardInfo: 'flex items-end justify-between gap-2 pt-2 mt-auto',
     cardPrice: 'text-3xl',
     cardAction: 'flex items-center justify-between gap-2',
-    cardGroup: 'h-10 w-full max-w-32 flex items-center justify-center gap-2 rounded-md border border-dracula-line hover:border-dracula-white transition ease-in-out duration-300',
-    cardButton: 'px-2 hover:text-dracula-cyan disabled:hover:text-dracula-white disabled:cursor-not-allowed transition ease-in-out duration-300',
-    cardQuantity: 'w-full min-w-6 text-center text-lg font-medium bg-transparent focus:outline-none',
     cardCart: 'h-10 w-10 px-2 flex items-center justify-center rounded-md bg-dracula-line hover:bg-dracula-cyan disabled:hover:bg-dracula-line text-dracula-cyan hover:text-dracula-line disabled:hover:text-dracula-cyan disabled:cursor-not-allowed transition ease-in-out duration-300',
     cardIcon: 'size-6 shrink-0',
+  }
+})
+
+export const QuantityVariants = tv({
+  slots: {
+    quantityContent: 'h-10 w-full max-w-32 flex items-center justify-center gap-2 rounded-md border border-dracula-line hover:border-dracula-white transition ease-in-out duration-300',
+    quantityButton: 'px-2 hover:text-dracula-cyan disabled:hover:text-dracula-white disabled:cursor-not-allowed transition ease-in-out duration-300',
+    quantityValue: 'w-full min-w-6 text-center text-lg font-medium bg-transparent focus:outline-none',
+    quantityIcon: 'size-6 shrink-0',
   }
 })
 
@@ -99,16 +105,13 @@ export const CheckoutVariants = tv({
     checkPay: 'w-full flex items-center justify-center px-4 h-12 font-medium uppercase cursor-pointer rounded-md border border-dracula-cyan bg-transparent ui-checked:bg-dracula-cyan hover:bg-dracula-cyan ui-checked:text-dracula-dark hover:text-dracula-dark transition ease-in-out duration-300',
     checkOrder: 'flex flex-col divide-y divide-dracula-line -mt-4',
     checkOrderItem: 'flex items-center gap-4 py-4',
-    checkImage: 'w-16 hidden md:block',
+    checkImage: 'w-14 hidden md:block',
     checkInfo: 'w-full flex flex-col gap-1',
     checkBetween: 'flex justify-between gap-4',
-    checkDescription: 'text-lg font-medium uppercase',
+    checkDescription: 'font-medium text-lg',
     checkAction: 'flex items-center justify-between gap-2',
-    checkGroup: 'w-full max-w-32 flex items-center justify-center',
-    checkButton: 'px-2 hover:text-dracula-cyan transition ease-in duration-300',
-    checkQuantity: 'w-full text-center text-lg font-medium bg-transparent focus:outline-none',
     checkTrash: 'hover:text-dracula-red transition ease-in duration-300',
-    checkIcon: 'size-5 shrink-0',
+    checkIcon: 'size-4 shrink-0',
     checkConfirm: 'w-full flex items-center justify-center px-4 h-12 font-medium uppercase rounded-md bg-dracula-cyan text-dracula-dark hover:scale-95 active:scale-105 transition ease-in-out duration-300',
   }
 })
@@ -117,8 +120,8 @@ export const NotifyVariants = tv({
   slots: {
     notifyContent: 'fixed inset-0 flex items-end sm:items-start px-4 py-6 md:p-6 z-10 pointer-events-none',
     notifyPanel: 'w-full flex flex-col items-center sm:items-end',
-    notifyHead: 'w-full max-w-md flex items-center gap-2 p-4 rounded-md shadow-md bg-white',
-    notifyTitle: 'text-dracula-dark',
+    notifyHead: 'w-full max-w-md flex items-center gap-2 px-2 py-4 md:p-4 rounded-md shadow-md bg-white',
+    notifyTitle: 'text-sm md:text-base text-dracula-dark',
     notifyIcon: 'size-6 text-dracula-green',
     notifyEnter: 'transform ease-out duration-300 transition',
     notifyFrom: 'translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2',

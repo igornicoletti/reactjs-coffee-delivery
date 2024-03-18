@@ -14,7 +14,7 @@ export const Header = () => {
         <h1>Coffee Delivery</h1>
       </NavLink>
       <div className={headerCart()}>
-        <NavLink className={({ isActive }) => isActive ? headerButton({ active: true }) : headerButton()} to='/checkout'>
+        <NavLink className={({ isActive }) => isActive ? headerButton({ active: true }) : headerButton()} to='/checkout' onClick={(e) => cart.length === 0 && e.preventDefault()}>
           <ShoppingCartIcon className={headerIcon()} aria-hidden='true' />
         </NavLink>
         {cart.length > 0 &&

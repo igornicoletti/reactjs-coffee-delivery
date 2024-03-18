@@ -1,11 +1,12 @@
 import { ChangeEvent, useState } from 'react'
 import { Notify } from './notify'
+import { Quantity } from './quantity'
 import { CardProps } from '../type/card'
 import { useCartContext } from '../hooks/cart'
 import { CardVariants } from '../styles/variants'
-import { MinusIcon, PlusIcon, ShoppingCartIcon } from '@heroicons/react/24/outline'
+import { ShoppingCartIcon } from '@heroicons/react/24/outline'
 
-const { cardContent, cardImage, cardCategory, cardCategoryItem, cardDescription, cardTitle, cardSubtitle, cardInfo, cardPrice, cardAction, cardGroup, cardButton, cardQuantity, cardCart, cardIcon } = CardVariants()
+const { cardContent, cardImage, cardCategory, cardCategoryItem, cardDescription, cardTitle, cardSubtitle, cardInfo, cardPrice, cardAction, cardCart, cardIcon } = CardVariants()
 
 type CardType = {
   data: CardProps
@@ -15,6 +16,7 @@ export const Card = ({ data }: CardType) => {
   const { handleAddItem } = useCartContext()
   const [currentQuantity, setCurrentQuantity] = useState<number>(1)
   const [currentNotify, setCurrentNotify] = useState<boolean>(false)
+  const [currentNotifyTitle, setCurrentNotifyTitle] = useState<string>('')
 
   const handleAddQuantity = () =>
     currentQuantity < 99 && setCurrentQuantity((state) => state + 1)
@@ -28,17 +30,18 @@ export const Card = ({ data }: CardType) => {
   }
 
   const handleCurrentCard = () => {
-    handleAddItem(data, currentQuantity)
+    handleAddItem({ id: data.id, title: data.title, image: data.image, price: data.price, quantity: currentQuantity })
     setCurrentNotify(true)
+    setCurrentNotifyTitle(data.title)
     setTimeout(() => {
       setCurrentQuantity(1)
       setCurrentNotify(false)
-    }, 2000)
+    }, 1500)
   }
 
   return (
     <li className={cardContent()}>
-      <img className={cardImage()} src={data.source} alt={data.title} />
+      <img className={cardImage()} src={data.image} alt={data.title} />
       <ul className={cardCategory()}>
         {data.category.map((iem) => (
           <li className={cardCategoryItem()} key={iem}>
@@ -55,21 +58,17 @@ export const Card = ({ data }: CardType) => {
           {data.price.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
         </span></p>
         <div className={cardAction()}>
-          <div className={cardGroup()}>
-            <button className={cardButton()} onClick={handleRemoveQuantity} disabled={currentNotify || currentQuantity === 1}>
-              <MinusIcon className={cardIcon()} aria-hidden='true' />
-            </button>
-            <input className={cardQuantity()} onChange={handleValidateQuantity} value={currentQuantity} min={1} max={99} type='number' />
-            <button className={cardButton()} onClick={handleAddQuantity} disabled={currentNotify || currentQuantity === 99}>
-              <PlusIcon className={cardIcon()} aria-hidden='true' />
-            </button>
-          </div>
+          <Quantity
+            currentQuantity={currentQuantity}
+            handleAddQuantity={handleAddQuantity}
+            handleRemoveQuantity={handleRemoveQuantity}
+            handleValidateQuantity={handleValidateQuantity} />
           <button className={cardCart()} onClick={handleCurrentCard} disabled={currentNotify}>
             <ShoppingCartIcon className={cardIcon()} aria-hidden='true' />
           </button>
         </div>
       </div>
-      <Notify currentNotify={currentNotify} />
+      <Notify currentNotify={currentNotify} currentNotifyTitle={currentNotifyTitle} />
     </li>
   )
 }

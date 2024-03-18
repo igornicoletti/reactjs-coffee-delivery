@@ -1,18 +1,17 @@
 import { ReactNode, createContext, useEffect, useState } from 'react'
-import { CardProps } from '../type/card'
 
-interface CartProps {
+type CartProps = {
   id: number
   title: string
-  source: string
-  quantity: number
+  image: string
   price: number
+  quantity: number
 }
 
 interface CartContextType {
   cart: CartProps[]
-  handleAddItem: (data: CardProps, currentQuantity: number) => void
-  handleRemoveItem: (id: CartProps['id']) => void
+  handleAddItem: (data: CartProps) => void
+  handleRemoveItem: (data: CartProps) => void
 }
 
 export const CartContext = createContext({} as CartContextType)
@@ -20,28 +19,32 @@ export const CartContext = createContext({} as CartContextType)
 export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [currentCart, setCurrentCart] = useState<CartProps[]>([])
 
-  const handleAddItem = ({ id, title, source, price }: CardProps, currentQuantity: number) => {
-    const currentItem = currentCart.find((item) => item.id === id)
+  const handleAddItem = (data: CartProps) => {
+    const currentItem = currentCart.find((item) => item.id === data.id)
+    console.log(currentItem);
 
     currentItem
-      ? currentItem.quantity += currentQuantity
-      : setCurrentCart((state) => [...state, { id, title, source, price, quantity: currentQuantity }])
+      ? currentItem.quantity += data.quantity
+      : setCurrentCart((state) => [...state, data])
   }
 
-  const handleRemoveItem = (id: number) => {
-    const currentItem = currentCart.filter((item) => item.id !== id)
+  const handleRemoveItem = (data: CartProps) => {
+    const currentItem = currentCart.filter((item) => item.id !== data.id)
     setCurrentCart(currentItem)
   }
 
   useEffect(() => {
-    currentCart && localStorage.setItem('reactjs-coffee-delivery:cart', JSON.stringify(currentCart))
+    if (currentCart) {
+      const stateJSON = JSON.stringify(currentCart)
+      localStorage.setItem('reactjs-coffee-delivery:cart', stateJSON)
+    }
   }, [currentCart])
 
   return (
     <CartContext.Provider value={{
       handleAddItem,
       handleRemoveItem,
-      cart: currentCart,
+      cart: currentCart
     }}>
       {children}
     </CartContext.Provider>

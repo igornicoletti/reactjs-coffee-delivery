@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import { Modal } from '../components/modal'
 import { RadioGroup } from '@headlessui/react'
-import { CheckoutVariants } from '../styles/variants'
-import { MinusIcon, PlusIcon, TrashIcon } from '@heroicons/react/24/outline'
 import { useCartContext } from '../hooks/cart'
+import { CheckoutVariants } from '../styles/variants'
+import { TrashIcon } from '@heroicons/react/24/outline'
 
-const { checkContent, checkRecord, checkSummary, checkTitle, checkPanel, checkWrapper, checkHead, checkSubtitle, checkForm, checkFormHidden, checkFormItem, checkFormItens, checkInput, checkLabel, checkPay, checkOrder, checkOrderItem, checkImage, checkInfo, checkBetween, checkDescription, checkAction, checkGroup, checkButton, checkTrash, checkQuantity, checkIcon, checkConfirm } = CheckoutVariants()
+const { checkContent, checkRecord, checkSummary, checkTitle, checkPanel, checkWrapper, checkHead, checkSubtitle, checkForm, checkFormHidden, checkFormItem, checkFormItens, checkInput, checkLabel, checkPay, checkOrder, checkOrderItem, checkImage, checkInfo, checkBetween, checkDescription, checkAction, checkTrash, checkIcon, checkConfirm } = CheckoutVariants()
 
 const payData = ['Dinheiro', 'Cartão de crédito', 'Cartão de dédito']
 
@@ -14,9 +14,7 @@ export const Checkout = () => {
   const [currentPay, setCurrentPay] = useState<string[]>([])
   const [currentModal, setCurrentModal] = useState<boolean>(false)
 
-  const handleCurrentCheckout = () => {
-    setCurrentModal(true)
-  }
+  const handleCurrentCheckout = () => setCurrentModal(true)
 
   return (
     <div className={checkContent()}>
@@ -77,25 +75,17 @@ export const Checkout = () => {
           <ul className={checkOrder()}>
             {cart.map((data) => (
               <li className={checkOrderItem()} key={data.id}>
-                <img className={checkImage()} src={data.source} alt='Coffee Delivery' />
+                <img className={checkImage()} src={data.image} alt='Coffee Delivery' />
                 <div className={checkInfo()}>
                   <div className={checkBetween()}>
                     <p className={checkDescription()}>{data.title}</p>
                     <p className={checkDescription()}>
-                      {data.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
+                      {(data.price * data.quantity).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
                     </p>
                   </div>
                   <div className={checkAction()}>
-                    <div className={checkGroup()}>
-                      <button className={checkButton()}>
-                        <MinusIcon className={checkIcon()} aria-hidden='true' />
-                      </button>
-                      <input className={checkQuantity()} defaultValue={data.quantity} min={1} max={99} type='number' />
-                      <button className={checkButton()}>
-                        <PlusIcon className={checkIcon()} aria-hidden='true' />
-                      </button>
-                    </div>
-                    <button className={checkTrash()} onClick={() => handleRemoveItem(data.id)}>
+                    <div>{data.quantity}</div>
+                    <button className={checkTrash()} onClick={() => handleRemoveItem(data)}>
                       <TrashIcon className={checkIcon()} aria-hidden='true' />
                     </button>
                   </div>

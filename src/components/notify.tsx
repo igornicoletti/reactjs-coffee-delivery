@@ -7,16 +7,17 @@ const { notifyContent, notifyPanel, notifyHead, notifyIcon, notifyTitle, notifyE
 
 interface NotifyType {
   currentNotify: boolean
+  currentNotifyTitle: string
 }
 
-export const Notify = ({ currentNotify }: NotifyType) => {
+export const Notify = ({ currentNotify, currentNotifyTitle }: NotifyType) => {
   return (
     <div className={notifyContent()}>
       <div className={notifyPanel()}>
         <Transition show={currentNotify} as={Fragment} enter={notifyEnter()} enterFrom={notifyFrom()} enterTo={notifyEnterTo()} leave={notifyLeave()} leaveFrom={notifyLeaveFrom()} leaveTo={notifyLeaveTo()}>
           <div className={notifyHead()}>
             <CheckCircleIcon className={notifyIcon()} aria-hidden='true' />
-            <p className={notifyTitle()}>Produto adicionado ao carrinho!</p>
+            <p className={notifyTitle()}>{currentNotifyTitle} foi adicionado ao carrinho!</p>
           </div>
         </Transition>
       </div>
