@@ -49,7 +49,14 @@ export const ProductVariants = tv({
     productTitle: 'text-3xl font-medium uppercase',
     productCard: 'grid md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6',
     productFilter: 'flex flex-wrap -ml-4 lg:ml-0 lg:-mr-4',
-    productCategory: 'flex items-center justify-center px-4 py-2 font-medium uppercase cursor-pointer ui-checked:animate-bounce ui-checked:text-dracula-cyan md:hover:text-dracula-cyan transition ease-in-out duration-300',
+    productFilterItem: 'flex items-center justify-center px-4 py-2 font-medium uppercase cursor-pointer md:hover:text-dracula-cyan transition ease-in-out duration-300',
+  },
+  variants: {
+    active: {
+      true: {
+        productFilterItem: 'animate-bounce text-dracula-cyan',
+      }
+    }
   }
 })
 

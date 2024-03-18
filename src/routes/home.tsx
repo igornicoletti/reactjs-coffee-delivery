@@ -2,14 +2,11 @@ import { CardList } from '../data/card'
 import { CardProps } from '../type/card'
 import { Card } from '../components/card'
 import { useEffect, useState } from 'react'
-import { RadioGroup } from '@headlessui/react'
 import { HeroVariants, ProductVariants } from '../styles/variants'
 import { FireIcon, ShoppingBagIcon, ShoppingCartIcon, TruckIcon } from '@heroicons/react/24/outline'
 
-const { productContent, productHead, productTitle, productFilter, productCard, productCategory } = ProductVariants()
+const { productContent, productHead, productTitle, productCard, productFilter, productFilterItem } = ProductVariants()
 const { heroContent, heroHead, heroTitle, heroSubtitle, heroDescription, heroDescriptionItem, heroIcon, heroImageMobile, heroImageDesk } = HeroVariants()
-
-const filterData = ['Alcoólico', 'Com leite', 'Especial', 'Gelado', 'Tradicional']
 
 const heroData = [
   { id: 1, icon: ShoppingCartIcon, title: 'Compra simples e segura' },
@@ -18,9 +15,27 @@ const heroData = [
   { id: 4, icon: FireIcon, title: 'O café chega fresquinho até você' }
 ]
 
+const filterData = [
+  { id: 1, title: 'Alcoólico', checked: false },
+  { id: 2, title: 'Com leite', checked: false },
+  { id: 3, title: 'Especial', checked: false },
+  { id: 4, title: 'Gelado', checked: false },
+  { id: 5, title: 'Tradicional', checked: false }
+]
+
 export const Home = () => {
   const [cardData, setCardData] = useState<CardProps[]>([])
-  const [currentFilter, setCurrentFilter] = useState<string[]>([])
+
+  const handleSelected = (currentFilter: string) => {
+    const newCardList = CardList.filter((data) => data.category.find((item) => item === currentFilter))
+
+    filterData.filter((data) => data.title === currentFilter
+      ? data.checked
+        ? (data.checked = false, setCardData(CardList))
+        : (data.checked = true, setCardData(newCardList))
+      : data.checked = false
+    )
+  }
 
   useEffect(() => setCardData(CardList), [])
 
@@ -45,13 +60,15 @@ export const Home = () => {
       <div className={productContent()}>
         <div className={productHead()}>
           <h3 className={productTitle()}>Nossos Cafés</h3>
-          <RadioGroup className={productFilter()} onChange={setCurrentFilter} value={currentFilter}>
+          <ul className={productFilter()}>
             {filterData.map((data) => (
-              <RadioGroup.Option key={data} value={data}>
-                <li className={productCategory()}>{data}</li>
-              </RadioGroup.Option>
+              <li key={data.id} onClick={() => handleSelected(data.title)}>
+                <span className={data.checked ? productFilterItem({ active: true }) : productFilterItem()}>
+                  {data.title}
+                </span>
+              </li>
             ))}
-          </RadioGroup>
+          </ul>
         </div>
         <ul className={productCard()}>
           {cardData.map((data) => (
