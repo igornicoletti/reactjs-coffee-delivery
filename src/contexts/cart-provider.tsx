@@ -29,8 +29,8 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   }
 
   const handleRemoveItem = (id: number) => {
-    const currentItem = currentCart.findIndex((item) => item.id === id)
-    setCurrentCart(currentCart.splice(currentItem, 1))
+    const currentItem = currentCart.filter((item) => item.id !== id)
+    setCurrentCart(currentItem)
   }
 
   useEffect(() => {
