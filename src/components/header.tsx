@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom'
-import { useCartContext } from '../contexts/cart'
+import { useCartContext } from '../hooks/cart'
 import { HeaderVariants } from '../styles/variants'
 import { ShoppingCartIcon } from '@heroicons/react/24/outline'
 

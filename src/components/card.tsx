@@ -1,8 +1,8 @@
 import { ChangeEvent, useState } from 'react'
 import { Notify } from './notify'
 import { CardProps } from '../type/card'
+import { useCartContext } from '../hooks/cart'
 import { CardVariants } from '../styles/variants'
-import { useCartContext } from '../contexts/cart'
 import { MinusIcon, PlusIcon, ShoppingCartIcon } from '@heroicons/react/24/outline'
 
 const { cardContent, cardImage, cardCategory, cardCategoryItem, cardDescription, cardTitle, cardSubtitle, cardInfo, cardPrice, cardAction, cardGroup, cardButton, cardQuantity, cardCart, cardIcon } = CardVariants()
@@ -28,7 +28,7 @@ export const Card = ({ data }: CardType) => {
   }
 
   const handleCurrentCard = () => {
-    handleAddItem(data.id, currentQuantity)
+    handleAddItem(data, currentQuantity)
     setCurrentNotify(true)
     setTimeout(() => {
       setCurrentQuantity(1)
