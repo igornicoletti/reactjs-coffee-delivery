@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { CardList } from '../data/card'
 import { CardProps } from '../type/card'
 import { Card } from '../components/card'
@@ -36,6 +36,8 @@ export const Home = () => {
       : data.checked = false
     )
   }
+
+  useEffect(() => setCardData(CardList), [])
 
   return (
     <>
