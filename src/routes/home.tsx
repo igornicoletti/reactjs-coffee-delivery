@@ -37,8 +37,6 @@ export const Home = () => {
     )
   }
 
-  useEffect(() => setCardData(CardList), [])
-
   return (
     <>
       <div className={heroContent()}>
