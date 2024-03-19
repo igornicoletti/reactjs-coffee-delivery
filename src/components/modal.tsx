@@ -6,12 +6,11 @@ import { FaceSmileIcon } from '@heroicons/react/24/outline'
 
 const { modalContent, modalBackdrop, modalDialog, modalInfo, modalPanel, modalIcon, modalTitle, modalDescription, modalAction, modalEnter, modalEnterTo, modalFrom, modalLeave, modalLeaveFrom, modalLeaveTo, modalChildEnter, modalChildEnterTo, modalChildFrom, modalChildLeave, modalChildLeaveFrom, modalChildLeaveTo } = ModalVariants()
 
-interface ModalType {
+type Props = {
   currentModal: boolean
 }
 
-export const Modal = ({ currentModal }: ModalType) => {
-
+export const Modal = ({ currentModal }: Props) => {
   return (
     <Transition appear show={currentModal} as={Fragment}>
       <Dialog className={modalContent()} onClose={() => null}>

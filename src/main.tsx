@@ -3,24 +3,33 @@ import ReactDOM from 'react-dom/client'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 
 import './index.css'
-import { ErrorPage } from './error'
 import { Root } from './routes/root'
 import { Home } from './routes/home'
-import { Checkout } from './routes/checkout'
+import { Cart } from './routes/cart'
+import { RootErrorBoundary } from './error'
+
+import { getProducts } from './api/product-root'
+import { ProductProps } from './types/product-props'
+
+const loader = async () => {
+  const products: ProductProps[] = await getProducts()
+  return { products }
+}
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Root />,
-    errorElement: <ErrorPage />,
+    errorElement: <RootErrorBoundary />,
     children: [
       {
         path: '/',
+        loader: loader,
         element: <Home />
       },
       {
-        path: '/checkout',
-        element: <Checkout />
+        path: '/cart',
+        element: <Cart />
       }
     ]
   }

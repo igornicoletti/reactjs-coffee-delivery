@@ -1,74 +1,67 @@
 import { ChangeEvent, useState } from 'react'
 import { Notify } from './notify'
 import { Quantity } from './quantity'
-import { CardProps } from '../type/card'
-import { useCartContext } from '../hooks/cart'
+import { useCart } from '../hooks/cart-context'
 import { CardVariants } from '../styles/variants'
+import { ProductProps } from '../types/product-props'
 import { ShoppingCartIcon } from '@heroicons/react/24/outline'
 
 const { cardContent, cardImage, cardCategory, cardCategoryItem, cardDescription, cardTitle, cardSubtitle, cardInfo, cardPrice, cardAction, cardCart, cardIcon } = CardVariants()
 
-type CardType = {
-  data: CardProps
+type Props = {
+  product: ProductProps
 }
 
-export const Card = ({ data }: CardType) => {
-  const { handleAddItem } = useCartContext()
+export const Card = ({ product }: Props) => {
+  const { handleAddProduct } = useCart()
+  const [currentTitle, setCurrentTitle] = useState<string>('')
   const [currentQuantity, setCurrentQuantity] = useState<number>(1)
   const [currentNotify, setCurrentNotify] = useState<boolean>(false)
-  const [currentNotifyTitle, setCurrentNotifyTitle] = useState<string>('')
 
-  const handleAddQuantity = () =>
-    currentQuantity < 99 && setCurrentQuantity((state) => state + 1)
-
-  const handleRemoveQuantity = () =>
-    currentQuantity > 1 && setCurrentQuantity((state) => state - 1)
-
-  const handleValidateQuantity = (event: ChangeEvent<HTMLInputElement>) => {
-    const currentItem = Math.max(1, Math.min(99, Number(event.target.value)))
-    setCurrentQuantity(currentItem)
-  }
+  const handleAddQuantity = () => setCurrentQuantity((state) => state + 1)
+  const handleRemoveQuantity = () => setCurrentQuantity((state) => state - 1)
+  const handleValidateQuantity = (e: ChangeEvent<HTMLInputElement>) =>
+    setCurrentQuantity(Math.max(1, Math.min(99, Number(e.target.value))))
 
   const handleCurrentCard = () => {
-    handleAddItem({ id: data.id, title: data.title, image: data.image, price: data.price, quantity: currentQuantity })
+    handleAddProduct(product.id)
+    setCurrentQuantity(1)
     setCurrentNotify(true)
-    setCurrentNotifyTitle(data.title)
-    setTimeout(() => {
-      setCurrentQuantity(1)
-      setCurrentNotify(false)
-    }, 1500)
+    setCurrentTitle(product.title)
+    setTimeout(() => setCurrentNotify(false), 1500)
   }
 
   return (
     <li className={cardContent()}>
-      <img className={cardImage()} src={data.image} alt={data.title} />
+      <img className={cardImage()} src={product.image} alt={product.title} />
       <ul className={cardCategory()}>
-        {data.category.map((iem) => (
+        {product.category.map((iem) => (
           <li className={cardCategoryItem()} key={iem}>
             <span>{iem}</span>
           </li>
         ))}
       </ul>
       <div className={cardDescription()}>
-        <h4 className={cardTitle()}>{data.title}</h4>
-        <p className={cardSubtitle()}>{data.subtitle}</p>
+        <h4 className={cardTitle()}>{product.title}</h4>
+        <p className={cardSubtitle()}>{product.subtitle}</p>
       </div>
       <div className={cardInfo()}>
         <p>R$ <span className={cardPrice()}>
-          {data.price.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+          {product.price.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
         </span></p>
         <div className={cardAction()}>
           <Quantity
             currentQuantity={currentQuantity}
             handleAddQuantity={handleAddQuantity}
             handleRemoveQuantity={handleRemoveQuantity}
-            handleValidateQuantity={handleValidateQuantity} />
+            handleValidateQuantity={handleValidateQuantity}
+          />
           <button className={cardCart()} onClick={handleCurrentCard} disabled={currentNotify}>
             <ShoppingCartIcon className={cardIcon()} aria-hidden='true' />
           </button>
         </div>
       </div>
-      <Notify currentNotify={currentNotify} currentNotifyTitle={currentNotifyTitle} />
+      <Notify currentNotify={currentNotify} currentTitle={currentTitle} />
     </li>
   )
 }
