@@ -70,7 +70,7 @@ export const CardVariants = tv({
     cardTitle: 'text-xl font-medium uppercase',
     cardSubtitle: 'px-4',
     cardInfo: 'flex items-end justify-between gap-2 pt-2 mt-auto',
-    cardPrice: 'text-3xl',
+    cardPrice: 'text-2xl md:text-3xl',
     cardAction: 'flex items-center justify-between gap-2',
     cardCart: 'h-10 w-10 px-2 flex items-center justify-center rounded-md bg-dracula-line hover:bg-dracula-cyan disabled:hover:bg-dracula-line text-dracula-cyan hover:text-dracula-line disabled:hover:text-dracula-cyan disabled:cursor-not-allowed transition ease-in-out duration-300',
     cardIcon: 'size-6 shrink-0',

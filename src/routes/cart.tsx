@@ -10,7 +10,7 @@ const { cartContent, cartRecord, cartSummary, cartTitle, cartPanel, cartWrapper,
 const payData = ['Dinheiro', 'Cartão de crédito', 'Cartão de dédito']
 
 export const Cart = () => {
-  const { cart, handleRemoveItem } = useCart()
+  const { cart, handleRemoveProduct } = useCart()
   const [currentPay, setCurrentPay] = useState<string[]>([])
   const [currentModal, setCurrentModal] = useState<boolean>(false)
 
@@ -85,7 +85,7 @@ export const Cart = () => {
                   </div>
                   <div className={cartAction()}>
                     <div>{data.quantity}</div>
-                    <button className={cartTrash()} onClick={() => handleRemoveItem(data)}>
+                    <button className={cartTrash()} onClick={() => handleRemoveProduct(data.id)}>
                       <TrashIcon className={cartIcon()} aria-hidden='true' />
                     </button>
                   </div>

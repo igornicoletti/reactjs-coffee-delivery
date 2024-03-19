@@ -61,9 +61,7 @@ export const Home = () => {
           <ul className={productFilter()}>
             {filters.map((filter) => (
               <li key={filter} onClick={() => handleFilter(filter)}>
-                <span className={currentFilter === filter ? productFilterItem({ active: true }) : productFilterItem()}>
-                  {filter}
-                </span>
+                <span className={currentFilter === filter ? productFilterItem({ active: true }) : productFilterItem()} >{filter}</span>
               </li>
             ))}
           </ul>
