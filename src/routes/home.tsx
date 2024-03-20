@@ -8,6 +8,7 @@ import { FireIcon, ShoppingBagIcon, ShoppingCartIcon, TruckIcon } from '@heroico
 const { productContent, productHead, productTitle, productCard, productFilter, productFilterItem } = ProductVariants()
 const { heroContent, heroHead, heroTitle, heroSubtitle, heroDescription, heroDescriptionItem, heroIcon, heroImageMobile, heroImageDesk } = HeroVariants()
 
+const filters = ['Alcoólico', 'Com leite', 'Especial', 'Gelado', 'Tradicional']
 const heros = [
   { id: 1, icon: ShoppingCartIcon, title: 'Compra simples e segura' },
   { id: 2, icon: ShoppingBagIcon, title: 'Embalagem mantém o café intacto' },
@@ -15,23 +16,21 @@ const heros = [
   { id: 4, icon: FireIcon, title: 'O café chega fresquinho até você' }
 ]
 
-const filters = ['Alcoólico', 'Com leite', 'Especial', 'Gelado', 'Tradicional']
-
 export const Home = () => {
   const { products } = useLoaderData()
   const [currentFilter, setCurrentFilter] = useState<string | null>(null)
   const [currentProduct, setCurrentProduct] = useState<ProductProps[]>([])
 
-  const handleFilter = (data: string) =>
-    currentFilter !== data ? setCurrentFilter(data) : setCurrentFilter(null)
+  const handleFilter = (filter: string) =>
+    currentFilter !== filter ? setCurrentFilter(filter) : setCurrentFilter(null)
 
   useEffect(() => {
     setCurrentProduct(products)
 
     if (currentFilter) {
       const newProducts = products
-        .filter((data: ProductProps) => data.category
-          .find((item) => item === currentFilter))
+        .filter((product: ProductProps) => product.categories
+          .find((category) => category === currentFilter))
       setCurrentProduct(newProducts)
     }
 
@@ -60,8 +59,8 @@ export const Home = () => {
           <h3 className={productTitle()}>Nossos Cafés</h3>
           <ul className={productFilter()}>
             {filters.map((filter) => (
-              <li key={filter} onClick={() => handleFilter(filter)}>
-                <span className={currentFilter === filter ? productFilterItem({ active: true }) : productFilterItem()} >{filter}</span>
+              <li className={currentFilter === filter ? productFilterItem({ active: true }) : productFilterItem()} key={filter} onClick={() => handleFilter(filter)}>
+                <span>{filter}</span>
               </li>
             ))}
           </ul>

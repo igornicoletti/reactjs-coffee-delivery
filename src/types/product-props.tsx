@@ -1,8 +1,8 @@
 export interface ProductProps {
   id: number
   title: string
-  subtitle: string
+  description: string
   image: string
-  category: string[]
+  categories: string[]
   price: number
 }

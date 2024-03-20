@@ -7,7 +7,7 @@ import { TrashIcon } from '@heroicons/react/24/outline'
 
 const { cartContent, cartRecord, cartSummary, cartTitle, cartPanel, cartWrapper, cartHead, cartSubtitle, cartForm, cartFormHidden, cartFormItem, cartFormItens, cartInput, cartLabel, cartPay, cartOrder, cartOrderItem, cartImage, cartInfo, cartBetween, cartDescription, cartAction, cartTrash, cartIcon, cartConfirm } = CheckoutVariants()
 
-const payData = ['Dinheiro', 'Cartão de crédito', 'Cartão de dédito']
+const payment = ['Dinheiro', 'Cartão de crédito', 'Cartão de dédito']
 
 export const Cart = () => {
   const { cart, handleRemoveProduct } = useCart()
@@ -60,9 +60,9 @@ export const Cart = () => {
               <span>O pagamento é feito na entrega. Escolha a forma que deseja pagar.</span>
             </div>
             <RadioGroup className={cartForm()} onChange={setCurrentPay} value={currentPay}>
-              {payData.map((data) => (
-                <RadioGroup.Option className={cartPay()} key={data} value={data}>
-                  <span>{data}</span>
+              {payment.map((pay) => (
+                <RadioGroup.Option className={cartPay()} key={pay} value={pay}>
+                  <span>{pay}</span>
                 </RadioGroup.Option>
               ))}
             </RadioGroup>

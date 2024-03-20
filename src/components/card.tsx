@@ -24,26 +24,25 @@ export const Card = ({ product }: Props) => {
     setCurrentQuantity(Math.max(1, Math.min(99, Number(e.target.value))))
 
   const handleCurrentCard = () => {
-    handleAddProduct(product.id)
-    setCurrentQuantity(1)
     setCurrentNotify(true)
     setCurrentTitle(product.title)
-    setTimeout(() => setCurrentNotify(false), 1500)
+    handleAddProduct({ id: product.id, quantity: currentQuantity })
+    setTimeout(() => { setCurrentNotify(false), setCurrentQuantity(1) }, 1500)
   }
 
   return (
     <li className={cardContent()}>
       <img className={cardImage()} src={product.image} alt={product.title} />
       <ul className={cardCategory()}>
-        {product.category.map((iem) => (
-          <li className={cardCategoryItem()} key={iem}>
-            <span>{iem}</span>
+        {product.categories.map((category) => (
+          <li className={cardCategoryItem()} key={category}>
+            <span>{category}</span>
           </li>
         ))}
       </ul>
       <div className={cardDescription()}>
         <h4 className={cardTitle()}>{product.title}</h4>
-        <p className={cardSubtitle()}>{product.subtitle}</p>
+        <p className={cardSubtitle()}>{product.description}</p>
       </div>
       <div className={cardInfo()}>
         <p>R$ <span className={cardPrice()}>
@@ -54,8 +53,7 @@ export const Card = ({ product }: Props) => {
             currentQuantity={currentQuantity}
             handleAddQuantity={handleAddQuantity}
             handleRemoveQuantity={handleRemoveQuantity}
-            handleValidateQuantity={handleValidateQuantity}
-          />
+            handleValidateQuantity={handleValidateQuantity} />
           <button className={cardCart()} onClick={handleCurrentCard} disabled={currentNotify}>
             <ShoppingCartIcon className={cardIcon()} aria-hidden='true' />
           </button>

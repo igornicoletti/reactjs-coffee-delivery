@@ -5,9 +5,9 @@ type CartProps = {
   quantity: number
 }
 
-interface CartContextType {
+type CartContextType = {
   cart: CartProps[]
-  handleAddProduct: (id: number) => void
+  handleAddProduct: ({ id, quantity }: CartProps) => void
   handleRemoveProduct: (id: number) => void
 }
 
@@ -16,12 +16,12 @@ export const CartContext = createContext({} as CartContextType)
 export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [currentCart, setCurrentCart] = useState<CartProps[]>([])
 
-  const handleAddProduct = (id: number) => {
+  const handleAddProduct = ({ id, quantity }: CartProps) => {
     setCurrentCart((state) => state.some((item) => item.id === id)
       ? state.map((item) => item.id === id
-        ? { ...item, quantity: item.quantity += item.quantity }
+        ? { ...item, quantity: item.quantity += quantity }
         : item)
-      : [...state, { id, quantity: 1 }])
+      : [...state, { id, quantity: quantity }])
   }
 
   const handleRemoveProduct = (id: number) => {
