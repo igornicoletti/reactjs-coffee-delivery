@@ -18,21 +18,15 @@ const heros = [
 
 export const Home = () => {
   const products = useLoaderData() as ProductProps[]
-
   const [currentFilter, setCurrentFilter] = useState<string | null>(null)
-  const [currentProduct, setCurrentProduct] = useState<ProductProps[]>([])
 
   const handleFilter = (filter: string) => currentFilter !== filter ? setCurrentFilter(filter) : setCurrentFilter(null)
 
   useEffect(() => {
-    setCurrentProduct(products)
-
     if (currentFilter) {
-      const newProducts = products
+      products
         .filter((product: ProductProps) => product.categories
           .find((category) => category === currentFilter))
-
-      setCurrentProduct(newProducts)
     }
   }, [products, currentFilter])
 
@@ -65,7 +59,7 @@ export const Home = () => {
           </ul>
         </div>
         <ul className={productCard()}>
-          {currentProduct.map((product) => (
+          {products.map((product) => (
             <Card key={product.id} product={product} />
           ))}
         </ul>
