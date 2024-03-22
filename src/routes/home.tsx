@@ -16,13 +16,8 @@ const heros = [
   { id: 4, icon: FireIcon, title: 'O café chega fresquinho até você' }
 ]
 
-type Props = {
-  products: ProductProps[]
-}
-
 export const Home = () => {
-  const loader = useLoaderData()
-  const { products } = loader as Props
+  const products = useLoaderData() as ProductProps[]
 
   const [currentFilter, setCurrentFilter] = useState<string | null>(null)
   const [currentProduct, setCurrentProduct] = useState<ProductProps[]>([])
@@ -30,13 +25,12 @@ export const Home = () => {
   const handleFilter = (filter: string) => currentFilter !== filter ? setCurrentFilter(filter) : setCurrentFilter(null)
 
   useEffect(() => {
-    setCurrentProduct(products)
+    setTimeout(() => setCurrentProduct(products), 1000)
 
     if (currentFilter) {
       const newProducts = products
         .filter((product: ProductProps) => product.categories
           .find((category) => category === currentFilter))
-
       setCurrentProduct(newProducts)
     }
   }, [products, currentFilter])
@@ -69,11 +63,15 @@ export const Home = () => {
             ))}
           </ul>
         </div>
-        <ul className={productCard()}>
-          {currentProduct.map((product) => (
-            <Card key={product.id} product={product} />
-          ))}
-        </ul>
+        {currentProduct.length > 0 ? (
+          <ul className={productCard()}>
+            {currentProduct.map((product) => (
+              <Card key={product.id} product={product} />
+            ))}
+          </ul>
+        ) : (
+          <h1>Loading...</h1>
+        )}
       </div>
     </>
   )
