@@ -1,6 +1,6 @@
-import { ChangeEvent, useState } from 'react'
 import { Notify } from './notify'
 import { Quantity } from './quantity'
+import { ChangeEvent, useState } from 'react'
 import { useCart } from '../hooks/cart-context'
 import { CardVariants } from '../styles/variants'
 import { ProductProps } from '../types/product-props'
@@ -14,19 +14,19 @@ type Props = {
 
 export const Card = ({ product }: Props) => {
   const { handleAddProduct } = useCart()
+
   const [currentTitle, setCurrentTitle] = useState<string>('')
   const [currentQuantity, setCurrentQuantity] = useState<number>(1)
   const [currentNotify, setCurrentNotify] = useState<boolean>(false)
 
   const handleAddQuantity = () => setCurrentQuantity((state) => state + 1)
   const handleRemoveQuantity = () => setCurrentQuantity((state) => state - 1)
-  const handleValidateQuantity = (e: ChangeEvent<HTMLInputElement>) =>
-    setCurrentQuantity(Math.max(1, Math.min(99, Number(e.target.value))))
+  const handleValidateQuantity = (e: ChangeEvent<HTMLInputElement>) => setCurrentQuantity(Math.max(1, Math.min(99, Number(e.target.value))))
 
   const handleCurrentCard = () => {
     setCurrentNotify(true)
     setCurrentTitle(product.title)
-    handleAddProduct({ id: product.id, quantity: currentQuantity })
+    handleAddProduct({ id: product.id, title: product.title, image: product.image, price: product.price, quantity: currentQuantity })
     setTimeout(() => { setCurrentNotify(false), setCurrentQuantity(1) }, 1500)
   }
 
@@ -45,9 +45,7 @@ export const Card = ({ product }: Props) => {
         <p className={cardSubtitle()}>{product.description}</p>
       </div>
       <div className={cardInfo()}>
-        <p>R$ <span className={cardPrice()}>
-          {product.price.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
-        </span></p>
+        <p>R$ <span className={cardPrice()}>{product.price.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span></p>
         <div className={cardAction()}>
           <Quantity
             currentQuantity={currentQuantity}

@@ -1,13 +1,9 @@
+import { CartProps } from '../types/cart-props'
 import { ReactNode, createContext, useEffect, useState } from 'react'
-
-type CartProps = {
-  id: number
-  quantity: number
-}
 
 type CartContextType = {
   cart: CartProps[]
-  handleAddProduct: ({ id, quantity }: CartProps) => void
+  handleAddProduct: (data: CartProps) => void
   handleRemoveProduct: (id: number) => void
 }
 
@@ -16,12 +12,12 @@ export const CartContext = createContext({} as CartContextType)
 export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [currentCart, setCurrentCart] = useState<CartProps[]>([])
 
-  const handleAddProduct = ({ id, quantity }: CartProps) => {
+  const handleAddProduct = ({ id, title, image, price, quantity }: CartProps) => {
     setCurrentCart((state) => state.some((item) => item.id === id)
       ? state.map((item) => item.id === id
         ? { ...item, quantity: item.quantity += quantity }
         : item)
-      : [...state, { id, quantity: quantity }])
+      : [...state, { id, title, image, price, quantity: quantity }])
   }
 
   const handleRemoveProduct = (id: number) => {
@@ -30,11 +26,9 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   }
 
   useEffect(() => {
-    console.log(currentCart)
-
     if (currentCart) {
       const stateJSON = JSON.stringify(currentCart)
-      localStorage.setItem('reactjs-coffee-delivery:cart', stateJSON)
+      localStorage.setItem('coffee-delivery:cart', stateJSON)
     }
   }, [currentCart])
 

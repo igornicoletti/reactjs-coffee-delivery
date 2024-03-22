@@ -10,7 +10,7 @@ const { rootLayout, rootContainer } = RootVariants()
 export const Root = () => {
   useEffect(() => {
     const stateJSON = JSON.stringify(products)
-    localStorage.setItem('products', stateJSON)
+    localStorage.setItem('coffee-delivery:products', stateJSON)
   }, [])
 
   return (

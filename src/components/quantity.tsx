@@ -17,7 +17,7 @@ export const Quantity = ({ currentQuantity, handleAddQuantity, handleRemoveQuant
       <button className={quantityButton()} onClick={handleRemoveQuantity} disabled={currentQuantity <= 1}>
         <MinusIcon className={quantityIcon()} aria-hidden='true' />
       </button>
-      <input className={quantityValue()} onChange={handleValidateQuantity} value={currentQuantity} min={1} max={99} type='number' />
+      <input className={quantityValue()} onChange={handleValidateQuantity} value={currentQuantity} min={1} max={99} type='number' name='quantity' />
       <button className={quantityButton()} onClick={handleAddQuantity} disabled={currentQuantity >= 99}>
         <PlusIcon className={quantityIcon()} aria-hidden='true' />
       </button>

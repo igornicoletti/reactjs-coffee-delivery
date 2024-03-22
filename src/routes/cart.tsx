@@ -11,8 +11,9 @@ const payment = ['Dinheiro', 'Cartão de crédito', 'Cartão de dédito']
 
 export const Cart = () => {
   const { cart, handleRemoveProduct } = useCart()
-  const [currentPay, setCurrentPay] = useState<string[]>([])
+
   const [currentModal, setCurrentModal] = useState<boolean>(false)
+  const [currentPay, setCurrentPay] = useState<string | null>(null)
 
   const handleCurrentCheckout = () => setCurrentModal(true)
 

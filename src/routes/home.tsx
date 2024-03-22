@@ -17,12 +17,12 @@ const heros = [
 ]
 
 export const Home = () => {
-  const { products } = useLoaderData()
+  const products = useLoaderData() as ProductProps[]
+
   const [currentFilter, setCurrentFilter] = useState<string | null>(null)
   const [currentProduct, setCurrentProduct] = useState<ProductProps[]>([])
 
-  const handleFilter = (filter: string) =>
-    currentFilter !== filter ? setCurrentFilter(filter) : setCurrentFilter(null)
+  const handleFilter = (filter: string) => currentFilter !== filter ? setCurrentFilter(filter) : setCurrentFilter(null)
 
   useEffect(() => {
     setCurrentProduct(products)
@@ -31,9 +31,9 @@ export const Home = () => {
       const newProducts = products
         .filter((product: ProductProps) => product.categories
           .find((category) => category === currentFilter))
+
       setCurrentProduct(newProducts)
     }
-
   }, [products, currentFilter])
 
   return (
@@ -46,8 +46,7 @@ export const Home = () => {
           <ul className={heroDescription()}>
             {heros.map((hero) => (
               <li className={heroDescriptionItem()} key={hero.id}>
-                <hero.icon className={heroIcon()} aria-hidden='true' />
-                <span>{hero.title}</span>
+                <hero.icon className={heroIcon()} aria-hidden='true' /><span>{hero.title}</span>
               </li>
             ))}
           </ul>
@@ -59,8 +58,8 @@ export const Home = () => {
           <h3 className={productTitle()}>Nossos Cafés</h3>
           <ul className={productFilter()}>
             {filters.map((filter) => (
-              <li className={currentFilter === filter ? productFilterItem({ active: true }) : productFilterItem()} key={filter} onClick={() => handleFilter(filter)}>
-                <span>{filter}</span>
+              <li key={filter} onClick={() => handleFilter(filter)}>
+                <span className={currentFilter === filter ? productFilterItem({ active: true }) : productFilterItem()}>{filter}</span>
               </li>
             ))}
           </ul>

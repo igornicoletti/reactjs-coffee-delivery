@@ -9,11 +9,10 @@ import { Cart } from './routes/cart'
 import { RootErrorBoundary } from './error'
 
 import { getProducts } from './api/product-root'
-import { ProductProps } from './types/product-props'
 
-const loader = async () => {
-  const products: ProductProps[] = await getProducts()
-  return { products }
+const loaderHome = async () => {
+  const products = await getProducts()
+  return products
 }
 
 const router = createBrowserRouter([
@@ -24,7 +23,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        loader: loader,
+        loader: loaderHome,
         element: <Home />
       },
       {

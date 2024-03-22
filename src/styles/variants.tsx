@@ -77,15 +77,6 @@ export const CardVariants = tv({
   }
 })
 
-export const QuantityVariants = tv({
-  slots: {
-    quantityContent: 'h-10 w-full max-w-32 flex items-center justify-center gap-2 rounded-md border border-dracula-line hover:border-dracula-white transition ease-in-out duration-300',
-    quantityButton: 'px-2 hover:text-dracula-cyan disabled:hover:text-dracula-white disabled:cursor-not-allowed transition ease-in-out duration-300',
-    quantityValue: 'w-full min-w-6 text-center text-lg font-medium bg-transparent focus:outline-none',
-    quantityIcon: 'size-6 shrink-0',
-  }
-})
-
 export const CheckoutVariants = tv({
   slots: {
     cartContent: 'w-full flex flex-col xl:flex-row gap-16 xl:gap-8 py-16',
@@ -116,13 +107,23 @@ export const CheckoutVariants = tv({
   }
 })
 
+export const QuantityVariants = tv({
+  slots: {
+    quantityContent: 'h-10 w-full max-w-32 flex items-center justify-center gap-2 rounded-md border border-dracula-line hover:border-dracula-white transition ease-in-out duration-300',
+    quantityButton: 'px-2 hover:text-dracula-cyan disabled:hover:text-dracula-white disabled:cursor-not-allowed transition ease-in-out duration-300',
+    quantityValue: 'w-full min-w-6 text-center text-lg font-medium bg-transparent focus:outline-none',
+    quantityIcon: 'size-6 shrink-0',
+  }
+})
+
 export const NotifyVariants = tv({
   slots: {
     notifyContent: 'fixed inset-0 flex items-end sm:items-start px-4 py-6 md:p-6 z-10 pointer-events-none',
     notifyPanel: 'w-full flex flex-col items-center sm:items-end',
     notifyHead: 'w-full max-w-md flex items-center gap-2 px-2 py-4 md:p-4 rounded-md shadow-md bg-white',
     notifyTitle: 'text-sm md:text-base text-dracula-dark',
-    notifyIcon: 'size-6 text-dracula-green',
+    notifyCoffee: 'font-medium',
+    notifyIcon: 'size-6 shrink-0 text-dracula-green',
     notifyEnter: 'transform ease-out duration-300 transition',
     notifyFrom: 'translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2',
     notifyEnterTo: 'translate-y-0 opacity-100 sm:translate-x-0',
@@ -139,9 +140,11 @@ export const ModalVariants = tv({
     modalDialog: 'fixed inset-0 overflow-y-auto',
     modalInfo: 'flex min-h-full items-center justify-center text-center p-4',
     modalPanel: 'w-full max-w-xl flex flex-col items-center transform overflow-hidden rounded-md shadow-md bg-white p-6 align-middle transition-all',
-    modalIcon: 'animate-bounce size-16 text-dracula-cyan',
+    modalIcon: 'animate-bounce size-16 shrink-0 text-dracula-cyan',
     modalTitle: 'text-xl font-medium leading-6 text-dracula-dark mt-2',
     modalDescription: 'text-dracula-dark mt-4',
+    modalSumary: 'flex flex-col gap-4 text-dracula-dark mt-10',
+    modalText: 'font-medium',
     modalAction: 'mt-10 w-full flex items-center justify-center px-4 h-12 font-medium uppercase rounded-md bg-dracula-cyan/75 hover:bg-dracula-cyan text-dracula-line transition ease-in-out duration-300',
     modalEnter: 'ease-out duration-300',
     modalFrom: 'opacity-0',

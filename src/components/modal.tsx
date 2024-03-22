@@ -4,7 +4,7 @@ import { ModalVariants } from '../styles/variants'
 import { Dialog, Transition } from '@headlessui/react'
 import { FaceSmileIcon } from '@heroicons/react/24/outline'
 
-const { modalContent, modalBackdrop, modalDialog, modalInfo, modalPanel, modalIcon, modalTitle, modalDescription, modalAction, modalEnter, modalEnterTo, modalFrom, modalLeave, modalLeaveFrom, modalLeaveTo, modalChildEnter, modalChildEnterTo, modalChildFrom, modalChildLeave, modalChildLeaveFrom, modalChildLeaveTo } = ModalVariants()
+const { modalContent, modalBackdrop, modalDialog, modalInfo, modalPanel, modalIcon, modalTitle, modalDescription, modalSumary, modalText, modalAction, modalEnter, modalEnterTo, modalFrom, modalLeave, modalLeaveFrom, modalLeaveTo, modalChildEnter, modalChildEnterTo, modalChildFrom, modalChildLeave, modalChildLeaveFrom, modalChildLeaveTo } = ModalVariants()
 
 type Props = {
   currentModal: boolean
@@ -23,7 +23,11 @@ export const Modal = ({ currentModal }: Props) => {
               <Dialog.Panel className={modalPanel()}>
                 <FaceSmileIcon className={modalIcon()} />
                 <Dialog.Title className={modalTitle()}>Uhuu... Pedido confirmado!</Dialog.Title>
-                <Dialog.Description className={modalDescription()}>Seu pagamento foi enviado com sucesso.<br />Agora é só aguardar que logo o café chegará até você.</Dialog.Description>
+                <Dialog.Description className={modalDescription()}>Seu pedido foi enviado com sucesso.<br />Agora é só aguardar que logo nosso café chegará até você.</Dialog.Description>
+                <div className={modalSumary()}>
+                  <p>Endereço de entrega: <br /><span className={modalText()}>José Afonso Amato, 355 - Centro - Potirendaba/SP</span></p>
+                  <p>Forma de pagamento: <span className={modalText()}>Dinheiro</span></p>
+                </div>
                 <Link className={modalAction()} to='/'>Voltar à página inicial</Link>
               </Dialog.Panel>
             </Transition.Child>
