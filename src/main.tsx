@@ -13,7 +13,7 @@ import { ProductProps } from './types/product-props'
 
 const loader = async () => {
   const products: ProductProps[] = await getProducts()
-  return { products }
+  return products
 }
 
 const router = createBrowserRouter([
