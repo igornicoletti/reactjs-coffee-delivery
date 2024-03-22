@@ -17,14 +17,14 @@ const heros = [
 ]
 
 export const Home = () => {
-  const { products } = useLoaderData()
+  const products = useLoaderData() as ProductProps[]
 
   const [currentFilter, setCurrentFilter] = useState<string | null>(null)
 
   const handleFilter = (filter: string) => currentFilter !== filter ? setCurrentFilter(filter) : setCurrentFilter(null)
 
   useEffect(() => {
-
+    products
     if (currentFilter) {
       products
         .filter((product: ProductProps) => product.categories
