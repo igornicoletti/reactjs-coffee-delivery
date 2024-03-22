@@ -16,13 +16,8 @@ const heros = [
   { id: 4, icon: FireIcon, title: 'O café chega fresquinho até você' }
 ]
 
-type Props = {
-  products: ProductProps[]
-}
-
 export const Home = () => {
-  const loaderData = useLoaderData()
-  const { products } = loaderData as Props
+  const { products } = useLoaderData()
 
   const [currentFilter, setCurrentFilter] = useState<string | null>(null)
 
