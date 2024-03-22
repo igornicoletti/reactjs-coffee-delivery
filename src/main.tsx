@@ -9,9 +9,10 @@ import { Cart } from './routes/cart'
 import { RootErrorBoundary } from './error'
 
 import { getProducts } from './api/product-root'
+import { ProductProps } from './types/product-props'
 
 const loaderHome = async () => {
-  const products = await getProducts()
+  const products: ProductProps[] = await getProducts()
   return products
 }
 
