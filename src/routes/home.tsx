@@ -20,15 +20,19 @@ export const Home = () => {
   const products = useLoaderData() as ProductProps[]
 
   const [currentFilter, setCurrentFilter] = useState<string | null>(null)
+  const [currentProduct, setCurrentProduct] = useState<ProductProps[]>([])
 
   const handleFilter = (filter: string) => currentFilter !== filter ? setCurrentFilter(filter) : setCurrentFilter(null)
 
   useEffect(() => {
-    products
+    setCurrentProduct(products)
+
     if (currentFilter) {
-      products
+      const newProducts = products
         .filter((product: ProductProps) => product.categories
           .find((category) => category === currentFilter))
+
+      setCurrentProduct(newProducts)
     }
   }, [products, currentFilter])
 
@@ -61,7 +65,7 @@ export const Home = () => {
           </ul>
         </div>
         <ul className={productCard()}>
-          {products.map((product) => (
+          {currentProduct.map((product) => (
             <Card key={product.id} product={product} />
           ))}
         </ul>
