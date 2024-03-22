@@ -34,7 +34,7 @@ export const Home = () => {
 
       setCurrentProduct(newProducts)
     }
-  }, [products, currentProduct, currentFilter])
+  }, [products, currentFilter])
 
   return (
     <>
@@ -64,11 +64,13 @@ export const Home = () => {
             ))}
           </ul>
         </div>
-        <ul className={productCard()}>
-          {currentProduct.map((product) => (
-            <Card key={product.id} product={product} />
-          ))}
-        </ul>
+        {currentProduct && (
+          <ul className={productCard()}>
+            {currentProduct.map((product) => (
+              <Card key={product.id} product={product} />
+            ))}
+          </ul>
+        )}
       </div>
     </>
   )
