@@ -16,14 +16,20 @@ const heros = [
   { id: 4, icon: FireIcon, title: 'O café chega fresquinho até você' }
 ]
 
+type Props = {
+  products: ProductProps[]
+}
+
 export const Home = () => {
-  const products = useLoaderData() as ProductProps[]
+  const loaderData = useLoaderData()
+  const { products } = loaderData as Props
 
   const [currentFilter, setCurrentFilter] = useState<string | null>(null)
 
   const handleFilter = (filter: string) => currentFilter !== filter ? setCurrentFilter(filter) : setCurrentFilter(null)
 
   useEffect(() => {
+
     if (currentFilter) {
       products
         .filter((product: ProductProps) => product.categories
