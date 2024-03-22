@@ -30,13 +30,12 @@ export const Home = () => {
   const handleFilter = (filter: string) => currentFilter !== filter ? setCurrentFilter(filter) : setCurrentFilter(null)
 
   useEffect(() => {
-    setCurrentProduct(products)
-
     if (currentFilter) {
-      setCurrentProduct(products
+      return setCurrentProduct(products
         .filter((product: ProductProps) => product.categories
           .find((category) => category === currentFilter)))
     }
+    setCurrentProduct(products)
   }, [products, currentFilter])
 
   return (
