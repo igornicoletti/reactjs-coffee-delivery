@@ -30,13 +30,12 @@ export const Home = () => {
   const handleFilter = (filter: string) => currentFilter !== filter ? setCurrentFilter(filter) : setCurrentFilter(null)
 
   useEffect(() => {
-    setTimeout(() => setCurrentProduct(products), 5000)
+    setCurrentProduct(products)
 
     if (currentFilter) {
-      const newProducts = products
+      setCurrentProduct(products
         .filter((product: ProductProps) => product.categories
-          .find((category) => category === currentFilter))
-      setCurrentProduct(newProducts)
+          .find((category) => category === currentFilter)))
     }
   }, [products, currentFilter])
 
