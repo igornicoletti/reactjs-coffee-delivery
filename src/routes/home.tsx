@@ -30,7 +30,7 @@ export const Home = () => {
   const handleFilter = (filter: string) => currentFilter !== filter ? setCurrentFilter(filter) : setCurrentFilter(null)
 
   useEffect(() => {
-    setTimeout(() => setCurrentProduct(products), 1000)
+    setTimeout(() => setCurrentProduct(products), 5000)
 
     if (currentFilter) {
       const newProducts = products
@@ -68,15 +68,11 @@ export const Home = () => {
             ))}
           </ul>
         </div>
-        {currentProduct.length > 0 ? (
-          <ul className={productCard()}>
-            {currentProduct.map((product) => (
-              <Card key={product.id} product={product} />
-            ))}
-          </ul>
-        ) : (
-          <h1>Loading...</h1>
-        )}
+        <ul className={productCard()}>
+          {currentProduct.map((product) => (
+            <Card key={product.id} product={product} />
+          ))}
+        </ul>
       </div>
     </>
   )
