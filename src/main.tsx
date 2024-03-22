@@ -11,9 +11,9 @@ import { RootErrorBoundary } from './error'
 import { getProducts } from './api/product-root'
 import { ProductProps } from './types/product-props'
 
-const loaderHome = async () => {
+const loader = async () => {
   const products: ProductProps[] = await getProducts()
-  return products
+  return { products }
 }
 
 const router = createBrowserRouter([
@@ -24,7 +24,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        loader: loaderHome,
+        loader: loader,
         element: <Home />
       },
       {
