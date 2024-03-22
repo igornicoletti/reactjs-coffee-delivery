@@ -16,26 +16,20 @@ const heros = [
   { id: 4, icon: FireIcon, title: 'O café chega fresquinho até você' }
 ]
 
-type Props = {
-  products: ProductProps[]
-}
-
 export const Home = () => {
-  const loader = useLoaderData()
-  const { products } = loader as Props
-
+  const products = useLoaderData() as ProductProps[]
   const [currentFilter, setCurrentFilter] = useState<string | null>(null)
   const [currentProduct, setCurrentProduct] = useState<ProductProps[]>([])
 
   const handleFilter = (filter: string) => currentFilter !== filter ? setCurrentFilter(filter) : setCurrentFilter(null)
 
   useEffect(() => {
+    setCurrentProduct(products)
     if (currentFilter) {
-      return setCurrentProduct(products
+      setCurrentProduct(products
         .filter((product: ProductProps) => product.categories
           .find((category) => category === currentFilter)))
     }
-    setCurrentProduct(products)
   }, [products, currentFilter])
 
   return (
