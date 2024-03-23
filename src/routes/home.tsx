@@ -1,7 +1,7 @@
 import { Card } from '../components/card'
 import { useEffect, useState } from 'react'
-import { useLoaderData } from 'react-router-dom'
 import { ProductProps } from '../types/product-props'
+import { ProductData } from '../api/product-data.json'
 import { HeroVariants, ProductVariants } from '../styles/variants'
 import { FireIcon, ShoppingBagIcon, ShoppingCartIcon, TruckIcon } from '@heroicons/react/24/outline'
 
@@ -16,27 +16,21 @@ const heros = [
   { id: 4, icon: FireIcon, title: 'O café chega fresquinho até você' }
 ]
 
-type Props = {
-  products: ProductProps[]
-}
-
 export const Home = () => {
-  const loader = useLoaderData()
-  const { products } = loader as Props
-
   const [currentFilter, setCurrentFilter] = useState<string | null>(null)
   const [currentProduct, setCurrentProduct] = useState<ProductProps[]>([])
 
   const handleFilter = (filter: string) => currentFilter !== filter ? setCurrentFilter(filter) : setCurrentFilter(null)
 
   useEffect(() => {
-    setCurrentProduct(products)
-    if (currentFilter) {
-      setCurrentProduct(products
+    setCurrentProduct(ProductData)
+
+    if (currentFilter)
+      setCurrentProduct(ProductData
         .filter((product: ProductProps) => product.categories
           .find((category) => category === currentFilter)))
-    }
-  }, [products, currentFilter])
+
+  }, [currentFilter])
 
   return (
     <>

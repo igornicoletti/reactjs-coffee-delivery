@@ -1,21 +1,18 @@
 import { useState } from 'react'
-import { Modal } from '../components/modal'
 import { RadioGroup } from '@headlessui/react'
 import { useCart } from '../hooks/cart-context'
 import { CheckoutVariants } from '../styles/variants'
 import { TrashIcon } from '@heroicons/react/24/outline'
-
 const { cartContent, cartRecord, cartSummary, cartTitle, cartPanel, cartWrapper, cartHead, cartSubtitle, cartForm, cartFormHidden, cartFormItem, cartFormItens, cartInput, cartLabel, cartPay, cartOrder, cartOrderItem, cartImage, cartInfo, cartBetween, cartDescription, cartAction, cartTrash, cartIcon, cartConfirm } = CheckoutVariants()
 
+const delivery = 5.20
 const payment = ['Dinheiro', 'Cartão de crédito', 'Cartão de dédito']
 
 export const Cart = () => {
   const { cart, handleRemoveProduct } = useCart()
-
-  const [currentModal, setCurrentModal] = useState<boolean>(false)
   const [currentPay, setCurrentPay] = useState<string | null>(null)
 
-  const handleCurrentCheckout = () => setCurrentModal(true)
+  const currentPrice = cart.reduce((prev, current) => prev += current.price * current.quantity, 0)
 
   return (
     <div className={cartContent()}>
@@ -74,19 +71,19 @@ export const Cart = () => {
         <h3 className={cartTitle()}>Cafés selecionados</h3>
         <div className={cartWrapper()}>
           <ul className={cartOrder()}>
-            {cart.map((data) => (
-              <li className={cartOrderItem()} key={data.id}>
-                <img className={cartImage()} src={data.image} alt='Coffee Delivery' />
+            {cart.map((product) => (
+              <li className={cartOrderItem()} key={product.id}>
+                <img className={cartImage()} src={product.image} alt='Coffee Delivery' />
                 <div className={cartInfo()}>
                   <div className={cartBetween()}>
-                    <p className={cartDescription()}>{data.title}</p>
+                    <p className={cartDescription()}>{product.title}</p>
                     <p className={cartDescription()}>
-                      {(data.price * data.quantity).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
+                      {(product.price * product.quantity).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
                     </p>
                   </div>
                   <div className={cartAction()}>
-                    <div>{data.quantity}</div>
-                    <button className={cartTrash()} onClick={() => handleRemoveProduct(data.id)}>
+                    <div>{product.quantity}</div>
+                    <button className={cartTrash()} onClick={() => handleRemoveProduct(product.id)}>
                       <TrashIcon className={cartIcon()} aria-hidden='true' />
                     </button>
                   </div>
@@ -97,21 +94,20 @@ export const Cart = () => {
           <ul className={cartInfo()}>
             <li className={cartBetween()}>
               <p>Total dos itens</p>
-              <p>R$ 19.80</p>
+              <p>{currentPrice.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
             </li>
             <li className={cartBetween()}>
               <p>Entrega</p>
-              <p>R$ 5.20</p>
+              <p>{delivery.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
             </li>
             <li className={cartBetween()}>
               <p className={cartDescription()}>Valor total</p>
-              <p className={cartDescription()}>R$ 25.00</p>
+              <p className={cartDescription()}>{(currentPrice + delivery).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
             </li>
           </ul>
-          <button className={cartConfirm()} onClick={handleCurrentCheckout}>
+          <button className={cartConfirm()}>
             <span>Confirmar pedido</span>
           </button>
-          <Modal currentModal={currentModal} />
         </div>
       </div>
     </div>

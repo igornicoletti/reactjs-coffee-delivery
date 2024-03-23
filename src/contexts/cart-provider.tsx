@@ -1,5 +1,5 @@
+import { ReactNode, createContext, useState } from 'react'
 import { CartProps } from '../types/cart-props'
-import { ReactNode, createContext, useEffect, useState } from 'react'
 
 type CartContextType = {
   cart: CartProps[]
@@ -25,13 +25,12 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     setCurrentCart(currentItem)
   }
 
-  useEffect(() => {
-    if (currentCart) {
-      const stateJSON = JSON.stringify(currentCart)
-      localStorage.setItem('coffee-delivery:cart', stateJSON)
-    }
-  }, [currentCart])
-
+  /*   useEffect(() => {
+      if (currentCart) {
+        const stateJSON = JSON.stringify(currentCart)
+        localStorage.setItem('coffee-delivery:cart', stateJSON)
+      }
+    }, [currentCart]) */
 
   return (
     <CartContext.Provider value={{ cart: currentCart, handleAddProduct, handleRemoveProduct }}>

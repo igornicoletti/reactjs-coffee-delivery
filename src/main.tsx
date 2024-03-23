@@ -8,14 +8,6 @@ import { Home } from './routes/home'
 import { Cart } from './routes/cart'
 import { RootErrorBoundary } from './error'
 
-import { getProducts } from './api/product-root'
-import { ProductProps } from './types/product-props'
-
-const loader = async () => {
-  const products: ProductProps[] = await getProducts()
-  return { products }
-}
-
 const router = createBrowserRouter([
   {
     path: '/',
@@ -24,7 +16,6 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        loader: loader,
         element: <Home />
       },
       {
