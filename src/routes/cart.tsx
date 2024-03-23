@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useCart } from '../hooks/cart'
 import { Form } from 'react-router-dom'
-import { useForm } from 'react-hook-form'
+import { SubmitHandler, useForm } from 'react-hook-form'
 import { RadioGroup } from '@headlessui/react'
 import { CheckoutVariants } from '../styles/variants'
 import { TrashIcon } from '@heroicons/react/24/outline'
@@ -11,34 +11,30 @@ const { cartContent, cartRecord, cartSummary, cartTitle, cartPanel, cartWrapper,
 const delivery = 5.20
 const payment = ['Dinheiro', 'Cartão de crédito', 'Cartão de dédito']
 
-type Props = {
+type FormValues = {
   cep: number
   address: string
   city: string
   neighbor: string
   num: number
   state: string
-  payment: 'Dinheiro' | 'Cartão de crédito' | 'Cartão de dédito'
+  payment: string
 }
 
 export const Cart = () => {
   const { cart, handleRemoveProduct } = useCart()
+  const { handleSubmit, register } = useForm<FormValues>()
   const [currentPay, setCurrentPay] = useState<string | null>(null)
 
   const handlePrice = cart.reduce((prev, current) => prev += current.price * current.quantity, 0)
 
-  const { handleSubmit, register } = useForm<Props>()
-
-  const handleSubmitForm = (data: Props) => {
-    console.log(data)
-
-  }
+  const onSubmit: SubmitHandler<FormValues> = (data) => console.log(data)
 
   return (
     <div className={cartContent()}>
       <div className={cartRecord()}>
         <h3 className={cartTitle()}>Complete seu pedido</h3>
-        <Form className={cartPanel()} onSubmit={handleSubmit(handleSubmitForm)} id='record'>
+        <Form className={cartPanel()} onSubmit={handleSubmit(onSubmit)} id='record'>
           <div className={cartWrapper()}>
             <div className={cartHead()}>
               <p className={cartSubtitle()}>Endereço de entrega</p>
