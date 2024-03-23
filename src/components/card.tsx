@@ -1,9 +1,9 @@
 import { Notify } from './notify'
 import { Quantity } from './quantity'
+import { useCart } from '../hooks/cart'
 import { ChangeEvent, useState } from 'react'
-import { useCart } from '../hooks/cart-context'
+import { ProductProps } from '../types/product'
 import { CardVariants } from '../styles/variants'
-import { ProductProps } from '../types/product-props'
 import { ShoppingCartIcon } from '@heroicons/react/24/outline'
 
 const { cardContent, cardImage, cardCategory, cardCategoryItem, cardDescription, cardTitle, cardSubtitle, cardInfo, cardPrice, cardAction, cardCart, cardIcon } = CardVariants()

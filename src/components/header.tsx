@@ -1,5 +1,5 @@
+import { useCart } from '../hooks/cart'
 import { NavLink } from 'react-router-dom'
-import { useCart } from '../hooks/cart-context'
 import { HeaderVariants } from '../styles/variants'
 import { ShoppingCartIcon } from '@heroicons/react/24/outline'
 
@@ -10,11 +10,11 @@ export const Header = () => {
 
   return (
     <div className={headerContent()}>
-      <NavLink className={({ isActive }) => isActive ? headerTitle({ active: true }) : headerTitle()} to='/'>
+      <NavLink className={({ isActive }) => isActive ? headerTitle({ active: true }) : headerTitle()} to={'/'}>
         <h1>Coffee Delivery</h1>
       </NavLink>
       <div className={headerCart()}>
-        <NavLink className={({ isActive }) => isActive ? headerButton({ active: true }) : headerButton()} to={`cart`} onClick={(e) => cart.length === 0 && e.preventDefault()}>
+        <NavLink className={({ isActive }) => isActive ? headerButton({ active: true }) : headerButton()} to={'cart'} onClick={(e) => cart.length === 0 && e.preventDefault()}>
           <ShoppingCartIcon className={headerIcon()} aria-hidden='true' />
         </NavLink>
         {cart.length > 0 &&

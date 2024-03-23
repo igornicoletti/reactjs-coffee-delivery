@@ -1,20 +1,21 @@
 import { Card } from '../components/card'
 import { useEffect, useState } from 'react'
-import { ProductProps } from '../types/product-props'
-import { ProductData } from '../api/product-data.json'
+import { ProductProps } from '../types/product'
+import { ProductData } from '../api/product.json'
 import { HeroVariants, ProductVariants } from '../styles/variants'
 import { FireIcon, ShoppingBagIcon, ShoppingCartIcon, TruckIcon } from '@heroicons/react/24/outline'
 
 const { productContent, productHead, productTitle, productCard, productFilter, productFilterItem } = ProductVariants()
 const { heroContent, heroHead, heroTitle, heroSubtitle, heroDescription, heroDescriptionItem, heroIcon, heroImageMobile, heroImageDesk } = HeroVariants()
 
-const filters = ['Alcoólico', 'Com leite', 'Especial', 'Gelado', 'Tradicional']
 const heros = [
   { id: 1, icon: ShoppingCartIcon, title: 'Compra simples e segura' },
   { id: 2, icon: ShoppingBagIcon, title: 'Embalagem mantém o café intacto' },
   { id: 3, icon: TruckIcon, title: 'Entrega rápida e rastreada' },
   { id: 4, icon: FireIcon, title: 'O café chega fresquinho até você' }
 ]
+
+const filters = ['Alcoólico', 'Com leite', 'Especial', 'Gelado', 'Tradicional']
 
 export const Home = () => {
   const [currentFilter, setCurrentFilter] = useState<string | null>(null)
@@ -42,7 +43,8 @@ export const Home = () => {
           <ul className={heroDescription()}>
             {heros.map((hero) => (
               <li className={heroDescriptionItem()} key={hero.id}>
-                <hero.icon className={heroIcon()} aria-hidden='true' /><span>{hero.title}</span>
+                <hero.icon className={heroIcon()} aria-hidden='true' />
+                <span>{hero.title}</span>
               </li>
             ))}
           </ul>
@@ -54,8 +56,8 @@ export const Home = () => {
           <h3 className={productTitle()}>Nossos Cafés</h3>
           <ul className={productFilter()}>
             {filters.map((filter) => (
-              <li key={filter} onClick={() => handleFilter(filter)}>
-                <span className={currentFilter === filter ? productFilterItem({ active: true }) : productFilterItem()}>{filter}</span>
+              <li className={currentFilter === filter ? productFilterItem({ active: true }) : productFilterItem()} key={filter} onClick={() => handleFilter(filter)}>
+                <span>{filter}</span>
               </li>
             ))}
           </ul>

@@ -2,7 +2,7 @@
   "ProductData": [
     {
       "id": 1,
-      "title": "Expresso tradicional",
+      "title": "Expresso Tradicional",
       "description": "Tradicional café feito com água quente e grãos moidos.",
       "image": "/images/coffee-tradicional.png",
       "categories": [
@@ -22,7 +22,7 @@
     },
     {
       "id": 3,
-      "title": "Expresso cremoso",
+      "title": "Expresso Cremoso",
       "description": "Café expresso tradicional com espuma cremosa.",
       "image": "/images/coffee-cremoso.png",
       "categories": [
@@ -32,7 +32,7 @@
     },
     {
       "id": 4,
-      "title": "Expresso gelado",
+      "title": "Expresso Gelado",
       "description": "Bebida preparada com café expresso e cubos de gelo.",
       "image": "/images/coffee-gelado.png",
       "categories": [
@@ -43,7 +43,7 @@
     },
     {
       "id": 5,
-      "title": "Café com leite",
+      "title": "Café com Leite",
       "description": "Meio a meio de expresso tradicional com leite vaporizado.",
       "image": "/images/coffee-leite.png",
       "categories": [
@@ -98,7 +98,7 @@
     },
     {
       "id": 10,
-      "title": "Chocolate quente",
+      "title": "Chocolate Quente",
       "description": "Bebida feita com chocolate dissolvido no leite quente e café.",
       "image": "/images/coffee-quente.png",
       "categories": [

@@ -1,10 +1,10 @@
+import { CartProps } from '../types/cart'
 import { ReactNode, createContext, useState } from 'react'
-import { CartProps } from '../types/cart-props'
 
 type CartContextType = {
   cart: CartProps[]
   handleAddProduct: (data: CartProps) => void
-  handleRemoveProduct: (id: number) => void
+  handleRemoveProduct: (data: CartProps['id']) => void
 }
 
 export const CartContext = createContext({} as CartContextType)
@@ -20,7 +20,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
       : [...state, { id, title, image, price, quantity: quantity }])
   }
 
-  const handleRemoveProduct = (id: number) => {
+  const handleRemoveProduct = (id: CartProps['id']) => {
     const currentItem = currentCart.filter((item) => item.id !== id)
     setCurrentCart(currentItem)
   }

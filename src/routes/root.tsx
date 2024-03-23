@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom'
 import { Header } from '../components/header'
+import { CartProvider } from '../contexts/cart'
 import { RootVariants } from '../styles/variants'
-import { CartProvider } from '../contexts/cart-provider'
 
 const { rootLayout, rootContainer } = RootVariants()
 

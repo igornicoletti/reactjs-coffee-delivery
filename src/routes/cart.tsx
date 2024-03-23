@@ -1,8 +1,9 @@
 import { useState } from 'react'
+import { useCart } from '../hooks/cart'
 import { RadioGroup } from '@headlessui/react'
-import { useCart } from '../hooks/cart-context'
 import { CheckoutVariants } from '../styles/variants'
 import { TrashIcon } from '@heroicons/react/24/outline'
+
 const { cartContent, cartRecord, cartSummary, cartTitle, cartPanel, cartWrapper, cartHead, cartSubtitle, cartForm, cartFormHidden, cartFormItem, cartFormItens, cartInput, cartLabel, cartPay, cartOrder, cartOrderItem, cartImage, cartInfo, cartBetween, cartDescription, cartAction, cartTrash, cartIcon, cartConfirm } = CheckoutVariants()
 
 const delivery = 5.20
@@ -12,7 +13,7 @@ export const Cart = () => {
   const { cart, handleRemoveProduct } = useCart()
   const [currentPay, setCurrentPay] = useState<string | null>(null)
 
-  const currentPrice = cart.reduce((prev, current) => prev += current.price * current.quantity, 0)
+  const handlePrice = cart.reduce((prev, current) => prev += current.price * current.quantity, 0)
 
   return (
     <div className={cartContent()}>
@@ -94,7 +95,7 @@ export const Cart = () => {
           <ul className={cartInfo()}>
             <li className={cartBetween()}>
               <p>Total dos itens</p>
-              <p>{currentPrice.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
+              <p>{handlePrice.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
             </li>
             <li className={cartBetween()}>
               <p>Entrega</p>
@@ -102,7 +103,7 @@ export const Cart = () => {
             </li>
             <li className={cartBetween()}>
               <p className={cartDescription()}>Valor total</p>
-              <p className={cartDescription()}>{(currentPrice + delivery).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
+              <p className={cartDescription()}>{(handlePrice + delivery).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
             </li>
           </ul>
           <button className={cartConfirm()}>
