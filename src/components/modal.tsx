@@ -8,9 +8,10 @@ const { modalContent, modalBackdrop, modalDialog, modalInfo, modalPanel, modalIc
 
 type Props = {
   currentModal: boolean
+  currentPay: string
 }
 
-export const Modal = ({ currentModal }: Props) => {
+export const Modal = ({ currentModal, currentPay }: Props) => {
   return (
     <Transition appear show={currentModal} as={Fragment}>
       <Dialog className={modalContent()} onClose={() => null}>
@@ -25,8 +26,8 @@ export const Modal = ({ currentModal }: Props) => {
                 <Dialog.Title className={modalTitle()}>Uhuu... Pedido confirmado!</Dialog.Title>
                 <Dialog.Description className={modalDescription()}>Seu pedido foi enviado com sucesso.<br />Agora é só aguardar que logo nosso café chegará até você.</Dialog.Description>
                 <div className={modalSumary()}>
-                  <p>Endereço de entrega: <br /><span className={modalText()}>José Afonso Amato, 355 - Centro - Potirendaba/SP</span></p>
-                  <p>Forma de pagamento: <span className={modalText()}>Dinheiro</span></p>
+                  <p>Endereço de entrega: <br /><span className={modalText()}></span></p>
+                  <p>Forma de pagamento: <span className={modalText()}>{currentPay}</span></p>
                 </div>
                 <Link className={modalAction()} to='/'>Voltar à página inicial</Link>
               </Dialog.Panel>

@@ -1,17 +1,18 @@
-import { useState } from 'react'
-import { useCart } from '../hooks/cart'
 import { Form } from 'react-router-dom'
+import { useCart } from '../hooks/cart'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { RadioGroup } from '@headlessui/react'
 import { CheckoutVariants } from '../styles/variants'
 import { TrashIcon } from '@heroicons/react/24/outline'
+import { useState } from 'react'
+import { Modal } from '../components/modal'
 
 const { cartContent, cartRecord, cartSummary, cartTitle, cartPanel, cartWrapper, cartHead, cartSubtitle, cartForm, cartFormHidden, cartFormItem, cartFormItens, cartInput, cartLabel, cartPay, cartOrder, cartOrderItem, cartImage, cartInfo, cartBetween, cartDescription, cartAction, cartTrash, cartIcon, cartConfirm } = CheckoutVariants()
 
 const delivery = 5.20
 const payment = ['Dinheiro', 'Cartão de crédito', 'Cartão de dédito']
 
-type FormValues = {
+export type FormValues = {
   cep: number
   address: string
   city: string
@@ -23,18 +24,23 @@ type FormValues = {
 
 export const Cart = () => {
   const { cart, handleRemoveProduct } = useCart()
-  const { handleSubmit, register } = useForm<FormValues>()
-  const [currentPay, setCurrentPay] = useState<string | null>(null)
-
+  const { register, handleSubmit, reset } = useForm<FormValues>()
+  const [currentPay, setCurrentPay] = useState<string>('Dinheiro')
+  const [currentModal, setCurrentModal] = useState<boolean>(false)
   const handlePrice = cart.reduce((prev, current) => prev += current.price * current.quantity, 0)
 
-  const onSubmit: SubmitHandler<FormValues> = (data) => console.log(data)
+  const onSubmit: SubmitHandler<FormValues> = (data: FormValues) => {
+    console.log(data)
+
+    setCurrentModal(true)
+    reset()
+  }
 
   return (
     <div className={cartContent()}>
       <div className={cartRecord()}>
         <h3 className={cartTitle()}>Complete seu pedido</h3>
-        <Form className={cartPanel()} onSubmit={handleSubmit(onSubmit)} id='record'>
+        <Form className={cartPanel()} id='cart' onSubmit={handleSubmit(onSubmit)}>
           <div className={cartWrapper()}>
             <div className={cartHead()}>
               <p className={cartSubtitle()}>Endereço de entrega</p>
@@ -42,28 +48,34 @@ export const Cart = () => {
             </div>
             <div className={cartForm()}>
               <div className={cartFormItem()}>
-                <input className={cartInput()} {...register('cep', { valueAsNumber: true })} type='number' id='cep' placeholder=' ' />
+                <input className={cartInput()} type='number' id='cep' placeholder=' '
+                  {...register('cep', { required: true, valueAsNumber: true })} />
                 <label className={cartLabel()} htmlFor='cep'>CEP</label>
               </div>
               <span className={cartFormHidden()}></span>
               <div className={cartFormItens()}>
-                <input className={cartInput()} {...register('address')} type='text' id='address' placeholder=' ' />
+                <input className={cartInput()} type='text' id='address' placeholder=' '
+                  {...register('address', { required: true })} />
                 <label className={cartLabel()} htmlFor='address'>Endereço</label>
               </div>
               <div className={cartFormItem()}>
-                <input className={cartInput()} {...register('num', { valueAsNumber: true })} type='number' id='num' placeholder=' ' />
+                <input className={cartInput()} type='number' id='num' placeholder=' '
+                  {...register('num', { required: true, valueAsNumber: true })} />
                 <label className={cartLabel()} htmlFor='num'>Número</label>
               </div>
               <div className={cartFormItem()}>
-                <input className={cartInput()} {...register('neighbor')} type='text' id='neighbor' placeholder=' ' />
+                <input className={cartInput()} type='text' id='neighbor' placeholder=' '
+                  {...register('neighbor', { required: true })} />
                 <label className={cartLabel()} htmlFor='neighbor'>Bairro</label>
               </div>
               <div className={cartFormItem()}>
-                <input className={cartInput()} {...register('city')} type='text' id='city' placeholder=' ' />
+                <input className={cartInput()} type='text' id='city' placeholder=' '
+                  {...register('city', { required: true })} />
                 <label className={cartLabel()} htmlFor='city'>Cidade</label>
               </div>
               <div className={cartFormItem()}>
-                <input className={cartInput()} {...register('state')} type='text' id='state' placeholder=' ' />
+                <input className={cartInput()} type='text' id='state' placeholder=' '
+                  {...register('state', { required: true })} />
                 <label className={cartLabel()} htmlFor='state'>UF</label>
               </div>
             </div>
@@ -73,9 +85,9 @@ export const Cart = () => {
               <p className={cartSubtitle()}>Forma de pagamento</p>
               <span>O pagamento é feito na entrega. Escolha a forma que deseja pagar.</span>
             </div>
-            <RadioGroup className={cartForm()} onChange={setCurrentPay} value={currentPay}>
+            <RadioGroup className={cartForm()} value={currentPay} onChange={setCurrentPay}>
               {payment.map((pay) => (
-                <RadioGroup.Option className={cartPay()} key={pay} value={pay} {...register('payment')}>
+                <RadioGroup.Option className={cartPay()} key={pay} value={pay}>
                   <span>{pay}</span>
                 </RadioGroup.Option>
               ))}
@@ -121,11 +133,12 @@ export const Cart = () => {
               <p className={cartDescription()}>{(handlePrice + delivery).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
             </li>
           </ul>
-          <button className={cartConfirm()} form='record'>
+          <button className={cartConfirm()} form='cart'>
             <span>Confirmar pedido</span>
           </button>
         </div>
       </div>
+      <Modal currentModal={currentModal} currentPay={currentPay} />
     </div>
   )
 }
