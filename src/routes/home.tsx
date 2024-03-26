@@ -8,6 +8,7 @@ import { FireIcon, ShoppingBagIcon, ShoppingCartIcon, TruckIcon } from '@heroico
 const { productContent, productHead, productTitle, productCard, productFilter, productFilterItem } = ProductVariants()
 const { heroContent, heroHead, heroTitle, heroSubtitle, heroDescription, heroDescriptionItem, heroIcon, heroImageMobile, heroImageDesk } = HeroVariants()
 
+const filters = ['Alcoólico', 'Com leite', 'Especial', 'Gelado', 'Tradicional']
 const heros = [
   { id: 1, icon: ShoppingCartIcon, title: 'Compra simples e segura' },
   { id: 2, icon: ShoppingBagIcon, title: 'Embalagem mantém o café intacto' },
@@ -15,13 +16,13 @@ const heros = [
   { id: 4, icon: FireIcon, title: 'O café chega fresquinho até você' }
 ]
 
-const filters = ['Alcoólico', 'Com leite', 'Especial', 'Gelado', 'Tradicional']
-
 export const Home = () => {
   const [currentFilter, setCurrentFilter] = useState<string | null>(null)
   const [currentProduct, setCurrentProduct] = useState<ProductProps[]>([])
 
-  const handleFilter = (filter: string) => currentFilter !== filter ? setCurrentFilter(filter) : setCurrentFilter(null)
+  const handleFilter = (filter: string) => currentFilter !== filter
+    ? setCurrentFilter(filter)
+    : setCurrentFilter(null)
 
   useEffect(() => {
     setCurrentProduct(ProductData)

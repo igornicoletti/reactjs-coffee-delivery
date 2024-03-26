@@ -1,38 +1,36 @@
+import { useState } from 'react'
 import { Form } from 'react-router-dom'
 import { useCart } from '../hooks/cart'
-import { SubmitHandler, useForm } from 'react-hook-form'
+import { Modal } from '../components/modal'
 import { RadioGroup } from '@headlessui/react'
+import { CheckoutProps } from '../types/checkout'
 import { CheckoutVariants } from '../styles/variants'
 import { TrashIcon } from '@heroicons/react/24/outline'
-import { useState } from 'react'
-import { Modal } from '../components/modal'
+import { SubmitHandler, useForm } from 'react-hook-form'
 
 const { cartContent, cartRecord, cartSummary, cartTitle, cartPanel, cartWrapper, cartHead, cartSubtitle, cartForm, cartFormHidden, cartFormItem, cartFormItens, cartInput, cartLabel, cartPay, cartOrder, cartOrderItem, cartImage, cartInfo, cartBetween, cartDescription, cartAction, cartTrash, cartIcon, cartConfirm } = CheckoutVariants()
 
 const delivery = 5.20
 const payment = ['Dinheiro', 'Cartão de crédito', 'Cartão de dédito']
 
-export type FormValues = {
-  cep: number
-  address: string
-  city: string
-  neighbor: string
-  num: number
-  state: string
-  payment: string
-}
-
 export const Cart = () => {
   const { cart, handleRemoveProduct } = useCart()
-  const { register, handleSubmit, reset } = useForm<FormValues>()
-  const [currentPay, setCurrentPay] = useState<string>('Dinheiro')
+  const { register, handleSubmit, reset } = useForm<CheckoutProps>()
+
+  const [currentPay, setCurrentPay] = useState<string>(payment[0])
   const [currentModal, setCurrentModal] = useState<boolean>(false)
+  const [currentCheckout, setCurrentCheckout] = useState<CheckoutProps | null>(null)
+
   const handlePrice = cart.reduce((prev, current) => prev += current.price * current.quantity, 0)
 
-  const onSubmit: SubmitHandler<FormValues> = (data: FormValues) => {
-    console.log(data)
-
+  const handleSubmitCart: SubmitHandler<CheckoutProps> = (data) => {
+    setCurrentCheckout({ ...data, payment: currentPay })
     setCurrentModal(true)
+  }
+
+  const handleClearCart = () => {
+    cart.splice(0, cart.length)
+    setCurrentPay(payment[0])
     reset()
   }
 
@@ -40,7 +38,7 @@ export const Cart = () => {
     <div className={cartContent()}>
       <div className={cartRecord()}>
         <h3 className={cartTitle()}>Complete seu pedido</h3>
-        <Form className={cartPanel()} id='cart' onSubmit={handleSubmit(onSubmit)}>
+        <Form className={cartPanel()} id='cart' onSubmit={handleSubmit(handleSubmitCart)}>
           <div className={cartWrapper()}>
             <div className={cartHead()}>
               <p className={cartSubtitle()}>Endereço de entrega</p>
@@ -74,9 +72,9 @@ export const Cart = () => {
                 <label className={cartLabel()} htmlFor='city'>Cidade</label>
               </div>
               <div className={cartFormItem()}>
-                <input className={cartInput()} type='text' id='state' placeholder=' '
-                  {...register('state', { required: true })} />
-                <label className={cartLabel()} htmlFor='state'>UF</label>
+                <input className={cartInput()} type='text' id='uf' placeholder=' '
+                  {...register('uf', { required: true })} />
+                <label className={cartLabel()} htmlFor='uf'>UF</label>
               </div>
             </div>
           </div>
@@ -105,9 +103,7 @@ export const Cart = () => {
                 <div className={cartInfo()}>
                   <div className={cartBetween()}>
                     <p className={cartDescription()}>{product.title}</p>
-                    <p className={cartDescription()}>
-                      {(product.price * product.quantity).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
-                    </p>
+                    <p className={cartDescription()}>{(product.price * product.quantity).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
                   </div>
                   <div className={cartAction()}>
                     <div>{product.quantity}</div>
@@ -133,12 +129,12 @@ export const Cart = () => {
               <p className={cartDescription()}>{(handlePrice + delivery).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
             </li>
           </ul>
-          <button className={cartConfirm()} form='cart'>
+          <button className={cartConfirm()} type='submit' form='cart'>
             <span>Confirmar pedido</span>
           </button>
         </div>
       </div>
-      <Modal currentModal={currentModal} currentPay={currentPay} />
+      <Modal currentModal={currentModal} currentCheckout={currentCheckout} handleClearCart={handleClearCart} />
     </div>
   )
 }

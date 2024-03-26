@@ -17,7 +17,7 @@ export const Header = () => {
         <NavLink className={({ isActive }) => isActive ? headerButton({ active: true }) : headerButton()} to={'cart'} onClick={(e) => cart.length === 0 && e.preventDefault()}>
           <ShoppingCartIcon className={headerIcon()} aria-hidden='true' />
         </NavLink>
-        {cart.length > 0 &&
+        {cart.length >= 1 &&
           <div className={headerBadge()}>
             <span className={headerPing()}></span>
             <span className={headerQuantity()}>{cart.length}</span>

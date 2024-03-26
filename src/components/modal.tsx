@@ -1,17 +1,19 @@
 import { Fragment } from 'react'
 import { Link } from 'react-router-dom'
+import { CheckoutProps } from '../types/checkout'
 import { ModalVariants } from '../styles/variants'
 import { Dialog, Transition } from '@headlessui/react'
 import { FaceSmileIcon } from '@heroicons/react/24/outline'
 
-const { modalContent, modalBackdrop, modalDialog, modalInfo, modalPanel, modalIcon, modalTitle, modalDescription, modalSumary, modalText, modalAction, modalEnter, modalEnterTo, modalFrom, modalLeave, modalLeaveFrom, modalLeaveTo, modalChildEnter, modalChildEnterTo, modalChildFrom, modalChildLeave, modalChildLeaveFrom, modalChildLeaveTo } = ModalVariants()
+const { modalContent, modalBackdrop, modalDialog, modalInfo, modalPanel, modalIcon, modalTitle, modalDescription, modalSumary, modalText, modalUf, modalAction, modalEnter, modalEnterTo, modalFrom, modalLeave, modalLeaveFrom, modalLeaveTo, modalChildEnter, modalChildEnterTo, modalChildFrom, modalChildLeave, modalChildLeaveFrom, modalChildLeaveTo } = ModalVariants()
 
 type Props = {
   currentModal: boolean
-  currentPay: string
+  currentCheckout: CheckoutProps | null
+  handleClearCart: () => void
 }
 
-export const Modal = ({ currentModal, currentPay }: Props) => {
+export const Modal = ({ currentModal, currentCheckout, handleClearCart }: Props) => {
   return (
     <Transition appear show={currentModal} as={Fragment}>
       <Dialog className={modalContent()} onClose={() => null}>
@@ -24,12 +26,21 @@ export const Modal = ({ currentModal, currentPay }: Props) => {
               <Dialog.Panel className={modalPanel()}>
                 <FaceSmileIcon className={modalIcon()} />
                 <Dialog.Title className={modalTitle()}>Uhuu... Pedido confirmado!</Dialog.Title>
-                <Dialog.Description className={modalDescription()}>Seu pedido foi enviado com sucesso.<br />Agora é só aguardar que logo nosso café chegará até você.</Dialog.Description>
-                <div className={modalSumary()}>
-                  <p>Endereço de entrega: <br /><span className={modalText()}></span></p>
-                  <p>Forma de pagamento: <span className={modalText()}>{currentPay}</span></p>
-                </div>
-                <Link className={modalAction()} to='/'>Voltar à página inicial</Link>
+                <Dialog.Description className={modalDescription()}>Seu pedido foi enviado com sucesso.<br />Agora é só aguardar que logo seu café chegará até você.</Dialog.Description>
+                {currentCheckout && (
+                  <ul className={modalSumary()}>
+                    <li>
+                      <p>Endereço de entrega:</p>
+                      <p className={modalText()}>{currentCheckout.address}, {currentCheckout.num} - {currentCheckout.neighbor}</p>
+                      <p className={modalText()}>{currentCheckout.city}/<span className={modalUf()}>{currentCheckout.uf}</span></p>
+                    </li>
+                    <li>
+                      <p>Forma de pagamento:</p>
+                      <p className={modalText()}>{currentCheckout.payment}</p>
+                    </li>
+                  </ul>
+                )}
+                <Link className={modalAction()} onClick={handleClearCart} to={'/'}>Voltar à página inicial</Link>
               </Dialog.Panel>
             </Transition.Child>
           </div>
