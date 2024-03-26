@@ -103,7 +103,7 @@ export const CheckoutVariants = tv({
     cartAction: 'flex items-center justify-between gap-2',
     cartTrash: 'hover:text-dracula-red transition ease-in duration-300',
     cartIcon: 'size-4 shrink-0',
-    cartConfirm: 'w-full flex items-center justify-center px-4 h-12 font-medium uppercase rounded-md bg-dracula-cyan text-dracula-dark hover:scale-95 active:scale-105 transition ease-in-out duration-300',
+    cartConfirm: 'w-full flex items-center justify-center px-4 h-12 font-medium uppercase rounded-md bg-dracula-cyan text-dracula-dark disabled:cursor-not-allowed disabled:hover:scale-100 hover:scale-95 active:scale-105 transition ease-in-out duration-300',
   }
 })
 

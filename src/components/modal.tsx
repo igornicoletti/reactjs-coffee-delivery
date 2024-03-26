@@ -1,5 +1,5 @@
 import { Fragment } from 'react'
-import { Link } from 'react-router-dom'
+import { useCart } from '../hooks/cart'
 import { CheckoutProps } from '../types/checkout'
 import { ModalVariants } from '../styles/variants'
 import { Dialog, Transition } from '@headlessui/react'
@@ -10,10 +10,11 @@ const { modalContent, modalBackdrop, modalDialog, modalInfo, modalPanel, modalIc
 type Props = {
   currentModal: boolean
   currentCheckout: CheckoutProps | null
-  handleClearCart: () => void
 }
 
-export const Modal = ({ currentModal, currentCheckout, handleClearCart }: Props) => {
+export const Modal = ({ currentModal, currentCheckout }: Props) => {
+  const { handleSubmitProduct } = useCart()
+
   return (
     <Transition appear show={currentModal} as={Fragment}>
       <Dialog className={modalContent()} onClose={() => null}>
@@ -40,7 +41,9 @@ export const Modal = ({ currentModal, currentCheckout, handleClearCart }: Props)
                     </li>
                   </ul>
                 )}
-                <Link className={modalAction()} onClick={handleClearCart} to={'/'}>Voltar à página inicial</Link>
+                <button className={modalAction()} onClick={handleSubmitProduct}>
+                  <span>Voltar à página inicial</span>
+                </button>
               </Dialog.Panel>
             </Transition.Child>
           </div>

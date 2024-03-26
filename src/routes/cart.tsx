@@ -15,7 +15,7 @@ const payment = ['Dinheiro', 'Cartão de crédito', 'Cartão de dédito']
 
 export const Cart = () => {
   const { cart, handleRemoveProduct } = useCart()
-  const { register, handleSubmit, reset } = useForm<CheckoutProps>()
+  const { register, handleSubmit } = useForm<CheckoutProps>()
 
   const [currentPay, setCurrentPay] = useState<string>(payment[0])
   const [currentModal, setCurrentModal] = useState<boolean>(false)
@@ -26,12 +26,6 @@ export const Cart = () => {
   const handleSubmitCart: SubmitHandler<CheckoutProps> = (data) => {
     setCurrentCheckout({ ...data, payment: currentPay })
     setCurrentModal(true)
-  }
-
-  const handleClearCart = () => {
-    cart.splice(0, cart.length)
-    setCurrentPay(payment[0])
-    reset()
   }
 
   return (
@@ -129,12 +123,12 @@ export const Cart = () => {
               <p className={cartDescription()}>{(handlePrice + delivery).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
             </li>
           </ul>
-          <button className={cartConfirm()} type='submit' form='cart'>
+          <button className={cartConfirm()} type='submit' form='cart' disabled={cart.length === 0}>
             <span>Confirmar pedido</span>
           </button>
         </div>
       </div>
-      <Modal currentModal={currentModal} currentCheckout={currentCheckout} handleClearCart={handleClearCart} />
+      <Modal currentModal={currentModal} currentCheckout={currentCheckout} />
     </div>
   )
 }

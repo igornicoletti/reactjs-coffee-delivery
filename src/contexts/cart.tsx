@@ -1,8 +1,10 @@
 import { CartProps } from '../types/cart'
+import { useNavigate } from 'react-router-dom'
 import { ReactNode, createContext, useEffect, useState } from 'react'
 
 type CartContextType = {
   cart: CartProps[]
+  handleSubmitProduct: () => void
   handleAddProduct: (data: CartProps) => void
   handleRemoveProduct: (data: CartProps['id']) => void
 }
@@ -10,6 +12,7 @@ type CartContextType = {
 export const CartContext = createContext({} as CartContextType)
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
+  const navigate = useNavigate()
   const [currentCart, setCurrentCart] = useState<CartProps[]>([])
 
   const handleAddProduct = ({ id, title, image, price, quantity }: CartProps) => {
@@ -23,6 +26,11 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   const handleRemoveProduct = (id: CartProps['id']) =>
     setCurrentCart(currentCart.filter((item) => item.id !== id))
 
+  const handleSubmitProduct = () => {
+    setCurrentCart([])
+    navigate('/')
+  }
+
   useEffect(() => {
     if (currentCart) {
       const stateJSON = JSON.stringify(currentCart)
@@ -31,7 +39,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   }, [currentCart])
 
   return (
-    <CartContext.Provider value={{ cart: currentCart, handleAddProduct, handleRemoveProduct }}>
+    <CartContext.Provider value={{ cart: currentCart, handleAddProduct, handleRemoveProduct, handleSubmitProduct }}>
       {children}
     </CartContext.Provider>
   )
