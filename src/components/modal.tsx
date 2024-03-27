@@ -32,8 +32,7 @@ export const Modal = ({ currentModal, currentCheckout }: Props) => {
                   <ul className={modalSumary()}>
                     <li>
                       <p>Endereço de entrega:</p>
-                      <p className={modalText()}>{currentCheckout.address}, {currentCheckout.num} - {currentCheckout.neighbor}</p>
-                      <p className={modalText()}>{currentCheckout.city}/<span className={modalUf()}>{currentCheckout.uf}</span></p>
+                      <p className={modalText()}>{currentCheckout.address}, {currentCheckout.num} - {currentCheckout.neighbor} <br /> {currentCheckout.city}/<span className={modalUf()}>{currentCheckout.uf}</span></p>
                     </li>
                     <li>
                       <p>Forma de pagamento:</p>
