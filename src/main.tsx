@@ -6,13 +6,13 @@ import './index.css'
 import { Root } from './routes/root'
 import { Home } from './routes/home'
 import { Cart } from './routes/cart'
-import { RootErrorBoundary } from './error'
+import { ErrorPage } from './error'
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Root />,
-    errorElement: <RootErrorBoundary />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: '/',
