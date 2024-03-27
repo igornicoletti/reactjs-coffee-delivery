@@ -8,14 +8,14 @@ import { CheckoutVariants } from '../styles/variants'
 import { TrashIcon } from '@heroicons/react/24/outline'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
-const { cartContent, cartRecord, cartSummary, cartTitle, cartPanel, cartWrapper, cartHead, cartSubtitle, cartForm, cartFormHidden, cartFormItem, cartFormItens, cartInput, cartLabel, cartPay, cartOrder, cartOrderItem, cartImage, cartInfo, cartBetween, cartDescription, cartAction, cartTrash, cartIcon, cartConfirm } = CheckoutVariants()
+const { cartContent, cartRecord, cartSummary, cartTitle, cartPanel, cartWrapper, cartHead, cartSubtitle, cartForm, cartFormHidden, cartFormItem, cartFormItens, cartInput, cartLabel, cartError, cartPay, cartOrder, cartOrderItem, cartImage, cartInfo, cartBetween, cartDescription, cartAction, cartTrash, cartIcon, cartConfirm } = CheckoutVariants()
 
 const delivery = 5.20
 const payment = ['Dinheiro', 'Cartão de crédito', 'Cartão de dédito']
 
 export const Cart = () => {
   const { cart, handleRemoveProduct } = useCart()
-  const { register, handleSubmit } = useForm<CheckoutProps>()
+  const { register, handleSubmit, formState: { errors } } = useForm<CheckoutProps>()
 
   const [currentPay, setCurrentPay] = useState<string>(payment[0])
   const [currentModal, setCurrentModal] = useState<boolean>(false)
@@ -41,34 +41,34 @@ export const Cart = () => {
             <div className={cartForm()}>
               <div className={cartFormItem()}>
                 <input className={cartInput()} type='number' id='cep' placeholder=' '
-                  {...register('cep', { required: true, valueAsNumber: true })} />
-                <label className={cartLabel()} htmlFor='cep'>CEP</label>
+                  {...register('cep', { required: { value: true, message: 'is required' }, minLength: { value: 8, message: 'Min length is 8' }, maxLength: { value: 8, message: 'Max length is 8' } })} />
+                <label className={cartLabel()} htmlFor='cep'>CEP {errors.cep && <span className={cartError()}>{errors.cep.message}</span>}</label>
               </div>
               <span className={cartFormHidden()}></span>
               <div className={cartFormItens()}>
                 <input className={cartInput()} type='text' id='address' placeholder=' '
-                  {...register('address', { required: true })} />
-                <label className={cartLabel()} htmlFor='address'>Endereço</label>
+                  {...register('address', { required: { value: true, message: 'is required' } })} />
+                <label className={cartLabel()} htmlFor='address'>Endereço {errors.address && <span className={cartError()}>{errors.address.message}</span>}</label>
               </div>
               <div className={cartFormItem()}>
                 <input className={cartInput()} type='number' id='num' placeholder=' '
-                  {...register('num', { required: true, valueAsNumber: true })} />
-                <label className={cartLabel()} htmlFor='num'>Número</label>
+                  {...register('num', { required: { value: true, message: 'is required' } })} />
+                <label className={cartLabel()} htmlFor='num'>Número {errors.num && <span className={cartError()}>{errors.num.message}</span>}</label>
               </div>
               <div className={cartFormItem()}>
                 <input className={cartInput()} type='text' id='neighbor' placeholder=' '
-                  {...register('neighbor', { required: true })} />
-                <label className={cartLabel()} htmlFor='neighbor'>Bairro</label>
+                  {...register('neighbor', { required: { value: true, message: 'is required' } })} />
+                <label className={cartLabel()} htmlFor='neighbor'>Bairro {errors.neighbor && <span className={cartError()}>{errors.neighbor.message}</span>}</label>
               </div>
               <div className={cartFormItem()}>
                 <input className={cartInput()} type='text' id='city' placeholder=' '
-                  {...register('city', { required: true })} />
-                <label className={cartLabel()} htmlFor='city'>Cidade</label>
+                  {...register('city', { required: { value: true, message: 'is required' } })} />
+                <label className={cartLabel()} htmlFor='city'>Cidade {errors.city && <span className={cartError()}>{errors.city.message}</span>}</label>
               </div>
               <div className={cartFormItem()}>
                 <input className={cartInput()} type='text' id='uf' placeholder=' '
-                  {...register('uf', { required: true })} />
-                <label className={cartLabel()} htmlFor='uf'>UF</label>
+                  {...register('uf', { required: { value: true, message: 'is required' }, minLength: { value: 2, message: 'min length is 2' }, maxLength: { value: 2, message: 'max length is 2' } })} />
+                <label className={cartLabel()} htmlFor='uf'>UF {errors.uf && <span className={cartError()}>{errors.uf.message}</span>}</label>
               </div>
             </div>
           </div>

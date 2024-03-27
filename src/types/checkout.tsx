@@ -1,9 +1,9 @@
 export interface CheckoutProps {
-  cep: number
+  cep: string
   address: string
   city: string
   neighbor: string
-  num: number
+  num: string
   uf: string
   payment: string
 }
