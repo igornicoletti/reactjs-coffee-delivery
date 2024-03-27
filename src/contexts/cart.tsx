@@ -32,11 +32,19 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   }
 
   useEffect(() => {
-    if (currentCart) {
+    if (currentCart.length >= 1) {
       const stateJSON = JSON.stringify(currentCart)
       localStorage.setItem('coffee-delivery:cart', stateJSON)
     }
   }, [currentCart])
+
+  useEffect(() => {
+    const storedStateAsJSON = localStorage.getItem('coffee-delivery:cart')
+    if (storedStateAsJSON) {
+      const carts = JSON.parse(storedStateAsJSON)
+      setCurrentCart(carts)
+    }
+  }, [])
 
   return (
     <CartContext.Provider value={{ cart: currentCart, handleAddProduct, handleRemoveProduct, handleSubmitProduct }}>

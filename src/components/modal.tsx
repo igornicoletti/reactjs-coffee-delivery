@@ -1,6 +1,6 @@
 import { Fragment } from 'react'
 import { useCart } from '../hooks/cart'
-import { CheckoutProps } from '../types/checkout'
+import { FormProps } from '../types/form'
 import { ModalVariants } from '../styles/variants'
 import { Dialog, Transition } from '@headlessui/react'
 import { FaceSmileIcon } from '@heroicons/react/24/outline'
@@ -9,10 +9,10 @@ const { modalContent, modalBackdrop, modalDialog, modalInfo, modalPanel, modalIc
 
 type Props = {
   currentModal: boolean
-  currentCheckout: CheckoutProps | null
+  currentForm: FormProps | null
 }
 
-export const Modal = ({ currentModal, currentCheckout }: Props) => {
+export const Modal = ({ currentModal, currentForm }: Props) => {
   const { handleSubmitProduct } = useCart()
 
   return (
@@ -28,10 +28,10 @@ export const Modal = ({ currentModal, currentCheckout }: Props) => {
                 <FaceSmileIcon className={modalIcon()} />
                 <Dialog.Title className={modalTitle()}>Uhuu... Pedido confirmado!</Dialog.Title>
                 <Dialog.Description className={modalDescription()}>Seu pedido foi enviado com sucesso.<br />Agora é só aguardar que logo seu café chegará até você.</Dialog.Description>
-                {currentCheckout && (
+                {currentForm && (
                   <div className={modalSumary()}>
-                    <p>Endereço de entrega: <br /> {currentCheckout.address}, {currentCheckout.num} - {currentCheckout.neighbor} <br /> {currentCheckout.city}/{currentCheckout.uf}</p>
-                    <p>Forma de pagamento: {currentCheckout.payment}</p>
+                    <p>Endereço de entrega: <br /> {currentForm.address}, {currentForm.num} - {currentForm.neighbor} <br /> {currentForm.city}/{currentForm.uf}</p>
+                    <p>Forma de pagamento: {currentForm.payment}</p>
                   </div>
                 )}
                 <button className={modalAction()} onClick={handleSubmitProduct}>

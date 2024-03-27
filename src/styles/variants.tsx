@@ -69,14 +69,23 @@ export const CardVariants = tv({
     cardTitle: 'text-xl font-medium uppercase',
     cardSubtitle: 'px-4',
     cardInfo: 'flex items-end justify-between gap-2 pt-2 mt-auto',
-    cardPrice: 'text-2xl md:text-3xl',
+    cardPrice: 'text-2xl',
     cardAction: 'flex items-center justify-between gap-2',
     cardCart: 'h-10 w-10 px-2 flex items-center justify-center rounded-md bg-dracula-line hover:bg-dracula-cyan disabled:hover:bg-dracula-line text-dracula-cyan hover:text-dracula-line disabled:hover:text-dracula-cyan disabled:cursor-not-allowed transition ease-in-out duration-300',
     cardIcon: 'size-6 shrink-0',
   }
 })
 
-export const CheckoutVariants = tv({
+export const QuantityVariants = tv({
+  slots: {
+    quantityContent: 'h-10 w-full max-w-32 flex items-center justify-center gap-2 rounded-md border border-dracula-line hover:border-dracula-white transition ease-in-out duration-300',
+    quantityButton: 'px-2 hover:text-dracula-cyan disabled:hover:text-dracula-white disabled:cursor-not-allowed transition ease-in-out duration-300',
+    quantityValue: 'w-full min-w-6 text-center text-lg font-medium bg-transparent focus:outline-none',
+    quantityIcon: 'size-6 shrink-0',
+  }
+})
+
+export const CartVariants = tv({
   slots: {
     cartContent: 'w-full flex flex-col xl:flex-row gap-16 xl:gap-8 py-16',
     cartRecord: 'w-full flex flex-col gap-8',
@@ -92,8 +101,8 @@ export const CheckoutVariants = tv({
     cartFormItens: 'h-12 relative col-span-1 md:col-span-2',
     cartInput: 'w-full h-full px-4 rounded-md peer border border-dracula-line hover:border-dracula-white focus:border-dracula-cyan bg-transparent focus:outline-none invalid:border-dracula-red hover:invalid:border-dracula-red focus:invalid:border-dracula-red transition ease-in-out duration-300',
     cartLabel: 'absolute top-3 left-px px-4 font-medium bg-dracula-wrapper text-dracula-cyan peer-focus:text-dracula-cyan peer-placeholder-shown:text-dracula-line peer-invalid:text-dracula-red peer-focus:peer-invalid:text-dracula-red scale-75 peer-focus:scale-75 peer-placeholder-shown:scale-100 transform -translate-y-5 peer-focus:-translate-y-5 peer-placeholder-shown:translate-y-0 transition ease-in-out duration-300',
-    cartError: 'absolute -bottom-2 right-2 px-4 bg-dracula-wrapper font-medium text-dracula-purple text-xs',
-    cartPay: 'w-full flex items-center justify-center px-4 h-12 font-medium uppercase cursor-pointer rounded-md border border-dracula-cyan bg-transparent ui-checked:bg-dracula-cyan hover:bg-dracula-cyan ui-checked:text-dracula-dark hover:text-dracula-dark transition ease-in-out duration-300',
+    cartError: 'absolute -bottom-2 right-2 px-4 bg-dracula-wrapper font-medium text-dracula-orange text-xs',
+    cartPay: 'w-full flex items-center justify-center px-4 h-12 uppercase cursor-pointer rounded-md border border-dracula-cyan bg-transparent ui-checked:bg-dracula-cyan/5 hover:bg-dracula-cyan/5 ui-checked:text-dracula-cyan transition ease-in-out duration-300',
     cartOrder: 'flex flex-col divide-y divide-dracula-line -mt-4',
     cartOrderItem: 'flex items-center gap-2 md:gap-4 py-4',
     cartImage: 'w-12 md:w-16',
@@ -103,16 +112,7 @@ export const CheckoutVariants = tv({
     cartAction: 'flex items-center justify-between gap-2',
     cartTrash: 'md:hover:text-dracula-red transition ease-in duration-300',
     cartIcon: 'size-4 shrink-0',
-    cartConfirm: 'w-full flex items-center justify-center px-4 h-12 font-medium uppercase rounded-md bg-dracula-cyan text-dracula-dark disabled:cursor-not-allowed disabled:hover:scale-100 hover:scale-95 active:scale-105 transition ease-in-out duration-300',
-  }
-})
-
-export const QuantityVariants = tv({
-  slots: {
-    quantityContent: 'h-10 w-full max-w-32 flex items-center justify-center gap-2 rounded-md border border-dracula-line hover:border-dracula-white transition ease-in-out duration-300',
-    quantityButton: 'px-2 hover:text-dracula-cyan disabled:hover:text-dracula-white disabled:cursor-not-allowed transition ease-in-out duration-300',
-    quantityValue: 'w-full min-w-6 text-center text-lg font-medium bg-transparent focus:outline-none',
-    quantityIcon: 'size-6 shrink-0',
+    cartConfirm: 'w-full flex items-center justify-center px-4 h-12 font-medium uppercase rounded-md bg-dracula-cyan text-dracula-dark disabled:cursor-not-allowed disabled:active:scale-100 active:scale-95 transition ease-in-out duration-300',
   }
 })
 

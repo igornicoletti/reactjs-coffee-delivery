@@ -1,4 +1,4 @@
-export interface CheckoutProps {
+export interface FormProps {
   cep: string
   address: string
   city: string

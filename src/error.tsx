@@ -13,7 +13,7 @@ const variantsError = tv({
 
 const { base, container, content, title, status } = variantsError()
 
-export function RootErrorBoundary() {
+export function ErrorPage() {
   const error = useRouteError() as Error
 
   return (

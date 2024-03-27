@@ -1,30 +1,29 @@
 import { useState } from 'react'
 import { Form } from 'react-router-dom'
 import { useCart } from '../hooks/cart'
+import { FormProps } from '../types/form'
 import { Modal } from '../components/modal'
 import { RadioGroup } from '@headlessui/react'
-import { CheckoutProps } from '../types/checkout'
-import { CheckoutVariants } from '../styles/variants'
+import { CartVariants } from '../styles/variants'
 import { TrashIcon } from '@heroicons/react/24/outline'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
-const { cartContent, cartRecord, cartSummary, cartTitle, cartPanel, cartWrapper, cartHead, cartSubtitle, cartForm, cartFormHidden, cartFormItem, cartFormItens, cartInput, cartLabel, cartError, cartPay, cartOrder, cartOrderItem, cartImage, cartInfo, cartBetween, cartDescription, cartAction, cartTrash, cartIcon, cartConfirm } = CheckoutVariants()
+const { cartContent, cartRecord, cartSummary, cartTitle, cartPanel, cartWrapper, cartHead, cartSubtitle, cartForm, cartFormHidden, cartFormItem, cartFormItens, cartInput, cartLabel, cartError, cartPay, cartOrder, cartOrderItem, cartImage, cartInfo, cartBetween, cartDescription, cartAction, cartTrash, cartIcon, cartConfirm } = CartVariants()
 
-const delivery = 5.20
 const payment = ['Dinheiro', 'Cartão de crédito', 'Cartão de dédito']
 
 export const Cart = () => {
   const { cart, handleRemoveProduct } = useCart()
-  const { register, handleSubmit, formState: { errors } } = useForm<CheckoutProps>()
+  const { register, handleSubmit, formState: { errors } } = useForm<FormProps>()
 
   const [currentPay, setCurrentPay] = useState<string>(payment[0])
   const [currentModal, setCurrentModal] = useState<boolean>(false)
-  const [currentCheckout, setCurrentCheckout] = useState<CheckoutProps | null>(null)
+  const [currentForm, setCurrentForm] = useState<FormProps | null>(null)
 
   const handlePrice = cart.reduce((prev, current) => prev += current.price * current.quantity, 0)
 
-  const handleSubmitCart: SubmitHandler<CheckoutProps> = (data) => {
-    setCurrentCheckout({ ...data, payment: currentPay })
+  const handleSubmitCart: SubmitHandler<FormProps> = (data) => {
+    setCurrentForm({ ...data, payment: currentPay })
     setCurrentModal(true)
   }
 
@@ -122,11 +121,11 @@ export const Cart = () => {
             </li>
             <li className={cartBetween()}>
               <p>Entrega</p>
-              <p>{delivery.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
+              <p>R$9.90</p>
             </li>
             <li className={cartBetween()}>
               <p className={cartDescription()}>Valor total</p>
-              <p className={cartDescription()}>{(handlePrice + delivery).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
+              <p className={cartDescription()}>{(handlePrice + 9.90).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
             </li>
           </ul>
           <button className={cartConfirm()} type='submit' form='cart' disabled={cart.length === 0}>
@@ -134,7 +133,7 @@ export const Cart = () => {
           </button>
         </div>
       </div>
-      <Modal currentModal={currentModal} currentCheckout={currentCheckout} />
+      <Modal currentModal={currentModal} currentForm={currentForm} />
     </div>
   )
 }

@@ -10,11 +10,11 @@ export const Header = () => {
 
   return (
     <div className={headerContent()}>
-      <NavLink className={headerTitle()} to={'/'}>
+      <NavLink className={headerTitle()} to={`/`}>
         <h1>Coffee Delivery</h1>
       </NavLink>
       <div className={headerCart()}>
-        <NavLink className={({ isActive }) => isActive ? headerButton({ active: true }) : headerButton()} to={'/cart'} onClick={(e) => cart.length === 0 && e.preventDefault()}>
+        <NavLink className={({ isActive }) => isActive ? headerButton({ active: true }) : headerButton()} to={`cart`} onClick={(e) => cart.length === 0 && e.preventDefault()}>
           <ShoppingCartIcon className={headerIcon()} aria-hidden='true' />
         </NavLink>
         {cart.length !== 0 &&

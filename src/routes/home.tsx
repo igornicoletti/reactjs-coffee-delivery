@@ -1,14 +1,12 @@
 import { Card } from '../components/card'
 import { useEffect, useState } from 'react'
 import { ProductProps } from '../types/product'
-import { ProductData } from '../api/product.json'
 import { HeroVariants, ProductVariants } from '../styles/variants'
 import { FireIcon, ShoppingBagIcon, ShoppingCartIcon, TruckIcon } from '@heroicons/react/24/outline'
 
 const { productContent, productHead, productTitle, productCard, productFilter, productFilterItem } = ProductVariants()
 const { heroContent, heroHead, heroTitle, heroSubtitle, heroDescription, heroDescriptionItem, heroIcon, heroImageMobile, heroImageDesk } = HeroVariants()
 
-const filters = ['Alcoólico', 'Com leite', 'Especial', 'Gelado', 'Tradicional']
 const heros = [
   { id: 1, icon: ShoppingCartIcon, title: 'Compra simples e segura' },
   { id: 2, icon: ShoppingBagIcon, title: 'Embalagem mantém o café intacto' },
@@ -16,22 +14,27 @@ const heros = [
   { id: 4, icon: FireIcon, title: 'O café chega fresquinho até você' }
 ]
 
+const filters = ['Alcoólico', 'Com leite', 'Especial', 'Gelado', 'Tradicional']
+
 export const Home = () => {
   const [currentFilter, setCurrentFilter] = useState<string | null>(null)
   const [currentProduct, setCurrentProduct] = useState<ProductProps[]>([])
 
   const handleFilter = (filter: string) => currentFilter !== filter
-    ? setCurrentFilter(filter)
-    : setCurrentFilter(null)
+    ? setCurrentFilter(filter) : setCurrentFilter(null)
 
   useEffect(() => {
-    setCurrentProduct(ProductData)
+    const storedStateAsJSON = localStorage.getItem('coffee-delivery:product')
 
-    if (currentFilter)
-      setCurrentProduct(ProductData
-        .filter((product: ProductProps) => product.categories
-          .find((category) => category === currentFilter)))
+    if (storedStateAsJSON) {
+      const products = JSON.parse(storedStateAsJSON)
+      setCurrentProduct(products)
 
+      if (currentFilter)
+        setCurrentProduct(products
+          .filter((product: ProductProps) => product.categories
+            .find((category) => category === currentFilter)))
+    }
   }, [currentFilter])
 
   return (
