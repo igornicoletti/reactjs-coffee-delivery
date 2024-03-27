@@ -144,8 +144,6 @@ export const ModalVariants = tv({
     modalTitle: 'text-xl font-medium leading-6 text-dracula-dark mt-2',
     modalDescription: 'text-dracula-dark mt-4',
     modalSumary: 'flex flex-col gap-4 font-medium text-sm text-dracula-dark mt-10',
-    modalText: 'capitalize text-dracula-line',
-    modalUf: 'uppercase',
     modalAction: 'mt-10 w-full flex items-center justify-center px-4 h-12 font-medium uppercase rounded-md bg-dracula-cyan/75 hover:bg-dracula-cyan text-dracula-line transition ease-in-out duration-300',
     modalEnter: 'ease-out duration-300',
     modalFrom: 'opacity-0',
