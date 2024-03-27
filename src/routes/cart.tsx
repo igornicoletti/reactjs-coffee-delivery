@@ -41,34 +41,40 @@ export const Cart = () => {
             <div className={cartForm()}>
               <div className={cartFormItem()}>
                 <input className={cartInput()} type='number' id='cep' placeholder=' '
-                  {...register('cep', { required: { value: true, message: 'is required' }, minLength: { value: 8, message: 'Min length is 8' }, maxLength: { value: 8, message: 'Max length is 8' } })} />
-                <label className={cartLabel()} htmlFor='cep'>CEP {errors.cep && <span className={cartError()}>{errors.cep.message}</span>}</label>
+                  {...register('cep', { required: { value: true, message: 'Por favor, informe um CEP' }, minLength: { value: 8, message: 'CEP inválido!' }, maxLength: { value: 8, message: 'CEP inválido!' } })} />
+                <label className={cartLabel()} htmlFor='cep'>CEP</label>
+                {errors.cep && <span className={cartError()}>{errors.cep.message}</span>}
               </div>
               <span className={cartFormHidden()}></span>
               <div className={cartFormItens()}>
                 <input className={cartInput()} type='text' id='address' placeholder=' '
-                  {...register('address', { required: { value: true, message: 'is required' } })} />
-                <label className={cartLabel()} htmlFor='address'>Endereço {errors.address && <span className={cartError()}>{errors.address.message}</span>}</label>
+                  {...register('address', { required: { value: true, message: 'Por favor, informe um endereço' } })} />
+                <label className={cartLabel()} htmlFor='address'>Endereço</label>
+                {errors.address && <span className={cartError()}>{errors.address.message}</span>}
               </div>
               <div className={cartFormItem()}>
                 <input className={cartInput()} type='number' id='num' placeholder=' '
-                  {...register('num', { required: { value: true, message: 'is required' } })} />
-                <label className={cartLabel()} htmlFor='num'>Número {errors.num && <span className={cartError()}>{errors.num.message}</span>}</label>
+                  {...register('num', { required: { value: true, message: 'Por favor, informe um número' } })} />
+                <label className={cartLabel()} htmlFor='num'>Número</label>
+                {errors.num && <span className={cartError()}>{errors.num.message}</span>}
               </div>
               <div className={cartFormItem()}>
                 <input className={cartInput()} type='text' id='neighbor' placeholder=' '
-                  {...register('neighbor', { required: { value: true, message: 'is required' } })} />
-                <label className={cartLabel()} htmlFor='neighbor'>Bairro {errors.neighbor && <span className={cartError()}>{errors.neighbor.message}</span>}</label>
+                  {...register('neighbor', { required: { value: true, message: 'Por favor, informe um bairro' } })} />
+                <label className={cartLabel()} htmlFor='neighbor'>Bairro</label>
+                {errors.neighbor && <span className={cartError()}>{errors.neighbor.message}</span>}
               </div>
               <div className={cartFormItem()}>
                 <input className={cartInput()} type='text' id='city' placeholder=' '
-                  {...register('city', { required: { value: true, message: 'is required' } })} />
-                <label className={cartLabel()} htmlFor='city'>Cidade {errors.city && <span className={cartError()}>{errors.city.message}</span>}</label>
+                  {...register('city', { required: { value: true, message: 'Por favor, informe uma cidade' } })} />
+                <label className={cartLabel()} htmlFor='city'>Cidade</label>
+                {errors.city && <span className={cartError()}>{errors.city.message}</span>}
               </div>
               <div className={cartFormItem()}>
                 <input className={cartInput()} type='text' id='uf' placeholder=' '
-                  {...register('uf', { required: { value: true, message: 'is required' }, minLength: { value: 2, message: 'min length is 2' }, maxLength: { value: 2, message: 'max length is 2' } })} />
-                <label className={cartLabel()} htmlFor='uf'>UF {errors.uf && <span className={cartError()}>{errors.uf.message}</span>}</label>
+                  {...register('uf', { required: { value: true, message: 'Por favor, informe um estado' } })} />
+                <label className={cartLabel()} htmlFor='uf'>UF</label>
+                {errors.uf && <span className={cartError()}>{errors.uf.message}</span>}
               </div>
             </div>
           </div>

@@ -10,7 +10,7 @@ export const Header = () => {
 
   return (
     <div className={headerContent()}>
-      <NavLink className={({ isActive }) => isActive ? headerTitle({ active: true }) : headerTitle()} to={'/'}>
+      <NavLink className={headerTitle()} to={'/'}>
         <h1>Coffee Delivery</h1>
       </NavLink>
       <div className={headerCart()}>
