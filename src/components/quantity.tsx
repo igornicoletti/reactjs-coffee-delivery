@@ -1,8 +1,8 @@
 import { ChangeEvent } from 'react'
-import { QuantityVariants } from '../styles/variants'
+import { quantityVariants } from '../styles/variants'
 import { MinusIcon, PlusIcon } from '@heroicons/react/24/outline'
 
-const { quantityContent, quantityButton, quantityValue, quantityIcon } = QuantityVariants()
+const { quantityContent, quantityButton, quantityValue, quantityIcon } = quantityVariants()
 
 type Props = {
   currentQuantity: number

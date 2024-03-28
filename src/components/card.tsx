@@ -3,10 +3,10 @@ import { Quantity } from './quantity'
 import { useCart } from '../hooks/cart'
 import { ChangeEvent, useState } from 'react'
 import { ProductProps } from '../types/product'
-import { CardVariants } from '../styles/variants'
+import { cardVariants } from '../styles/variants'
 import { ShoppingCartIcon } from '@heroicons/react/24/outline'
 
-const { cardContent, cardImage, cardCategory, cardCategoryItem, cardDescription, cardTitle, cardSubtitle, cardInfo, cardPrice, cardAction, cardCart, cardIcon } = CardVariants()
+const { cardContent, cardImage, cardCategory, cardCategoryItem, cardDescription, cardTitle, cardSubtitle, cardInfo, cardPrice, cardAction, cardCart, cardIcon } = cardVariants()
 
 type Props = {
   product: ProductProps

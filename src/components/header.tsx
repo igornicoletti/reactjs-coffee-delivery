@@ -1,9 +1,9 @@
 import { useCart } from '../hooks/cart'
 import { NavLink } from 'react-router-dom'
-import { HeaderVariants } from '../styles/variants'
+import { headerVariants } from '../styles/variants'
 import { ShoppingCartIcon } from '@heroicons/react/24/outline'
 
-const { headerContent, headerTitle, headerCart, headerButton, headerIcon, headerBadge, headerPing, headerQuantity } = HeaderVariants()
+const { headerContent, headerTitle, headerCart, headerButton, headerIcon, headerBadge, headerPing, headerQuantity } = headerVariants()
 
 export const Header = () => {
   const { cart } = useCart()

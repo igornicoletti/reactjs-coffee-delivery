@@ -23,8 +23,10 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
       : [...state, { id, title, image, price, quantity: quantity }])
   }
 
-  const handleRemoveProduct = (id: CartProps['id']) =>
-    setCurrentCart(currentCart.filter((item) => item.id !== id))
+  const handleRemoveProduct = (id: CartProps['id']) => {
+    const newCurrentCart = currentCart.filter((item) => item.id !== id)
+    setCurrentCart(newCurrentCart)
+  }
 
   const handleSubmitProduct = () => {
     setCurrentCart([])
@@ -32,7 +34,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   }
 
   useEffect(() => {
-    if (currentCart.length >= 1) {
+    if (currentCart.length) {
       const stateJSON = JSON.stringify(currentCart)
       localStorage.setItem('coffee-delivery:cart', stateJSON)
     }

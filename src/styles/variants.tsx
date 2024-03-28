@@ -1,13 +1,13 @@
 import { tv } from 'tailwind-variants'
 
-export const RootVariants = tv({
+export const rootVariants = tv({
   slots: {
     rootLayout: 'relative w-full h-full min-h-screen grid content-start overflow-x-hidden',
     rootContainer: 'w-full max-w-screen-2xl mx-auto px-6',
   }
 })
 
-export const HeaderVariants = tv({
+export const headerVariants = tv({
   slots: {
     headerContent: 'w-full flex items-center justify-between py-8',
     headerTitle: 'text-2xl md:text-3xl font-semibold uppercase text-dracula-cyan hover:animate-pulse transition ease-in-out duration-300',
@@ -27,7 +27,7 @@ export const HeaderVariants = tv({
   }
 })
 
-export const HeroVariants = tv({
+export const heroVariants = tv({
   slots: {
     heroContent: 'w-full flex flex-col xl:flex-row items-center justify-between gap-8 py-16',
     heroHead: 'w-full max-w-2xl flex flex-col gap-12',
@@ -41,7 +41,7 @@ export const HeroVariants = tv({
   }
 })
 
-export const ProductVariants = tv({
+export const productVariants = tv({
   slots: {
     productContent: 'w-full flex flex-col gap-12 py-16',
     productHead: 'w-full flex flex-col lg:flex-row justify-between gap-4',
@@ -59,7 +59,7 @@ export const ProductVariants = tv({
   }
 })
 
-export const CardVariants = tv({
+export const cardVariants = tv({
   slots: {
     cardContent: 'flex flex-col rounded-md odd:rounded-tr-3xl even:rounded-tl-3xl odd:rounded-bl-3xl even:rounded-br-3xl gap-6 p-4 pt-0 border border-dracula-line bg-dracula-wrapper shadow-md hover:shadow-xl transition ease-in-out duration-300',
     cardImage: 'hover:animate-spin w-32 mx-auto -mt-4',
@@ -76,7 +76,7 @@ export const CardVariants = tv({
   }
 })
 
-export const QuantityVariants = tv({
+export const quantityVariants = tv({
   slots: {
     quantityContent: 'h-10 w-full max-w-32 flex items-center justify-center gap-2 rounded-md border border-dracula-line hover:border-dracula-white transition ease-in-out duration-300',
     quantityButton: 'px-2 hover:text-dracula-cyan disabled:hover:text-dracula-white disabled:cursor-not-allowed transition ease-in-out duration-300',
@@ -85,7 +85,7 @@ export const QuantityVariants = tv({
   }
 })
 
-export const CartVariants = tv({
+export const cartVariants = tv({
   slots: {
     cartContent: 'w-full flex flex-col xl:flex-row gap-16 xl:gap-8 py-16',
     cartRecord: 'w-full flex flex-col gap-8',
@@ -116,7 +116,7 @@ export const CartVariants = tv({
   }
 })
 
-export const NotifyVariants = tv({
+export const notifyVariants = tv({
   slots: {
     notifyContent: 'fixed inset-0 flex items-end sm:items-start px-4 py-6 md:p-6 z-10 pointer-events-none',
     notifyPanel: 'w-full flex flex-col items-center sm:items-end',
@@ -133,7 +133,7 @@ export const NotifyVariants = tv({
   }
 })
 
-export const ModalVariants = tv({
+export const modalVariants = tv({
   slots: {
     modalContent: 'relative z-10',
     modalBackdrop: 'fixed inset-0 bg-black/25',

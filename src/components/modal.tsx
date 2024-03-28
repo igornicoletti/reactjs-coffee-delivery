@@ -1,11 +1,11 @@
 import { Fragment } from 'react'
 import { useCart } from '../hooks/cart'
 import { FormProps } from '../types/form'
-import { ModalVariants } from '../styles/variants'
+import { modalVariants } from '../styles/variants'
 import { Dialog, Transition } from '@headlessui/react'
 import { FaceSmileIcon } from '@heroicons/react/24/outline'
 
-const { modalContent, modalBackdrop, modalDialog, modalInfo, modalPanel, modalIcon, modalTitle, modalDescription, modalSumary, modalAction, modalEnter, modalEnterTo, modalFrom, modalLeave, modalLeaveFrom, modalLeaveTo, modalChildEnter, modalChildEnterTo, modalChildFrom, modalChildLeave, modalChildLeaveFrom, modalChildLeaveTo } = ModalVariants()
+const { modalContent, modalBackdrop, modalDialog, modalInfo, modalPanel, modalIcon, modalTitle, modalDescription, modalSumary, modalAction, modalEnter, modalEnterTo, modalFrom, modalLeave, modalLeaveFrom, modalLeaveTo, modalChildEnter, modalChildEnterTo, modalChildFrom, modalChildLeave, modalChildLeaveFrom, modalChildLeaveTo } = modalVariants()
 
 type Props = {
   currentModal: boolean

@@ -1,11 +1,11 @@
 import { useEffect } from 'react'
 import { Outlet } from 'react-router-dom'
+import { Product } from '../../product.json'
 import { Header } from '../components/header'
-import { Product } from '../api/product.json'
 import { CartProvider } from '../contexts/cart'
-import { RootVariants } from '../styles/variants'
+import { rootVariants } from '../styles/variants'
 
-const { rootLayout, rootContainer } = RootVariants()
+const { rootLayout, rootContainer } = rootVariants()
 
 export const Root = () => {
   useEffect(() => {

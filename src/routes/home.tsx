@@ -1,11 +1,11 @@
 import { Card } from '../components/card'
 import { useEffect, useState } from 'react'
 import { ProductProps } from '../types/product'
-import { HeroVariants, ProductVariants } from '../styles/variants'
+import { heroVariants, productVariants } from '../styles/variants'
 import { FireIcon, ShoppingBagIcon, ShoppingCartIcon, TruckIcon } from '@heroicons/react/24/outline'
 
-const { productContent, productHead, productTitle, productCard, productFilter, productFilterItem } = ProductVariants()
-const { heroContent, heroHead, heroTitle, heroSubtitle, heroDescription, heroDescriptionItem, heroIcon, heroImageMobile, heroImageDesk } = HeroVariants()
+const { productContent, productHead, productTitle, productCard, productFilter, productFilterItem } = productVariants()
+const { heroContent, heroHead, heroTitle, heroSubtitle, heroDescription, heroDescriptionItem, heroIcon, heroImageMobile, heroImageDesk } = heroVariants()
 
 const heros = [
   { id: 1, icon: ShoppingCartIcon, title: 'Compra simples e segura' },

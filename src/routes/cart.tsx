@@ -4,11 +4,11 @@ import { useCart } from '../hooks/cart'
 import { FormProps } from '../types/form'
 import { Modal } from '../components/modal'
 import { RadioGroup } from '@headlessui/react'
-import { CartVariants } from '../styles/variants'
+import { cartVariants } from '../styles/variants'
 import { TrashIcon } from '@heroicons/react/24/outline'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
-const { cartContent, cartRecord, cartSummary, cartTitle, cartPanel, cartWrapper, cartHead, cartSubtitle, cartForm, cartFormHidden, cartFormItem, cartFormItens, cartInput, cartLabel, cartError, cartPay, cartOrder, cartOrderItem, cartImage, cartInfo, cartBetween, cartDescription, cartAction, cartTrash, cartIcon, cartConfirm } = CartVariants()
+const { cartContent, cartRecord, cartSummary, cartTitle, cartPanel, cartWrapper, cartHead, cartSubtitle, cartForm, cartFormHidden, cartFormItem, cartFormItens, cartInput, cartLabel, cartError, cartPay, cartOrder, cartOrderItem, cartImage, cartInfo, cartBetween, cartDescription, cartAction, cartTrash, cartIcon, cartConfirm } = cartVariants()
 
 const payment = ['Dinheiro', 'Cartão de crédito', 'Cartão de dédito']
 
