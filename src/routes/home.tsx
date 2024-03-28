@@ -1,20 +1,20 @@
 import { Card } from '../components/card'
 import { useEffect, useState } from 'react'
 import { ProductProps } from '../types/product'
+import { ProductData } from '../data/product.json'
 import { HeroVariants, ProductVariants } from '../styles/variants'
 import { FireIcon, ShoppingBagIcon, ShoppingCartIcon, TruckIcon } from '@heroicons/react/24/outline'
 
 const { productContent, productHead, productTitle, productCard, productFilter, productFilterItem } = ProductVariants()
 const { heroContent, heroHead, heroTitle, heroSubtitle, heroDescription, heroDescriptionItem, heroIcon, heroImageMobile, heroImageDesk } = HeroVariants()
 
+const filters = ['Alcoólico', 'Com leite', 'Especial', 'Gelado', 'Tradicional']
 const heros = [
   { id: 1, icon: ShoppingCartIcon, title: 'Compra simples e segura' },
   { id: 2, icon: ShoppingBagIcon, title: 'Embalagem mantém o café intacto' },
   { id: 3, icon: TruckIcon, title: 'Entrega rápida e rastreada' },
   { id: 4, icon: FireIcon, title: 'O café chega fresquinho até você' }
 ]
-
-const filters = ['Alcoólico', 'Com leite', 'Especial', 'Gelado', 'Tradicional']
 
 export const Home = () => {
   const [currentFilter, setCurrentFilter] = useState<string | null>(null)
@@ -24,17 +24,12 @@ export const Home = () => {
     ? setCurrentFilter(filter) : setCurrentFilter(null)
 
   useEffect(() => {
-    const storedStateAsJSON = localStorage.getItem('coffee-delivery:product')
+    setCurrentProduct(ProductData)
 
-    if (storedStateAsJSON) {
-      const products = JSON.parse(storedStateAsJSON)
-      setCurrentProduct(products)
-
-      if (currentFilter)
-        setCurrentProduct(products
-          .filter((product: ProductProps) => product.categories
-            .find((category) => category === currentFilter)))
-    }
+    if (currentFilter)
+      setCurrentProduct(ProductData
+        .filter((product: ProductProps) => product.categories
+          .find((category) => category === currentFilter)))
   }, [currentFilter])
 
   return (
