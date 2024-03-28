@@ -1,19 +1,19 @@
 import { Notify } from './notify'
 import { Quantity } from './quantity'
-import { useCart } from '../hooks/cart'
 import { ChangeEvent, useState } from 'react'
 import { ProductProps } from '../types/product'
-import { cardVariants } from '../styles/variants'
+import { CardVariants } from '../styles/variants'
+import { CartContextProvider } from '../hooks/cart'
 import { ShoppingCartIcon } from '@heroicons/react/24/outline'
 
-const { cardContent, cardImage, cardCategory, cardCategoryItem, cardDescription, cardTitle, cardSubtitle, cardInfo, cardPrice, cardAction, cardCart, cardIcon } = cardVariants()
+const { cardContent, cardImage, cardCategory, cardCategoryItem, cardDescription, cardTitle, cardSubtitle, cardInfo, cardPrice, cardAction, cardCart, cardIcon } = CardVariants()
 
 type Props = {
   product: ProductProps
 }
 
 export const Card = ({ product }: Props) => {
-  const { handleAddProduct } = useCart()
+  const { handleAddProduct } = CartContextProvider()
 
   const [currentTitle, setCurrentTitle] = useState<string>('')
   const [currentQuantity, setCurrentQuantity] = useState<number>(1)

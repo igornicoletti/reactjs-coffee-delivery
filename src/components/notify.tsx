@@ -1,9 +1,9 @@
 import { Fragment } from 'react'
 import { Transition } from '@headlessui/react'
-import { notifyVariants } from '../styles/variants'
+import { NotifyVariants } from '../styles/variants'
 import { CheckCircleIcon } from '@heroicons/react/24/outline'
 
-const { notifyContent, notifyPanel, notifyHead, notifyIcon, notifyTitle, notifyCoffee, notifyEnter, notifyEnterTo, notifyFrom, notifyLeave, notifyLeaveFrom, notifyLeaveTo } = notifyVariants()
+const { notifyContent, notifyPanel, notifyHead, notifyIcon, notifyTitle, notifyCoffee, notifyEnter, notifyEnterTo, notifyFrom, notifyLeave, notifyLeaveFrom, notifyLeaveTo } = NotifyVariants()
 
 type Props = {
   currentNotify: boolean

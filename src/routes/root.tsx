@@ -3,9 +3,9 @@ import { Outlet } from 'react-router-dom'
 import { Product } from '../../product.json'
 import { Header } from '../components/header'
 import { CartProvider } from '../contexts/cart'
-import { rootVariants } from '../styles/variants'
+import { RootVariants } from '../styles/variants'
 
-const { rootLayout, rootContainer } = rootVariants()
+const { rootLayout, rootContainer } = RootVariants()
 
 export const Root = () => {
   useEffect(() => {

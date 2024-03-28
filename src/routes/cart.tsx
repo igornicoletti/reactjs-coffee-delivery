@@ -1,19 +1,19 @@
 import { useState } from 'react'
 import { Form } from 'react-router-dom'
-import { useCart } from '../hooks/cart'
 import { FormProps } from '../types/form'
 import { Modal } from '../components/modal'
 import { RadioGroup } from '@headlessui/react'
-import { cartVariants } from '../styles/variants'
+import { CartVariants } from '../styles/variants'
+import { CartContextProvider } from '../hooks/cart'
 import { TrashIcon } from '@heroicons/react/24/outline'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
-const { cartContent, cartRecord, cartSummary, cartTitle, cartPanel, cartWrapper, cartHead, cartSubtitle, cartForm, cartFormHidden, cartFormItem, cartFormItens, cartInput, cartLabel, cartError, cartPay, cartOrder, cartOrderItem, cartImage, cartInfo, cartBetween, cartDescription, cartAction, cartTrash, cartIcon, cartConfirm } = cartVariants()
+const { cartContent, cartRecord, cartSummary, cartTitle, cartPanel, cartWrapper, cartHead, cartSubtitle, cartForm, cartFormHidden, cartFormItem, cartFormItens, cartInput, cartLabel, cartError, cartPay, cartOrder, cartOrderItem, cartImage, cartInfo, cartBetween, cartDescription, cartAction, cartTrash, cartIcon, cartConfirm } = CartVariants()
 
 const payment = ['Dinheiro', 'Cartão de crédito', 'Cartão de dédito']
 
 export const Cart = () => {
-  const { cart, handleRemoveProduct } = useCart()
+  const { cart, handleRemoveProduct } = CartContextProvider()
   const { register, handleSubmit, formState: { errors } } = useForm<FormProps>()
 
   const [currentPay, setCurrentPay] = useState<string>(payment[0])

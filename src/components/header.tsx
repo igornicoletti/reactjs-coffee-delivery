@@ -1,12 +1,12 @@
-import { useCart } from '../hooks/cart'
 import { NavLink } from 'react-router-dom'
-import { headerVariants } from '../styles/variants'
+import { HeaderVariants } from '../styles/variants'
+import { CartContextProvider } from '../hooks/cart'
 import { ShoppingCartIcon } from '@heroicons/react/24/outline'
 
-const { headerContent, headerTitle, headerCart, headerButton, headerIcon, headerBadge, headerPing, headerQuantity } = headerVariants()
+const { headerContent, headerTitle, headerCart, headerButton, headerIcon, headerBadge, headerPing, headerQuantity } = HeaderVariants()
 
 export const Header = () => {
-  const { cart } = useCart()
+  const { cart } = CartContextProvider()
 
   return (
     <div className={headerContent()}>
