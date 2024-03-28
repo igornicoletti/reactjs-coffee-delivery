@@ -45,7 +45,7 @@ export const Card = ({ product }: Props) => {
         <p className={cardSubtitle()}>{product.description}</p>
       </div>
       <div className={cardInfo()}>
-        <p>R$ <span className={cardPrice()}>{product.price.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span></p>
+        <p>R$ <span className={cardPrice()}>{product.price.toFixed(2)}</span></p>
         <div className={cardAction()}>
           <Quantity
             currentQuantity={currentQuantity}

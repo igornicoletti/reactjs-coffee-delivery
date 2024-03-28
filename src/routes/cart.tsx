@@ -20,7 +20,7 @@ export const Cart = () => {
   const [currentModal, setCurrentModal] = useState<boolean>(false)
   const [currentForm, setCurrentForm] = useState<FormProps | null>(null)
 
-  const handlePrice = cart.reduce((prev, current) => prev += current.price * current.quantity, 0)
+  const currentValue = cart?.reduce((prev, current) => prev += current.price * current.quantity, 0)
 
   const handleSubmitCart: SubmitHandler<FormProps> = (data) => {
     setCurrentForm({ ...data, payment: currentPay })
@@ -40,38 +40,38 @@ export const Cart = () => {
             <div className={cartForm()}>
               <div className={cartFormItem()}>
                 <input className={cartInput()} type='number' id='cep' placeholder=' '
-                  {...register('cep', { required: { value: true, message: 'Por favor, informe um CEP' }, minLength: { value: 8, message: 'CEP inválido!' }, maxLength: { value: 8, message: 'CEP inválido!' } })} />
+                  {...register('cep', { required: { value: true, message: 'Por favor, informe um CEP.' }, minLength: { value: 8, message: 'CEP inválido!' }, maxLength: { value: 8, message: 'CEP inválido!' } })} />
                 <label className={cartLabel()} htmlFor='cep'>CEP</label>
                 {errors.cep && <span className={cartError()}>{errors.cep.message}</span>}
               </div>
               <span className={cartFormHidden()}></span>
               <div className={cartFormItens()}>
                 <input className={cartInput()} type='text' id='address' placeholder=' '
-                  {...register('address', { required: { value: true, message: 'Por favor, informe um endereço' } })} />
+                  {...register('address', { required: { value: true, message: 'Por favor, informe um endereço.' } })} />
                 <label className={cartLabel()} htmlFor='address'>Endereço</label>
                 {errors.address && <span className={cartError()}>{errors.address.message}</span>}
               </div>
               <div className={cartFormItem()}>
                 <input className={cartInput()} type='number' id='num' placeholder=' '
-                  {...register('num', { required: { value: true, message: 'Por favor, informe um número' } })} />
+                  {...register('num', { required: { value: true, message: 'Por favor, informe um número.' } })} />
                 <label className={cartLabel()} htmlFor='num'>Número</label>
                 {errors.num && <span className={cartError()}>{errors.num.message}</span>}
               </div>
               <div className={cartFormItem()}>
                 <input className={cartInput()} type='text' id='neighbor' placeholder=' '
-                  {...register('neighbor', { required: { value: true, message: 'Por favor, informe um bairro' } })} />
+                  {...register('neighbor', { required: { value: true, message: 'Por favor, informe um bairro.' } })} />
                 <label className={cartLabel()} htmlFor='neighbor'>Bairro</label>
                 {errors.neighbor && <span className={cartError()}>{errors.neighbor.message}</span>}
               </div>
               <div className={cartFormItem()}>
                 <input className={cartInput()} type='text' id='city' placeholder=' '
-                  {...register('city', { required: { value: true, message: 'Por favor, informe uma cidade' } })} />
+                  {...register('city', { required: { value: true, message: 'Por favor, informe uma cidade.' } })} />
                 <label className={cartLabel()} htmlFor='city'>Cidade</label>
                 {errors.city && <span className={cartError()}>{errors.city.message}</span>}
               </div>
               <div className={cartFormItem()}>
                 <input className={cartInput()} type='text' id='uf' placeholder=' '
-                  {...register('uf', { required: { value: true, message: 'Por favor, informe um estado' } })} />
+                  {...register('uf', { required: { value: true, message: 'Por favor, informe um estado.' } })} />
                 <label className={cartLabel()} htmlFor='uf'>UF</label>
                 {errors.uf && <span className={cartError()}>{errors.uf.message}</span>}
               </div>
@@ -96,7 +96,7 @@ export const Cart = () => {
         <h3 className={cartTitle()}>Cafés selecionados</h3>
         <div className={cartWrapper()}>
           <ul className={cartOrder()}>
-            {cart.map((product) => (
+            {cart?.map((product) => (
               <li className={cartOrderItem()} key={product.id}>
                 <img className={cartImage()} src={product.image} alt='Coffee Delivery' />
                 <div className={cartInfo()}>
@@ -116,19 +116,19 @@ export const Cart = () => {
           </ul>
           <ul className={cartInfo()}>
             <li className={cartBetween()}>
-              <p>Total dos itens</p>
-              <p>{handlePrice.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
+              <p>Itens:</p>
+              <p>{new Intl.NumberFormat('pt-br', { currency: 'BRL', style: 'currency' }).format(currentValue)}</p>
             </li>
             <li className={cartBetween()}>
-              <p>Entrega</p>
-              <p>R$9.90</p>
+              <p>Entrega:</p>
+              <p>R$ 9.90</p>
             </li>
             <li className={cartBetween()}>
-              <p className={cartDescription()}>Valor total</p>
-              <p className={cartDescription()}>{(handlePrice + 9.90).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
+              <p className={cartDescription()}>Total do pedido:</p>
+              <p className={cartDescription()}>{new Intl.NumberFormat('pt-br', { currency: 'BRL', style: 'currency' }).format(currentValue + 9.90)}</p>
             </li>
           </ul>
-          <button className={cartConfirm()} type='submit' form='cart' disabled={cart.length === 0}>
+          <button className={cartConfirm()} form='cart' disabled={!currentValue}>
             <span>Confirmar pedido</span>
           </button>
         </div>
