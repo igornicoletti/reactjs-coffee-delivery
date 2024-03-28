@@ -13,7 +13,14 @@ export const CartContext = createContext({} as CartContextType)
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
   const navigate = useNavigate()
-  const [currentCart, setCurrentCart] = useState<CartProps[]>([])
+
+  const [currentCart, setCurrentCart] = useState<CartProps[]>(() => {
+    const storedStateAsJSON = localStorage.getItem('coffee-delivery:cart')
+    if (storedStateAsJSON)
+      return JSON.parse(storedStateAsJSON)
+
+    return []
+  })
 
   const handleAddProduct = ({ id, title, image, price, quantity }: CartProps) => {
     setCurrentCart((state) => state.some((item) => item.id === id)
@@ -34,19 +41,9 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   }
 
   useEffect(() => {
-    if (currentCart.length) {
-      const stateJSON = JSON.stringify(currentCart)
-      localStorage.setItem('coffee-delivery:cart', stateJSON)
-    }
+    const stateJSON = JSON.stringify(currentCart)
+    localStorage.setItem('coffee-delivery:cart', stateJSON)
   }, [currentCart])
-
-  useEffect(() => {
-    const storedStateAsJSON = localStorage.getItem('coffee-delivery:cart')
-    if (storedStateAsJSON) {
-      const carts = JSON.parse(storedStateAsJSON)
-      setCurrentCart(carts)
-    }
-  }, [])
 
   return (
     <CartContext.Provider value={{ cart: currentCart, handleAddProduct, handleRemoveProduct, handleSubmitProduct }}>
