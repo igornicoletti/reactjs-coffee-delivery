@@ -15,24 +15,23 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   const navigate = useNavigate()
 
   const [currentCart, setCurrentCart] = useState<CartProps[]>(() => {
-    const storedStateAsJSON = localStorage.getItem('coffee-delivery:cart')
-    if (storedStateAsJSON)
-      return JSON.parse(storedStateAsJSON)
-
+    const storedStateAsJSON = localStorage.getItem('@coffee-delivery:cart')
+    if (storedStateAsJSON) return JSON.parse(storedStateAsJSON)
     return []
   })
 
   useEffect(() => {
     const stateJSON = JSON.stringify(currentCart)
-    localStorage.setItem('coffee-delivery:cart', stateJSON)
+    localStorage.setItem('@coffee-delivery:cart', stateJSON)
   }, [currentCart])
 
   const handleAddProduct = ({ id, title, image, price, quantity }: CartProps) => {
-    setCurrentCart((state) => state.some((item) => item.id === id)
-      ? state.map((item) => item.id === id
-        ? { ...item, quantity: item.quantity += quantity }
-        : item)
-      : [...state, { id, title, image, price, quantity: quantity }])
+    setCurrentCart((state) =>
+      state.some((item) => item.id === id)
+        ? state.map((item) => item.id === id
+          ? { ...item, quantity: item.quantity += quantity }
+          : item)
+        : [...state, { id, title, image, price, quantity: quantity }])
   }
 
   const handleRemoveProduct = (id: CartProps['id']) => {

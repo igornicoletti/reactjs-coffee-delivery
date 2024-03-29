@@ -5,8 +5,8 @@ import { ProductData } from '../data/product.json'
 import { HeroVariants, ProductVariants } from '../styles/variants'
 import { FireIcon, ShoppingBagIcon, ShoppingCartIcon, TruckIcon } from '@heroicons/react/24/outline'
 
-const { productContent, productHead, productTitle, productCard, productFilter, productFilterItem } = ProductVariants()
-const { heroContent, heroHead, heroTitle, heroSubtitle, heroDescription, heroDescriptionItem, heroIcon, heroImageMobile, heroImageDesk } = HeroVariants()
+const { productContent, productHead, productTitle, productCard, productFilter, productItem } = ProductVariants()
+const { heroContent, heroHead, heroTitle, heroSubtitle, heroDescription, heroItem, heroIcon, heroImageMobile, heroImageDesk } = HeroVariants()
 
 const filters = ['Alcoólico', 'Com leite', 'Especial', 'Gelado', 'Tradicional']
 const heros = [
@@ -20,8 +20,8 @@ export const Home = () => {
   const [currentFilter, setCurrentFilter] = useState<string | null>(null)
   const [currentProduct, setCurrentProduct] = useState<ProductProps[]>([])
 
-  const handleFilter = (filter: string) => currentFilter !== filter
-    ? setCurrentFilter(filter) : setCurrentFilter(null)
+  const handleFilter = (filter: string) =>
+    currentFilter !== filter ? setCurrentFilter(filter) : setCurrentFilter(null)
 
   useEffect(() => {
     setCurrentProduct(ProductData)
@@ -41,7 +41,7 @@ export const Home = () => {
           <img className={heroImageMobile()} src='/images/coffee-delivery.png' alt='Coffee Delivery' />
           <ul className={heroDescription()}>
             {heros.map((hero) => (
-              <li className={heroDescriptionItem()} key={hero.id}>
+              <li className={heroItem()} key={hero.id}>
                 <hero.icon className={heroIcon()} aria-hidden='true' />
                 <span>{hero.title}</span>
               </li>
@@ -55,7 +55,7 @@ export const Home = () => {
           <h3 className={productTitle()}>Nossos Cafés</h3>
           <ul className={productFilter()}>
             {filters.map((filter) => (
-              <li className={currentFilter === filter ? productFilterItem({ active: true }) : productFilterItem()} key={filter} onClick={() => handleFilter(filter)}>
+              <li className={currentFilter === filter ? productItem({ active: true }) : productItem()} key={filter} onClick={() => handleFilter(filter)}>
                 <span>{filter}</span>
               </li>
             ))}

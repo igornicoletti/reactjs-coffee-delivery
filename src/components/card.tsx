@@ -6,7 +6,7 @@ import { CardVariants } from '../styles/variants'
 import { CartContextProvider } from '../hooks/cart'
 import { ShoppingCartIcon } from '@heroicons/react/24/outline'
 
-const { cardContent, cardImage, cardCategory, cardCategoryItem, cardDescription, cardTitle, cardSubtitle, cardInfo, cardPrice, cardAction, cardCart, cardIcon } = CardVariants()
+const { cardContent, cardImage, cardCategory, cardItem, cardDescription, cardTitle, cardSubtitle, cardInfo, cardPrice, cardAction, cardCart, cardIcon } = CardVariants()
 
 type Props = {
   product: ProductProps
@@ -35,7 +35,7 @@ export const Card = ({ product }: Props) => {
       <img className={cardImage()} src={product.image} alt={product.title} />
       <ul className={cardCategory()}>
         {product.categories.map((category) => (
-          <li className={cardCategoryItem()} key={category}>
+          <li className={cardItem()} key={category}>
             <span>{category}</span>
           </li>
         ))}

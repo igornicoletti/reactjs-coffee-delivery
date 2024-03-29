@@ -34,7 +34,7 @@ export const HeroVariants = tv({
     heroTitle: 'text-3xl md:text-5xl px-2 xl:px-0 font-medium text-center xl:text-left',
     heroSubtitle: 'max-w-lg text-xl md:text-3xl text-center xl:text-left mx-auto xl:mx-0',
     heroDescription: 'grid md:grid-cols-2 xl:grid-cols-1 2xl:grid-cols-2 gap-8 pb-8 xl:pb-0 md:mx-auto xl:mx-0 xl:pt-8',
-    heroDescriptionItem: 'flex items-center gap-4 md:text-lg',
+    heroItem: 'flex items-center gap-4 md:text-lg',
     heroImageMobile: 'w-full max-w-lg md:hidden',
     heroImageDesk: 'w-full max-w-xl lg:max-w-xl xl:max-w-2xl hidden md:block',
     heroIcon: 'size-6 shrink-0 text-dracula-cyan',
@@ -48,12 +48,12 @@ export const ProductVariants = tv({
     productTitle: 'text-3xl font-medium uppercase',
     productCard: 'grid md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6',
     productFilter: 'flex flex-wrap -ml-4 lg:ml-0 lg:-mr-4',
-    productFilterItem: 'flex items-center justify-center px-4 py-2 font-medium uppercase cursor-pointer md:hover:text-dracula-cyan transition ease-in-out duration-300',
+    productItem: 'flex items-center justify-center px-4 py-2 font-medium uppercase cursor-pointer md:hover:text-dracula-cyan transition ease-in-out duration-300',
   },
   variants: {
     active: {
       true: {
-        productFilterItem: 'animate-bounce text-dracula-cyan',
+        productItem: 'animate-bounce text-dracula-cyan',
       }
     }
   }
@@ -64,7 +64,7 @@ export const CardVariants = tv({
     cardContent: 'flex flex-col rounded-md odd:rounded-tr-3xl even:rounded-tl-3xl odd:rounded-bl-3xl even:rounded-br-3xl gap-6 p-4 pt-0 border border-dracula-line bg-dracula-wrapper shadow-md hover:shadow-xl transition ease-in-out duration-300',
     cardImage: 'hover:animate-spin w-32 mx-auto -mt-4',
     cardCategory: 'flex items-center justify-center gap-2',
-    cardCategoryItem: 'text-xs uppercase px-3 py-1 rounded-full bg-dracula-cyan/5 text-dracula-cyan',
+    cardItem: 'text-xs uppercase px-3 py-1 rounded-full bg-dracula-cyan/5 text-dracula-cyan',
     cardDescription: 'flex flex-col text-center gap-2',
     cardTitle: 'text-xl font-medium uppercase',
     cardSubtitle: 'px-4',
