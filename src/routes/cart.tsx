@@ -105,7 +105,7 @@ export const Cart = () => {
                     <p className={cartDescription()}>{(product.price * product.quantity).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
                   </div>
                   <div className={cartAction()}>
-                    <div>{product.quantity}</div>
+                    <p>{product.quantity}</p>
                     <button className={cartTrash()} onClick={() => handleRemoveProduct(product.id)}>
                       <TrashIcon className={cartIcon()} aria-hidden='true' />
                     </button>
@@ -116,7 +116,7 @@ export const Cart = () => {
           </ul>
           <ul className={cartInfo()}>
             <li className={cartBetween()}>
-              <p>Itens:</p>
+              <p>Subtotal:</p>
               <p>{new Intl.NumberFormat('pt-br', { currency: 'BRL', style: 'currency' }).format(currentValue)}</p>
             </li>
             <li className={cartBetween()}>
