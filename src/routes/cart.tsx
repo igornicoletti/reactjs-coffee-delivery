@@ -48,38 +48,38 @@ export const Cart = () => {
             </div>
             <div className={cartForm()}>
               <div className={cartFormItem()}>
-                <input className={cartInput()} value={currentForm.cep} type='number' id='cep' placeholder=' '
+                <input className={cartInput()} defaultValue={currentForm.cep} type='number' id='cep' placeholder=' '
                   {...register('cep', { required: { value: true, message: 'Por favor, informe um CEP.' }, minLength: { value: 8, message: 'CEP inválido!' }, maxLength: { value: 8, message: 'CEP inválido!' } })} />
                 <label className={cartLabel()} htmlFor='cep'>CEP</label>
                 {errors.cep && <span className={cartError()}>{errors.cep.message}</span>}
               </div>
               <span className={cartFormHidden()}></span>
               <div className={cartFormItens()}>
-                <input className={cartInput()} value={currentForm.street} type='text' id='street' placeholder=' '
+                <input className={cartInput()} defaultValue={currentForm.street} type='text' id='street' placeholder=' '
                   {...register('street', { required: { value: true, message: 'Por favor, informe um endereço.' } })} />
                 <label className={cartLabel()} htmlFor='street'>Endereço</label>
                 {errors.street && <span className={cartError()}>{errors.street.message}</span>}
               </div>
               <div className={cartFormItem()}>
-                <input className={cartInput()} value={currentForm.number} type='number' id='number' placeholder=' '
+                <input className={cartInput()} defaultValue={currentForm.number} type='number' id='number' placeholder=' '
                   {...register('number', { required: { value: true, message: 'Por favor, informe um número.' } })} />
                 <label className={cartLabel()} htmlFor='number'>Número</label>
                 {errors.number && <span className={cartError()}>{errors.number.message}</span>}
               </div>
               <div className={cartFormItem()}>
-                <input className={cartInput()} value={currentForm.neighborhood} type='text' id='neighborhood' placeholder=' '
+                <input className={cartInput()} defaultValue={currentForm.neighborhood} type='text' id='neighborhood' placeholder=' '
                   {...register('neighborhood', { required: { value: true, message: 'Por favor, informe um bairro.' } })} />
                 <label className={cartLabel()} htmlFor='neighborhood'>Bairro</label>
                 {errors.neighborhood && <span className={cartError()}>{errors.neighborhood.message}</span>}
               </div>
               <div className={cartFormItem()}>
-                <input className={cartInput()} value={currentForm.city} type='text' id='city' placeholder=' '
+                <input className={cartInput()} defaultValue={currentForm.city} type='text' id='city' placeholder=' '
                   {...register('city', { required: { value: true, message: 'Por favor, informe uma cidade.' } })} />
                 <label className={cartLabel()} htmlFor='city'>Cidade</label>
                 {errors.city && <span className={cartError()}>{errors.city.message}</span>}
               </div>
               <div className={cartFormItem()}>
-                <input className={cartInput()} value={currentForm.uf} type='text' id='uf' placeholder=' '
+                <input className={cartInput()} defaultValue={currentForm.uf} type='text' id='uf' placeholder=' '
                   {...register('uf', { required: { value: true, message: 'Por favor, informe um estado.' } })} />
                 <label className={cartLabel()} htmlFor='uf'>UF</label>
                 {errors.uf && <span className={cartError()}>{errors.uf.message}</span>}
@@ -91,7 +91,7 @@ export const Cart = () => {
               <p className={cartSubtitle()}>Forma de pagamento</p>
               <span>O pagamento é feito na entrega. Escolha a forma que deseja pagar.</span>
             </div>
-            <RadioGroup className={cartForm()} value={currentForm.payment} onChange={setCurrentPay}>
+            <RadioGroup className={cartForm()} defaultValue={currentForm.payment} onChange={setCurrentPay}>
               {payment.map((pay) => (
                 <RadioGroup.Option className={cartPay()} key={pay} value={pay}>
                   <span>{pay}</span>
