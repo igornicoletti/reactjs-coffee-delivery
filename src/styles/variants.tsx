@@ -48,7 +48,8 @@ export const ProductVariants = tv({
     productTitle: 'text-3xl font-medium uppercase',
     productCard: 'grid md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6',
     productFilter: 'flex flex-wrap -ml-4 lg:ml-0 lg:-mr-4',
-    productItem: 'flex items-center justify-center px-4 py-2 font-medium uppercase cursor-pointer md:hover:text-dracula-cyan transition ease-in-out duration-300',
+    productItem: 'flex items-center justify-center first:hidden md:first:flex first px-4 py-2 font-medium uppercase cursor-pointer md:hover:text-dracula-cyan transition ease-in-out duration-300',
+    productIcon: 'size-6 shrink-0 text-dracula-cyan -mt-1',
   },
   variants: {
     active: {
@@ -103,8 +104,8 @@ export const CartVariants = tv({
     cartLabel: 'absolute top-3 left-px px-4 font-medium bg-dracula-wrapper text-dracula-cyan peer-focus:text-dracula-cyan peer-placeholder-shown:text-dracula-line peer-invalid:text-dracula-red peer-focus:peer-invalid:text-dracula-red scale-75 peer-focus:scale-75 peer-placeholder-shown:scale-100 transform -translate-y-5 peer-focus:-translate-y-5 peer-placeholder-shown:translate-y-0 transition ease-in-out duration-300',
     cartError: 'absolute -bottom-2 right-2 px-4 bg-dracula-wrapper font-medium text-dracula-orange text-xs',
     cartPay: 'w-full flex items-center justify-center px-4 h-12 uppercase cursor-pointer rounded-md border border-dracula-cyan bg-transparent ui-checked:bg-dracula-cyan/5 hover:bg-dracula-cyan/5 ui-checked:text-dracula-cyan transition ease-in-out duration-300',
-    cartOrder: 'flex flex-col divide-y divide-dracula-line',
-    cartOrderItem: 'flex items-center gap-2 md:gap-4 py-4 first:pt-0 last:pb-0',
+    cartOrder: 'flex flex-col divide-y divide-dracula-line pb-2',
+    cartOrderItem: 'flex items-center gap-2 md:gap-4 py-4 first:pt-0',
     cartImage: 'w-12 md:w-16',
     cartInfo: 'w-full flex flex-col md:gap-1',
     cartBetween: 'flex justify-between gap-2',
@@ -113,6 +114,13 @@ export const CartVariants = tv({
     cartTrash: 'md:hover:text-dracula-red transition ease-in duration-300',
     cartIcon: 'size-4 shrink-0',
     cartConfirm: 'w-full flex items-center justify-center px-4 h-12 font-medium uppercase rounded-md bg-dracula-cyan text-dracula-dark disabled:cursor-not-allowed disabled:active:scale-100 active:scale-95 transition ease-in-out duration-300',
+  },
+  variants: {
+    active: {
+      true: {
+        cartOrder: 'xl:pb-10',
+      }
+    }
   }
 })
 

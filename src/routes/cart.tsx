@@ -95,25 +95,27 @@ export const Cart = () => {
       <div className={cartSummary()}>
         <h3 className={cartTitle()}>Cafés selecionados</h3>
         <div className={cartWrapper()}>
-          <ul className={cartOrder()}>
-            {cart?.map((product) => (
-              <li className={cartOrderItem()} key={product.id}>
-                <img className={cartImage()} src={product.image} alt='Coffee Delivery' />
-                <div className={cartInfo()}>
-                  <div className={cartBetween()}>
-                    <p className={cartDescription()}>{product.title}</p>
-                    <p className={cartDescription()}>{(product.price * product.quantity).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
+          {cart?.length > 0 && (
+            <ul className={cart.length === 3 ? cartOrder({ active: true }) : cartOrder()}>
+              {cart.map((product) => (
+                <li className={cartOrderItem()} key={product.id}>
+                  <img className={cartImage()} src={product.image} alt='Coffee Delivery' />
+                  <div className={cartInfo()}>
+                    <div className={cartBetween()}>
+                      <p className={cartDescription()}>{product.title}</p>
+                      <p className={cartDescription()}>{(product.price * product.quantity).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
+                    </div>
+                    <div className={cartAction()}>
+                      <p>{product.quantity}</p>
+                      <button className={cartTrash()} onClick={() => handleRemoveProduct(product.id)}>
+                        <TrashIcon className={cartIcon()} aria-hidden='true' />
+                      </button>
+                    </div>
                   </div>
-                  <div className={cartAction()}>
-                    <p>{product.quantity}</p>
-                    <button className={cartTrash()} onClick={() => handleRemoveProduct(product.id)}>
-                      <TrashIcon className={cartIcon()} aria-hidden='true' />
-                    </button>
-                  </div>
-                </div>
-              </li>
-            ))}
-          </ul>
+                </li>
+              ))}
+            </ul>
+          )}
           <ul className={cartInfo()}>
             <li className={cartBetween()}>
               <p>Subtotal:</p>

@@ -3,9 +3,9 @@ import { useEffect, useState } from 'react'
 import { ProductProps } from '../types/product'
 import { ProductData } from '../data/product.json'
 import { HeroVariants, ProductVariants } from '../styles/variants'
-import { FireIcon, ShoppingBagIcon, ShoppingCartIcon, TruckIcon } from '@heroicons/react/24/outline'
+import { FireIcon, FunnelIcon, ShoppingBagIcon, ShoppingCartIcon, TruckIcon } from '@heroicons/react/24/outline'
 
-const { productContent, productHead, productTitle, productCard, productFilter, productItem } = ProductVariants()
+const { productContent, productHead, productTitle, productCard, productFilter, productItem, productIcon } = ProductVariants()
 const { heroContent, heroHead, heroTitle, heroSubtitle, heroDescription, heroItem, heroIcon, heroImageMobile, heroImageDesk } = HeroVariants()
 
 const filters = ['Alcoólico', 'Com leite', 'Especial', 'Gelado', 'Tradicional']
@@ -54,6 +54,9 @@ export const Home = () => {
         <div className={productHead()}>
           <h3 className={productTitle()}>Nossos Cafés</h3>
           <ul className={productFilter()}>
+            <li className={productItem()}>
+              <FunnelIcon className={productIcon()} />
+            </li>
             {filters.map((filter) => (
               <li className={currentFilter === filter ? productItem({ active: true }) : productItem()} key={filter} onClick={() => handleFilter(filter)}>
                 <span>{filter}</span>
