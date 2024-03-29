@@ -30,7 +30,7 @@ export const Modal = ({ currentModal, currentForm }: Props) => {
                 <Dialog.Description className={modalDescription()}>Seu pedido foi enviado com sucesso.<br />Agora é só aguardar que logo seu café chegará até você.</Dialog.Description>
                 {currentForm && (
                   <div className={modalSumary()}>
-                    <p>Endereço de entrega: <br /> {currentForm.address}, {currentForm.num} - {currentForm.neighbor} <br /> {currentForm.city}/{currentForm.uf}</p>
+                    <p>Endereço de entrega: <br /> {currentForm.street}, {currentForm.number} - {currentForm.neighborhood} <br /> {currentForm.city}/{currentForm.uf}</p>
                     <p>Forma de pagamento: {currentForm.payment}</p>
                   </div>
                 )}
