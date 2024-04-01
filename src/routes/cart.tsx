@@ -3,11 +3,11 @@ import { Form } from 'react-router-dom'
 import { FormProps } from '../types/form'
 import { Modal } from '../components/modal'
 import { RadioGroup } from '@headlessui/react'
+import { Quantity } from '../components/quantity'
 import { CartVariants } from '../styles/variants'
 import { CartContextProvider } from '../hooks/cart'
 import { TrashIcon } from '@heroicons/react/24/outline'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { Quantity } from '../components/quantity'
 
 const { cartContent, cartRecord, cartSummary, cartTitle, cartPanel, cartWrapper, cartHead, cartSubtitle, cartForm, cartFormHidden, cartFormItem, cartFormItens, cartInput, cartLabel, cartError, cartPay, cartOrder, cartOrderItem, cartImage, cartInfo, cartBetween, cartDescription, cartAction, cartTrash, cartIcon, cartConfirm } = CartVariants()
 
