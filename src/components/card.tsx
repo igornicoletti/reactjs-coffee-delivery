@@ -6,7 +6,7 @@ import { CardVariants } from '../styles/variants'
 import { CartContextProvider } from '../hooks/cart'
 import { ShoppingCartIcon } from '@heroicons/react/24/outline'
 
-const { cardContent, cardImage, cardCategory, cardItem, cardDescription, cardTitle, cardSubtitle, cardInfo, cardPrice, cardAction, cardCart, cardIcon } = CardVariants()
+const { cardContent, cardImage, cardCategory, cardItem, cardDescription, cardTitle, cardSubtitle, cardInfo, cardPrice, cardAction, cardQuantity, cardCart, cardIcon } = CardVariants()
 
 type Props = {
   product: ProductProps
@@ -47,11 +47,13 @@ export const Card = ({ product }: Props) => {
       <div className={cardInfo()}>
         <p>R$ <span className={cardPrice()}>{product.price.toFixed(2)}</span></p>
         <div className={cardAction()}>
-          <Quantity
-            currentQuantity={currentQuantity}
-            handleAddQuantity={handleAddQuantity}
-            handleRemoveQuantity={handleRemoveQuantity}
-            handleValidateQuantity={handleValidateQuantity} />
+          <div className={cardQuantity()}>
+            <Quantity
+              currentQuantity={currentQuantity}
+              handleAddQuantity={handleAddQuantity}
+              handleRemoveQuantity={handleRemoveQuantity}
+              handleValidateQuantity={handleValidateQuantity} />
+          </div>
           <button className={cardCart()} onClick={handleCurrentCard} disabled={currentNotify}>
             <ShoppingCartIcon className={cardIcon()} aria-hidden='true' />
           </button>

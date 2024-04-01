@@ -7,26 +7,27 @@ import { CartVariants } from '../styles/variants'
 import { CartContextProvider } from '../hooks/cart'
 import { TrashIcon } from '@heroicons/react/24/outline'
 import { SubmitHandler, useForm } from 'react-hook-form'
+import { Quantity } from '../components/quantity'
 
 const { cartContent, cartRecord, cartSummary, cartTitle, cartPanel, cartWrapper, cartHead, cartSubtitle, cartForm, cartFormHidden, cartFormItem, cartFormItens, cartInput, cartLabel, cartError, cartPay, cartOrder, cartOrderItem, cartImage, cartInfo, cartBetween, cartDescription, cartAction, cartTrash, cartIcon, cartConfirm } = CartVariants()
 
 const payment = ['Dinheiro', 'Cartão de crédito', 'Cartão de dédito']
 
 export const Cart = () => {
-  const { cart, handleRemoveProduct } = CartContextProvider()
   const { register, handleSubmit, formState: { errors } } = useForm<FormProps>()
+  const { cart, handleRemoveProduct, handleIncrementProduct, handleDecrementProduct, handleValidateProduct } = CartContextProvider()
 
   const [currentPay, setCurrentPay] = useState<string>(payment[0])
   const [currentModal, setCurrentModal] = useState<boolean>(false)
   const [currentForm, setCurrentForm] = useState<FormProps>(() => {
-    const storedStateAsJSON = localStorage.getItem('@coffee-delivery:form')
+    const storedStateAsJSON = sessionStorage.getItem('@coffee-delivery:form')
     if (storedStateAsJSON) return JSON.parse(storedStateAsJSON)
     return []
   })
 
   useEffect(() => {
     const stateJSON = JSON.stringify(currentForm)
-    localStorage.setItem('@coffee-delivery:form', stateJSON)
+    sessionStorage.setItem('@coffee-delivery:form', stateJSON)
   }, [currentForm])
 
   const currentValue = cart?.reduce((prev, current) => prev += current.price * current.quantity, 0)
@@ -80,7 +81,7 @@ export const Cart = () => {
               </div>
               <div className={cartFormItem()}>
                 <input className={cartInput()} defaultValue={currentForm.uf} type='text' id='uf' placeholder=' '
-                  {...register('uf', { required: { value: true, message: 'Por favor, informe um estado.' } })} />
+                  {...register('uf', { required: { value: true, message: 'Por favor, informe um estado.' }, minLength: { value: 2, message: 'Estado inválido!' }, maxLength: { value: 2, message: 'Estado inválido!' } })} />
                 <label className={cartLabel()} htmlFor='uf'>UF</label>
                 {errors.uf && <span className={cartError()}>{errors.uf.message}</span>}
               </div>
@@ -91,7 +92,7 @@ export const Cart = () => {
               <p className={cartSubtitle()}>Forma de pagamento</p>
               <span>O pagamento é feito na entrega. Escolha a forma que deseja pagar.</span>
             </div>
-            <RadioGroup className={cartForm()} defaultValue={currentForm.payment} onChange={setCurrentPay}>
+            <RadioGroup className={cartForm()} value={currentPay} onChange={setCurrentPay}>
               {payment.map((pay) => (
                 <RadioGroup.Option className={cartPay()} key={pay} value={pay}>
                   <span>{pay}</span>
@@ -115,7 +116,11 @@ export const Cart = () => {
                       <p className={cartDescription()}>{(product.price * product.quantity).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
                     </div>
                     <div className={cartAction()}>
-                      <p>{product.quantity}</p>
+                      <Quantity
+                        currentQuantity={product.quantity}
+                        handleAddQuantity={() => handleIncrementProduct(product.id)}
+                        handleRemoveQuantity={() => handleDecrementProduct(product.id)}
+                        handleValidateQuantity={(e) => handleValidateProduct(e, product.id)} />
                       <button className={cartTrash()} onClick={() => handleRemoveProduct(product.id)}>
                         <TrashIcon className={cartIcon()} aria-hidden='true' />
                       </button>

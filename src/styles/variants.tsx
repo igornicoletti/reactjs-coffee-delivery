@@ -72,6 +72,7 @@ export const CardVariants = tv({
     cardInfo: 'flex items-end justify-between gap-2 pt-2 mt-auto',
     cardPrice: 'text-2xl',
     cardAction: 'flex items-center justify-between gap-2',
+    cardQuantity: 'h-10 w-full max-w-32 flex items-center justify-center rounded-md border border-dracula-line hover:border-dracula-white transition ease-in-out duration-300',
     cardCart: 'h-10 w-10 px-2 flex items-center justify-center rounded-md bg-dracula-line hover:bg-dracula-cyan disabled:hover:bg-dracula-line text-dracula-cyan hover:text-dracula-line disabled:hover:text-dracula-cyan disabled:cursor-not-allowed transition ease-in-out duration-300',
     cardIcon: 'size-6 shrink-0',
   }
@@ -79,10 +80,10 @@ export const CardVariants = tv({
 
 export const QuantityVariants = tv({
   slots: {
-    quantityContent: 'h-10 w-full max-w-32 flex items-center justify-center gap-2 rounded-md border border-dracula-line hover:border-dracula-white transition ease-in-out duration-300',
+    quantityContent: 'w-full max-w-32 flex items-center justify-center gap-2',
     quantityButton: 'px-2 hover:text-dracula-cyan disabled:hover:text-dracula-white disabled:cursor-not-allowed transition ease-in-out duration-300',
-    quantityValue: 'w-full min-w-6 text-center text-lg font-medium bg-transparent focus:outline-none',
-    quantityIcon: 'size-6 shrink-0',
+    quantityValue: 'w-full min-w-6 text-center font-medium bg-transparent focus:outline-none',
+    quantityIcon: 'size-4 shrink-0',
   }
 })
 
@@ -118,7 +119,7 @@ export const CartVariants = tv({
   variants: {
     active: {
       true: {
-        cartOrder: 'xl:pb-10',
+        cartOrder: 'xl:pb-9',
       }
     }
   }
