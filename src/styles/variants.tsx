@@ -35,7 +35,7 @@ export const HeroVariants = tv({
     heroSubtitle: 'max-w-lg text-xl md:text-3xl text-center xl:text-left mx-auto xl:mx-0',
     heroDescription: 'grid md:grid-cols-2 xl:grid-cols-1 2xl:grid-cols-2 gap-8 pb-8 xl:pb-0 md:mx-auto xl:mx-0 xl:pt-8',
     heroItem: 'flex items-center gap-4 md:text-lg',
-    heroImageMobile: 'w-full max-w-lg md:hidden',
+    heroImageMobile: 'w-full max-w-lg md:hidden mx-auto',
     heroImageDesk: 'w-full max-w-xl lg:max-w-xl xl:max-w-2xl hidden md:block',
     heroIcon: 'size-6 shrink-0 text-dracula-cyan',
   }
@@ -72,7 +72,7 @@ export const CardVariants = tv({
     cardInfo: 'flex items-end justify-between gap-2 pt-2 mt-auto',
     cardPrice: 'text-2xl',
     cardAction: 'flex items-center justify-between gap-2',
-    cardQuantity: 'h-10 w-full max-w-32 flex items-center justify-center rounded-md border border-dracula-line hover:border-dracula-white transition ease-in-out duration-300',
+    cardQuantity: 'h-10 w-full flex items-center justify-center rounded-md border border-dracula-line hover:border-dracula-white transition ease-in-out duration-300',
     cardCart: 'h-10 w-10 px-2 flex items-center justify-center rounded-md bg-dracula-line hover:bg-dracula-cyan disabled:hover:bg-dracula-line text-dracula-cyan hover:text-dracula-line disabled:hover:text-dracula-cyan disabled:cursor-not-allowed transition ease-in-out duration-300',
     cardIcon: 'size-6 shrink-0',
   }
@@ -80,7 +80,7 @@ export const CardVariants = tv({
 
 export const QuantityVariants = tv({
   slots: {
-    quantityContent: 'w-full max-w-32 flex items-center justify-center gap-2',
+    quantityContent: 'w-full max-w-28 flex items-center justify-center gap-2',
     quantityButton: 'px-2 hover:text-dracula-cyan disabled:hover:text-dracula-white disabled:cursor-not-allowed transition ease-in-out duration-300',
     quantityValue: 'w-full min-w-6 text-center font-medium bg-transparent focus:outline-none',
     quantityIcon: 'size-4 shrink-0',
@@ -108,7 +108,7 @@ export const CartVariants = tv({
     cartOrder: 'flex flex-col divide-y divide-dracula-line pb-2',
     cartOrderItem: 'flex items-center gap-2 md:gap-4 py-4 first:pt-0',
     cartImage: 'w-12 md:w-16',
-    cartInfo: 'w-full flex flex-col md:gap-1',
+    cartInfo: 'w-full flex flex-col gap-1',
     cartBetween: 'flex justify-between gap-2',
     cartDescription: 'font-medium md:text-lg',
     cartAction: 'flex items-center justify-between gap-2',

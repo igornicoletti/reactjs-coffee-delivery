@@ -43,19 +43,19 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   }
 
   const handleIncrementProduct = (id: CartProps['id']) => {
-    setCurrentCart((state) => state.map(item => item.id === id
+    setCurrentCart((state) => state.map((item) => item.id === id
       ? { ...item, quantity: item.quantity + 1 }
       : item))
   }
 
   const handleDecrementProduct = (id: CartProps['id']) => {
-    setCurrentCart((state) => state.map(item => item.id === id
+    setCurrentCart((state) => state.map((item) => item.id === id
       ? { ...item, quantity: item.quantity - 1 }
       : item))
   }
 
   const handleValidateProduct = (e: ChangeEvent<HTMLInputElement>, id: CartProps['id']) => {
-    setCurrentCart((state) => state.map(item => item.id === id
+    setCurrentCart((state) => state.map((item) => item.id === id
       ? { ...item, quantity: Math.max(1, Math.min(99, Number(e.target.value))) }
       : item))
   }

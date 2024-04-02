@@ -144,7 +144,7 @@ export const Cart = () => {
               <p className={cartDescription()}>{new Intl.NumberFormat('pt-br', { currency: 'BRL', style: 'currency' }).format(currentValue + 9.90)}</p>
             </li>
           </ul>
-          <button className={cartConfirm()} form='cart' disabled={!currentValue}>
+          <button className={cartConfirm()} form='cart' type='submit' disabled={!currentValue}>
             <span>Confirmar pedido</span>
           </button>
         </div>

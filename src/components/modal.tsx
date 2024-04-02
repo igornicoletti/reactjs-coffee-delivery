@@ -9,7 +9,7 @@ const { modalContent, modalBackdrop, modalDialog, modalInfo, modalPanel, modalIc
 
 type Props = {
   currentModal: boolean
-  currentForm: FormProps | null
+  currentForm: FormProps
 }
 
 export const Modal = ({ currentModal, currentForm }: Props) => {
@@ -17,7 +17,7 @@ export const Modal = ({ currentModal, currentForm }: Props) => {
 
   return (
     <Transition appear show={currentModal} as={Fragment}>
-      <Dialog className={modalContent()} onClose={() => null}>
+      <Dialog className={modalContent()} onClose={(e) => e.valueOf()}>
         <Transition.Child as={Fragment} enter={modalEnter()} enterFrom={modalFrom()} enterTo={modalEnterTo()} leave={modalLeave()} leaveFrom={modalLeaveFrom()} leaveTo={modalLeaveTo()}>
           <div className={modalBackdrop()} />
         </Transition.Child>
@@ -28,14 +28,12 @@ export const Modal = ({ currentModal, currentForm }: Props) => {
                 <FaceSmileIcon className={modalIcon()} />
                 <Dialog.Title className={modalTitle()}>Uhuu... Pedido confirmado!</Dialog.Title>
                 <Dialog.Description className={modalDescription()}>Seu pedido foi enviado com sucesso.<br />Agora é só aguardar que logo seu café chegará até você.</Dialog.Description>
-                {currentForm && (
-                  <div className={modalSumary()}>
-                    <p>Endereço de entrega: <br /> {currentForm.street}, {currentForm.number} - {currentForm.neighborhood} <br /> {currentForm.city}/{currentForm.uf}</p>
-                    <p>Forma de pagamento: {currentForm.payment}</p>
-                  </div>
-                )}
+                <div className={modalSumary()}>
+                  <p>Endereço de entrega: <br /> {currentForm.street}, {currentForm.number} - {currentForm.neighborhood} <br /> {currentForm.city}/{currentForm.uf}</p>
+                  <p>Forma de pagamento: {currentForm.payment}</p>
+                </div>
                 <button className={modalAction()} onClick={handleSubmitProduct}>
-                  <span>Voltar à página inicial</span>
+                  <span>Voltar à lista de produtos</span>
                 </button>
               </Dialog.Panel>
             </Transition.Child>
