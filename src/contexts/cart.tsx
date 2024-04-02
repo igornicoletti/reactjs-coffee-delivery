@@ -38,8 +38,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   }
 
   const handleRemoveProduct = (id: CartProps['id']) => {
-    const newCurrentCart = currentCart.filter((item) => item.id !== id)
-    setCurrentCart(newCurrentCart)
+    setCurrentCart(currentCart.filter((item) => item.id !== id))
   }
 
   const handleIncrementProduct = (id: CartProps['id']) => {
@@ -68,12 +67,8 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   return (
     <CartContext.Provider value={{
       cart: currentCart,
-      handleAddProduct,
-      handleRemoveProduct,
-      handleSubmitProduct,
-      handleIncrementProduct,
-      handleDecrementProduct,
-      handleValidateProduct,
+      handleAddProduct, handleRemoveProduct, handleSubmitProduct,
+      handleIncrementProduct, handleDecrementProduct, handleValidateProduct
     }}>
       {children}
     </CartContext.Provider>
