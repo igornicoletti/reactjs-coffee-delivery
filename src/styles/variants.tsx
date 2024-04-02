@@ -78,15 +78,6 @@ export const CardVariants = tv({
   }
 })
 
-export const QuantityVariants = tv({
-  slots: {
-    quantityContent: 'w-full max-w-28 flex items-center justify-center gap-2',
-    quantityButton: 'px-2 hover:text-dracula-cyan disabled:hover:text-dracula-white disabled:cursor-not-allowed transition ease-in-out duration-300',
-    quantityValue: 'w-full min-w-6 text-center font-medium bg-transparent focus:outline-none',
-    quantityIcon: 'size-4 shrink-0',
-  }
-})
-
 export const CartVariants = tv({
   slots: {
     cartContent: 'w-full flex flex-col xl:flex-row gap-16 xl:gap-8 py-16',
@@ -122,6 +113,15 @@ export const CartVariants = tv({
         cartOrder: 'xl:pb-9',
       }
     }
+  }
+})
+
+export const QuantityVariants = tv({
+  slots: {
+    quantityContent: 'w-full max-w-28 flex items-center justify-center gap-2',
+    quantityButton: 'px-2 hover:text-dracula-cyan disabled:hover:text-dracula-white disabled:cursor-not-allowed transition ease-in-out duration-300',
+    quantityValue: 'w-full min-w-6 text-center font-medium bg-transparent focus:outline-none',
+    quantityIcon: 'size-4 shrink-0',
   }
 })
 

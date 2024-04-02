@@ -22,7 +22,7 @@ export const Cart = () => {
   const [currentForm, setCurrentForm] = useState<FormProps>(() => {
     const storedStateAsJSON = sessionStorage.getItem('@coffee-delivery:form')
     if (storedStateAsJSON) return JSON.parse(storedStateAsJSON)
-    return []
+    return {}
   })
 
   useEffect(() => {
