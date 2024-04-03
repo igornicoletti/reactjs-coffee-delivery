@@ -15,7 +15,7 @@ type Props = {
 export const Card = ({ product }: Props) => {
   const { handleAddProduct } = CartContextProvider()
 
-  const [currentTitle, setCurrentTitle] = useState<string>('')
+  const [currentMessage, setCurrentMessage] = useState<string>('')
   const [currentQuantity, setCurrentQuantity] = useState<number>(1)
   const [currentNotify, setCurrentNotify] = useState<boolean>(false)
 
@@ -25,8 +25,8 @@ export const Card = ({ product }: Props) => {
 
   const handleCurrentCard = () => {
     setCurrentNotify(true)
-    setCurrentTitle(product.title)
-    handleAddProduct({ id: product.id, title: product.title, image: product.image, price: product.price, quantity: currentQuantity })
+    setCurrentMessage(product.title)
+    handleAddProduct({ ...product, quantity: currentQuantity })
     setTimeout(() => { setCurrentNotify(false), setCurrentQuantity(1) }, 1500)
   }
 
@@ -59,7 +59,7 @@ export const Card = ({ product }: Props) => {
           </button>
         </div>
       </div>
-      <Notify currentNotify={currentNotify} currentTitle={currentTitle} />
+      <Notify currentNotify={currentNotify} currentMessage={currentMessage} />
     </li>
   )
 }

@@ -132,13 +132,23 @@ export const NotifyVariants = tv({
     notifyHead: 'w-full max-w-md flex items-center gap-2 px-2 py-4 md:p-4 rounded-md shadow-md bg-white',
     notifyTitle: 'text-sm md:text-base text-dracula-dark',
     notifyCoffee: 'font-medium',
-    notifyIcon: 'size-6 shrink-0 text-dracula-green',
+    notifyIcon: 'size-6 shrink-0',
     notifyEnter: 'transform ease-out duration-300 transition',
     notifyFrom: 'translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2',
     notifyEnterTo: 'translate-y-0 opacity-100 sm:translate-x-0',
     notifyLeave: 'transition ease-in duration-100',
     notifyLeaveFrom: 'opacity-100',
     notifyLeaveTo: 'opacity-0',
+  },
+  variants: {
+    color: {
+      check: {
+        notifyIcon: 'text-dracula-green',
+      },
+      exclamation: {
+        notifyIcon: 'text-dracula-orange',
+      }
+    }
   }
 })
 

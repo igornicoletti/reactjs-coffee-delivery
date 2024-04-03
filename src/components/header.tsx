@@ -1,3 +1,5 @@
+import { useState } from 'react'
+import { Notify } from './notify'
 import { NavLink } from 'react-router-dom'
 import { HeaderVariants } from '../styles/variants'
 import { CartContextProvider } from '../hooks/cart'
@@ -7,6 +9,15 @@ const { headerContent, headerTitle, headerCart, headerButton, headerIcon, header
 
 export const Header = () => {
   const { cart } = CartContextProvider()
+  const [currentNotify, setCurrentNotify] = useState<boolean>(false)
+
+  const handleCurrentCart = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    if (cart.length === 0) {
+      event.preventDefault()
+      setCurrentNotify(true)
+      setTimeout(() => { setCurrentNotify(false) }, 2500)
+    }
+  }
 
   return (
     <div className={headerContent()}>
@@ -14,7 +25,7 @@ export const Header = () => {
         <h1>Coffee Delivery</h1>
       </NavLink>
       <div className={headerCart()}>
-        <NavLink className={({ isActive }) => isActive ? headerButton({ active: true }) : headerButton()} to={`cart`} onClick={(e) => cart.length === 0 && e.preventDefault()}>
+        <NavLink className={({ isActive }) => isActive ? headerButton({ active: true }) : headerButton()} to={`cart`} onClick={handleCurrentCart}>
           <ShoppingCartIcon className={headerIcon()} aria-hidden='true' />
         </NavLink>
         {cart.length > 0 && (
@@ -24,6 +35,7 @@ export const Header = () => {
           </div>
         )}
       </div>
+      <Notify currentNotify={currentNotify} />
     </div>
   )
 }
