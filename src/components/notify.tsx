@@ -1,6 +1,7 @@
 import { Fragment } from 'react'
 import { Transition } from '@headlessui/react'
 import { NotifyVariants } from '../styles/variants'
+import { CartContextProvider } from '../hooks/cart'
 import { CheckCircleIcon, ExclamationCircleIcon } from '@heroicons/react/24/outline'
 
 const { notifyContent, notifyPanel, notifyHead, notifyIcon, notifyTitle, notifyCoffee, notifyEnter, notifyEnterTo, notifyFrom, notifyLeave, notifyLeaveFrom, notifyLeaveTo } = NotifyVariants()
@@ -11,11 +12,13 @@ type Props = {
 }
 
 export const Notify = ({ currentNotify, currentMessage }: Props) => {
+  const { cart } = CartContextProvider()
+
   return (
     <div className={notifyContent()}>
       <div className={notifyPanel()}>
         <Transition show={currentNotify} as={Fragment} enter={notifyEnter()} enterFrom={notifyFrom()} enterTo={notifyEnterTo()} leave={notifyLeave()} leaveFrom={notifyLeaveFrom()} leaveTo={notifyLeaveTo()}>
-          {currentMessage ? (
+          {cart.length > 0 ? (
             <div className={notifyHead()}>
               <CheckCircleIcon className={notifyIcon({ color: 'check' })} aria-hidden='true' />
               <p className={notifyTitle()}>

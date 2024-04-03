@@ -11,12 +11,10 @@ export const Header = () => {
   const { cart } = CartContextProvider()
   const [currentNotify, setCurrentNotify] = useState<boolean>(false)
 
-  const handleCurrentCart = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-    if (cart.length === 0) {
-      event.preventDefault()
-      setCurrentNotify(true)
-      setTimeout(() => { setCurrentNotify(false) }, 2500)
-    }
+  const handleCurrentNav = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    e.preventDefault()
+    setCurrentNotify(true)
+    setTimeout(() => { setCurrentNotify(false) }, 2500)
   }
 
   return (
@@ -25,7 +23,7 @@ export const Header = () => {
         <h1>Coffee Delivery</h1>
       </NavLink>
       <div className={headerCart()}>
-        <NavLink className={({ isActive }) => isActive ? headerButton({ active: true }) : headerButton()} to={`cart`} onClick={handleCurrentCart}>
+        <NavLink className={({ isActive }) => isActive ? headerButton({ active: true }) : headerButton()} to={`cart`} onClick={(e) => cart.length === 0 && handleCurrentNav(e)}>
           <ShoppingCartIcon className={headerIcon()} aria-hidden='true' />
         </NavLink>
         {cart.length > 0 && (

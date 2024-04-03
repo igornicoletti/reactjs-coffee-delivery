@@ -12,7 +12,7 @@ export const HeaderVariants = tv({
     headerContent: 'w-full flex items-center justify-between py-8',
     headerTitle: 'text-2xl md:text-3xl font-semibold uppercase text-dracula-cyan hover:animate-pulse transition ease-in-out duration-300',
     headerCart: 'relative',
-    headerButton: 'flex items-center justify-center p-2 rounded-md bg-dracula-line hover:bg-dracula-cyan text-dracula-cyan hover:text-dracula-line transition ease-in-out duration-300',
+    headerButton: 'flex items-center justify-center p-2 rounded-md bg-dracula-line md:hover:bg-dracula-cyan text-dracula-cyan md:hover:text-dracula-line transition ease-in-out duration-300',
     headerIcon: 'size-6 shrink-0',
     headerBadge: 'absolute min-w-5 h-5 -top-2 -right-2',
     headerPing: 'animate-ping absolute w-full h-full rounded-full bg-dracula-cyan/25',
@@ -48,13 +48,13 @@ export const ProductVariants = tv({
     productTitle: 'text-3xl font-medium uppercase',
     productCard: 'grid md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6',
     productFilter: 'flex flex-wrap -ml-4 lg:ml-0 lg:-mr-4',
-    productItem: 'flex items-center justify-center first:hidden md:first:flex first px-4 py-2 font-medium uppercase cursor-pointer md:hover:text-dracula-cyan transition ease-in-out duration-300',
+    productItem: 'flex items-center justify-center first:hidden md:first:flex first px-4 py-2 uppercase cursor-pointer md:hover:text-dracula-cyan transition ease-in-out duration-300',
     productIcon: 'size-6 shrink-0 text-dracula-cyan -mt-1',
   },
   variants: {
     active: {
       true: {
-        productItem: 'animate-bounce text-dracula-cyan',
+        productItem: 'font-medium text-dracula-cyan',
       }
     }
   }

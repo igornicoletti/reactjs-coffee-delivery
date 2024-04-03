@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react'
 import { Form } from 'react-router-dom'
 import { FormProps } from '../types/form'
 import { Modal } from '../components/modal'
+import { useEffect, useState } from 'react'
 import { RadioGroup } from '@headlessui/react'
 import { Quantity } from '../components/quantity'
 import { CartVariants } from '../styles/variants'
@@ -50,7 +50,7 @@ export const Cart = () => {
             <div className={cartForm()}>
               <div className={cartFormItem()}>
                 <input className={cartInput()} defaultValue={currentForm.cep} type='number' id='cep' placeholder=' '
-                  {...register('cep', { valueAsNumber: true, required: { value: true, message: 'Por favor, informe um CEP.' }, minLength: { value: 8, message: 'CEP inválido!' }, maxLength: { value: 8, message: 'CEP inválido!' } })} />
+                  {...register('cep', { valueAsNumber: true, required: { value: true, message: 'Por favor, informe um CEP.' } })} />
                 <label className={cartLabel()} htmlFor='cep'>CEP</label>
                 {errors.cep && <span className={cartError()}>{errors.cep.message}</span>}
               </div>
