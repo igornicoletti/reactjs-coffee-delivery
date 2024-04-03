@@ -1,9 +1,9 @@
 export interface FormProps {
-  cep: string
+  cep: number
   street: string
   city: string
   neighborhood: string
-  number: string
+  number: number
   uf: string
   payment: string
 }

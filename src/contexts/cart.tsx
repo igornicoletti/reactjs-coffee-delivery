@@ -23,11 +23,6 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     return []
   })
 
-  useEffect(() => {
-    const stateJSON = JSON.stringify(currentCart)
-    localStorage.setItem('@coffee-delivery:cart', stateJSON)
-  }, [currentCart])
-
   const handleAddProduct = ({ id, title, image, price, quantity }: CartProps) => {
     setCurrentCart((state) =>
       state.some((item) => item.id === id)
@@ -63,6 +58,11 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     setCurrentCart([])
     navigate('/')
   }
+
+  useEffect(() => {
+    const stateJSON = JSON.stringify(currentCart)
+    localStorage.setItem('@coffee-delivery:cart', stateJSON)
+  }, [currentCart])
 
   return (
     <CartContext.Provider value={{

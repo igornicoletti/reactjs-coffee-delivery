@@ -7,17 +7,16 @@ import { Quantity } from '../components/quantity'
 import { CartVariants } from '../styles/variants'
 import { CartContextProvider } from '../hooks/cart'
 import { TrashIcon } from '@heroicons/react/24/outline'
-import { SubmitHandler, useForm } from 'react-hook-form'
+import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 
 const { cartContent, cartRecord, cartSummary, cartTitle, cartPanel, cartWrapper, cartHead, cartSubtitle, cartForm, cartFormHidden, cartFormItem, cartFormItens, cartInput, cartLabel, cartError, cartPay, cartOrder, cartOrderItem, cartImage, cartInfo, cartBetween, cartDescription, cartAction, cartTrash, cartIcon, cartConfirm } = CartVariants()
 
 const payment = ['Dinheiro', 'Cartão de crédito', 'Cartão de dédito']
 
 export const Cart = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm<FormProps>()
+  const { control, register, handleSubmit, formState: { errors } } = useForm<FormProps>({ defaultValues: { payment: payment[0] } })
   const { cart, handleRemoveProduct, handleIncrementProduct, handleDecrementProduct, handleValidateProduct } = CartContextProvider()
 
-  const [currentPay, setCurrentPay] = useState<string>(payment[0])
   const [currentModal, setCurrentModal] = useState<boolean>(false)
   const [currentForm, setCurrentForm] = useState<FormProps>(() => {
     const storedStateAsJSON = sessionStorage.getItem('@coffee-delivery:form')
@@ -25,17 +24,18 @@ export const Cart = () => {
     return {}
   })
 
+  const currentFormat = new Intl.NumberFormat('pt-br', { currency: 'BRL', style: 'currency' })
+  const currentValue = cart?.reduce((prev, current) => prev += current.price * current.quantity, 0)
+
+  const handleSubmitCart: SubmitHandler<FormProps> = (data) => {
+    setCurrentForm(data)
+    setCurrentModal(true)
+  }
+
   useEffect(() => {
     const stateJSON = JSON.stringify(currentForm)
     sessionStorage.setItem('@coffee-delivery:form', stateJSON)
   }, [currentForm])
-
-  const currentValue = cart?.reduce((prev, current) => prev += current.price * current.quantity, 0)
-
-  const handleSubmitCart: SubmitHandler<FormProps> = (data) => {
-    setCurrentForm({ ...data, payment: data.payment = currentPay })
-    setCurrentModal(true)
-  }
 
   return (
     <div className={cartContent()}>
@@ -50,7 +50,7 @@ export const Cart = () => {
             <div className={cartForm()}>
               <div className={cartFormItem()}>
                 <input className={cartInput()} defaultValue={currentForm.cep} type='number' id='cep' placeholder=' '
-                  {...register('cep', { required: { value: true, message: 'Por favor, informe um CEP.' }, minLength: { value: 8, message: 'CEP inválido!' }, maxLength: { value: 8, message: 'CEP inválido!' } })} />
+                  {...register('cep', { valueAsNumber: true, required: { value: true, message: 'Por favor, informe um CEP.' }, minLength: { value: 8, message: 'CEP inválido!' }, maxLength: { value: 8, message: 'CEP inválido!' } })} />
                 <label className={cartLabel()} htmlFor='cep'>CEP</label>
                 {errors.cep && <span className={cartError()}>{errors.cep.message}</span>}
               </div>
@@ -63,7 +63,7 @@ export const Cart = () => {
               </div>
               <div className={cartFormItem()}>
                 <input className={cartInput()} defaultValue={currentForm.number} type='number' id='number' placeholder=' '
-                  {...register('number', { required: { value: true, message: 'Por favor, informe um número.' } })} />
+                  {...register('number', { valueAsNumber: true, required: { value: true, message: 'Por favor, informe um número.' } })} />
                 <label className={cartLabel()} htmlFor='number'>Número</label>
                 {errors.number && <span className={cartError()}>{errors.number.message}</span>}
               </div>
@@ -92,13 +92,15 @@ export const Cart = () => {
               <p className={cartSubtitle()}>Forma de pagamento</p>
               <span>O pagamento é feito na entrega. Escolha a forma que deseja pagar.</span>
             </div>
-            <RadioGroup className={cartForm()} value={currentPay} onChange={setCurrentPay}>
-              {payment.map((pay) => (
-                <RadioGroup.Option className={cartPay()} key={pay} value={pay}>
-                  <span>{pay}</span>
-                </RadioGroup.Option>
-              ))}
-            </RadioGroup>
+            <Controller control={control} name='payment' render={({ field }) => (
+              <RadioGroup className={cartForm()} onChange={field.onChange} value={field?.value}>
+                {payment.map((pay) => (
+                  <RadioGroup.Option className={cartPay()} key={pay} value={pay}>
+                    <span>{pay}</span>
+                  </RadioGroup.Option>
+                ))}
+              </RadioGroup>
+            )} />
           </div>
         </Form>
       </div>
@@ -113,7 +115,7 @@ export const Cart = () => {
                   <div className={cartInfo()}>
                     <div className={cartBetween()}>
                       <p className={cartDescription()}>{product.title}</p>
-                      <p className={cartDescription()}>{(product.price * product.quantity).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
+                      <p className={cartDescription()}>{currentFormat.format(product.price * product.quantity)}</p>
                     </div>
                     <div className={cartAction()}>
                       <Quantity
@@ -133,7 +135,7 @@ export const Cart = () => {
           <ul className={cartInfo()}>
             <li className={cartBetween()}>
               <p>Subtotal:</p>
-              <p>{new Intl.NumberFormat('pt-br', { currency: 'BRL', style: 'currency' }).format(currentValue)}</p>
+              <p>{currentFormat.format(currentValue)}</p>
             </li>
             <li className={cartBetween()}>
               <p>Entrega:</p>
@@ -141,7 +143,7 @@ export const Cart = () => {
             </li>
             <li className={cartBetween()}>
               <p className={cartDescription()}>Total do pedido:</p>
-              <p className={cartDescription()}>{new Intl.NumberFormat('pt-br', { currency: 'BRL', style: 'currency' }).format(currentValue + 9.90)}</p>
+              <p className={cartDescription()}>{currentFormat.format(currentValue + 9.90)}</p>
             </li>
           </ul>
           <button className={cartConfirm()} form='cart' type='submit' disabled={!currentValue}>
