@@ -93,7 +93,7 @@ export const Cart = () => {
               <span>O pagamento é feito na entrega. Escolha a forma que deseja pagar.</span>
             </div>
             <Controller control={control} name='payment' render={({ field }) => (
-              <RadioGroup className={cartForm()} onChange={field.onChange} value={field?.value}>
+              <RadioGroup className={cartForm()} onChange={field.onChange} value={field.value}>
                 {payment.map((pay) => (
                   <RadioGroup.Option className={cartPay()} key={pay} value={pay}>
                     <span>{pay}</span>
