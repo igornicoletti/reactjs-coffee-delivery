@@ -9,7 +9,7 @@ type CartContextType = {
   handleRemoveProduct: (data: CartProps['id']) => void
   handleIncrementProduct: (data: CartProps['id']) => void
   handleDecrementProduct: (data: CartProps['id']) => void
-  handleValidateProduct: (e: ChangeEvent<HTMLInputElement>, data: CartProps['id']) => void
+  handleValidateProduct: (data: CartProps['id'], event: ChangeEvent<HTMLInputElement>) => void
 }
 
 export const CartContext = createContext({} as CartContextType)
@@ -33,25 +33,29 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   }
 
   const handleRemoveProduct = (id: CartProps['id']) => {
-    setCurrentCart(currentCart.filter((item) => item.id !== id))
+    setCurrentCart((state) =>
+      state.filter((item) => item.id !== id))
   }
 
   const handleIncrementProduct = (id: CartProps['id']) => {
-    setCurrentCart((state) => state.map((item) => item.id === id
-      ? { ...item, quantity: item.quantity + 1 }
-      : item))
+    setCurrentCart((state) =>
+      state.map((item) => item.id === id
+        ? { ...item, quantity: item.quantity + 1 }
+        : item))
   }
 
   const handleDecrementProduct = (id: CartProps['id']) => {
-    setCurrentCart((state) => state.map((item) => item.id === id
-      ? { ...item, quantity: item.quantity - 1 }
-      : item))
+    setCurrentCart((state) =>
+      state.map((item) => item.id === id
+        ? { ...item, quantity: item.quantity - 1 }
+        : item))
   }
 
-  const handleValidateProduct = (e: ChangeEvent<HTMLInputElement>, id: CartProps['id']) => {
-    setCurrentCart((state) => state.map((item) => item.id === id
-      ? { ...item, quantity: Math.max(1, Math.min(99, Number(e.target.value))) }
-      : item))
+  const handleValidateProduct = (id: CartProps['id'], event: ChangeEvent<HTMLInputElement>) => {
+    setCurrentCart((state) =>
+      state.map((item) => item.id === id
+        ? { ...item, quantity: Math.max(1, Math.min(99, Number(event.target.value))) }
+        : item))
   }
 
   const handleSubmitProduct = () => {

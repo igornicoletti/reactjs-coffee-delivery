@@ -25,7 +25,8 @@ export const Cart = () => {
   })
 
   const currentFormat = new Intl.NumberFormat('pt-br', { currency: 'BRL', style: 'currency' })
-  const currentValue = cart?.reduce((prev, current) => prev += current.price * current.quantity, 0)
+
+  const currentValue = cart.reduce((prev, current) => prev += current.price * current.quantity, 0)
 
   const handleSubmitCart: SubmitHandler<FormProps> = (data) => {
     setCurrentForm(data)
@@ -122,7 +123,7 @@ export const Cart = () => {
                         currentQuantity={product.quantity}
                         handleAddQuantity={() => handleIncrementProduct(product.id)}
                         handleRemoveQuantity={() => handleDecrementProduct(product.id)}
-                        handleValidateQuantity={(e) => handleValidateProduct(e, product.id)} />
+                        handleValidateQuantity={(event) => handleValidateProduct(product.id, event)} />
                       <button className={cartTrash()} onClick={() => handleRemoveProduct(product.id)}>
                         <TrashIcon className={cartIcon()} aria-hidden='true' />
                       </button>
