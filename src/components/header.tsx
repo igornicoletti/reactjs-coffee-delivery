@@ -23,8 +23,7 @@ export const Header = () => {
         <h1>Coffee Delivery</h1>
       </NavLink>
       <div className={headerCart()}>
-        <NavLink to={`cart`} onClick={(event) => cart.length === 0 && handleCurrentNav(event)}
-          className={({ isActive }) => isActive ? headerButton({ active: true }) : headerButton()}>
+        <NavLink className={headerButton()} to={`cart`} onClick={(event) => cart.length === 0 && handleCurrentNav(event)}>
           <ShoppingCartIcon className={headerIcon()} aria-hidden='true' />
         </NavLink>
         {cart.length > 0 && (

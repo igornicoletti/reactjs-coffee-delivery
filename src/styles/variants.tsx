@@ -12,18 +12,11 @@ export const HeaderVariants = tv({
     headerContent: 'w-full flex items-center justify-between py-8',
     headerTitle: 'text-2xl md:text-3xl font-semibold uppercase text-dracula-cyan hover:animate-pulse transition ease-in-out duration-300',
     headerCart: 'relative',
-    headerButton: 'flex items-center justify-center p-2 rounded-md bg-dracula-line md:hover:bg-dracula-cyan text-dracula-cyan md:hover:text-dracula-line transition ease-in-out duration-300',
+    headerButton: 'flex items-center justify-center p-2 rounded-md bg-dracula-line md:hover:bg-dracula-cyan text-dracula-cyan md:hover:text-dracula-line aria-[current=page]:bg-dracula-cyan aria-[current=page]:text-dracula-line transition ease-in-out duration-300',
     headerIcon: 'size-6 shrink-0',
     headerBadge: 'absolute min-w-5 h-5 -top-2 -right-2',
     headerPing: 'animate-ping absolute w-full h-full rounded-full bg-dracula-cyan/25',
     headerQuantity: 'relative flex items-center justify-center text-sm font-bold rounded-full min-w-5 h-5 p-1 border-2 border-dracula-dark text-dracula-line bg-dracula-cyan',
-  },
-  variants: {
-    active: {
-      true: {
-        headerButton: 'bg-dracula-cyan text-dracula-line',
-      }
-    }
   }
 })
 
@@ -132,23 +125,14 @@ export const NotifyVariants = tv({
     notifyHead: 'w-full max-w-md flex items-center gap-2 px-2 py-4 md:p-4 rounded-md shadow-md bg-white',
     notifyTitle: 'text-sm md:text-base text-dracula-dark',
     notifyCoffee: 'font-medium',
-    notifyIcon: 'size-6 shrink-0',
+    notifyCheck: 'size-6 shrink-0 text-dracula-green',
+    notifyExc: 'size-6 shrink-0 text-dracula-orange',
     notifyEnter: 'transform ease-out duration-300 transition',
     notifyFrom: 'translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2',
     notifyEnterTo: 'translate-y-0 opacity-100 sm:translate-x-0',
     notifyLeave: 'transition ease-in duration-100',
     notifyLeaveFrom: 'opacity-100',
     notifyLeaveTo: 'opacity-0',
-  },
-  variants: {
-    color: {
-      check: {
-        notifyIcon: 'text-dracula-green',
-      },
-      exclamation: {
-        notifyIcon: 'text-dracula-orange',
-      }
-    }
   }
 })
 

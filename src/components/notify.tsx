@@ -4,7 +4,7 @@ import { NotifyVariants } from '../styles/variants'
 import { CartContextProvider } from '../hooks/cart'
 import { CheckCircleIcon, ExclamationCircleIcon } from '@heroicons/react/24/outline'
 
-const { notifyContent, notifyPanel, notifyHead, notifyIcon, notifyTitle, notifyCoffee, notifyEnter, notifyEnterTo, notifyFrom, notifyLeave, notifyLeaveFrom, notifyLeaveTo } = NotifyVariants()
+const { notifyContent, notifyPanel, notifyHead, notifyCheck, notifyExc, notifyTitle, notifyCoffee, notifyEnter, notifyEnterTo, notifyFrom, notifyLeave, notifyLeaveFrom, notifyLeaveTo } = NotifyVariants()
 
 type Props = {
   currentNotify: boolean
@@ -20,12 +20,12 @@ export const Notify = ({ currentNotify, currentMessage }: Props) => {
         <Transition show={currentNotify} as={Fragment} enter={notifyEnter()} enterFrom={notifyFrom()} enterTo={notifyEnterTo()} leave={notifyLeave()} leaveFrom={notifyLeaveFrom()} leaveTo={notifyLeaveTo()}>
           {cart.length > 0 ? (
             <div className={notifyHead()}>
-              <CheckCircleIcon className={notifyIcon({ color: 'check' })} aria-hidden='true' />
+              <CheckCircleIcon className={notifyCheck({ color: 'check' })} aria-hidden='true' />
               <p className={notifyTitle()}><span className={notifyCoffee()}>{currentMessage}</span> foi adicionado ao carrinho.</p>
             </div>
           ) : (
             <div className={notifyHead()}>
-              <ExclamationCircleIcon className={notifyIcon({ color: 'exclamation' })} aria-hidden='true' />
+              <ExclamationCircleIcon className={notifyExc({ color: 'exclamation' })} aria-hidden='true' />
               <p className={notifyTitle()}><span className={notifyCoffee()}>Coffee Cart</span> está vazio. Dê um propósito a ele.</p>
             </div>
           )}
