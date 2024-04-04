@@ -8,7 +8,7 @@ type Props = {
   currentQuantity: number
   handleAddQuantity: () => void
   handleRemoveQuantity: () => void
-  handleValidateQuantity: (e: ChangeEvent<HTMLInputElement>) => void
+  handleValidateQuantity: (event: ChangeEvent<HTMLInputElement>) => void
 }
 
 export const Quantity = ({ currentQuantity, handleAddQuantity, handleRemoveQuantity, handleValidateQuantity }: Props) => {

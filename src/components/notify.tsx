@@ -21,9 +21,7 @@ export const Notify = ({ currentNotify, currentMessage }: Props) => {
           {cart.length > 0 ? (
             <div className={notifyHead()}>
               <CheckCircleIcon className={notifyIcon({ color: 'check' })} aria-hidden='true' />
-              <p className={notifyTitle()}>
-                <span className={notifyCoffee()}>{currentMessage}</span> foi adicionado ao carrinho.
-              </p>
+              <p className={notifyTitle()}><span className={notifyCoffee()}>{currentMessage}</span> foi adicionado ao carrinho.</p>
             </div>
           ) : (
             <div className={notifyHead()}>

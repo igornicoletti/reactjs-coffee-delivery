@@ -21,7 +21,7 @@ export const Card = ({ product }: Props) => {
 
   const handleAddQuantity = () => setCurrentQuantity((state) => state + 1)
   const handleRemoveQuantity = () => setCurrentQuantity((state) => state - 1)
-  const handleValidateQuantity = (e: ChangeEvent<HTMLInputElement>) => setCurrentQuantity(Math.max(1, Math.min(99, Number(e.target.value))))
+  const handleValidateQuantity = (event: ChangeEvent<HTMLInputElement>) => setCurrentQuantity(Math.max(1, Math.min(99, Number(event.target.value))))
 
   const handleCurrentCard = () => {
     setCurrentNotify(true)
