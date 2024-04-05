@@ -1,9 +1,9 @@
-import { useState } from 'react'
-import { Notify } from './notify'
-import { NavLink } from 'react-router-dom'
-import { HeaderVariants } from '../styles/variants'
-import { CartContextProvider } from '../hooks/cart'
 import { ShoppingCartIcon } from '@heroicons/react/24/outline'
+import { useState } from 'react'
+import { NavLink } from 'react-router-dom'
+import { CartContextProvider } from '../hooks/cart'
+import { HeaderVariants } from '../styles/variants'
+import { Notify } from './notify'
 
 const { headerContent, headerTitle, headerCart, headerButton, headerIcon, headerBadge, headerPing, headerQuantity } = HeaderVariants()
 

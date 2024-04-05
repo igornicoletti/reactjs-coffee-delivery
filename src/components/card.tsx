@@ -1,10 +1,10 @@
+import { ShoppingCartIcon } from '@heroicons/react/24/outline'
+import { ChangeEvent, useState } from 'react'
+import { CartContextProvider } from '../hooks/cart'
+import { CardVariants } from '../styles/variants'
+import { ProductProps } from '../types/product'
 import { Notify } from './notify'
 import { Quantity } from './quantity'
-import { ChangeEvent, useState } from 'react'
-import { ProductProps } from '../types/product'
-import { CardVariants } from '../styles/variants'
-import { CartContextProvider } from '../hooks/cart'
-import { ShoppingCartIcon } from '@heroicons/react/24/outline'
 
 const { cardContent, cardImage, cardCategory, cardItem, cardDescription, cardTitle, cardSubtitle, cardInfo, cardPrice, cardAction, cardQuantity, cardCart, cardIcon } = CardVariants()
 

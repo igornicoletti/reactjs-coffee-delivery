@@ -1,9 +1,9 @@
-import { Fragment } from 'react'
-import { FormProps } from '../types/form'
-import { ModalVariants } from '../styles/variants'
-import { CartContextProvider } from '../hooks/cart'
 import { Dialog, Transition } from '@headlessui/react'
 import { FaceSmileIcon } from '@heroicons/react/24/outline'
+import { Fragment } from 'react'
+import { CartContextProvider } from '../hooks/cart'
+import { ModalVariants } from '../styles/variants'
+import { FormProps } from '../types/form'
 
 const { modalContent, modalBackdrop, modalDialog, modalInfo, modalPanel, modalIcon, modalTitle, modalDescription, modalSumary, modalAction, modalEnter, modalEnterTo, modalFrom, modalLeave, modalLeaveFrom, modalLeaveTo, modalChildEnter, modalChildEnterTo, modalChildFrom, modalChildLeave, modalChildLeaveFrom, modalChildLeaveTo } = ModalVariants()
 

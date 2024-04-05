@@ -2,11 +2,11 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 
-import './index.css'
 import { ErrorPage } from './error'
-import { Root } from './routes/root'
+import './index.css'
 import { Cart } from './routes/cart'
 import { Home } from './routes/home'
+import { Root } from './routes/root'
 
 const router = createBrowserRouter([
   {

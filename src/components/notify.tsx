@@ -1,8 +1,8 @@
-import { Fragment } from 'react'
 import { Transition } from '@headlessui/react'
-import { NotifyVariants } from '../styles/variants'
-import { CartContextProvider } from '../hooks/cart'
 import { CheckCircleIcon, ExclamationCircleIcon } from '@heroicons/react/24/outline'
+import { Fragment } from 'react'
+import { CartContextProvider } from '../hooks/cart'
+import { NotifyVariants } from '../styles/variants'
 
 const { notifyContent, notifyPanel, notifyHead, notifyCheck, notifyExc, notifyTitle, notifyCoffee, notifyEnter, notifyEnterTo, notifyFrom, notifyLeave, notifyLeaveFrom, notifyLeaveTo } = NotifyVariants()
 

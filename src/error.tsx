@@ -1,5 +1,5 @@
-import { tv } from 'tailwind-variants'
 import { useRouteError } from 'react-router-dom'
+import { tv } from 'tailwind-variants'
 
 const errorVariants = tv({
   slots: {

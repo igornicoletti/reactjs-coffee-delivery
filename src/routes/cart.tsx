@@ -1,13 +1,13 @@
-import { Form } from 'react-router-dom'
-import { FormProps } from '../types/form'
-import { Modal } from '../components/modal'
-import { useEffect, useState } from 'react'
 import { RadioGroup } from '@headlessui/react'
-import { Quantity } from '../components/quantity'
-import { CartVariants } from '../styles/variants'
-import { CartContextProvider } from '../hooks/cart'
 import { TrashIcon } from '@heroicons/react/24/outline'
+import { useEffect, useState } from 'react'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
+import { Form } from 'react-router-dom'
+import { Modal } from '../components/modal'
+import { Quantity } from '../components/quantity'
+import { CartContextProvider } from '../hooks/cart'
+import { CartVariants } from '../styles/variants'
+import { FormProps } from '../types/form'
 
 const { cartContent, cartRecord, cartSummary, cartTitle, cartPanel, cartWrapper, cartHead, cartSubtitle, cartForm, cartFormHidden, cartFormItem, cartFormItens, cartInput, cartLabel, cartError, cartPay, cartOrder, cartOrderItem, cartImage, cartInfo, cartBetween, cartDescription, cartAction, cartTrash, cartIcon, cartConfirm } = CartVariants()
 
