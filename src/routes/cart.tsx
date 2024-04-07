@@ -26,7 +26,7 @@ export const Cart = () => {
 
   const currentFormat = new Intl.NumberFormat('pt-br', { currency: 'BRL', style: 'currency' })
 
-  const currentValue = cart.reduce((prev, current) => prev += current.price * current.quantity, 0)
+  const currentValue = cart?.reduce((prev, current) => prev += current.price * current.quantity, 0)
 
   const handleSubmitCart: SubmitHandler<FormProps> = (data) => {
     setCurrentForm(data)
