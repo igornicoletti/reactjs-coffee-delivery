@@ -1,9 +1,10 @@
-import { FireIcon, FunnelIcon, ShoppingBagIcon, ShoppingCartIcon, TruckIcon } from '@heroicons/react/24/outline'
 import { useEffect, useState } from 'react'
+import { FireIcon, FunnelIcon, ShoppingBagIcon, ShoppingCartIcon, TruckIcon } from '@heroicons/react/24/outline'
+
 import { Card } from '../components/card'
+import { ProductProps } from '../types/product'
 import { ProductData } from '../data/product.json'
 import { HeroVariants, ProductVariants } from '../styles/variants'
-import { ProductProps } from '../types/product'
 
 const { productContent, productHead, productTitle, productCard, productFilter, productItem, productIcon } = ProductVariants()
 const { heroContent, heroHead, heroTitle, heroSubtitle, heroDescription, heroItem, heroIcon, heroImageMobile, heroImageDesk } = HeroVariants()

@@ -1,5 +1,6 @@
-import { MinusIcon, PlusIcon } from '@heroicons/react/24/outline'
 import { ChangeEvent } from 'react'
+import { MinusIcon, PlusIcon } from '@heroicons/react/24/outline'
+
 import { QuantityVariants } from '../styles/variants'
 
 const { quantityContent, quantityButton, quantityValue, quantityIcon } = QuantityVariants()

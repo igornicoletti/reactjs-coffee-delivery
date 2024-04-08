@@ -2,17 +2,17 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 
-import { ErrorPage } from './error'
 import './index.css'
-import { Cart } from './routes/cart'
-import { Home } from './routes/home'
+import { Error } from './error'
 import { Root } from './routes/root'
+import { Home } from './routes/home'
+import { Cart } from './routes/cart'
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Root />,
-    errorElement: <ErrorPage />,
+    errorElement: <Error />,
     children: [
       {
         path: '/',

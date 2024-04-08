@@ -1,9 +1,10 @@
-import { ShoppingCartIcon } from '@heroicons/react/24/outline'
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
-import { CartContextProvider } from '../hooks/cart'
-import { HeaderVariants } from '../styles/variants'
+import { ShoppingCartIcon } from '@heroicons/react/24/outline'
+
 import { Notify } from './notify'
+import { HeaderVariants } from '../styles/variants'
+import { CartContextProvider } from '../hooks/cart'
 
 const { headerContent, headerTitle, headerCart, headerButton, headerIcon, headerBadge, headerPing, headerQuantity } = HeaderVariants()
 
@@ -19,11 +20,11 @@ export const Header = () => {
 
   return (
     <div className={headerContent()}>
-      <NavLink className={headerTitle()} to={`/`}>
+      <NavLink className={headerTitle()} to={'/'}>
         <h1>Coffee Delivery</h1>
       </NavLink>
       <div className={headerCart()}>
-        <NavLink className={headerButton()} to={`cart`} onClick={(event) => cart.length === 0 && handleCurrentNav(event)}>
+        <NavLink className={headerButton()} to={'cart'} onClick={(event) => cart.length === 0 && handleCurrentNav(event)}>
           <ShoppingCartIcon className={headerIcon()} aria-hidden='true' />
         </NavLink>
         {cart.length > 0 && (

@@ -1,5 +1,5 @@
-import { useRouteError } from 'react-router-dom'
 import { tv } from 'tailwind-variants'
+import { useRouteError } from 'react-router-dom'
 
 const errorVariants = tv({
   slots: {
@@ -13,7 +13,7 @@ const errorVariants = tv({
 
 const { base, container, content, title, status } = errorVariants()
 
-export function ErrorPage() {
+export function Error() {
   const error = useRouteError() as Error
 
   return (

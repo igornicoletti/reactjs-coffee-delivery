@@ -24,8 +24,8 @@ export const HeroVariants = tv({
   slots: {
     heroContent: 'w-full flex flex-col xl:flex-row items-center justify-between gap-8 py-16',
     heroHead: 'w-full max-w-2xl flex flex-col gap-12',
-    heroTitle: 'text-3xl md:text-5xl px-2 xl:px-0 font-medium text-center xl:text-left',
-    heroSubtitle: 'max-w-lg text-xl md:text-3xl text-center xl:text-left mx-auto xl:mx-0',
+    heroTitle: 'max-w-md md:max-w-full text-3xl md:text-5xl px-2 xl:px-0 font-medium text-center xl:text-left mx-auto xl:mx-0',
+    heroSubtitle: 'max-w-md md:max-w-lg text-xl md:text-3xl text-center xl:text-left mx-auto xl:mx-0',
     heroDescription: 'grid md:grid-cols-2 xl:grid-cols-1 2xl:grid-cols-2 gap-8 pb-8 xl:pb-0 md:mx-auto xl:mx-0 xl:pt-8',
     heroItem: 'flex items-center gap-4 md:text-lg',
     heroImageMobile: 'w-full max-w-lg md:hidden mx-auto',

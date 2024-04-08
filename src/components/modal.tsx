@@ -1,11 +1,14 @@
+import { Fragment } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { FaceSmileIcon } from '@heroicons/react/24/outline'
-import { Fragment } from 'react'
-import { CartContextProvider } from '../hooks/cart'
-import { ModalVariants } from '../styles/variants'
-import { FormProps } from '../types/form'
 
-const { modalContent, modalBackdrop, modalDialog, modalInfo, modalPanel, modalIcon, modalTitle, modalDescription, modalSumary, modalAction, modalEnter, modalEnterTo, modalFrom, modalLeave, modalLeaveFrom, modalLeaveTo, modalChildEnter, modalChildEnterTo, modalChildFrom, modalChildLeave, modalChildLeaveFrom, modalChildLeaveTo } = ModalVariants()
+import { FormProps } from '../types/form'
+import { ModalVariants } from '../styles/variants'
+import { CartContextProvider } from '../hooks/cart'
+
+const { modalContent, modalBackdrop, modalDialog, modalInfo, modalPanel, modalIcon, modalTitle, modalDescription, modalSumary, modalAction,
+  modalEnter, modalEnterTo, modalFrom, modalLeave, modalLeaveFrom, modalLeaveTo,
+  modalChildEnter, modalChildEnterTo, modalChildFrom, modalChildLeave, modalChildLeaveFrom, modalChildLeaveTo } = ModalVariants()
 
 type Props = {
   currentModal: boolean
@@ -18,12 +21,16 @@ export const Modal = ({ currentModal, currentForm }: Props) => {
   return (
     <Transition appear show={currentModal} as={Fragment}>
       <Dialog className={modalContent()} onClose={(e) => e.valueOf()}>
-        <Transition.Child as={Fragment} enter={modalEnter()} enterFrom={modalFrom()} enterTo={modalEnterTo()} leave={modalLeave()} leaveFrom={modalLeaveFrom()} leaveTo={modalLeaveTo()}>
+        <Transition.Child as={Fragment}
+          enter={modalEnter()} enterFrom={modalFrom()} enterTo={modalEnterTo()}
+          leave={modalLeave()} leaveFrom={modalLeaveFrom()} leaveTo={modalLeaveTo()}>
           <div className={modalBackdrop()} />
         </Transition.Child>
         <div className={modalDialog()}>
           <div className={modalInfo()}>
-            <Transition.Child as={Fragment} enter={modalChildEnter()} enterFrom={modalChildFrom()} enterTo={modalChildEnterTo()} leave={modalChildLeave()} leaveFrom={modalChildLeaveFrom()} leaveTo={modalChildLeaveTo()}>
+            <Transition.Child as={Fragment}
+              enter={modalChildEnter()} enterFrom={modalChildFrom()} enterTo={modalChildEnterTo()}
+              leave={modalChildLeave()} leaveFrom={modalChildLeaveFrom()} leaveTo={modalChildLeaveTo()}>
               <Dialog.Panel className={modalPanel()}>
                 <FaceSmileIcon className={modalIcon()} />
                 <Dialog.Title className={modalTitle()}>Uhuu... Pedido confirmado!</Dialog.Title>
