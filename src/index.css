@@ -7,7 +7,19 @@ body {
   background: #282a36;
   font-family: 'Baloo 2', sans-serif;
 }
+
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
+  -webkit-appearance: none !important;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px #2b2d39 inset !important;
+}
+
+input:-webkit-autofill{
+  -webkit-text-fill-color: #f8f8f2 !important;
 }

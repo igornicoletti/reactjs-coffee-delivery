@@ -5,10 +5,10 @@ import { TrashIcon } from '@heroicons/react/24/outline'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 
 import { FormProps } from '../types/form'
-import { Modal } from '../components/modal'
-import { Quantity } from '../components/quantity'
 import { CartVariants } from '../styles/variants'
 import { CartContextProvider } from '../hooks/cart'
+import { ModalComponent } from '../components/modal'
+import { QuantityComponent } from '../components/quantity'
 
 const { cartContent, cartRecord, cartSummary, cartTitle, cartPanel, cartWrapper, cartHead, cartSubtitle,
   cartForm, cartFormHidden, cartFormItem, cartFormItens, cartInput, cartLabel, cartError, cartPay, cartOrder,
@@ -16,7 +16,7 @@ const { cartContent, cartRecord, cartSummary, cartTitle, cartPanel, cartWrapper,
 
 const payment = ['Dinheiro', 'Cartão de crédito', 'Cartão de dédito']
 
-export const Cart = () => {
+export const CartPage = () => {
   const { control, register, handleSubmit, formState: { errors } } = useForm<FormProps>({ defaultValues: { payment: payment[0] } })
   const { cart, handleRemoveProduct, handleIncrementProduct, handleDecrementProduct, handleValidateProduct } = CartContextProvider()
 
@@ -122,7 +122,7 @@ export const Cart = () => {
                       <p className={cartDescription()}>{currentFormat.format(product.price * product.quantity)}</p>
                     </div>
                     <div className={cartAction()}>
-                      <Quantity
+                      <QuantityComponent
                         currentQuantity={product.quantity}
                         handleAddQuantity={() => handleIncrementProduct(product.id)}
                         handleRemoveQuantity={() => handleDecrementProduct(product.id)}
@@ -155,7 +155,7 @@ export const Cart = () => {
           </button>
         </div>
       </div>
-      <Modal currentModal={currentModal} currentForm={currentForm} />
+      <ModalComponent currentModal={currentModal} currentForm={currentForm} />
     </div>
   )
 }

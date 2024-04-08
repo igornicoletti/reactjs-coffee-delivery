@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import { FireIcon, FunnelIcon, ShoppingBagIcon, ShoppingCartIcon, TruckIcon } from '@heroicons/react/24/outline'
 
-import { Card } from '../components/card'
 import { ProductProps } from '../types/product'
 import { ProductData } from '../data/product.json'
+import { CardComponent } from '../components/card'
 import { HeroVariants, ProductVariants } from '../styles/variants'
 
 const { productContent, productHead, productTitle, productCard, productFilter, productItem, productIcon } = ProductVariants()
@@ -17,7 +17,7 @@ const heros = [
   { id: 4, icon: FireIcon, title: 'O café chega fresquinho até você' }
 ]
 
-export const Home = () => {
+export const HomePage = () => {
   const [currentFilter, setCurrentFilter] = useState<string | null>(null)
   const [currentProduct, setCurrentProduct] = useState<ProductProps[]>([])
 
@@ -67,7 +67,7 @@ export const Home = () => {
         </div>
         <ul className={productCard()}>
           {currentProduct.map((product) => (
-            <Card key={product.id} product={product} />
+            <CardComponent key={product.id} product={product} />
           ))}
         </ul>
       </div>

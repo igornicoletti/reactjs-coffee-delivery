@@ -1,8 +1,8 @@
 import { ChangeEvent, useState } from 'react'
 import { ShoppingCartIcon } from '@heroicons/react/24/outline'
 
-import { Notify } from './notify'
-import { Quantity } from './quantity'
+import { NotifyComponent } from './notify'
+import { QuantityComponent } from './quantity'
 import { ProductProps } from '../types/product'
 import { CardVariants } from '../styles/variants'
 import { CartContextProvider } from '../hooks/cart'
@@ -14,7 +14,7 @@ type Props = {
   product: ProductProps
 }
 
-export const Card = ({ product }: Props) => {
+export const CardComponent = ({ product }: Props) => {
   const { handleAddProduct } = CartContextProvider()
 
   const [currentMessage, setCurrentMessage] = useState<string>('')
@@ -50,7 +50,7 @@ export const Card = ({ product }: Props) => {
         <p>R$ <span className={cardPrice()}>{product.price.toFixed(2)}</span></p>
         <div className={cardAction()}>
           <div className={cardQuantity()}>
-            <Quantity
+            <QuantityComponent
               currentQuantity={currentQuantity}
               handleAddQuantity={handleAddQuantity}
               handleRemoveQuantity={handleRemoveQuantity}
@@ -61,7 +61,7 @@ export const Card = ({ product }: Props) => {
           </button>
         </div>
       </div>
-      <Notify currentNotify={currentNotify} currentMessage={currentMessage} />
+      <NotifyComponent currentNotify={currentNotify} currentMessage={currentMessage} />
     </li>
   )
 }

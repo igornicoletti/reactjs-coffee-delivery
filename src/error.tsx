@@ -13,7 +13,7 @@ const errorVariants = tv({
 
 const { base, container, content, title, status } = errorVariants()
 
-export function Error() {
+export function ErrorPage() {
   const error = useRouteError() as Error
 
   return (

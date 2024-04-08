@@ -12,7 +12,7 @@ type Props = {
   handleValidateQuantity: (event: ChangeEvent<HTMLInputElement>) => void
 }
 
-export const Quantity = ({ currentQuantity, handleAddQuantity, handleRemoveQuantity, handleValidateQuantity }: Props) => {
+export const QuantityComponent = ({ currentQuantity, handleAddQuantity, handleRemoveQuantity, handleValidateQuantity }: Props) => {
   return (
     <div className={quantityContent()}>
       <button className={quantityButton()} onClick={handleRemoveQuantity} disabled={currentQuantity <= 1}>

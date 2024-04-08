@@ -1,17 +1,17 @@
 import { Outlet } from 'react-router-dom'
 
-import { Header } from '../components/header'
 import { CartProvider } from '../contexts/cart'
 import { RootVariants } from '../styles/variants'
+import { HeaderComponent } from '../components/header'
 
 const { rootLayout, rootContainer } = RootVariants()
 
-export const Root = () => {
+export const RootPage = () => {
   return (
     <div className={rootLayout()}>
       <div className={rootContainer()}>
         <CartProvider>
-          <Header />
+          <HeaderComponent />
           <Outlet />
         </CartProvider>
       </div>

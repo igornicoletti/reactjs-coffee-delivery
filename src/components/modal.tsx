@@ -15,7 +15,7 @@ type Props = {
   currentForm: FormProps
 }
 
-export const Modal = ({ currentModal, currentForm }: Props) => {
+export const ModalComponent = ({ currentModal, currentForm }: Props) => {
   const { handleSubmitProduct } = CartContextProvider()
 
   return (

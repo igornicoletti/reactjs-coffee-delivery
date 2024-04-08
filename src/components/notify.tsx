@@ -14,7 +14,7 @@ type Props = {
   currentMessage?: string
 }
 
-export const Notify = ({ currentNotify, currentMessage }: Props) => {
+export const NotifyComponent = ({ currentNotify, currentMessage }: Props) => {
   const { cart } = CartContextProvider()
 
   return (

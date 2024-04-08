@@ -2,13 +2,13 @@ import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { ShoppingCartIcon } from '@heroicons/react/24/outline'
 
-import { Notify } from './notify'
+import { NotifyComponent } from './notify'
 import { HeaderVariants } from '../styles/variants'
 import { CartContextProvider } from '../hooks/cart'
 
 const { headerContent, headerTitle, headerCart, headerButton, headerIcon, headerBadge, headerPing, headerQuantity } = HeaderVariants()
 
-export const Header = () => {
+export const HeaderComponent = () => {
   const { cart } = CartContextProvider()
   const [currentNotify, setCurrentNotify] = useState<boolean>(false)
 
@@ -34,7 +34,7 @@ export const Header = () => {
           </div>
         )}
       </div>
-      <Notify currentNotify={currentNotify} />
+      <NotifyComponent currentNotify={currentNotify} />
     </div>
   )
 }
