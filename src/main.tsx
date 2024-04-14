@@ -5,8 +5,8 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import './index.css'
 import { ErrorPage } from './error'
 import { RootPage } from './routes/root'
-import { HomePage } from './routes/home'
 import { CartPage } from './routes/cart'
+import { HomePage, ProductLoader } from './routes/home'
 
 const router = createBrowserRouter([
   {
@@ -17,6 +17,7 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <HomePage />,
+        loader: ProductLoader
       },
       {
         path: '/cart',
