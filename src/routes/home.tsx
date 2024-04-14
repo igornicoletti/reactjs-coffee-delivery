@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import { useLoaderData } from 'react-router-dom'
 import { FireIcon, FunnelIcon, ShoppingBagIcon, ShoppingCartIcon, TruckIcon } from '@heroicons/react/24/outline'
 
-import { ProductData } from '../data/product'
 import { ProductProps } from '../types/product'
 import { CardComponent } from '../components/card'
 import { HeroVariants, ProductVariants } from '../styles/variants'
@@ -17,11 +16,6 @@ const heros = [
   { id: 3, icon: TruckIcon, title: 'Entrega rápida e rastreada' },
   { id: 4, icon: FireIcon, title: 'O café chega fresquinho até você' }
 ]
-
-export async function ProductLoader() {
-  const product = await ProductData()
-  return product
-}
 
 export const HomePage = () => {
   const product = useLoaderData() as ProductProps[]
