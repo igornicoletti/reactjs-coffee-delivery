@@ -85,7 +85,7 @@ export const CartPage = () => {
               </div>
               <div className={cartFormItem()}>
                 <input className={cartInput()} defaultValue={currentForm.uf} type='text' id='uf' placeholder=' '
-                  {...register('uf', { required: { value: true, message: 'Por favor, informe um estado.' }, minLength: { value: 2, message: 'Estado inválido!' }, maxLength: { value: 2, message: 'Estado inválido!' } })} />
+                  {...register('uf', { required: { value: true, message: 'Por favor, informe um estado.' } })} />
                 <label className={cartLabel()} htmlFor='uf'>UF</label>
                 {errors.uf && <span className={cartError()}>{errors.uf.message}</span>}
               </div>

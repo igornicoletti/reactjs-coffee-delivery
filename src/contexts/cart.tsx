@@ -60,8 +60,8 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   }
 
   const handleSubmitProduct = () => {
-    setCurrentCart([])
     navigate('/')
+    setTimeout(() => { setCurrentCart([]) }, 300)
   }
 
   useEffect(() => {

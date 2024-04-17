@@ -7,8 +7,7 @@ import { ProductProps } from '../types/product'
 import { CardVariants } from '../styles/variants'
 import { CartContextProvider } from '../hooks/cart'
 
-const { cardContent, cardImage, cardCategory, cardItem, cardDescription, cardTitle,
-  cardSubtitle, cardInfo, cardPrice, cardAction, cardQuantity, cardCart, cardIcon } = CardVariants()
+const { cardContent, cardImage, cardCategory, cardItem, cardDescription, cardTitle, cardSubtitle, cardInfo, cardPrice, cardAction, cardQuantity, cardCart, cardIcon } = CardVariants()
 
 type Props = {
   product: ProductProps
@@ -21,15 +20,24 @@ export const CardComponent = ({ product }: Props) => {
   const [currentQuantity, setCurrentQuantity] = useState<number>(1)
   const [currentNotify, setCurrentNotify] = useState<boolean>(false)
 
-  const handleAddQuantity = () => setCurrentQuantity((state) => state + 1)
-  const handleRemoveQuantity = () => setCurrentQuantity((state) => state - 1)
-  const handleValidateQuantity = (event: ChangeEvent<HTMLInputElement>) => setCurrentQuantity(Math.max(1, Math.min(99, Number(event.target.value))))
+  const handleAddQuantity = () =>
+    setCurrentQuantity((state) => state + 1)
+
+  const handleRemoveQuantity = () =>
+    setCurrentQuantity((state) => state - 1)
+
+  const handleValidateQuantity = (event: ChangeEvent<HTMLInputElement>) =>
+    setCurrentQuantity(Math.max(1, Math.min(99, Number(event.target.value))))
 
   const handleCurrentCard = () => {
     setCurrentNotify(true)
     setCurrentMessage(product.title)
     handleAddProduct({ ...product, quantity: currentQuantity })
-    setTimeout(() => { setCurrentNotify(false), setCurrentQuantity(1) }, 1500)
+
+    setTimeout(() => {
+      setCurrentQuantity(1)
+      setCurrentNotify(false)
+    }, 1500)
   }
 
   return (

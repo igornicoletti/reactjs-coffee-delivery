@@ -10,6 +10,7 @@ const { headerContent, headerTitle, headerCart, headerButton, headerIcon, header
 
 export const HeaderComponent = () => {
   const { cart } = CartContextProvider()
+
   const [currentNotify, setCurrentNotify] = useState<boolean>(false)
 
   const handleCurrentNav = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {

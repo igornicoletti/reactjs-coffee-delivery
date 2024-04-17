@@ -5,9 +5,7 @@ import { CheckCircleIcon, ExclamationCircleIcon } from '@heroicons/react/24/outl
 import { NotifyVariants } from '../styles/variants'
 import { CartContextProvider } from '../hooks/cart'
 
-const {
-  notifyContent, notifyPanel, notifyHead, notifyCheck, notifyExc, notifyTitle, notifyCoffee,
-  notifyEnter, notifyEnterTo, notifyFrom, notifyLeave, notifyLeaveFrom, notifyLeaveTo } = NotifyVariants()
+const { notifyContent, notifyPanel, notifyHead, notifyCheck, notifyExc, notifyTitle, notifyCoffee, notifyEnter, notifyEnterTo, notifyFrom, notifyLeave, notifyLeaveFrom, notifyLeaveTo } = NotifyVariants()
 
 type Props = {
   currentNotify: boolean
