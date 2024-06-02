@@ -13,6 +13,7 @@ export default {
         'in-dark': '#282A36',
         'in-green': '#50FA7B',
         'in-orange': '#FFB86C',
+        'in-purple': '#c084fc',
         'in-red': '#FF5555',
         'in-slate': '#2B2D39',
         'in-stone': '#44475A',
