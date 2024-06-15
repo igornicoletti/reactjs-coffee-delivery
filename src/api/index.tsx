@@ -1,0 +1,1 @@
+export { ProductLoader } from './product'

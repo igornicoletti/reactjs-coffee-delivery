@@ -4,7 +4,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 
 import './index.css'
 import { ErrorPage } from './error'
-import { ProductLoader } from './data/product'
+import { ProductLoader } from './api'
 import { ToastsComponent } from './components'
 import { ToastContextProvider } from './contexts'
 import { CartPage, HomePage, RootPage } from './routes'
