@@ -18,7 +18,7 @@ export const ToastsComponent = () => {
             <div className={toastpanel({ color: toast.type })}>
               <p className={toasttitle()}>{toast.title}</p>
               <p className={toastinfo()}>{toast.description}</p>
-              <button className={toastaction()} onClick={() => hideToast(toast.id)}>
+              <button className={toastaction()} onClick={() => hideToast(toast.id)} type={'button'}>
                 <XMarkIcon className={toasticon()} />
               </button>
             </div>

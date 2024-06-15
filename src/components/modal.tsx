@@ -37,7 +37,7 @@ export const ModalComponent = ({ currentModal, currentForm }: Props) => {
                   <p>Endereço de entrega: <br /> {currentForm.street}, {currentForm.number} - {currentForm.neighborhood} <br /> {currentForm.city}/{currentForm.uf}</p>
                   <p>Forma de pagamento: {currentForm.payment}</p>
                 </div>
-                <button className={modalaction()} onClick={handleSubmitProduct}>
+                <button className={modalaction()} onClick={handleSubmitProduct} type={'button'}>
                   <span>Voltar à lista de produtos</span>
                 </button>
               </Dialog.Panel>

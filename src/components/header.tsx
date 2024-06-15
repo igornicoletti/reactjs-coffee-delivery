@@ -1,4 +1,4 @@
-import { NavLink, useNavigate } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { ShoppingCartIcon } from '@heroicons/react/24/outline'
 
 import { HeaderVariants } from '../styles'
@@ -9,15 +9,13 @@ const { headercontent, headertitle, headercart, headerbutton, headericon, header
 export const HeaderComponent = () => {
   const toast = UseToast()
   const { cart } = UseCart()
-  const navigate = useNavigate()
 
   const handleCurrentNav = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     event.preventDefault()
-    toast.warning({
-      title: 'Nenhum produto foi adicionado!',
+    toast.info({
+      title: 'Nenhum produto foi encontrado!',
       description: 'Dê um novo propósito ao carrinho.'
     })
-    navigate('/')
   }
 
   return (
@@ -27,7 +25,7 @@ export const HeaderComponent = () => {
       </NavLink>
       <div className={headercart()}>
         <NavLink className={headerbutton()} to={'cart'} onClick={(event) => cart.length === 0 && handleCurrentNav(event)}>
-          <ShoppingCartIcon className={headericon()} aria-hidden='true' />
+          <ShoppingCartIcon className={headericon()} aria-hidden={true} />
         </NavLink>
         {cart.length > 0 && (
           <div className={headerbadge()}>

@@ -1,2 +1,2 @@
-export { CartContext, CartProvider } from './cart'
+export { CartContext, CartContextProvider } from './cart'
 export { ToastContext, ToastContextProvider } from './toast'

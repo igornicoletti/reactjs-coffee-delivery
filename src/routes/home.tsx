@@ -36,17 +36,17 @@ export const HomePage = () => {
         <div className={herohead()}>
           <h2 className={herotitle()}>Encontre o café perfeito para qualquer hora do dia</h2>
           <p className={herosubtitle()}>Com o Coffee Delivery você recebe seu café onde estiver, a qualquer hora</p>
-          <img className={heroimgmobile()} src='/images/coffee-delivery.png' alt='Coffee Delivery' />
+          <img className={heroimgmobile()} src={'/images/coffee-delivery.png'} alt={'Coffee Delivery'} />
           <ul className={herodescription()}>
             {heros.map((hero) => (
               <li className={heroitem()} key={hero.id}>
-                <hero.icon className={heroicon()} aria-hidden='true' />
+                <hero.icon className={heroicon()} aria-hidden={true} />
                 <span>{hero.title}</span>
               </li>
             ))}
           </ul>
         </div>
-        <img className={heroimgdesk()} src='/images/coffee-delivery.png' alt='Coffee Delivery' />
+        <img className={heroimgdesk()} src={'/images/coffee-delivery.png'} alt={'Coffee Delivery'} />
       </div>
       <div className={productcontent()}>
         <div className={producthead()}>

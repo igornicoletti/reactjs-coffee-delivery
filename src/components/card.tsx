@@ -15,25 +15,29 @@ type Props = {
 export const CardComponent = ({ product }: Props) => {
   const toast = UseToast()
   const { handleAddProduct } = UseCart()
-
   const [currentQuantity, setCurrentQuantity] = useState<number>(1)
 
-  const handleAddQuantity = () =>
-    setCurrentQuantity((state) => state + 1)
+  const handleAddQuantity = () => setCurrentQuantity((state) => state + 1)
 
-  const handleRemoveQuantity = () =>
-    setCurrentQuantity((state) => state - 1)
+  const handleRemoveQuantity = () => setCurrentQuantity((state) => state - 1)
 
   const handleValidateQuantity = (event: ChangeEvent<HTMLInputElement>) =>
     setCurrentQuantity(Math.max(1, Math.min(99, Number(event.target.value))))
 
   const handleCurrentCard = () => {
-    handleAddProduct({ ...product, quantity: currentQuantity })
-    toast.success({
-      title: `${product.title}`,
-      description: 'foi adicionado ao carrinho!'
-    })
-    setTimeout(() => setCurrentQuantity(1), 1500)
+    try {
+      handleAddProduct({ ...product, quantity: currentQuantity })
+      toast.success({
+        title: `${currentQuantity} ${product.title}`,
+        description: `${currentQuantity > 1 ? 'foram adicionados' : 'foi adicionado'} ao carrinho!`
+      })
+      setTimeout(() => setCurrentQuantity(1), 1500)
+    } catch {
+      toast.danger({
+        title: `Oops! ${product.title}`,
+        description: 'não foi adicionado ao carrinho!'
+      })
+    }
   }
 
   return (
@@ -60,8 +64,8 @@ export const CardComponent = ({ product }: Props) => {
               handleRemoveQuantity={handleRemoveQuantity}
               handleValidateQuantity={handleValidateQuantity} />
           </div>
-          <button className={cardcart()} onClick={handleCurrentCard}>
-            <ShoppingCartIcon className={cardicon()} aria-hidden='true' />
+          <button className={cardcart()} onClick={handleCurrentCard} type={'button'}>
+            <ShoppingCartIcon className={cardicon()} aria-hidden={true} />
           </button>
         </div>
       </div>

@@ -15,7 +15,7 @@ type CartContextType = {
 
 export const CartContext = createContext({} as CartContextType)
 
-export const CartProvider = ({ children }: { children: ReactNode }) => {
+export const CartContextProvider = ({ children }: { children: ReactNode }) => {
   const navigate = useNavigate()
 
   const [currentCart, setCurrentCart] = useState<CartProps[]>(() => {
@@ -24,40 +24,35 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     return []
   })
 
-  const handleAddProduct = ({ id, title, image, price, quantity }: CartProps) => {
+  const handleAddProduct = ({ id, title, image, price, quantity }: CartProps) =>
     setCurrentCart((state) =>
       state.some((item) => item.id === id)
         ? state.map((item) => item.id === id
           ? { ...item, quantity: item.quantity += quantity }
           : item)
         : [...state, { id, title, image, price, quantity: quantity }])
-  }
 
-  const handleRemoveProduct = (id: CartProps['id']) => {
+  const handleRemoveProduct = (id: CartProps['id']) =>
     setCurrentCart((state) =>
       state.filter((item) => item.id !== id))
-  }
 
-  const handleIncrementProduct = (id: CartProps['id']) => {
+  const handleIncrementProduct = (id: CartProps['id']) =>
     setCurrentCart((state) =>
       state.map((item) => item.id === id
         ? { ...item, quantity: item.quantity + 1 }
         : item))
-  }
 
-  const handleDecrementProduct = (id: CartProps['id']) => {
+  const handleDecrementProduct = (id: CartProps['id']) =>
     setCurrentCart((state) =>
       state.map((item) => item.id === id
         ? { ...item, quantity: item.quantity - 1 }
         : item))
-  }
 
-  const handleValidateProduct = (id: CartProps['id'], event: ChangeEvent<HTMLInputElement>) => {
+  const handleValidateProduct = (id: CartProps['id'], event: ChangeEvent<HTMLInputElement>) =>
     setCurrentCart((state) =>
       state.map((item) => item.id === id
         ? { ...item, quantity: Math.max(1, Math.min(99, Number(event.target.value))) }
         : item))
-  }
 
   const handleSubmitProduct = () => {
     navigate('/')
