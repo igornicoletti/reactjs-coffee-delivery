@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import { ChangeEvent, ReactNode, createContext, useEffect, useState } from 'react'
 
-import { CartProps } from '../types/cart'
+import { CartProps } from '../types'
 
 type CartContextType = {
   cart: CartProps[]

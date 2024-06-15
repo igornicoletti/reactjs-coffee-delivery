@@ -1,24 +1,22 @@
 import { ChangeEvent, useState } from 'react'
 import { ShoppingCartIcon } from '@heroicons/react/24/outline'
 
-import { NotifyComponent } from './notify'
-import { QuantityComponent } from './quantity'
-import { ProductProps } from '../types/product'
-import { CardVariants } from '../styles/variants'
-import { CartContextProvider } from '../hooks/cart'
+import { QuantityComponent } from './'
+import { ProductProps } from '../types'
+import { CardVariants } from '../styles'
+import { UseCart, UseToast } from '../hooks'
 
-const { cardContent, cardImage, cardCategory, cardItem, cardDescription, cardTitle, cardSubtitle, cardInfo, cardPrice, cardAction, cardQuantity, cardCart, cardIcon } = CardVariants()
+const { cardaction, cardcart, cardcategory, cardcontent, carddescription, cardicon, cardimage, cardinfo, carditem, cardprice, cardquantity, cardsubtitle, cardtitle } = CardVariants()
 
 type Props = {
   product: ProductProps
 }
 
 export const CardComponent = ({ product }: Props) => {
-  const { handleAddProduct } = CartContextProvider()
+  const toast = UseToast()
+  const { handleAddProduct } = UseCart()
 
-  const [currentMessage, setCurrentMessage] = useState<string>('')
   const [currentQuantity, setCurrentQuantity] = useState<number>(1)
-  const [currentNotify, setCurrentNotify] = useState<boolean>(false)
 
   const handleAddQuantity = () =>
     setCurrentQuantity((state) => state + 1)
@@ -30,46 +28,43 @@ export const CardComponent = ({ product }: Props) => {
     setCurrentQuantity(Math.max(1, Math.min(99, Number(event.target.value))))
 
   const handleCurrentCard = () => {
-    setCurrentNotify(true)
-    setCurrentMessage(product.title)
     handleAddProduct({ ...product, quantity: currentQuantity })
-
-    setTimeout(() => {
-      setCurrentQuantity(1)
-      setCurrentNotify(false)
-    }, 1500)
+    toast.success({
+      title: `${product.title}`,
+      description: 'foi adicionado ao carrinho!'
+    })
+    setTimeout(() => setCurrentQuantity(1), 1500)
   }
 
   return (
-    <li className={cardContent()}>
-      <img className={cardImage()} src={product.image} alt={product.title} />
-      <ul className={cardCategory()}>
+    <li className={cardcontent()}>
+      <img className={cardimage()} src={product.image} alt={product.title} />
+      <ul className={cardcategory()}>
         {product.categories.map((category) => (
-          <li className={cardItem()} key={category}>
+          <li className={carditem()} key={category}>
             <span>{category}</span>
           </li>
         ))}
       </ul>
-      <div className={cardDescription()}>
-        <h4 className={cardTitle()}>{product.title}</h4>
-        <p className={cardSubtitle()}>{product.description}</p>
+      <div className={carddescription()}>
+        <h4 className={cardtitle()}>{product.title}</h4>
+        <p className={cardsubtitle()}>{product.description}</p>
       </div>
-      <div className={cardInfo()}>
-        <p>R$ <span className={cardPrice()}>{product.price.toFixed(2)}</span></p>
-        <div className={cardAction()}>
-          <div className={cardQuantity()}>
+      <div className={cardinfo()}>
+        <p>R$ <span className={cardprice()}>{product.price.toFixed(2)}</span></p>
+        <div className={cardaction()}>
+          <div className={cardquantity()}>
             <QuantityComponent
               currentQuantity={currentQuantity}
               handleAddQuantity={handleAddQuantity}
               handleRemoveQuantity={handleRemoveQuantity}
               handleValidateQuantity={handleValidateQuantity} />
           </div>
-          <button className={cardCart()} onClick={handleCurrentCard} disabled={currentNotify}>
-            <ShoppingCartIcon className={cardIcon()} aria-hidden='true' />
+          <button className={cardcart()} onClick={handleCurrentCard}>
+            <ShoppingCartIcon className={cardicon()} aria-hidden='true' />
           </button>
         </div>
       </div>
-      <NotifyComponent currentNotify={currentNotify} currentMessage={currentMessage} />
     </li>
   )
 }

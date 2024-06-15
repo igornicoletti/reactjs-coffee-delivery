@@ -1,9 +1,9 @@
 import { ChangeEvent } from 'react'
 import { MinusIcon, PlusIcon } from '@heroicons/react/24/outline'
 
-import { QuantityVariants } from '../styles/variants'
+import { QuantityVariants } from '../styles'
 
-const { quantityContent, quantityButton, quantityValue, quantityIcon } = QuantityVariants()
+const { quantitycontent, quantitybutton, quantityvalue, quantityicon } = QuantityVariants()
 
 type Props = {
   currentQuantity: number
@@ -14,13 +14,13 @@ type Props = {
 
 export const QuantityComponent = ({ currentQuantity, handleAddQuantity, handleRemoveQuantity, handleValidateQuantity }: Props) => {
   return (
-    <div className={quantityContent()}>
-      <button className={quantityButton()} onClick={handleRemoveQuantity} disabled={currentQuantity <= 1}>
-        <MinusIcon className={quantityIcon()} aria-hidden='true' />
+    <div className={quantitycontent()}>
+      <button className={quantitybutton()} onClick={handleRemoveQuantity} disabled={currentQuantity <= 1}>
+        <MinusIcon className={quantityicon()} aria-hidden='true' />
       </button>
-      <input className={quantityValue()} onChange={handleValidateQuantity} value={currentQuantity} min={1} max={99} type='number' name='quantity' />
-      <button className={quantityButton()} onClick={handleAddQuantity} disabled={currentQuantity >= 99}>
-        <PlusIcon className={quantityIcon()} aria-hidden='true' />
+      <input className={quantityvalue()} onChange={handleValidateQuantity} value={currentQuantity} min={1} max={99} type='number' name='quantity' />
+      <button className={quantitybutton()} onClick={handleAddQuantity} disabled={currentQuantity >= 99}>
+        <PlusIcon className={quantityicon()} aria-hidden='true' />
       </button>
     </div>
   )

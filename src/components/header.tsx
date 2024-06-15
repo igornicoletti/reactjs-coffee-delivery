@@ -1,41 +1,41 @@
-import { useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { ShoppingCartIcon } from '@heroicons/react/24/outline'
 
-import { NotifyComponent } from './notify'
-import { HeaderVariants } from '../styles/variants'
-import { CartContextProvider } from '../hooks/cart'
+import { HeaderVariants } from '../styles'
+import { UseCart, UseToast } from '../hooks'
 
-const { headerContent, headerTitle, headerCart, headerButton, headerIcon, headerBadge, headerPing, headerQuantity } = HeaderVariants()
+const { headercontent, headertitle, headercart, headerbutton, headericon, headerbadge, headerping, headerquantity } = HeaderVariants()
 
 export const HeaderComponent = () => {
-  const { cart } = CartContextProvider()
-
-  const [currentNotify, setCurrentNotify] = useState<boolean>(false)
+  const toast = UseToast()
+  const { cart } = UseCart()
+  const navigate = useNavigate()
 
   const handleCurrentNav = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     event.preventDefault()
-    setCurrentNotify(true)
-    setTimeout(() => { setCurrentNotify(false) }, 2500)
+    toast.warning({
+      title: 'Nenhum produto foi adicionado!',
+      description: 'Dê um novo propósito ao carrinho.'
+    })
+    navigate('/')
   }
 
   return (
-    <div className={headerContent()}>
-      <NavLink className={headerTitle()} to={'/'}>
+    <div className={headercontent()}>
+      <NavLink className={headertitle()} to={'/'}>
         <h1>Coffee Delivery</h1>
       </NavLink>
-      <div className={headerCart()}>
-        <NavLink className={headerButton()} to={'cart'} onClick={(event) => cart.length === 0 && handleCurrentNav(event)}>
-          <ShoppingCartIcon className={headerIcon()} aria-hidden='true' />
+      <div className={headercart()}>
+        <NavLink className={headerbutton()} to={'cart'} onClick={(event) => cart.length === 0 && handleCurrentNav(event)}>
+          <ShoppingCartIcon className={headericon()} aria-hidden='true' />
         </NavLink>
         {cart.length > 0 && (
-          <div className={headerBadge()}>
-            <span className={headerPing()}></span>
-            <span className={headerQuantity()}>{cart.length}</span>
+          <div className={headerbadge()}>
+            <span className={headerping()}></span>
+            <span className={headerquantity()}>{cart.length}</span>
           </div>
         )}
       </div>
-      <NotifyComponent currentNotify={currentNotify} />
     </div>
   )
 }

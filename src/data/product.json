@@ -43,17 +43,6 @@
     },
     {
       "id": 5,
-      "title": "Café com Leite",
-      "description": "Meio a meio de expresso tradicional com leite vaporizado.",
-      "image": "/images/coffee-leite.png",
-      "categories": [
-        "Tradicional",
-        "Com leite"
-      ],
-      "price": 19.90
-    },
-    {
-      "id": 6,
       "title": "Capuccino",
       "description": "Bebida com canela feita de doses iguais de café, leite e espuma.",
       "image": "/images/coffee-capuccino.png",
@@ -64,7 +53,7 @@
       "price": 19.90
     },
     {
-      "id": 7,
+      "id": 6,
       "title": "Chocolate Quente",
       "description": "Bebida feita com chocolate dissolvido no leite quente e café.",
       "image": "/images/coffee-quente.png",
@@ -75,7 +64,7 @@
       "price": 19.90
     },
     {
-      "id": 8,
+      "id": 7,
       "title": "Latte",
       "description": "Uma dose de café expresso com o dobro de leite e espuma cremosa.",
       "image": "/images/coffee-latte.png",
@@ -86,7 +75,7 @@
       "price": 19.90
     },
     {
-      "id": 9,
+      "id": 8,
       "title": "Macchiato",
       "description": "Café expresso misturado com um pouco de leite quente e espuma.",
       "image": "/images/coffee-macchiato.png",
@@ -97,7 +86,7 @@
       "price": 19.90
     },
     {
-      "id": 10,
+      "id": 9,
       "title": "Mocaccino",
       "description": "Café expresso com calda de chocolate, pouco leite e espuma.",
       "image": "/images/coffee-mocaccino.png",
@@ -108,7 +97,7 @@
       "price": 19.90
     },
     {
-      "id": 11,
+      "id": 10,
       "title": "Árabe",
       "description": "Bebida preparada com grãos de café árabe e especiarias.",
       "image": "/images/coffee-arabe.png",
@@ -118,17 +107,7 @@
       "price": 21.90
     },
     {
-      "id": 12,
-      "title": "Havaiano",
-      "description": "Bebida adocicada preparada com café e leite de coco.",
-      "image": "/images/coffee-havaiano.png",
-      "categories": [
-        "Especial"
-      ],
-      "price": 21.90
-    },
-    {
-      "id": 13,
+      "id": 11,
       "title": "Cubano",
       "description": "Drink gelado de café expresso com rum, creme de leite e hortelã.",
       "image": "/images/coffee-cubano.png",
@@ -140,7 +119,7 @@
       "price": 24.90
     },
     {
-      "id": 14,
+      "id": 12,
       "title": "Irlandês",
       "description": "Bebida a base de café, uísque irlandês, açúcar e chantilly.",
       "image": "/images/coffee-irlandes.png",

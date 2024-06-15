@@ -18,6 +18,7 @@ export default {
         'in-slate': '#2B2D39',
         'in-stone': '#44475A',
         'in-white': '#F8F8F2',
+        'in-yellow': '#fde047',
       }
     }
   },

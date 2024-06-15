@@ -4,10 +4,10 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 
 import './index.css'
 import { ErrorPage } from './error'
-import { RootPage } from './routes/root'
-import { HomePage } from './routes/home'
-import { CartPage } from './routes/cart'
 import { ProductLoader } from './data/product'
+import { ToastsComponent } from './components'
+import { ToastContextProvider } from './contexts'
+import { CartPage, HomePage, RootPage } from './routes'
 
 const router = createBrowserRouter([
   {
@@ -30,6 +30,9 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <ToastContextProvider>
+      <RouterProvider router={router} />
+      <ToastsComponent />
+    </ToastContextProvider>
   </React.StrictMode>
 )

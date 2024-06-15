@@ -1,4 +1,4 @@
-import { ProductProps } from '../types/product'
+import { ProductProps } from '../types'
 import { ProductData } from '../data/product.json'
 
 export const ProductLoader = async (): Promise<ProductProps[]> => {

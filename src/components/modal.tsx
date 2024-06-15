@@ -2,11 +2,13 @@ import { Fragment } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { FaceSmileIcon } from '@heroicons/react/24/outline'
 
-import { FormProps } from '../types/form'
-import { ModalVariants } from '../styles/variants'
-import { CartContextProvider } from '../hooks/cart'
+import { UseCart } from '../hooks'
+import { FormProps } from '../types'
+import { ModalVariants, OpacityVariants, ScaleVariants } from '../styles'
 
-const { modalContent, modalBackdrop, modalDialog, modalInfo, modalPanel, modalIcon, modalTitle, modalDescription, modalSumary, modalAction, modalEnter, modalEnterTo, modalFrom, modalLeave, modalLeaveFrom, modalLeaveTo, modalChildEnter, modalChildEnterTo, modalChildFrom, modalChildLeave, modalChildLeaveFrom, modalChildLeaveTo } = ModalVariants()
+const { scaleenter, scaleenterto, scalefrom, scaleleave, scaleleavefrom, scaleleaveto } = ScaleVariants()
+const { opacityenter, opacityenterto, opacityfrom, opacityleave, opacityleavefrom, opacityleaveto } = OpacityVariants()
+const { modalcontent, modalbackdrop, modaldialog, modalinfo, modalpanel, modalicon, modaltitle, modaldescription, modalsumary, modalaction } = ModalVariants()
 
 type Props = {
   currentModal: boolean
@@ -14,32 +16,28 @@ type Props = {
 }
 
 export const ModalComponent = ({ currentModal, currentForm }: Props) => {
-  const { handleSubmitProduct } = CartContextProvider()
+  const { handleSubmitProduct } = UseCart()
 
   return (
     <Transition appear show={currentModal} as={Fragment}>
-      <Dialog className={modalContent()} onClose={handleSubmitProduct}>
-        <Transition.Child as={Fragment}
-          enter={modalEnter()} enterFrom={modalFrom()} enterTo={modalEnterTo()}
-          leave={modalLeave()} leaveFrom={modalLeaveFrom()} leaveTo={modalLeaveTo()}>
-          <div className={modalBackdrop()} />
+      <Dialog className={modalcontent()} onClose={handleSubmitProduct}>
+        <Transition.Child as={Fragment} enter={opacityenter()} enterFrom={opacityfrom()} enterTo={opacityenterto()} leave={opacityleave()} leaveFrom={opacityleavefrom()} leaveTo={opacityleaveto()}>
+          <div className={modalbackdrop()} />
         </Transition.Child>
-        <div className={modalDialog()}>
-          <div className={modalInfo()}>
-            <Transition.Child as={Fragment}
-              enter={modalChildEnter()} enterFrom={modalChildFrom()} enterTo={modalChildEnterTo()}
-              leave={modalChildLeave()} leaveFrom={modalChildLeaveFrom()} leaveTo={modalChildLeaveTo()}>
-              <Dialog.Panel className={modalPanel()}>
-                <FaceSmileIcon className={modalIcon()} />
-                <Dialog.Title className={modalTitle()}>Uhuu... Pedido confirmado!</Dialog.Title>
-                <Dialog.Description className={modalDescription()}>
+        <div className={modaldialog()}>
+          <div className={modalinfo()}>
+            <Transition.Child as={Fragment} enter={scaleenter()} enterFrom={scalefrom()} enterTo={scaleenterto()} leave={scaleleave()} leaveFrom={scaleleavefrom()} leaveTo={scaleleaveto()}>
+              <Dialog.Panel className={modalpanel()}>
+                <FaceSmileIcon className={modalicon()} />
+                <Dialog.Title className={modaltitle()}>Uhuu... Pedido confirmado!</Dialog.Title>
+                <Dialog.Description className={modaldescription()}>
                   Seu pedido foi enviado com sucesso.<br />Agora é só aguardar que logo seu café chegará até você.
                 </Dialog.Description>
-                <div className={modalSumary()}>
+                <div className={modalsumary()}>
                   <p>Endereço de entrega: <br /> {currentForm.street}, {currentForm.number} - {currentForm.neighborhood} <br /> {currentForm.city}/{currentForm.uf}</p>
                   <p>Forma de pagamento: {currentForm.payment}</p>
                 </div>
-                <button className={modalAction()} onClick={handleSubmitProduct}>
+                <button className={modalaction()} onClick={handleSubmitProduct}>
                   <span>Voltar à lista de produtos</span>
                 </button>
               </Dialog.Panel>

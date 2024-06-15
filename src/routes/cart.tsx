@@ -4,21 +4,20 @@ import { RadioGroup } from '@headlessui/react'
 import { TrashIcon } from '@heroicons/react/24/outline'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 
-import { FormProps } from '../types/form'
-import { CartVariants } from '../styles/variants'
-import { CartContextProvider } from '../hooks/cart'
-import { ModalComponent } from '../components/modal'
-import { QuantityComponent } from '../components/quantity'
+import { UseCart } from '../hooks'
+import { FormProps } from '../types'
+import { CartVariants } from '../styles'
+import { ModalComponent, QuantityComponent } from '../components'
 
-const { cartContent, cartRecord, cartSummary, cartTitle, cartPanel, cartWrapper, cartHead, cartSubtitle,
-  cartForm, cartFormHidden, cartFormItem, cartFormItens, cartInput, cartLabel, cartError, cartPay, cartOrder,
-  cartOrderItem, cartImage, cartInfo, cartBetween, cartDescription, cartAction, cartTrash, cartIcon, cartConfirm } = CartVariants()
+const { cartcontent, cartrecord, cartsummary, carttitle, cartpanel, cartwrapper, carthead, cartsubtitle,
+  cartform, cartformhidden, cartformitem, cartformitens, cartinput, cartlabel, carterror, cartpay, cartorder,
+  cartorderitem, cartimage, cartinfo, cartbetween, cartdescription, cartaction, carttrash, carticon, cartconfirm } = CartVariants()
 
 const payment = ['Dinheiro', 'Cartão de crédito', 'Cartão de dédito']
 
 export const CartPage = () => {
   const { control, register, handleSubmit, formState: { errors } } = useForm<FormProps>({ defaultValues: { payment: payment[0] } })
-  const { cart, handleRemoveProduct, handleIncrementProduct, handleDecrementProduct, handleValidateProduct } = CartContextProvider()
+  const { cart, handleRemoveProduct, handleIncrementProduct, handleDecrementProduct, handleValidateProduct } = UseCart()
 
   const [currentModal, setCurrentModal] = useState<boolean>(false)
   const [currentForm, setCurrentForm] = useState<FormProps>(() => {
@@ -42,64 +41,64 @@ export const CartPage = () => {
   }, [currentForm])
 
   return (
-    <div className={cartContent()}>
-      <div className={cartRecord()}>
-        <h3 className={cartTitle()}>Complete seu pedido</h3>
-        <Form className={cartPanel()} id='cart' onSubmit={handleSubmit(handleSubmitCart)}>
-          <div className={cartWrapper()}>
-            <div className={cartHead()}>
-              <p className={cartSubtitle()}>Endereço de entrega</p>
+    <div className={cartcontent()}>
+      <div className={cartrecord()}>
+        <h3 className={carttitle()}>Complete seu pedido</h3>
+        <Form className={cartpanel()} id='cart' onSubmit={handleSubmit(handleSubmitCart)}>
+          <div className={cartwrapper()}>
+            <div className={carthead()}>
+              <p className={cartsubtitle()}>Endereço de entrega</p>
               <span>Informe o endereço onde deseja receber o seu pedido.</span>
             </div>
-            <div className={cartForm()}>
-              <div className={cartFormItem()}>
-                <input className={cartInput()} defaultValue={currentForm.cep} type='number' id='cep' placeholder=' '
+            <div className={cartform()}>
+              <div className={cartformitem()}>
+                <input className={cartinput()} defaultValue={currentForm.cep} type='number' id='cep' placeholder=' '
                   {...register('cep', { valueAsNumber: true, required: { value: true, message: 'Por favor, informe um CEP.' } })} />
-                <label className={cartLabel()} htmlFor='cep'>CEP</label>
-                {errors.cep && <span className={cartError()}>{errors.cep.message}</span>}
+                <label className={cartlabel()} htmlFor='cep'>CEP</label>
+                {errors.cep && <span className={carterror()}>{errors.cep.message}</span>}
               </div>
-              <span className={cartFormHidden()}></span>
-              <div className={cartFormItens()}>
-                <input className={cartInput()} defaultValue={currentForm.street} type='text' id='street' placeholder=' '
+              <span className={cartformhidden()}></span>
+              <div className={cartformitens()}>
+                <input className={cartinput()} defaultValue={currentForm.street} type='text' id='street' placeholder=' '
                   {...register('street', { required: { value: true, message: 'Por favor, informe um endereço.' } })} />
-                <label className={cartLabel()} htmlFor='street'>Endereço</label>
-                {errors.street && <span className={cartError()}>{errors.street.message}</span>}
+                <label className={cartlabel()} htmlFor='street'>Endereço</label>
+                {errors.street && <span className={carterror()}>{errors.street.message}</span>}
               </div>
-              <div className={cartFormItem()}>
-                <input className={cartInput()} defaultValue={currentForm.number} type='number' id='number' placeholder=' '
+              <div className={cartformitem()}>
+                <input className={cartinput()} defaultValue={currentForm.number} type='number' id='number' placeholder=' '
                   {...register('number', { valueAsNumber: true, required: { value: true, message: 'Por favor, informe um número.' } })} />
-                <label className={cartLabel()} htmlFor='number'>Número</label>
-                {errors.number && <span className={cartError()}>{errors.number.message}</span>}
+                <label className={cartlabel()} htmlFor='number'>Número</label>
+                {errors.number && <span className={carterror()}>{errors.number.message}</span>}
               </div>
-              <div className={cartFormItem()}>
-                <input className={cartInput()} defaultValue={currentForm.neighborhood} type='text' id='neighborhood' placeholder=' '
+              <div className={cartformitem()}>
+                <input className={cartinput()} defaultValue={currentForm.neighborhood} type='text' id='neighborhood' placeholder=' '
                   {...register('neighborhood', { required: { value: true, message: 'Por favor, informe um bairro.' } })} />
-                <label className={cartLabel()} htmlFor='neighborhood'>Bairro</label>
-                {errors.neighborhood && <span className={cartError()}>{errors.neighborhood.message}</span>}
+                <label className={cartlabel()} htmlFor='neighborhood'>Bairro</label>
+                {errors.neighborhood && <span className={carterror()}>{errors.neighborhood.message}</span>}
               </div>
-              <div className={cartFormItem()}>
-                <input className={cartInput()} defaultValue={currentForm.city} type='text' id='city' placeholder=' '
+              <div className={cartformitem()}>
+                <input className={cartinput()} defaultValue={currentForm.city} type='text' id='city' placeholder=' '
                   {...register('city', { required: { value: true, message: 'Por favor, informe uma cidade.' } })} />
-                <label className={cartLabel()} htmlFor='city'>Cidade</label>
-                {errors.city && <span className={cartError()}>{errors.city.message}</span>}
+                <label className={cartlabel()} htmlFor='city'>Cidade</label>
+                {errors.city && <span className={carterror()}>{errors.city.message}</span>}
               </div>
-              <div className={cartFormItem()}>
-                <input className={cartInput()} defaultValue={currentForm.uf} type='text' id='uf' placeholder=' '
+              <div className={cartformitem()}>
+                <input className={cartinput()} defaultValue={currentForm.uf} type='text' id='uf' placeholder=' '
                   {...register('uf', { required: { value: true, message: 'Por favor, informe um estado.' } })} />
-                <label className={cartLabel()} htmlFor='uf'>UF</label>
-                {errors.uf && <span className={cartError()}>{errors.uf.message}</span>}
+                <label className={cartlabel()} htmlFor='uf'>UF</label>
+                {errors.uf && <span className={carterror()}>{errors.uf.message}</span>}
               </div>
             </div>
           </div>
-          <div className={cartWrapper()}>
-            <div className={cartHead()}>
-              <p className={cartSubtitle()}>Forma de pagamento</p>
+          <div className={cartwrapper()}>
+            <div className={carthead()}>
+              <p className={cartsubtitle()}>Forma de pagamento</p>
               <span>O pagamento é feito na entrega. Escolha a forma que deseja pagar.</span>
             </div>
             <Controller control={control} name='payment' render={({ field }) => (
-              <RadioGroup className={cartForm()} onChange={field.onChange} value={field.value}>
+              <RadioGroup className={cartform()} onChange={field.onChange} value={field.value}>
                 {payment.map((pay) => (
-                  <RadioGroup.Option className={cartPay()} key={pay} value={pay}>
+                  <RadioGroup.Option className={cartpay()} key={pay} value={pay}>
                     <span>{pay}</span>
                   </RadioGroup.Option>
                 ))}
@@ -108,27 +107,27 @@ export const CartPage = () => {
           </div>
         </Form>
       </div>
-      <div className={cartSummary()}>
-        <h3 className={cartTitle()}>Cafés selecionados</h3>
-        <div className={cartWrapper()}>
+      <div className={cartsummary()}>
+        <h3 className={carttitle()}>Cafés selecionados</h3>
+        <div className={cartwrapper()}>
           {cart?.length > 0 && (
-            <ul className={cart.length === 3 ? cartOrder({ active: true }) : cartOrder()}>
+            <ul className={cart.length === 3 ? cartorder({ active: true }) : cartorder()}>
               {cart.map((product) => (
-                <li className={cartOrderItem()} key={product.id}>
-                  <img className={cartImage()} src={product.image} alt='Coffee Delivery' />
-                  <div className={cartInfo()}>
-                    <div className={cartBetween()}>
-                      <p className={cartDescription()}>{product.title}</p>
-                      <p className={cartDescription()}>{currentFormat.format(product.price * product.quantity)}</p>
+                <li className={cartorderitem()} key={product.id}>
+                  <img className={cartimage()} src={product.image} alt='Coffee Delivery' />
+                  <div className={cartinfo()}>
+                    <div className={cartbetween()}>
+                      <p className={cartdescription()}>{product.title}</p>
+                      <p className={cartdescription()}>{currentFormat.format(product.price * product.quantity)}</p>
                     </div>
-                    <div className={cartAction()}>
+                    <div className={cartaction()}>
                       <QuantityComponent
                         currentQuantity={product.quantity}
                         handleAddQuantity={() => handleIncrementProduct(product.id)}
                         handleRemoveQuantity={() => handleDecrementProduct(product.id)}
                         handleValidateQuantity={(event) => handleValidateProduct(product.id, event)} />
-                      <button className={cartTrash()} onClick={() => handleRemoveProduct(product.id)}>
-                        <TrashIcon className={cartIcon()} aria-hidden='true' />
+                      <button className={carttrash()} onClick={() => handleRemoveProduct(product.id)}>
+                        <TrashIcon className={carticon()} aria-hidden='true' />
                       </button>
                     </div>
                   </div>
@@ -136,21 +135,21 @@ export const CartPage = () => {
               ))}
             </ul>
           )}
-          <ul className={cartInfo()}>
-            <li className={cartBetween()}>
+          <ul className={cartinfo()}>
+            <li className={cartbetween()}>
               <p>Subtotal:</p>
               <p>{currentFormat.format(currentValue)}</p>
             </li>
-            <li className={cartBetween()}>
+            <li className={cartbetween()}>
               <p>Entrega:</p>
               <p>R$ 9.90</p>
             </li>
-            <li className={cartBetween()}>
-              <p className={cartDescription()}>Total do pedido:</p>
-              <p className={cartDescription()}>{currentFormat.format(currentValue + 9.90)}</p>
+            <li className={cartbetween()}>
+              <p className={cartdescription()}>Total do pedido:</p>
+              <p className={cartdescription()}>{currentFormat.format(currentValue + 9.90)}</p>
             </li>
           </ul>
-          <button className={cartConfirm()} form='cart' type='submit' disabled={!currentValue}>
+          <button className={cartconfirm()} form='cart' type='submit' disabled={!currentValue}>
             <span>Confirmar pedido</span>
           </button>
         </div>
