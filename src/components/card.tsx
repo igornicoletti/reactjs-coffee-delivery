@@ -33,9 +33,9 @@ export const CardComponent = ({ product }: Props) => {
       })
       setTimeout(() => setCurrentQuantity(1), 1500)
     } catch {
-      toast.danger({
-        title: `Oops! ${product.title}`,
-        description: 'não foi adicionado ao carrinho!'
+      toast.error({
+        title: 'Oops.. Erro inesperado!',
+        description: 'Falha ao adicionar produto no carrinho!'
       })
     }
   }

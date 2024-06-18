@@ -13,7 +13,7 @@ export const UseToast = () => {
   return {
     toast,
     hideToast,
-    danger: handleTypeToast('danger'),
+    error: handleTypeToast('error'),
     info: handleTypeToast('info'),
     success: handleTypeToast('success'),
     warning: handleTypeToast('warning')

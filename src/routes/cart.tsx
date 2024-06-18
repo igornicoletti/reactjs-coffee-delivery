@@ -36,11 +36,11 @@ export const CartPage = () => {
     setCurrentModal(true)
   }
 
-  const handleRemoveCart = (id: number, title: string, quantity: number) => {
+  const handleRemoveCart = (id: number, title: string) => {
     handleRemoveProduct(id)
-    toast.success({
-      title: `${quantity} ${title}`,
-      description: `${quantity > 1 ? 'foram removidos' : 'foi removido'} do carrinho!`
+    toast.warning({
+      title: `${title}`,
+      description: 'foi removido do carrinho!'
     })
   }
 
@@ -135,7 +135,7 @@ export const CartPage = () => {
                         handleAddQuantity={() => handleIncrementProduct(product.id)}
                         handleRemoveQuantity={() => handleDecrementProduct(product.id)}
                         handleValidateQuantity={(event) => handleValidateProduct(product.id, event)} />
-                      <button className={carttrash()} onClick={() => handleRemoveCart(product.id, product.title, product.quantity)} type={'button'}>
+                      <button className={carttrash()} onClick={() => handleRemoveCart(product.id, product.title)} type={'button'}>
                         <TrashIcon className={carticon()} aria-hidden={true} />
                       </button>
                     </div>

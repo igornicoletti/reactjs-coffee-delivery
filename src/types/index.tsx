@@ -30,5 +30,5 @@ export type ToastProps = {
   showing: boolean
   title: string
   description: string
-  type: 'info' | 'danger' | 'success' | 'warning'
+  type: 'info' | 'error' | 'success' | 'warning'
 }

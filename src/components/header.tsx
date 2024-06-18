@@ -13,7 +13,7 @@ export const HeaderComponent = () => {
   const handleCurrentNav = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     event.preventDefault()
     toast.info({
-      title: 'Nenhum produto foi encontrado!',
+      title: 'Adicione um produto!',
       description: 'Dê um novo propósito ao carrinho.'
     })
   }
