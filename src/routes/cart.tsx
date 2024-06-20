@@ -1,24 +1,22 @@
 import { Form } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { RadioGroup } from '@headlessui/react'
-import { TrashIcon } from '@heroicons/react/24/outline'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 
+import { UseCart } from '../hooks'
 import { FormProps } from '../types'
 import { CartVariants } from '../styles'
-import { UseCart, UseToast } from '../hooks'
-import { ModalComponent, QuantityComponent } from '../components'
+import { ModalComponent, OrderComponent } from '../components'
 
 const { cartcontent, cartrecord, cartsummary, carttitle, cartpanel, cartwrapper, carthead, cartsubtitle,
-  cartform, cartformhidden, cartformitem, cartformitens, cartinput, cartlabel, carterror, cartpay, cartorder,
-  cartorderitem, cartimage, cartinfo, cartbetween, cartdescription, cartaction, carttrash, carticon, cartconfirm } = CartVariants()
+  cartform, cartformhidden, cartformitem, cartformitens, cartinput, cartlabel, carterror, cartpay,
+  cartorder, cartinfo, cartbetween, cartdescription, cartconfirm } = CartVariants()
 
 const payment = ['Dinheiro', 'Cartão de crédito', 'Cartão de dédito']
 
 export const CartPage = () => {
-  const toast = UseToast()
+  const { cart } = UseCart()
   const { control, register, handleSubmit, formState: { errors } } = useForm<FormProps>({ defaultValues: { payment: payment[0] } })
-  const { cart, handleRemoveProduct, handleIncrementProduct, handleDecrementProduct, handleValidateProduct } = UseCart()
 
   const [currentModal, setCurrentModal] = useState<boolean>(false)
   const [currentForm, setCurrentForm] = useState<FormProps>(() => {
@@ -34,14 +32,6 @@ export const CartPage = () => {
   const handleSubmitCart: SubmitHandler<FormProps> = (data) => {
     setCurrentForm(data)
     setCurrentModal(true)
-  }
-
-  const handleRemoveCart = (id: number, title: string) => {
-    handleRemoveProduct(id)
-    toast.warning({
-      title: `${title}`,
-      description: 'foi removido do carrinho!'
-    })
   }
 
   useEffect(() => {
@@ -122,25 +112,7 @@ export const CartPage = () => {
           {cart?.length > 0 && (
             <ul className={cart.length === 3 ? cartorder({ active: true }) : cartorder()}>
               {cart.map((product) => (
-                <li className={cartorderitem()} key={product.id}>
-                  <img className={cartimage()} src={product.image} alt={'Coffee Delivery'} />
-                  <div className={cartinfo()}>
-                    <div className={cartbetween()}>
-                      <p className={cartdescription()}>{product.title}</p>
-                      <p className={cartdescription()}>{currentFormat.format(product.price * product.quantity)}</p>
-                    </div>
-                    <div className={cartaction()}>
-                      <QuantityComponent
-                        currentQuantity={product.quantity}
-                        handleAddQuantity={() => handleIncrementProduct(product.id)}
-                        handleRemoveQuantity={() => handleDecrementProduct(product.id)}
-                        handleValidateQuantity={(event) => handleValidateProduct(product.id, event)} />
-                      <button className={carttrash()} onClick={() => handleRemoveCart(product.id, product.title)} type={'button'}>
-                        <TrashIcon className={carticon()} aria-hidden={true} />
-                      </button>
-                    </div>
-                  </div>
-                </li>
+                <OrderComponent key={product.id} {...product} />
               ))}
             </ul>
           )}

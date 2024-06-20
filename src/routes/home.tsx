@@ -64,7 +64,7 @@ export const HomePage = () => {
         </div>
         <ul className={productcard()}>
           {currentProduct.map((product) => (
-            <CardComponent key={product.id} product={product} />
+            <CardComponent key={product.id} {...product} />
           ))}
         </ul>
       </div>

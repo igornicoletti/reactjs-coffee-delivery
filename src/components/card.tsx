@@ -1,18 +1,14 @@
 import { ChangeEvent, useState } from 'react'
 import { ShoppingCartIcon } from '@heroicons/react/24/outline'
 
-import { QuantityComponent } from './'
 import { ProductProps } from '../types'
 import { CardVariants } from '../styles'
 import { UseCart, UseToast } from '../hooks'
+import { QuantityComponent } from './quantity'
 
 const { cardaction, cardcart, cardcategory, cardcontent, carddescription, cardicon, cardimage, cardinfo, carditem, cardprice, cardquantity, cardsubtitle, cardtitle } = CardVariants()
 
-type Props = {
-  product: ProductProps
-}
-
-export const CardComponent = ({ product }: Props) => {
+export const CardComponent = ({ id, title, description, image, categories, price }: ProductProps) => {
   const toast = UseToast()
   const { handleAddProduct } = UseCart()
   const [currentQuantity, setCurrentQuantity] = useState<number>(1)
@@ -26,9 +22,9 @@ export const CardComponent = ({ product }: Props) => {
 
   const handleCurrentCard = () => {
     try {
-      handleAddProduct({ ...product, quantity: currentQuantity })
+      handleAddProduct({ id, title, image, price, quantity: currentQuantity })
       toast.success({
-        title: `${currentQuantity} ${product.title}`,
+        title: `${currentQuantity} ${title}`,
         description: `${currentQuantity > 1 ? 'foram adicionados' : 'foi adicionado'} ao carrinho!`
       })
       setTimeout(() => setCurrentQuantity(1), 1500)
@@ -42,20 +38,20 @@ export const CardComponent = ({ product }: Props) => {
 
   return (
     <li className={cardcontent()}>
-      <img className={cardimage()} src={product.image} alt={product.title} />
+      <img className={cardimage()} src={image} alt={title} />
       <ul className={cardcategory()}>
-        {product.categories.map((category) => (
+        {categories.map((category) => (
           <li className={carditem()} key={category}>
             <span>{category}</span>
           </li>
         ))}
       </ul>
       <div className={carddescription()}>
-        <h4 className={cardtitle()}>{product.title}</h4>
-        <p className={cardsubtitle()}>{product.description}</p>
+        <h4 className={cardtitle()}>{title}</h4>
+        <p className={cardsubtitle()}>{description}</p>
       </div>
       <div className={cardinfo()}>
-        <p>R$ <span className={cardprice()}>{product.price.toFixed(2)}</span></p>
+        <p>R$ <span className={cardprice()}>{price.toFixed(2)}</span></p>
         <div className={cardaction()}>
           <div className={cardquantity()}>
             <QuantityComponent

@@ -1,5 +1,6 @@
 export { CardComponent } from './card'
 export { HeaderComponent } from './header'
 export { ModalComponent } from './modal'
+export { OrderComponent } from './order'
 export { QuantityComponent } from './quantity'
 export { ToastsComponent } from './toast'
