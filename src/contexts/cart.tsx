@@ -56,7 +56,7 @@ export const CartContextProvider = ({ children }: { children: ReactNode }) => {
 
   const handleSubmitProduct = () => {
     navigate('/')
-    setTimeout(() => { setCurrentCart([]) }, 300)
+    setTimeout(() => setCurrentCart([]), 300)
   }
 
   useEffect(() => {

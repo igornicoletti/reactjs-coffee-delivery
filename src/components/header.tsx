@@ -11,11 +11,13 @@ export const HeaderComponent = () => {
   const { cart } = UseCart()
 
   const handleCurrentNav = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-    event.preventDefault()
-    toast.info({
-      title: 'Adicione um produto!',
-      description: 'Dê um novo propósito ao carrinho.'
-    })
+    if (cart.length === 0) {
+      event.preventDefault()
+      toast.info({
+        title: 'Adicione um produto!',
+        description: 'Dê um novo propósito ao carrinho.'
+      })
+    }
   }
 
   return (
@@ -24,7 +26,7 @@ export const HeaderComponent = () => {
         <h1>Coffee Delivery</h1>
       </NavLink>
       <div className={headercart()}>
-        <NavLink className={headerbutton()} to={'cart'} onClick={(event) => cart.length === 0 && handleCurrentNav(event)}>
+        <NavLink className={headerbutton()} to={'cart'} onClick={(event) => handleCurrentNav(event)}>
           <ShoppingCartIcon className={headericon()} aria-hidden={true} />
         </NavLink>
         {cart.length > 0 && (

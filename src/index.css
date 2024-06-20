@@ -8,6 +8,16 @@ body {
   font-family: 'Baloo 2', sans-serif;
 }
 
+h1::selection,
+h2::selection,
+h3::selection,
+h4::selection,
+p::selection,
+span::selection {
+  color: #282a36;
+  background: #8BE9FD;
+}
+
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none !important;

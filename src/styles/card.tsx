@@ -9,7 +9,7 @@ export const CardVariants = tv({
     carddescription: 'flex flex-col text-center gap-2',
     cardtitle: 'text-xl font-medium uppercase',
     cardsubtitle: 'px-4',
-    cardinfo: 'flex items-end justify-between gap-2 pt-2 mt-auto',
+    cardinfo: 'flex items-end justify-between gap-2 mt-auto',
     cardprice: 'text-2xl',
     cardaction: 'flex items-center justify-between gap-2',
     cardquantity: 'h-10 w-full flex items-center justify-center rounded-md border border-in-stone hover:border-in-white transition ease-in-out duration-300',
